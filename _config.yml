@@ -1,4 +1,8 @@
+title: Bosch CS 5800/6800i & Buderus Logatherm WLW176/186
+description: Allerhand Informationen zu Wärmepumpen von Bosch & Buderus
+remote_theme: pages-themes/architect@v0.2.0
 plugins:
+  - jekyll-remote-theme
   - jekyll-relative-links
 relative_links:
   enabled: true
