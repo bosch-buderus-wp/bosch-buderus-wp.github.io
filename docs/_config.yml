@@ -8,3 +8,6 @@ relative_links:
   collections: true
 search_enabled: true
 auto_page_title: true
+sidebar:
+  - startseite
+  - varianten
