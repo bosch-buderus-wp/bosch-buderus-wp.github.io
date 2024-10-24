@@ -1,0 +1,10 @@
+title: Bosch CS 5800/6800i & Buderus Logatherm WLW176/186
+remote_theme: zendesk/jekyll-theme-zendesk-garden@main
+plugins:
+  - jekyll-remote-theme
+  - jekyll-relative-links
+relative_links:
+  enabled: true
+  collections: true
+search_enabled: true
+auto_page_title: true
