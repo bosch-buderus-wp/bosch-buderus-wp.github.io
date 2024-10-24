@@ -20,7 +20,7 @@ Das hat den weiteren Vorteil, dass mit niedrigerer Temperatur auch weniger Miner
 Demgegenüber steigt die Legionellengefahr, wenn das Wasser nicht ausreichend erhitzt wird.
 Eine regelmäßige Umwälzung oder thermische Desinfektion kann hier Abhilfe schaffen [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
 
-Die Warmwassertemperatur kann man mit der _Stopptemperatur_ festlegen. Siehe auch [Einstellungen zur Warmwasseraufbereitung](https://github.com/mroeckl/bosch-buderus-heatpumps/wiki/Einstellungen#warmwasseraufbereitung).
+Die Warmwassertemperatur kann man mit der _Stopptemperatur_ festlegen. Siehe auch [Einstellungen zur Warmwasseraufbereitung](/Einstellungen#warmwasseraufbereitung).
 
 ## Ladedelta
 
