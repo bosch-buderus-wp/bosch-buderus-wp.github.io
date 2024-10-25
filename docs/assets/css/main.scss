@@ -5,9 +5,6 @@ search: false
 
 @charset "utf-8";
 
-@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
-@import "minimal-mistakes"; // main partials
-
 $type-size-1 : 2.241em;
 $type-size-2 : 1.753em;
 $type-size-3 : 1.363em;
@@ -16,3 +13,6 @@ $type-size-5 : 0.9em;
 $type-size-6 : 0.65em;
 $type-size-7 : 0.6125em;
 $type-size-8 : 0.5625em;
+
+@import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
+@import "minimal-mistakes"; // main partials
