@@ -12,6 +12,9 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
 
+  # Outputting
+permalink: /:categories/:title/
+
 include:
   - _pages
 
