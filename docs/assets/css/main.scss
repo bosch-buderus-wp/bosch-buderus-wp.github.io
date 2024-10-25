@@ -5,14 +5,8 @@ search: false
 
 @charset "utf-8";
 
-$type-size-1: 2.0em;
-$type-size-2: 1.6em;
-$type-size-3: 1.2em;
-$type-size-4: 1.0em;
-$type-size-5: 0.8em;
-$type-size-6: 0.6em;
-$type-size-7: 0.55em;
-$type-size-8: 0.5em;
+$doc-font-size: 12px !default;
+$right-sidebar-width: 200px !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
