@@ -18,6 +18,13 @@ collections:
     permalink: /:collection/:path/
 
 defaults:
+  # _pages
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: false
   # _docs
   - scope:
       path: ""
