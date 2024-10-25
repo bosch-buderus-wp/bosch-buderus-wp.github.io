@@ -3,8 +3,6 @@ main:
     url: /docs/home/
 
 docs:
-  - title: "Startseite"
-    url: /docs/home
   - title: "Varianten"
     url: /docs/varianten/
   - title: "Technischer Aufbau"
