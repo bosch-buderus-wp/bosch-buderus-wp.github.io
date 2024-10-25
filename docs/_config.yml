@@ -1,6 +1,6 @@
 title: Bosch/Buderus Wärmepumpen
 subtitle: Compress 5800/6800i & Logatherm WLW176/186
-locale: de-DE
+locale: "de-DE"
 url: "https://bosch-buderus-wp.github.io"
 baseurl: "/"
 repository: "bosch-buderus-wp/bosch-buderus-wp"
