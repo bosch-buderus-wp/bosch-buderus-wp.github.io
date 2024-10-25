@@ -16,3 +16,6 @@ feature_row:
   url: "/docs/home/"
   btn_class: "btn--primary"
   btn_label: "Lesen"
+  ***
+
+{% include feature_row %}
