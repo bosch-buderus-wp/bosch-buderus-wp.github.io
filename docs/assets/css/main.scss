@@ -5,8 +5,8 @@ search: false
 
 @charset "utf-8";
 
-$doc-font-size: 12px !default;
-$right-sidebar-width: 200px !default;
+$doc-font-size: 14px !default;
+$right-sidebar-width: 240px !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials

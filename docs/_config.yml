@@ -12,6 +12,10 @@ plugins:
   - jekyll-remote-theme
   - jekyll-include-cache
 
+after_footer_scripts:
+  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - assets/js/mermaid.js
+
   # Outputting
 permalink: /:categories/:title/
 
