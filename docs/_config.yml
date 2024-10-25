@@ -1,16 +1,31 @@
-title: Bosch CS 5800/6800i & Buderus Logatherm WLW176/186
-remote_theme: zendesk/jekyll-theme-zendesk-garden@main
+title: Bosch/Buderus Wärmepumpen
+subtitle: CS 5800/6800i & WLW176/186
+locale: de-DE
+url: "https://bosch-buderus-wp.github.io"
+repository: "bosch-buderus-wp/bosch-buderus-wp"
+search: true
+search_full_content: true
+
+remote_theme: mmistakes/minimal-mistakes
 plugins:
   - jekyll-remote-theme
-  - jekyll-relative-links
-relative_links:
-  enabled: true
-  collections: true
-search_enabled: true
-auto_page_title: true
-sidebar:
-  - startseite
-  - varianten
-  - technischer-aufbau
-  - einstellungen
-  - optimierungen
+
+collections:
+  docs:
+    output: true
+    permalink: /:collection/:path/
+
+defaults:
+  # _docs
+  - scope:
+      path: ""
+      type: docs
+    values:
+      layout: single
+      read_time: false
+      author_profile: false
+      share: false
+      comments: false
+      toc_sticky: true
+      sidebar:
+        nav: "docs"

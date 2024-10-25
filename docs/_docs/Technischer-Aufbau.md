@@ -1,7 +1,7 @@
 ---
-id: technischer-aufbau
 title: Technischer Aufbau
-sidebar_label: Aufbau
+permalink: /docs/technischer-aufbau/
+toc: true
 ---
 
 # Funktionsweise der Luft/Wasser-Wärmepumpe

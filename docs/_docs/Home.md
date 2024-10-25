@@ -1,6 +1,6 @@
 ---
-id: startseite
-sidebar_label: Startseite
+title: Startseite
+permalink: /docs/home/
 ---
 
 In diesem Wiki findest du eine Sammlung an Informationen für **Bosch Compress 5800/6800i** und **Buderus Logatherm WLW176/186** Wärmepumpen.

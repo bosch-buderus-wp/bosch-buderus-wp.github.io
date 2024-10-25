@@ -1,7 +1,7 @@
 ---
-id: einstellungen
 title: Einstellungen
-sidebar_label: Einstellungen
+permalink: /docs/einstellungen/
+toc: true
 ---
 
 # Warmwasseraufbereitung

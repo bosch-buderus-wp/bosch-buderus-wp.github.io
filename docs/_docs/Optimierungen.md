@@ -1,7 +1,7 @@
 ---
-id: optimierungen
 title: Optimierungen
-sidebar_label: Optimierungen
+permalink: /docs/optimierungen/
+toc: true
 ---
 
 Grundsätzlich gilt: **Je höher die Temperatur, desto höher der Energieverbrauch!**

@@ -1,7 +1,7 @@
 ---
-id: varianten
 title: Varianten
-sidebar_label: Varianten
+permalink: /docs/varianten/
+toc: true
 ---
 
 Die Wärmepumpen von Bosch/Buderus gibt es in verschiedenen Varianten.

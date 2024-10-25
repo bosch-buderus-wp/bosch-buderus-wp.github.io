@@ -1,0 +1,13 @@
+main:
+  - title: "Dokumentation"
+    url: /docs/home/
+
+docs:
+  - title: "Startseite"
+    url: /docs/home
+  - title: "Varianten"
+    url: /docs/varianten/
+  - title: "Technischer Aufbau"
+    url: /docs/technischer-aufbau/
+  - title: "Einstellungen"
+    url: /docs/einstellungen/
