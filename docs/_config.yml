@@ -2,6 +2,7 @@ title: Bosch/Buderus Wärmepumpen
 subtitle: CS 5800/6800i & WLW176/186
 locale: de-DE
 url: "https://bosch-buderus-wp.github.io"
+baseurl: "/"
 repository: "bosch-buderus-wp/bosch-buderus-wp"
 search: true
 search_full_content: true
