@@ -1,0 +1,25 @@
+# Custom Dictionary Words
+basepoint
+BBQKees
+Buderus
+drehzahlgesteuerten
+elec.
+Entitätsname
+geflashte
+heatpump
+heatup
+hyst
+Kmin
+Legionellengefahr
+lmin
+Logatherm
+mbar
+Modusauswahl
+Monoblock
+nofrost
+Primärkreis
+Primärkreises
+Smarthome
+Stopptemperatur
+tapwater
+Verflüssiger

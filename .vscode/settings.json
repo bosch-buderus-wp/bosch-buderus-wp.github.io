@@ -1,0 +1,13 @@
+{
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true,
+  "cSpell.language": "en,de",
+  "cSpell.customDictionaries": {
+    "custom-dictionary-workspace": {
+      "name": "dictionary",
+      "path": "${workspaceFolder:bosch-buderus-wp.github.io}/.cspell/dictionary.txt",
+      "addWords": true,
+      "scope": "workspace"
+    }
+  }
+}
