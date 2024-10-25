@@ -25,7 +25,7 @@ Die Warmwassertemperatur kann man mit der _Stopptemperatur_ festlegen. Siehe auc
 ## Ladedelta
 
 Eine weitere Einstellung bei der Warmwasseraufbereitung ist das _Ladedelta_.
-Das _Ladedelta_ definiert, wie hoch die Vorlauftemperatur gegenüber der Warmwassertemperatur angehoben wird (siehe [Einstellungen zur Warmwasseraufbereitung](/Einstellungen#warmwasseraufbereitung)).
+Das _Ladedelta_ definiert, wie hoch die Vorlauftemperatur gegenüber der Warmwassertemperatur angehoben wird (siehe [Einstellungen zur Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
 Je höher das _Ladedelta_, desto schneller wird das Warmwasser aufgeheizt.
 Das bedeutet aber auch, dass bei einer Stopptemperatur von 48 °C und einem _Ladedelta_ von 12 K, die Vorlauftemperatur am Ende auf 60 °C angehoben wird.
 Reduziert man die Ladetemperatur hingegen auf 6 K, so muss am Ende lediglich auf 54 °C aufgeheizt werden, aber natürlich dauert die Warmwasseraufbereitung entsprechend länger.
@@ -38,7 +38,7 @@ Es ist daher sinnvoll, die Warmwasseraufbereitung auf den frühen Nachmittag zwi
 
 ![Durchschnittstemperatur je Tageszeit in 2023](https://github.com/user-attachments/assets/0fa7919e-d0e4-4d99-a220-2ee4c743fb61)
 
-Dazu kann man die [_Auto_ Modusauswahl](/Einstellungen#warmwasseraufbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
+Dazu kann man die [_Auto_ Modusauswahl](/docs/einstellungen#warmwasseraufbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
 
 - 13-17 Uhr = bevorzugte Zeit --> Eco
   - _Starttemperatur_: 41 °C

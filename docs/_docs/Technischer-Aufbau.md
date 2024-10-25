@@ -62,11 +62,11 @@ D.h. der Pufferspeicher ist über ein T-Stück eingebunden und im optimalen Fall
 - der Primärkreis einen niedrigeren Volumenstrom aufbringt als der Heizkreis abnimmt - dann befördert der Heizkreis kälteres Wasser aus seinem Rücklauf direkt wieder in seinen Vorlauf.
 
 Daher sollten Primär und Heizkreis die gleichen Volumenströme aufweisen.
-Siehe auch [Optimierungen](/Optimierungen#abgleich-der-volumenströme).
+Siehe auch [Optimierungen](/docs/optimierungen#abgleich-der-volumenströme).
 
 ## Heizkreis
 
 Der Heizkreis durchströmt die Heizkörper und/oder Fußbodenheizung und gibt dabei Wärme an die Umgebungsluft und/oder den Estrich ab.
 Das abgekühlte Wasser wird zurück in den Rücklauf des Primärkreis geführt.
 
-Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasseraufbereitung](/Einstellungen#warmwasseraufbereitung)).
+Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
