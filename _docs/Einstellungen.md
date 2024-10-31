@@ -15,24 +15,24 @@ Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz er
 
 Um die Heizkurve der Wärmepumpe einzustellen, sind folgende Menüpunkte relevant:
 
-### Heizgrenze:
+### Heizgrenze
 
-_Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->So/Wi Umschaltung-->Heizbetrieb bis_
+_Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Heizkreis&nbsp;1 &rarr; So/Wi Umschaltung &rarr; Heizbetrieb&nbsp;bis_
 
 Hier wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
 Hier ist zu beachten, dass die Umschaltung nicht direkt nach der gemessenen Temperatur des Außenthermometers erfolgt, sondern nach der gedämpften Außentemperatur.
-Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Dämpfung Gebäudeart_.
+Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Anlageneinstellungen &rarr; Dämpfung&nbsp;Gebäudeart_.
 Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen.
 
-### Normaußentemperatur (NAT):
+### Normaußentemperatur
 
-_Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Min. Außentemperatur_
+_Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Anlageneinstellungen &rarr; Min.Außentemperatur_
 
-Hier stellt man die Normaußentemperatur ein, also die tiefste Temperatur, sie sich 10 Mal innerhalb von 20 Jahren über einen Zeitraum von mindestens zwei aufeinanderfolgenden Tagen gehalten hat. Die Normaußentemperatur kann beim [Bundesverband Wärmepumpe (BWP)](https://www.waermepumpe.de/normen-technik/klimakarte/) nachgeschlagen werden.
+Hier stellt man die Normaußentemperatur (NAT) ein, also die tiefste Temperatur, sie sich 10 Mal innerhalb von 20 Jahren über einen Zeitraum von mindestens zwei aufeinanderfolgenden Tagen gehalten hat. Die Normaußentemperatur kann beim [Bundesverband Wärmepumpe (BWP)](https://www.waermepumpe.de/normen-technik/klimakarte/) nachgeschlagen werden.
 
-### Vorlauftemperatur an der NAT:
+### Vorlauftemperatur (NAT)
 
-_Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->Heizen-->Heizkurve_
+_Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Heizkreis&nbsp;1 &rarr; Heizen &rarr; Heizkurve_
 
 Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den Pfeiltasten die notwendige Vorlauftemperatur an der NAT einstellen.
 
@@ -48,7 +48,7 @@ Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
 
 Zusätzlich gibt es den Modus _Extra-Warmwasser_, der auf Anforderung für 1..48 Stunden versucht, das Warmwasser auf die Stopptemperatur aufzuheizen.
 
-Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen-->Warmwasser_ eingestellt werden:
+Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen &rarr; Warmwasser_ eingestellt werden:
 
 - _Starttemperatur_: bei Unterschreitung dieser Temperaturgrenze startet die Warmwasseraufbereitung
 - _Stopptemperatur_: bei Erreichen dieser Temperaturgrenze wird die Warmwasseraufbereitung beendet
