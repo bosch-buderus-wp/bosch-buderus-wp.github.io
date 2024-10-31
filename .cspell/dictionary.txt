@@ -17,6 +17,7 @@ mbar
 Modusauswahl
 Monoblock
 nofrost
+Normaußentemperatur
 Primärkreis
 Primärkreises
 Smarthome

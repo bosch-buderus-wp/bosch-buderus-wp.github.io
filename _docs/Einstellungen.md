@@ -4,6 +4,40 @@ permalink: /docs/einstellungen/
 toc: true
 ---
 
+Die Bosch CS 5800/6800i und Buderus WLW176/186 erlaubt eine Vielzahl an Einstellungen. Die meisten davon kann man im Servicemenü konfigurieren.
+Um ins Servicemenü zu gelangen, muss man mindestens 5 Sekunden die Service-Taste (3 Striche oben links im Display) drücken.
+
+Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz erklärt.
+
+# Heizkurve
+
+![Endpunkteinstellung der Heizkurve](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)
+
+Um die Heizkurve der Wärmepumpe einzustellen, sind folgende Menüpunkte relevant:
+
+- Heizgrenze:
+
+  _Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->So/Wi Umschaltung-->Heizbetrieb bis_
+
+  Hier wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
+  Hier ist zu beachten, dass die Umschaltung nicht direkt nach der gemessenen Temperatur des Außenthermometers erfolgt, sondern nach der gedämpften Außentemperatur.
+  Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Dämpfung Gebäudeart_.
+  Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen.
+
+- Normaußentemperatur (NAT):
+
+  _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Min. Außentemperatur_
+
+  Hier stellt man die Normaußentemperatur ein, also die tiefste Temperatur, sie sich 10 Mal innerhalb von 20 Jahren über einen Zeitraum von mindestens zwei aufeinanderfolgenden Tagen gehalten hat. Die Normaußentemperatur kann beim [Bundesverband Wärmepumpe (BWP)](https://www.waermepumpe.de/normen-technik/klimakarte/) nachgeschlagen werden.
+
+- Vorlauftemperatur an der NAT:
+
+  _Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->Heizen-->Heizkurve_
+
+  Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den Pfeiltasten die notwendige Vorlauftemperatur an der NAT einstellen.
+
+Zusätzlich zu diesen Werten kann man auch den Fuß- und Komfortpunkt definieren, falls die einfache Heizkurve nicht ausreichen sollte.
+
 # Warmwasseraufbereitung
 
 Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
@@ -14,7 +48,7 @@ Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
 
 Zusätzlich gibt es den Modus _Extra-Warmwasser_, der auf Anforderung für 1..48 Stunden versucht, das Warmwasser auf die Stopptemperatur aufzuheizen.
 
-Für jeden Modus können folgende Werte individuell eingestellt werden:
+Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen-->Warmwasser_ eingestellt werden:
 
 - _Starttemperatur_: bei Unterschreitung dieser Temperaturgrenze startet die Warmwasseraufbereitung
 - _Stopptemperatur_: bei Erreichen dieser Temperaturgrenze wird die Warmwasseraufbereitung beendet
