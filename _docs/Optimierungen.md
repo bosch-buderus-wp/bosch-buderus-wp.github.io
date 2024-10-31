@@ -40,7 +40,7 @@ Mit steigender Außentemperatur kann die Wärmepumpe mehr Energie aus der Umgebu
 Wie man im nachfolgenden Diagramm sieht, ist die durchschnittliche Außentemperatur in Deutschland am frühen Nachmittag am höchsten (Daten von [energy-charts.de](https://www.energy-charts.info/charts/climate_hours/chart.htm?l=de&c=DE&source=air_temperature&legendItems=fhy9f&interval=year&year=2023)).
 Es ist daher sinnvoll, die Warmwasseraufbereitung auf den frühen Nachmittag zwischen 13 und 15 Uhr zu legen.
 
-![Durchschnittstemperatur je Tageszeit in 2023](https://github.com/user-attachments/assets/0fa7919e-d0e4-4d99-a220-2ee4c743fb61)
+![Durchschnittstemperatur je Tageszeit in 2023](/assets/images/Durchschnittstemperatur2023.svg)
 
 Dazu kann man die [_Auto_ Modusauswahl](/docs/einstellungen#warmwasseraufbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
 
