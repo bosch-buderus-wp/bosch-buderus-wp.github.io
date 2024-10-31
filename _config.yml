@@ -20,6 +20,13 @@ after_footer_scripts:
   - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
   - assets/js/mermaid.js
 
+# Analytics
+analytics:
+  provider: "google-universal"
+  google:
+    tracking_id: "G-BK1S8Z0E0T"
+    anonymize_ip: true
+
 # Outputting
 permalink: /:categories/:title/
 
