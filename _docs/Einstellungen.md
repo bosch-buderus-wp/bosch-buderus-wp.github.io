@@ -54,8 +54,9 @@ Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen 
 - _Stopptemperatur_: bei Erreichen dieser Temperaturgrenze wird die Warmwasseraufbereitung beendet
 - _Ladedelta_: der Vorlauf wird um diesen Wert zur Warmwasseraufbereitung angehoben - je höher das Ladedelta desto schneller erfolgt die Aufheizung
 
-Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=41°C, Stopptemperatur=48°C und Ladedelta=7K:
-<img src="https://github.com/user-attachments/assets/b7eccc12-bf33-4b04-afd9-ef04b1fa0648" width="90%" alt="Warmwassertemperatur & Vorlauftemperatur"></img>
+Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=40°C, Stopptemperatur=48°C und Ladedelta=7K:
+
+![Warmwassertemperatur & Vorlauftemperatur](/assets/images/Einstellung-Warmwasseraufbereitung.png)
 
 ### Modi
 
