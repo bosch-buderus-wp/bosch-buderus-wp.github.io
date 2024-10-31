@@ -9,36 +9,36 @@ Um ins Servicemenü zu gelangen, muss man mindestens 5 Sekunden die Service-Tast
 
 Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz erklärt.
 
-# Heizkurve
+## Heizkurve
 
 ![Endpunkteinstellung der Heizkurve](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)
 
 Um die Heizkurve der Wärmepumpe einzustellen, sind folgende Menüpunkte relevant:
 
-- Heizgrenze:
+### Heizgrenze:
 
-  _Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->So/Wi Umschaltung-->Heizbetrieb bis_
+_Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->So/Wi Umschaltung-->Heizbetrieb bis_
 
-  Hier wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
-  Hier ist zu beachten, dass die Umschaltung nicht direkt nach der gemessenen Temperatur des Außenthermometers erfolgt, sondern nach der gedämpften Außentemperatur.
-  Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Dämpfung Gebäudeart_.
-  Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen.
+Hier wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
+Hier ist zu beachten, dass die Umschaltung nicht direkt nach der gemessenen Temperatur des Außenthermometers erfolgt, sondern nach der gedämpften Außentemperatur.
+Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Dämpfung Gebäudeart_.
+Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen.
 
-- Normaußentemperatur (NAT):
+### Normaußentemperatur (NAT):
 
-  _Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Min. Außentemperatur_
+_Anlageneinstellungen-->Heizung/Kühlung-->Anlageneinstellungen-->Min. Außentemperatur_
 
-  Hier stellt man die Normaußentemperatur ein, also die tiefste Temperatur, sie sich 10 Mal innerhalb von 20 Jahren über einen Zeitraum von mindestens zwei aufeinanderfolgenden Tagen gehalten hat. Die Normaußentemperatur kann beim [Bundesverband Wärmepumpe (BWP)](https://www.waermepumpe.de/normen-technik/klimakarte/) nachgeschlagen werden.
+Hier stellt man die Normaußentemperatur ein, also die tiefste Temperatur, sie sich 10 Mal innerhalb von 20 Jahren über einen Zeitraum von mindestens zwei aufeinanderfolgenden Tagen gehalten hat. Die Normaußentemperatur kann beim [Bundesverband Wärmepumpe (BWP)](https://www.waermepumpe.de/normen-technik/klimakarte/) nachgeschlagen werden.
 
-- Vorlauftemperatur an der NAT:
+### Vorlauftemperatur an der NAT:
 
-  _Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->Heizen-->Heizkurve_
+_Anlageneinstellungen-->Heizung/Kühlung-->Heizkreis 1-->Heizen-->Heizkurve_
 
-  Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den Pfeiltasten die notwendige Vorlauftemperatur an der NAT einstellen.
+Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den Pfeiltasten die notwendige Vorlauftemperatur an der NAT einstellen.
 
 Zusätzlich zu diesen Werten kann man auch den Fuß- und Komfortpunkt definieren, falls die einfache Heizkurve nicht ausreichen sollte.
 
-# Warmwasseraufbereitung
+## Warmwasseraufbereitung
 
 Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
 
@@ -57,27 +57,27 @@ Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen-
 Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=41°C, Stopptemperatur=48°C und Ladedelta=7K:
 <img src="https://github.com/user-attachments/assets/b7eccc12-bf33-4b04-afd9-ef04b1fa0648" width="90%" alt="Warmwassertemperatur & Vorlauftemperatur"></img>
 
-## Modi
+### Modi
 
-### Komfort
+#### Komfort
 
 Einstellbare Wertebereiche:
 
 - Ladedelta: 6..18 K
-- Min. Starttemperatur: 45 °C
+- Min. Starttemperatur: 40 °C
 - Max. Stopptemperatur: 65 °C
 
 In der Standardeinstellung wird dieser Modus mit hoher Spreizung und hoher Zieltemperatur vorkonfiguriert.
 
-### Eco
+#### Eco
 
 Einstellbare Wertebereiche:
 
 - Ladedelta: 6..18 K
 - Min. Starttemperatur: 35 °C
-- Max. Stopptemperatur: 48 °C
+- Max. Stopptemperatur: 60 °C
 
-### Eco+
+#### Eco+
 
 Einstellbare Wertebereiche:
 
@@ -85,11 +85,11 @@ Einstellbare Wertebereiche:
 - Min. Starttemperatur: 30 °C
 - Max. Stopptemperatur: 55 °C
 
-### Extra-Warmwasser
+#### Extra-Warmwasser
 
 - Stopptemperatur: 50..70 °C
 
-## Modusauswahl
+### Modusauswahl
 
 Die Auswahl des Modus für die Warmwasseraufbereitung kann wie folgt gewählt werden:
 
