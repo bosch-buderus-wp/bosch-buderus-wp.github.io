@@ -3,6 +3,7 @@ basepoint
 BBQKees
 Buderus
 drehzahlgesteuerten
+eingeschwungen
 elec.
 Entitätsname
 geflashte
@@ -14,6 +15,7 @@ Legionellengefahr
 lmin
 Logatherm
 mbar
+mitgeheizt
 Modusauswahl
 Monoblock
 nofrost
@@ -24,3 +26,5 @@ Smarthome
 Stopptemperatur
 tapwater
 Verflüssiger
+Wohlfühlgrenze
+Wohlfühltemperatur

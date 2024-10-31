@@ -5,7 +5,7 @@
   "cSpell.customDictionaries": {
     "custom-dictionary-workspace": {
       "name": "dictionary",
-      "path": "${workspaceFolder:bosch-buderus-wp.github.io}/.cspell/dictionary.txt",
+      "path": "${workspaceFolder}/.cspell/dictionary.txt",
       "addWords": true,
       "scope": "workspace"
     }
