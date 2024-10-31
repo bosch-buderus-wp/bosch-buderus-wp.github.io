@@ -11,7 +11,7 @@ feature_row:
   - alt: "docs"
     title: "Dokumentation"
     excerpt: "Dokumentationen zu den Wärmepumpen"
-    url: "/docs/varianten/"
+    url: "/docs/intro/"
     btn_class: "btn--primary"
     btn_label: "Lesen"
 ---
