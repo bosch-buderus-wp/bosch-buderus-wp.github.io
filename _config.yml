@@ -22,7 +22,7 @@ after_footer_scripts:
 
 # Analytics
 analytics:
-  provider: "google-universal"
+  provider: "google-gtag"
   google:
     tracking_id: "G-BK1S8Z0E0T"
     anonymize_ip: true
