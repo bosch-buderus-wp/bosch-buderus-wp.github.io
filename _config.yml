@@ -27,6 +27,8 @@ analytics:
     tracking_id: "G-BK1S8Z0E0T"
     anonymize_ip: true
 
+google_site_verification: "p088uW1OFFEeN7brDn_xvKE6IdyuqL-Yp21mpgjrsag"
+
 # Outputting
 permalink: /:categories/:title/
 
