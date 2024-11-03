@@ -17,7 +17,7 @@ plugins:
   - jekyll-include-cache
 
 after_footer_scripts:
-  - https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js
+  - https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js
   - assets/js/mermaid.js
 
 # Analytics
