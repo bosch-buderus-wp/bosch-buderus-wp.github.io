@@ -119,13 +119,13 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 | reservoir temp (TW1)                        | 46.6            | C       | no         |                                                                                |
 | 4-way valve (VR4)                           | heating & dhw   |         | no         |                                                                                |
 | input 1 state                               | off             |         | no         |                                                                                |
-| input 1 options                             | 000000000000000 |         | yes        | <inv>[<evu1><evu2><evu3><comp><aux><cool><heat><dhw><pv>]                      |
+| input 1 options                             | 000000000000000 |         | yes        | inv [evu1, evu2, evu3, comp, aux, cool, heat, dhw, pv]                         |
 | input 2 state                               | off             |         | no         |                                                                                |
-| input 2 options                             | 000000000000000 |         | yes        | <inv>[<evu1><evu2><evu3><comp><aux><cool><heat><dhw><pv>]                      |
+| input 2 options                             | 000000000000000 |         | yes        | inv [evu1, evu2, evu3, comp, aux, cool, heat, dhw, pv]                         |
 | input 3 state                               | off             |         | no         |                                                                                |
-| input 3 options                             | 100000000000000 |         | yes        | <inv>[<evu1><evu2><evu3><comp><aux><cool><heat><dhw><pv>]                      |
+| input 3 options                             | 100000000000000 |         | yes        | inv [evu1, evu2, evu3, comp, aux, cool, heat, dhw, pv]                         |
 | input 4 state                               | off             |         | no         |                                                                                |
-| input 4 options                             | 000000000000    |         | yes        | <inv>[<comp><aux><cool><heat><dhw><pv>]                                        |
+| input 4 options                             | 000000000000    |         | yes        | inv [comp, aux, cool, heat, dhw, pv]                                           |
 | heat limit compressor                       | 0 kW            |         | yes        | 0 kW \| 2 kW \| 3 kW \| 4 kW \| 6 kW \| 9 kW                                   |
 | heat limit heating                          | 3 kW            |         | yes        | 0 kW \| 2 kW \| 3 kW \| 4 kW \| 6 kW \| 9 kW                                   |
 | dhw heat limit                              | 3 kW            |         | yes        | 0 kW \| 2 kW \| 3 kW \| 4 kW \| 6 kW \| 9 kW                                   |
@@ -166,8 +166,8 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 | PC1                                         | on              |         | no         |                                                                                |
 | PC1 rate                                    | 0               |         | no         |                                                                                |
 | dhw alternating operation                   | off             |         | yes        | off \| on                                                                      |
-| dhw prioritise heating during dhw           | 30              | minutes | yes        | 20, 120                                                                        |
-| dhw prioritise dhw during heating           | 120             | minutes | yes        | 30, 120                                                                        |
+| dhw prioritize heating during dhw           | 30              | minutes | yes        | 20, 120                                                                        |
+| dhw prioritize dhw during heating           | 120             | minutes | yes        | 30, 120                                                                        |
 | dhw eco+ switch off                         | 0               | C       | yes        | 0, 63                                                                          |
 | dhw comfort diff                            | 7               | K       | yes        | 6, 12                                                                          |
 | dhw eco diff                                | 7               | K       | yes        | 6, 12                                                                          |
