@@ -17,6 +17,9 @@ Unsere Variante ist die Bosch Compress CS6800i AW 12 MB Inneneinheit mit der AW 
 | 10 kW | AW 10 OR-T | WLW-10 MB AR |             9,99 kW <br /> 2,72 |  9,57 kW <br /> 2,47 | 11,66 kW <br /> 2,84 | 12,67 kW <br /> 3,00 |
 | 12 kW | AW 12 OR-T | WLW-12 MB AR |            11,82 kW <br /> 2,46 | 11,56 kW <br /> 2,43 | 12,61 kW <br /> 2,64 | 12,90 kW <br /> 2,71 |
 
+<img src="/assets/images/Heizleistung_W35.jpg" width="45%" />
+<img src="/assets/images/Heizleistung_W45.jpg" width="45%" />
+
 Quellen: [Bosch AW 4-7 OR-S](https://junkers-de-de-b.boschtt-documents.com/download/file/file/6721840669.pdf), [Bosch AW 10-12 OR-T](https://junkers-de-de-b.boschtt-documents.com/download/file/file/6721842854.pdf)
 
 # Inneneinheit
