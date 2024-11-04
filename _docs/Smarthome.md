@@ -27,7 +27,7 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 
 <details>
   <summary>Übersicht aller 173 Boiler-Entitäten</summary>
-
+{% capture entities_boiler %}
 | Entitätsname                                | Wert            | Einheit | Schreibbar | Wertebereich                                                                   |
 | ------------------------------------------- | --------------- | ------- | ---------- | ------------------------------------------------------------------------------ |
 | reset                                       |                 |         | yes        | - \| maintenance \| error \| history \| message                                |
@@ -203,12 +203,13 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 | dhw 3-way valve active                      | off             |         | no         |                                                                                |
 | dhw starts                                  | 0               |         | no         |                                                                                |
 | dhw active time                             | 0               | minutes | no         |                                                                                |
-
+{% endcapture %}
+{{ entities_boiler | markdownify }}
 </details>
 
 <details>
   <summary>Übersicht aller 71 Thermostat-Entitäten</summary>
-
+{% capture entities_thermostat %}
 | Entitätsname                                | Wert                | Einheit | Schreibbar | Wertebereich                                                                 |
 | ------------------------------------------- | ------------------- | ------- | ---------- | ---------------------------------------------------------------------------- |
 | date/time                                   | 03.11.2024 19:28    |         | yes        | NTP \| dd.mm.yyyy-hh:mm:ss-day(0-6)-dst(0/1)                                 |
@@ -282,7 +283,8 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 | dhw disinfection time                       | 120                 | minutes | yes        | 0, 1431                                                                      |
 | dhw daily heating                           | off                 |         | yes        | off \| on                                                                    |
 | dhw daily heating time                      | 120                 | minutes | yes        | 0, 1431                                                                      |
-
+{% endcapture %}
+{{ entities_thermostat | markdownify }}
 </details>
 
 ## Home Assistant
