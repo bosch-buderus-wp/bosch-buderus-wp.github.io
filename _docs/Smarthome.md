@@ -317,7 +317,7 @@ Alternativ kann man alle oder ausgewählte Entitäten manuell als _Thing_ anlege
 
 <details>
     <summary>mqtt.things</summary>
-
+{% capture mqtt_things %}
 ```java
 Bridge mqtt:broker:myMQTTBroker "My MQTT server"
 [
@@ -355,8 +355,8 @@ Type string : WarmWaterMode "Warm Water Mode" [stateTopic="ems-esp/thermostat_da
 }
 
 ```
-
-  </summary>
+{% endcapture %}
+{{ mqtt_things | markdownify }}
 </details>
 
 Weitere Details folgen in Kürze.
@@ -364,3 +364,4 @@ Weitere Details folgen in Kürze.
 ## InfluxDB & Grafana
 
 Weitere Details folgen in Kürze.
+```
