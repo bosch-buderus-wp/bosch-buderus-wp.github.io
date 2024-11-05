@@ -11,6 +11,9 @@ Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
 Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
 
+<img src="/assets/images/BBQKees-Gateway-S3.jpg" alt="BBQKees Gateway S3" width="45%" />
+<img src="/assets/images/Servicebuchse.jpg" alt="Servicebuchse an der Bosch Compress CS6800i AW 12 MB Inneneinheit" width="45%" />
+
 Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt hat und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche oder die REST API auslesen:
 
 ```shell
