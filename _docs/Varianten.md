@@ -7,7 +7,7 @@ toc: true
 Die Wärmepumpen von Bosch/Buderus gibt es in verschiedenen Varianten.
 Unsere Variante ist die Bosch Compress CS6800i AW 12 MB Inneneinheit mit der AW 4 OR-S Außeneinheit.
 
-# Außeneinheit
+## Außeneinheit
 
 | Typ   | Bosch      | Buderus      | Max. Leistung/COP<br />A-10/W35 |              A-7/W35 |              A+2/W35 |              A+7/W35 |
 | :---- | :--------- | :----------- | ------------------------------: | -------------------: | -------------------: | -------------------: |
@@ -22,16 +22,16 @@ Unsere Variante ist die Bosch Compress CS6800i AW 12 MB Inneneinheit mit der AW 
 
 Quellen: [Bosch AW 4-7 OR-S](https://junkers-de-de-b.boschtt-documents.com/download/file/file/6721840669.pdf), [Bosch AW 10-12 OR-T](https://junkers-de-de-b.boschtt-documents.com/download/file/file/6721842854.pdf)
 
-# Inneneinheit
+## Inneneinheit
 
-## Max. Vorlauftemperatur
+### Max. Vorlauftemperatur
 
 | Typ   | Bosch      | Buderus |
 | :---- | :--------- | :------ |
 | 60 °C | CS5800i AW | WLW176  |
 | 75 °C | CS6800i AW | WLW186  |
 
-## Speicher
+### Speicher
 
 | Typ                              | Bosch | Buderus |
 | :------------------------------- | :---- | :------ |
