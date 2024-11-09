@@ -321,6 +321,7 @@ Alternativ kann man alle oder ausgewählte Entitäten manuell als _Thing_ anlege
 <details>
     <summary>mqtt.things</summary>
 {% capture mqtt_things %}
+
 ```java
 Bridge mqtt:broker:myMQTTBroker "My MQTT server"
 [
@@ -358,13 +359,16 @@ Type string : WarmWaterMode "Warm Water Mode" [stateTopic="ems-esp/thermostat_da
 }
 
 ```
+
 {% endcapture %}
 {{ mqtt_things | markdownify }}
+
 </details>
 
 Weitere Details folgen in Kürze.
 
 ## InfluxDB & Grafana
 
+![Elektrische und thermische Leistung zur Außentemperatur in Grafana](/assets/images/GrafanaLeistungZurAT.png)
+
 Weitere Details folgen in Kürze.
-```
