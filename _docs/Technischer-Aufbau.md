@@ -42,7 +42,7 @@ R290 hat einen niedrigen GWP-Index von 3.
 Im Vergleich haben klimaschädliche Kältemittel wie R32 einen GWP-Index von 675 und R410A sogar einen Wert von 2088.
 Der [GWP-Index](https://de.wikipedia.org/wiki/Treibhauspotential) gibt an, wie stark eine Substanz über 100 Jahre verglichen mit CO<sub>2</sub> als Treibhausgas wirkt.
 
-Propan verdunstet bei -42.1°C.
+Propan verdunstet bei -42.1 °C.
 D.h. bei üblichen Temperaturen im deutschen Winter nimmt das Kältemittel im Verdampfer von der wärmeren Umgebungsluft Wärme auf und wird gasförmig.
 Als Verdichter setzt die Wärmepumpe einen Scroll-Kompressor ein.
 
@@ -70,3 +70,17 @@ Der Heizkreis durchströmt die Heizkörper und/oder Fußbodenheizung und gibt da
 Das abgekühlte Wasser wird zurück in den Rücklauf des Primärkreises geführt.
 
 Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil dafür, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
+
+## Abtauvorgang
+
+Bei hoher Luftfeuchtigkeit und Temperaturen unter ca. 7°C bildet sich Eis am Verdampfer auf der Rückseite der Außeneinheit.
+Das Eis behindert den Luftstrom und dadurch wird die Effizienz beeinträchtigt.
+Die Wärmepumpe beginnt dann automatisch den Abtauvorgang.
+Es gibt zwei Verfahren für das Abtauen:
+
+- Außentemperatur > 5 °C: Bereits erwärmtes Wasser aus dem Pufferspeicher und/oder der Heizungsanlage wird über den Rücklauf zum Verdampfer geleitet, der dadurch abtaut.
+- Außentemperatur < 5 °C: Das 4-Wege-Ventil kehrt die Fließrichtung des heißen Kältemittels um und schickt es zum Verdampfer anstatt zum Verflüssiger (Heißgasabtauung).
+
+![Abtauvorgang in Grafana](/assets/images/Grafana-Abtauvorgang.png)
+
+Beim Abtauen wird erzeugte Wärmeenergie eingesetzt, um den Verdampfer in der Außeneinheit zu enteisen und geht somit 'verloren'. Daher ist der COP in dieser Zeit negativ.

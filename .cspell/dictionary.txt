@@ -1,4 +1,5 @@
 # Custom Dictionary Words
+Abtauvorgang
 basepoint
 BBQKees
 Buderus
@@ -9,6 +10,7 @@ Entitätsname
 geflashte
 heatpump
 heatup
+Heißgasabtauung
 hyst
 Kmin
 Legionellengefahr
