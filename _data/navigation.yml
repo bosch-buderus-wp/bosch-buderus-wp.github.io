@@ -11,6 +11,8 @@ docs:
     url: /docs/einstellungen/
   - title: "Optimierungen"
     url: /docs/optimierungen/
+  - title: "App"
+    url: /docs/app/
   - title: "Smarthome"
     url: /docs/smarthome/
   - title: "Ideen"
