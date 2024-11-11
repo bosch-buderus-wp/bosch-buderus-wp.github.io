@@ -4,6 +4,8 @@ permalink: /docs/intro/
 toc: false
 ---
 
+![Bosch Compress 5800/6800i & Buderus Logatherm WLW176/186](/assets/images/Banner.png)
+
 Auf diesen Seiten findest du eine Informationssammlung zu den Wärmepumpen **Bosch Compress 5800/6800i** & **Buderus Logatherm WLW176/186**.
 Es handelt sich hier um eine private Seite.
 Die Informationen wurden nicht vom Hersteller der Wärmepumpen überprüft und es wird keine Garantie auf Korrektheit und Vollständigkeit übernommen.
