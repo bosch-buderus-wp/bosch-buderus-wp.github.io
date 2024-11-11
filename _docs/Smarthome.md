@@ -371,4 +371,6 @@ Weitere Details folgen in Kürze.
 
 ![Elektrische und thermische Leistung zur Außentemperatur in Grafana](/assets/images/GrafanaLeistungZurAT.png)
 
+![Kältekreis, Primärkreis und Heizkreis mit Temperaturen in Grafana](/assets/images/Grafana-Circuits.png)
+
 Weitere Details folgen in Kürze.
