@@ -2,6 +2,8 @@
 
 Link zur Github Page: https://bosch-buderus-wp.github.io
 
+![Bosch Compress 5800/6800i & Buderus Logatherm WLW176/186](/assets/images/Banner.png)
+
 Informationssammlung zu den Wärmepumpen **Bosch Compress 5800/6800i** & **Buderus Logatherm WLW176/186**.
 
 Es handelt sich hier um eine private Seite.
