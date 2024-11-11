@@ -6,6 +6,7 @@ Buderus
 drehzahlgesteuerten
 eingeschwungen
 elec.
+Energieverbräuche
 Entitätsname
 geflashte
 heatpump
