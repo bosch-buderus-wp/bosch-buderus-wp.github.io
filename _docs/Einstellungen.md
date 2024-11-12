@@ -60,35 +60,12 @@ Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Sta
 
 ### Modi
 
-#### Komfort
-
-Einstellbare Wertebereiche:
-
-- Ladedelta: 6..18 K
-- Min. Starttemperatur: 40 °C
-- Max. Stopptemperatur: 65 °C
-
-In der Standardeinstellung wird dieser Modus mit hoher Spreizung und hoher Zieltemperatur vorkonfiguriert.
-
-#### Eco
-
-Einstellbare Wertebereiche:
-
-- Ladedelta: 6..18 K
-- Min. Starttemperatur: 35 °C
-- Max. Stopptemperatur: 60 °C
-
-#### Eco+
-
-Einstellbare Wertebereiche:
-
-- Ladedelta: 6..15 K
-- Min. Starttemperatur: 30 °C
-- Max. Stopptemperatur: 55 °C
-
-#### Extra-Warmwasser
-
-- Stopptemperatur: 50..70 °C
+| Modus    | Min. Starttemperatur | Max. Stopptemperatur | Ladedelta |
+| :------- | :------------------- | :------------------- | :-------- |
+| Komfort  | 40 °C                | 65 °C                | 6..18 K   |
+| Eco      | 35 °C                | 60 °C                | 6..18 K   |
+| Eco+     | 30 °C                | 55 °C                | 6..15 K   |
+| Extra-WW |                      | 50..70 °C            |           |
 
 ### Modusauswahl
 
@@ -98,3 +75,5 @@ Die Auswahl des Modus für die Warmwasseraufbereitung kann wie folgt gewählt we
 - _Manuell_: ein Modus wird manuell gewählt
 - _Auto_: der entsprechende Modus wird anhand der aktuellen Tageszeit automatisch ausgewählt.
   Dazu muss eingestellt werden, welches Program zu welcher Tageszeit aktiv sein soll.
+
+![Zeitprogramm am UI-800](/assets/images/UI800-Zeitprogramm.jpg)
