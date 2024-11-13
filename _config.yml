@@ -39,6 +39,9 @@ collections:
   docs:
     output: true
     permalink: /:collection/:path/
+  xps:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _pages
@@ -61,3 +64,13 @@ defaults:
       toc_sticky: true
       sidebar:
         nav: "docs"
+  # _xps
+  - scope:
+      path: ""
+      type: xps
+    values:
+      layout: single
+      read_time: false
+      author_profile: true
+      share: false
+      comments: false

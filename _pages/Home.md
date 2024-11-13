@@ -14,6 +14,12 @@ feature_row:
     url: "/docs/intro/"
     btn_class: "btn--primary"
     btn_label: "Lesen"
+  - alt: "Erfahrungen"
+    title: "Erfahrungen"
+    excerpt: "Erfahrungsberichte"
+    url: "/xps/matthias/"
+    btn_class: "btn--primary"
+    btn_label: "Lesen"
 ---
 
 {% include feature_row %}
