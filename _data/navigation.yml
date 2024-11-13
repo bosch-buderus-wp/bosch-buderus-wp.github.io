@@ -1,6 +1,8 @@
 main:
   - title: "Dokumentation"
     url: /docs/intro/
+  - title: "Erfahrungen"
+    url: /xps/matthias/
 
 docs:
   - title: "Varianten"
