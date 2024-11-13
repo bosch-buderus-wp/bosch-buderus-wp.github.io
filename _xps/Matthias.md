@@ -29,8 +29,7 @@ author:
 - Außeneinheit: AW 4 OR-S
 - Warmwasserspeicher: WH 290 Stora Warmwasserspeicher (277 l)
 
-<img src="/assets/images/Erfahrungen-Matthias-Inneneinheit.png" alt="Inneneinheit" width="45%">
-<img src="/assets/images/Erfahrungen-Matthias-Außeneinheit.png" alt="Außeneinheit" width="45%">
+![Inneneinheit + Außeneinheit](/assets/images/Erfahrungen-Matthias-WP.png)
 
 ## Effizienz
 
