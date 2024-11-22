@@ -14,7 +14,7 @@ Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflasht
 <img src="/assets/images/BBQKees-Gateway-S3.jpg" alt="BBQKees Gateway S3" width="45%" />
 <img src="/assets/images/Servicebuchse.jpg" alt="Servicebuchse an der Bosch Compress CS6800i AW 12 MB Inneneinheit" width="45%" />
 
-Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt hat und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche oder die REST API auslesen:
+Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche oder die REST API auslesen:
 
 ```shell
 curl http://ems-esp/api/thermostat/manualtemp
@@ -294,9 +294,10 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 {{ entities_thermostat | markdownify }}
 </details>
 
-## Home Assistant
+## MQTT
 
 Wer nicht direkt mit _curl_ oder der Weboberfläche von _ems-esp_ arbeiten möchte, kann die Messwerte auch in ein Smarthome, wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/), integrieren.
+Wer die Daten lieber mit [Grafana](https://grafana.com) visualisieren möchte, kann die Daten entweder über Home Assistant oder OpenHAB oder alternativ über [Telegraf](https://www.influxdata.com/integration/mqtt-telegraf-consumer/) in eine [InfluxDB](https://www.influxdata.com/) schreiben, auf die dann Grafana zugreift.
 
 Für den Datenaustausch zwischen _ems-esp_ und einem Smarthome-System bietet sich MQTT an.
 Dazu braucht man einen MQTT-Broker, wie [Mosquitto](https://mosquitto.org/), der in vielen Smarthome-Systemen bereits als optionale Erweiterung mitgeliefert wird.
@@ -305,10 +306,39 @@ In Home Assistant kann Mosquitto leicht über das entsprechende [Add-on](https:/
 ```mermaid
 flowchart LR
     EMSESP[ems-esp] -->|Publish| MQTT@{ shape: bow-rect, label: "MQTT Broker" }
-    HA[Home Assistant] --> |Subscribe| MQTT
+    HA[Home Assistant<br/>OpenHAB<br/>Telegraf] --> |Subscribe| MQTT
     HA -->|Persist| INFLUX[("InfluxDB")]
     GRAFANA[Grafana] -->|Read| INFLUX
 ```
+
+## Home Assistant
+
+Nach erfolgreicher [Installation](https://www.home-assistant.io/installation) von Home Assistant, erhält man folgenden Onboarding-Screen.
+
+![Home Assistant Onboarding-Screen](/assets/images/HA-Onboarding.png)
+
+Mit Klick auf _MEIN SMARTHOME ERSTELLEN_ wird man aufgefordert ein Benutzerkonto anzulegen und eine Adresse auszuwählen.
+Im nächsten Schritt kann man Home Assistant optionale Telemetriedaten zur Verfügung stellen.
+Im letzten Schritt werden Geräte angezeigt, die Home Assistant bereits während der Installation im Heimnetz identifizieren konnte - z.B. Fritzbox und Smart Plugs von Shelly.
+
+ems-esp kann Home Assistant nicht direkt identifizieren.
+Dies lässt sich schnell ändern, indem man _Integration hinzufügen_ unter _Einstellungen &rarr; Geräte & Dienste_ auswählt.
+In der Anbietersuche gibt man _MQTT_ ein.
+
+![Home Assistant: MQTT Integration](/assets/images/HA-MQTT.png)
+
+Daraufhin öffnet sich ein Dialog, indem man das _offizielle Add-on Mosquitto Mqtt Broker_ installieren kann.
+Hat man die MQTT-Integration erfolgreich aufgeschlossen, so erhält man eine Übersicht aller über das MQTT-Discovery identifizierten Geräte:
+
+- ems-esp Boiler = Wärmepumpe
+- ems-esp = Gateway Module
+- ems-esp Thermostat = Thermostat
+
+Nach Bestätigung gelangt man zurück zur Übersicht, in der nun alle verfügbaren Entitäten dargestellt werden.
+
+![Home Assistant: Übersicht](/assets/images/HA-Overview.png)
+
+Ein detailliertere Installationsanleitung kann man direkt bei [ems-esp](https://bbqkees-electronics.nl/wiki-archive/gateway/home-assistant-configuration.html) finden.
 
 Weitere Details folgen in Kürze.
 
