@@ -23,6 +23,8 @@ author:
 - Normaußentemperatur: -14 °C
 - Heizlast: 4,7 kW
 
+![Gebäudekennlinie, Min/Max Heizleistung und Dichtefunktion der Außentemperatur](/assets/images/Erfahrungen-Matthias-HeizlastGebäudekennlinieATDichte.png)
+
 ## Wärmepumpe
 
 - Inneneinheit: Bosch Compress CS6800i AW 12 MB
@@ -32,5 +34,10 @@ author:
 ![Inneneinheit + Außeneinheit](/assets/images/Erfahrungen-Matthias-WP.png)
 
 ## Effizienz
+
+Effizienz bei 4 °C Außentemperatur:
+
+- Tagesarbeitszahl mit Peripherie: 3,7
+- Tagesarbeitszahl ohne Peripherie: 4,4
 
 ![Effizienz bei 4° Außentemperatur](/assets/images/Erfahrungen-Matthias-Effizienz4Grad.png)
