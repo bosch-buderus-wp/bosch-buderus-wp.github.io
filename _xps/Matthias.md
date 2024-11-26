@@ -13,12 +13,18 @@ author:
       url: "https://blog.roeckls.de"
 ---
 
+Wir haben seit März 2024 die Bosch Compress CS6800i AW 12 MB mit AW 4 OR-S und sind bisher sehr zufrieden.
+Die Außeneinheit ist extrem leise, das Haus und das Warmwasser erreicht die gewünschte Temperatur und der Preis war absolut fair.
+Die Arbeitszahl ist soweit ok.
+Der schlechte COP bei niedriger Modulation liegt größtenteils an der ungenauen Berechnung, denn oft zeigt unser Stromzähler für das ganze Haus einen geringeren Verbrauch an, als die Wärmepumpe alleine anzeigt.
+
 ## Gebäude
 
 - Doppelhaushälfte
 - Baujahr: 1998
 - Beheizte Fläche: ca. 110 m<sup>2</sup>
 - Art: Fußbodenheizung + Warmwasseraufbereitung
+- Täglicher Warmwasserverbrauch: ca. 150l
 - Heizgrenztemperatur: 15 °C
 - Normaußentemperatur (NAT): -14 °C
 - Heizlast: 4,7 kW
@@ -31,7 +37,9 @@ author:
 Heizungsanlage:
 
 - Inneneinheit: Bosch Compress CS6800i AW 12 MB
+  - Software Version: 23.08.08-5.35
 - Außeneinheit: AW 4 OR-S
+  - Software Version: 23.08.08-5.35
 - Warmwasserspeicher: WH 290 Stora Warmwasserspeicher (277 l)
 
 ![Inneneinheit + Außeneinheit](/assets/images/Erfahrungen-Matthias-WP.png)
@@ -48,9 +56,20 @@ Auslegungskennzahlen:
 
 ## Effizienz
 
-Effizienz bei 4 °C Außentemperatur:
+Effizienz bei 4 °C Außentemperatur inkl. Warmwasseraufbereitung 13-14:15 Uhr:
 
 - Tagesarbeitszahl mit Peripherie: 3,7
 - Tagesarbeitszahl ohne Peripherie: 4,4
 
 ![Effizienz bei 4° Außentemperatur](/assets/images/Erfahrungen-Matthias-Effizienz4Grad.png)
+
+### Warmwasser
+
+Tägliche Aufbereitung: 1-2 kWh mit einem COP von 3-4 je nach Außentemperatur
+
+Temperaturverlust in 24 Stunden:
+
+- 4,3 K mit Zirkulation (2x5 Minuten)
+- 3 K ohne Zirkulation
+
+![Warmwassertemperaturverlust](/assets/images/Erfahrungen-Matthias-WWTemperaturverlust.png)
