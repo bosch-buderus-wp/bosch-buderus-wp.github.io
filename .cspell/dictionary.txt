@@ -29,6 +29,7 @@ Normaußentemperatur
 Primärkreis
 Primärkreises
 Rego
+Siebdruckplatte
 Smarthome
 starttemp
 Stopptemperatur
