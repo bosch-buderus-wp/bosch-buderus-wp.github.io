@@ -1,5 +1,6 @@
 ---
 title: HomeCom Easy & MyBuderus App
+excerpt: Funktionsumfang der HomeCom Easy & MyBuderus App zur Fernsteuerung und Monitoring von Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
 permalink: /docs/app/
 toc: true
 ---

@@ -35,6 +35,7 @@ starttemp
 Stopptemperatur
 Stora
 tapwater
+Variantenübersicht
 Verflüssiger
 Wohlfühlgrenze
 Wohlfühltemperatur

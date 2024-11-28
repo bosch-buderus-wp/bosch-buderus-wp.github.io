@@ -1,5 +1,6 @@
 ---
 title: Smarthome
+excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Smarthome Systemen wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
 permalink: /docs/smarthome/
 toc: true
 ---

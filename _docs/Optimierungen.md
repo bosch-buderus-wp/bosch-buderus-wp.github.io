@@ -1,5 +1,6 @@
 ---
 title: Optimierungen
+excerpt: Optimierungen für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, um die Effizienz zu steigern
 permalink: /docs/optimierungen/
 toc: true
 ---

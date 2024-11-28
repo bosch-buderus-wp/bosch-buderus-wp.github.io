@@ -1,7 +1,8 @@
 ---
 title: Matthias Bosch CS6800i AW
+excerpt: Erfahrungsbericht zur Bosch CS6800i AW Wärmepumpe in DHH mit Fußbodenheizung - COP, JAZ, Auslegung, ...
 permalink: /xps/matthias/
-toc: false
+toc: true
 author:
   name: "Matthias"
   links:

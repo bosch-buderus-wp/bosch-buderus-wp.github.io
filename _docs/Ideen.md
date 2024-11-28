@@ -1,5 +1,6 @@
 ---
 title: Ideen
+excerpt: Ideen für die Optimierung von Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
 permalink: /docs/ideen/
 toc: true
 ---

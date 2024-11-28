@@ -1,5 +1,6 @@
 ---
 title: Varianten
+excerpt: Variantenübersicht der Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
 permalink: /docs/varianten/
 toc: true
 ---

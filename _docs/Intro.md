@@ -1,5 +1,6 @@
 ---
 title: Intro
+excerpt: Informationssammlung zu Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, ink. Einstellungen, Optimierungen, Smarthome, Technischer Aufbau, ...
 permalink: /docs/intro/
 toc: false
 ---

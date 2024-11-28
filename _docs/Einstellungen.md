@@ -1,5 +1,6 @@
 ---
 title: Einstellungen
+excerpt: Einstellungsübersicht für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, inkl. Heizkurve, Warmwasseraufbereitung, ...
 permalink: /docs/einstellungen/
 toc: true
 ---

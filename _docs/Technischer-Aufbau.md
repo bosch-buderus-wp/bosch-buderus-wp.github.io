@@ -1,5 +1,6 @@
 ---
 title: Technischer Aufbau
+excerpt: Technischer Aufbau von Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen inkl. Kältekreis, Primärkreis und Heizkreis
 permalink: /docs/technischer-aufbau/
 toc: true
 ---
@@ -71,9 +72,19 @@ Das abgekühlte Wasser wird zurück in den Rücklauf des Primärkreises geführt
 
 Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil dafür, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
 
+## Modulation
+
+Um die Zielvorlauftemperatur zu erreichen oder zu halten, bedarf es manchmal mehr und manchmal weniger Leistung.
+Bei kalten Außentemperaturen muss mehr als ein Kilowatt elektrische Energie eingesetzt werden, um beispielsweise von -5 °C Außentemperatur den Vorlauf auf 37 °C anzuheben.
+Um bei einer Außentemperatur von 12 °C den Vorlauf auf 27 °C zu heben, sind meist wenige hundert Watt ausreichend.
+Würde die Wärmepumpe bei geringem Bedarf immer mit voller Leistung produziert, wäre der Sollwert für den Vorlauf schnell erreicht und die Wärmepumpe müsste abschalten.
+Wenn kurz darauf die Vorlauftemperatur wieder abkühlt, müsste sie wieder kurzzeitig anspringen, um kurz darauf wieder abzuschalten.
+Dieses ständige An- und Abschalten nennt man **Takten** und verringert Effizienz und erhöht den Verschleiß.
+Daher ist es wünschenswert
+
 ## Abtauvorgang
 
-Bei hoher Luftfeuchtigkeit und Temperaturen unter ca. 7°C bildet sich Eis am Verdampfer auf der Rückseite der Außeneinheit.
+Bei hoher Luftfeuchtigkeit und Temperaturen unter ca. 7 °C bildet sich Eis am Verdampfer auf der Rückseite der Außeneinheit.
 Das Eis behindert den Luftstrom und dadurch wird die Effizienz beeinträchtigt.
 Die Wärmepumpe beginnt dann automatisch den Abtauvorgang.
 Es gibt zwei Verfahren für das Abtauen:
