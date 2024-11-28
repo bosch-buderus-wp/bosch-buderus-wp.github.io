@@ -8,13 +8,13 @@ Für den effizienten Betrieb und eine lange Lebensdauer der Wärmepumpe gibt es 
 Diese Optimierungen sind abhängig von den lokalen Gegebenheiten und persönlichen Vorlieben und unterscheiden sich daher von Wärmepumpe zu Wärmepumpe.
 Nachfolgend sind einige dieser Optimierungen - von einfach bis etwas komplexer - aufgeführt.
 
-Für einen effizienten Betrieb gilt grundsätzlich: **Je höher die Temperatur, desto höher der Energieverbrauch!**
+Für einen effizienten Betrieb gilt grundsätzlich: **Je geringer die Temperatur(-differenz), desto geringer der Energieverbrauch!**
 
 Grobe Faustregel: jedes zusätzliche Grad erhöht den Energieverbrauch um ca. 2,5% [[Quelle](https://www.heizungsdiscount24.de/pdf/Junkers-Bosch-Compress-CS7000iAW-3-13-kW-Planungsunterlage.pdf)]
 
 ## Warmwasseraufbereitung
 
-Die Warmwasseraufbereitung trägt einen Anteil von 10-20% des jährlichen Energiebedarfs der Wärmepumpe.
+10-20% des jährlichen Energiebedarfs der Wärmepumpe wird für die Warmwasseraufbereitung verwendet.
 Daher können Optimierung auch hier einen beträchtlichen Anteil beitragen.
 
 ### Temperatur
@@ -93,7 +93,7 @@ Einige wenige Grad Unterschied sind in Ordnung, aber wenn die Unterschiede zu gr
 Bevor man die Heizkurve an der NAT justiert, sollte man noch die [Heizgrenztemperatur](/docs/einstellungen/#heizgrenze) einstellen.
 Dazu einfach im Herbst bei Außentemperaturen um die 15°C prüfen, ab welcher Temperatur man im Haus die Wohlfühlgrenze verlässt.
 Das ist natürlich individuell unterschiedlich.
-Um unnötiges Takten zu verhindern, ist natürlich eine niedrigere Heizgrenztemperatur vorzuziehen.
+Um unnötiges Takten zu verhindern, ist eine niedrigere Heizgrenztemperatur vorzuziehen.
 
 ## Abgleich der Volumenströme
 
