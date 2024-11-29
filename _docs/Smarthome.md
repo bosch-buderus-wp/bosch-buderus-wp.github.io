@@ -12,8 +12,14 @@ Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
 Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
 
-<img src="/assets/images/BBQKees-Gateway-S3.jpg" alt="BBQKees Gateway S3" width="45%" />
-<img src="/assets/images/Servicebuchse.jpg" alt="Servicebuchse an der Bosch Compress CS6800i AW 12 MB Inneneinheit" width="45%" />
+<figure class="half">
+  <a href="/assets/images/BBQKees-Gateway-S3.jpg">
+    <img src="/assets/images/BBQKees-Gateway-S3.jpg" alt="BBQKees Gateway S3">
+  </a>
+  <a href="/assets/images/Servicebuchse.jpg">
+    <img src="/assets/images/Servicebuchse.jpg" alt="Servicebuchse an der Bosch Compress CS6800i AW 12 MB Inneneinheit">
+  </a>
+</figure>
 
 Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche oder die REST API auslesen:
 
@@ -21,7 +27,7 @@ Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und da
 curl http://ems-esp/api/thermostat/manualtemp
 ```
 
-![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")
+[![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
 
 ### Entitäten
 
@@ -316,7 +322,7 @@ flowchart LR
 
 Nach erfolgreicher [Installation](https://www.home-assistant.io/installation) von Home Assistant, erhält man folgenden Onboarding-Screen.
 
-![Home Assistant Onboarding-Screen](/assets/images/HA-Onboarding.png)
+[![Home Assistant Onboarding-Screen](/assets/images/HA-Onboarding.png)](/assets/images/HA-Onboarding.png)
 
 Mit Klick auf _MEIN SMARTHOME ERSTELLEN_ wird man aufgefordert ein Benutzerkonto anzulegen und eine Adresse auszuwählen.
 Im nächsten Schritt kann man Home Assistant optionale Telemetriedaten zur Verfügung stellen.
@@ -326,7 +332,7 @@ ems-esp kann Home Assistant nicht direkt identifizieren.
 Dies lässt sich schnell ändern, indem man _Integration hinzufügen_ unter _Einstellungen &rarr; Geräte & Dienste_ auswählt.
 In der Anbietersuche gibt man _MQTT_ ein.
 
-![Home Assistant: MQTT Integration](/assets/images/HA-MQTT.png)
+[![Home Assistant: MQTT Integration](/assets/images/HA-MQTT.png)](/assets/images/HA-MQTT.png)
 
 Daraufhin öffnet sich ein Dialog, indem man das _offizielle Add-on Mosquitto Mqtt Broker_ installieren kann.
 Hat man die MQTT-Integration erfolgreich aufgeschlossen, so erhält man eine Übersicht aller über das MQTT-Discovery identifizierten Geräte:
@@ -337,7 +343,7 @@ Hat man die MQTT-Integration erfolgreich aufgeschlossen, so erhält man eine Üb
 
 Nach Bestätigung gelangt man zurück zur Übersicht, in der nun alle verfügbaren Entitäten dargestellt werden.
 
-![Home Assistant: Übersicht](/assets/images/HA-Overview.png)
+[![Home Assistant: Übersicht](/assets/images/HA-Overview.png)](/assets/images/HA-Overview.png)
 
 Ein detailliertere Installationsanleitung kann man direkt bei [ems-esp](https://bbqkees-electronics.nl/wiki-archive/gateway/home-assistant-configuration.html) finden.
 
@@ -400,8 +406,8 @@ Weitere Details folgen in Kürze.
 
 ## InfluxDB & Grafana
 
-![Elektrische und thermische Leistung zur Außentemperatur in Grafana](/assets/images/GrafanaLeistungZurAT.png)
+[![Elektrische und thermische Leistung zur Außentemperatur in Grafana](/assets/images/GrafanaLeistungZurAT.png)](/assets/images/GrafanaLeistungZurAT.png)
 
-![Kältekreis, Primärkreis und Heizkreis mit Temperaturen in Grafana](/assets/images/Grafana-Circuits.png)
+[![Kältekreis, Primärkreis und Heizkreis mit Temperaturen in Grafana](/assets/images/Grafana-Circuits.png)](/assets/images/Grafana-Circuits.png)
 
 Weitere Details folgen in Kürze.

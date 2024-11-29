@@ -12,7 +12,7 @@ Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz er
 
 ## Heizkurve
 
-![Endpunkteinstellung der Heizkurve](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)
+[![Endpunkteinstellung der Heizkurve](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)
 
 Um die Heizkurve der Wärmepumpe einzustellen, sind folgende Menüpunkte relevant:
 
@@ -57,7 +57,7 @@ Für jeden Modus können folgende Werte individuell unter _Anlageneinstellungen 
 
 Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=40°C, Stopptemperatur=48°C und Ladedelta=7K:
 
-![Warmwassertemperatur & Vorlauftemperatur](/assets/images/Einstellung-Warmwasseraufbereitung.png)
+[![Warmwassertemperatur & Vorlauftemperatur](/assets/images/Einstellung-Warmwasseraufbereitung.png)](/assets/images/Einstellung-Warmwasseraufbereitung.png)
 
 ### Modi
 
@@ -77,4 +77,4 @@ Die Auswahl des Modus für die Warmwasseraufbereitung kann wie folgt gewählt we
 - _Auto_: der entsprechende Modus wird anhand der aktuellen Tageszeit automatisch ausgewählt.
   Dazu muss eingestellt werden, welches Program zu welcher Tageszeit aktiv sein soll.
 
-![Zeitprogramm am UI-800](/assets/images/UI800-Zeitprogramm.jpg)
+[![Zeitprogramm am UI-800](/assets/images/UI800-Zeitprogramm.jpg)](/assets/images/UI800-Zeitprogramm.jpg)

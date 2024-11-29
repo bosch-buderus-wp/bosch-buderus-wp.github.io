@@ -92,6 +92,6 @@ Es gibt zwei Verfahren für das Abtauen:
 - Außentemperatur > 5 °C: Bereits erwärmtes Wasser aus dem Pufferspeicher und/oder der Heizungsanlage wird über den Rücklauf zum Verdampfer geleitet, der dadurch abtaut.
 - Außentemperatur < 5 °C: Das 4-Wege-Ventil kehrt die Fließrichtung des heißen Kältemittels um und schickt es zum Verdampfer anstatt zum Verflüssiger (Heißgasabtauung).
 
-![Abtauvorgang in Grafana](/assets/images/Grafana-Abtauvorgang.png)
+[![Abtauvorgang in Grafana](/assets/images/Grafana-Abtauvorgang.png)](/assets/images/Grafana-Abtauvorgang.png)
 
 Beim Abtauen wird erzeugte Wärmeenergie eingesetzt, um den Verdampfer in der Außeneinheit zu enteisen und geht somit 'verloren'. Daher ist der COP in dieser Zeit negativ.
