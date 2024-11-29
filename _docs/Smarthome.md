@@ -1,9 +1,11 @@
 ---
 title: Smarthome
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Smarthome Systemen wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
+excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Smarthome Systeme wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
 permalink: /docs/smarthome/
 toc: true
 ---
+
+Nachfolgend findet ihr Anleitungen, wie ihr die Bosch CS5800/6800i oder Buderus WLW176/186 in freie Smarthome Systeme wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/) integrieren und die Messwerte in [Grafana](https://grafana.com) visualisieren könnt.
 
 ## EMS-ESP
 
@@ -11,6 +13,7 @@ Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, 
 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
 Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
+Ich habe mich für das [ BBQKees Gateway S3](https://bbqkees-electronics.nl/product/gateway-s3-standard-wifi-ausgabe/?lang=de) entschieden.
 
 <figure class="half">
   <a href="/assets/images/BBQKees-Gateway-S3.jpg">
@@ -21,13 +24,16 @@ Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflasht
   </a>
 </figure>
 
-Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche oder die REST API auslesen:
+Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche unter [http://ems-esp](http://ems-esp) oder über die REST API auslesen:
 
 ```shell
 curl http://ems-esp/api/thermostat/manualtemp
 ```
 
 [![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
+
+Leider tritt bei manchen Nutzern sporadisch ein Verbindungsproblem auf, das hoffentlich bald gelöst wird (siehe [
+Bosch Heat Pump error: No communication on EMS bus](https://github.com/emsesp/EMS-ESP32/issues/2104))
 
 ### Entitäten
 
