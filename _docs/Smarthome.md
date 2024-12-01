@@ -326,6 +326,8 @@ flowchart LR
 
 ## Home Assistant
 
+### Einbinden von ems-esp
+
 Nach erfolgreicher [Installation](https://www.home-assistant.io/installation) von Home Assistant, erhält man folgenden Onboarding-Screen.
 
 [![Home Assistant Onboarding-Screen](/assets/images/HA-Onboarding.png)](/assets/images/HA-Onboarding.png)
@@ -366,6 +368,68 @@ Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 [![Verlauf von Messwerten](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
 
 [![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_curflowtemp%2Cnumber.boiler_selflowtemp)
+
+### COP mit Helfer-Entitäten
+
+Interessante Einsicht in die Effizienz der Anlage bietet insbesondere der COP.
+Der COP ist nicht direkt über ems-esp verfügbar, kann aber einfach eingerichtet werden.
+Der COP ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
+Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
+
+<figure class="three">
+  <a href="/assets/images/HA-Helper_PowerTotal.png">
+  <img src="/assets/images/HA-Helper_PowerTotal.png" alt="Helfer Entität für aktuelle thermische Leistungsabgabe"></a>
+  <a href="/assets/images/HA-Helper_PowerConsTotal.png">
+  <img src="/assets/images/HA-Helper_PowerConsTotal.png" alt="Helfer Entität für aktuelle elektrische Leistungsaufnahme"></a>
+  <a href="/assets/images/HA-Helper_COP.png">
+  <img src="/assets/images/HA-Helper_COP.png" alt="Helfer Entität für aktuellen COP"></a>
+</figure>
+
+1. Thermische Leistungsabgabe als _Ableitungssensor_ der thermischen Energie:
+
+- Name: boiler_powertotal
+- Eingangssensor: ems-esp Boiler Gesamtenergie
+- Genauigkeit: 2 decimals
+- Zeitfenster: mindestens 10 Minuten, um die Messungenauigkeit etwas zu glätten
+- Zeiteinheit: Stunden
+
+2. Elektrische Leistungsaufnahme als _Ableitungssensor_ der elektrischen Energie:
+
+- Name: boiler_powerconstotal
+- Eingangssensor: ems-esp Boiler Gesamtmessung
+- Genauigkeit: 2 decimals
+- Zeitfenster: mindestens 10 Minuten, um die Messungenauigkeit etwas zu glätten
+- Zeiteinheit: Stunden
+
+3.  COP als Template für einen Sensor:
+
+- Helfer &rarr; Template &rarr; Template für einen Sensor
+- Name: boiler_cop
+- Zustandstemplate:
+
+```
+{% set q = states('sensor.boiler_powertotal') | float %}
+{% set p = states('sensor.boiler_powerconstotal') | float %}
+{% if q >= 0 and p > 0 %}
+{{ (q / p) | round(2) }}
+{% else %}
+  0
+{% endif %}
+```
+
+- Geräteklasse: Leistungsfaktor
+- Gerät: ems-esp Boiler
+
+Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-Entitäten auch wieder über die Zeit im Vorlauf betrachten:
+
+[![Verlauf von Messwerten](/assets/images/HA-History_COP.png)](/assets/images/HA-History_COP.png)
+
+[![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_powerconstotal%2Csensor.boiler_powertotal%2Csensor.boiler_cop)
+
+Das Diagramm im Diagramm sieht man die 3 Helfer-Entitäten bei -5 °C Außentemperatur.
+Die elektrische Leistungsaufnahme schwankt zwischen 530 W und 1600 W.
+Mit Hilfe der Umgebungswärme werden daraus zwischen 2000 W und 4700 W gewonnen.
+Der COP liegt bei ca. 3 im Normalbetrieb, und fällt stark ab, wenn der Abtauvorgang einsetzt, da thermische Energie zum Abtauen "verloren" geht.
 
 Weitere Details folgen in Kürze.
 
