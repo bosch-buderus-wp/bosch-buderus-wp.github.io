@@ -385,44 +385,42 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
   <img src="/assets/images/HA-Helper_COP.png" alt="Helfer Entität für aktuellen COP"></a>
 </figure>
 
-1. _Thermische Leistungsabgabe als *Ableitungssensor* der thermischen Energie_
+1. Thermische Leistungsabgabe als _Ableitungssensor_ der thermischen Energie
 
-- Name: _boiler_powertotal_
-- Eingangssensor: _ems-esp Boiler Gesamtenergie_
-- Genauigkeit: _2_ decimals
-- Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
-- Zeiteinheit: _Stunden_
+   - Name: _boiler_powertotal_
+   - Eingangssensor: _ems-esp Boiler Gesamtenergie_
+   - Genauigkeit: _2_ decimals
+   - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
+   - Zeiteinheit: _Stunden_
 
-2. _Elektrische Leistungsaufnahme als *Ableitungssensor* der elektrischen Energie_
+2. Elektrische Leistungsaufnahme als _Ableitungssensor_ der elektrischen Energie
+   - Name: _boiler_powerconstotal_
+   - Eingangssensor: _ems-esp Boiler Gesamtmessung_
+   - Genauigkeit: _2_ decimals
+   - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
+   - Zeiteinheit: _Stunden_
+3. COP als Template für einen Sensor
 
-- Name: _boiler_powerconstotal_
-- Eingangssensor: _ems-esp Boiler Gesamtmessung_
-- Genauigkeit: _2_ decimals
-- Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
-- Zeiteinheit: _Stunden_
+   - Helfer &rarr; Template &rarr; Template für einen Sensor
+   - Name: _boiler_cop_
+   - Zustandstemplate:
 
-3. _COP als Template für einen Sensor_
+     {% raw %}
 
-- Helfer &rarr; Template &rarr; Template für einen Sensor
-- Name: _boiler_cop_
-- Zustandstemplate:
+     ```
+     {% set q = states('sensor.boiler_powertotal') | float %}
+     {% set p = states('sensor.boiler_powerconstotal') | float %}
+     {% if q >= 0 and p > 0 %}
+     {{ (q / p) | round(2) }}
+     {% else %}
+       0
+     {% endif %}
+     ```
 
-  {% raw %}
+     {% endraw %}
 
-  ```
-  {% set q = states('sensor.boiler_powertotal') | float %}
-  {% set p = states('sensor.boiler_powerconstotal') | float %}
-  {% if q >= 0 and p > 0 %}
-  {{ (q / p) | round(2) }}
-  {% else %}
-    0
-  {% endif %}
-  ```
-
-  {% endraw %}
-
-- Geräteklasse: _Leistungsfaktor_
-- Gerät: _ems-esp Boiler_
+   - Geräteklasse: _Leistungsfaktor_
+   - Gerät: _ems-esp Boiler_
 
 Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-Entitäten auch über einen Zeitraum im Verlauf betrachten:
 
