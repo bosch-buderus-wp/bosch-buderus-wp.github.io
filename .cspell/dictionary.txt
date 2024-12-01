@@ -1,5 +1,7 @@
 # Custom Dictionary Words
 Abtauvorgang
+Abtauvorgänge
+Anbietersuche
 basepoint
 BBQKees
 Bivalenzpunkt
@@ -9,6 +11,7 @@ eingeschwungen
 elec.
 Energieverbräuche
 Entitätsname
+Fritzbox
 geflashte
 heatpump
 heatup
@@ -35,8 +38,10 @@ starttemp
 Stopptemperatur
 Stora
 tapwater
+Telemetriedaten
 Variantenübersicht
 Verflüssiger
 Wohlfühlgrenze
 Wohlfühltemperatur
 Zuheizer
+Zustandstemplate
