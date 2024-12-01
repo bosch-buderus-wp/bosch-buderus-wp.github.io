@@ -401,7 +401,7 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
 - Zeitfenster: mindestens 10 Minuten, um die Messungenauigkeit etwas zu glätten
 - Zeiteinheit: Stunden
 
-3.  COP als Template für einen Sensor:
+3. COP als Template für einen Sensor:
 
 - Helfer &rarr; Template &rarr; Template für einen Sensor
 - Name: boiler_cop
