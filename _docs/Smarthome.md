@@ -385,7 +385,7 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
   <img src="/assets/images/HA-Helper_COP.png" alt="Helfer Entität für aktuellen COP"></a>
 </figure>
 
-1. Thermische Leistungsabgabe als _Ableitungssensor_ der thermischen Energie:
+**_Thermische Leistungsabgabe als *Ableitungssensor* der thermischen Energie_**
 
 - Name: boiler_powertotal
 - Eingangssensor: ems-esp Boiler Gesamtenergie
@@ -393,7 +393,7 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
 - Zeitfenster: mindestens 10 Minuten, um die Messungenauigkeit etwas zu glätten
 - Zeiteinheit: Stunden
 
-2. Elektrische Leistungsaufnahme als _Ableitungssensor_ der elektrischen Energie:
+**_Elektrische Leistungsaufnahme als *Ableitungssensor* der elektrischen Energie_**
 
 - Name: boiler_powerconstotal
 - Eingangssensor: ems-esp Boiler Gesamtmessung
@@ -401,7 +401,7 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
 - Zeitfenster: mindestens 10 Minuten, um die Messungenauigkeit etwas zu glätten
 - Zeiteinheit: Stunden
 
-3. COP als Template für einen Sensor:
+**_COP als Template für einen Sensor_**
 
 - Helfer &rarr; Template &rarr; Template für einen Sensor
 - Name: boiler_cop
