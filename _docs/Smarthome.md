@@ -5,7 +5,8 @@ permalink: /docs/smarthome/
 toc: true
 ---
 
-Nachfolgend findet ihr Anleitungen, wie ihr die Bosch CS5800/6800i oder Buderus WLW176/186 in freie Smarthome Systeme wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/) integrieren und die Messwerte in [Grafana](https://grafana.com) visualisieren könnt.
+Nachfolgend findet ihr eine Anleitung, wie ihr die Bosch CS5800/6800i oder Buderus WLW176/186 in freie Smarthome-Systeme wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/) integrieren könnt.
+Zusätzlich wird beschrieben, wie man die Messwerte in [Grafana](https://grafana.com) visualisiert.
 
 ## EMS-ESP
 
@@ -33,7 +34,7 @@ curl http://ems-esp/api/thermostat/manualtemp
 [![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
 
 Leider tritt bei manchen Nutzern sporadisch ein Verbindungsproblem auf, das hoffentlich bald gelöst wird (siehe [
-Bosch Heat Pump error: No communication on EMS bus](https://github.com/emsesp/EMS-ESP32/issues/2104))
+Bosch Heat Pump error: No communication on EMS bus](https://github.com/emsesp/EMS-ESP32/issues/2104)).
 
 ### Entitäten
 
@@ -309,12 +310,9 @@ Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
 
 ## MQTT
 
-Wer nicht direkt mit _curl_ oder der Weboberfläche von _ems-esp_ arbeiten möchte, kann die Messwerte auch in ein Smarthome, wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/), integrieren.
-Wer die Daten lieber mit [Grafana](https://grafana.com) visualisieren möchte, kann die Daten entweder über Home Assistant oder OpenHAB oder alternativ über [Telegraf](https://www.influxdata.com/integration/mqtt-telegraf-consumer/) in eine [InfluxDB](https://www.influxdata.com/) schreiben, auf die dann Grafana zugreift.
-
 Für den Datenaustausch zwischen _ems-esp_ und einem Smarthome-System bietet sich MQTT an.
 Dazu braucht man einen MQTT-Broker, wie [Mosquitto](https://mosquitto.org/), der in vielen Smarthome-Systemen bereits als optionale Erweiterung mitgeliefert wird.
-In Home Assistant kann Mosquitto leicht über das entsprechende [Add-on](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) installiert werden.
+In Home Assistant und OpenHAB kann Mosquitto leicht über das entsprechende [Add-on](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) installiert werden.
 
 ```mermaid
 flowchart LR
@@ -323,6 +321,14 @@ flowchart LR
     HA -->|Persist| INFLUX[("InfluxDB")]
     GRAFANA[Grafana] -->|Read| INFLUX
 ```
+
+Damit _ems-esp_ die Messwerte an den MQTT-Broker schickt, müsst ihr dies unter _Settings &rarr; MQTT&nbsp;Settings_ aktivieren und die _Broker Address_, sowie _Username_ und _Password_ hinterlegen.
+Außerdem sollte man _Enable MQTT Discovery_ aktivieren, denn sonst muss man alle Entitäten händisch anlegen.
+
+[![ems-esp: MQTT Einstellungen](/assets/images/EMS-ESP-MQTT.png)](/assets/images/EMS-ESP-MQTT.png)
+
+Falls ihr noch keinen MQTT-Broker habt, dann funktioniert die Kommunikation natürlich erst, wenn ihr euer Smarthome mit dem MQTT-Addon installiert habt.
+Mehr dazu in den nachfolgenden Abschnitten.
 
 ## Home Assistant
 
@@ -362,7 +368,7 @@ Um die Funktionsweise der Wärmepumpe genauer zu verstehen und die Effizienz zu 
 Mit Klick auf [_Verlauf_](https://my.home-assistant.io/redirect/history/) im Menü links kann man _Entitäten auswählen_, deren Verlauf man angezeigt bekommen möchte.
 Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 
-- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der Heizkurve und der Außentemperatur (im Beispiel: -2..-5 °C)
+- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der Heizkurve und der Außentemperatur (im Beispiel: -2..-4 °C)
 - _Boiler Aktuelle Vorlauftemperatur_: die reale Vorlauftemperatur, die wie im Diagramm zu sehen um die gewählte Vorlauftemperatur schwingt. Die Ausreißer nach unten sind Abtauvorgänge, da die Luftfeuchtigkeit bei ca. 90% lag.
 
 [![Verlauf von Messwerten](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
@@ -374,7 +380,7 @@ Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 Interessante Einsicht in die Effizienz der Anlage bietet insbesondere der COP.
 Der COP ist nicht direkt über ems-esp verfügbar, kann aber einfach eingerichtet werden.
 Der COP ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
-Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
+Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
 
 <figure class="third">
   <a href="/assets/images/HA-Helper_PowerTotal.png">
@@ -385,28 +391,23 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
   <img src="/assets/images/HA-Helper_COP.png" alt="Helfer Entität für aktuellen COP"></a>
 </figure>
 
-1. Thermische Leistungsabgabe als _Ableitungssensor_ der thermischen Energie
-
+1. **Thermische Leistungsabgabe** als _Ableitungssensor_ der thermischen Energie
    - Name: _boiler_powertotal_
    - Eingangssensor: _ems-esp Boiler Gesamtenergie_
    - Genauigkeit: _2_ decimals
    - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
    - Zeiteinheit: _Stunden_
-
-2. Elektrische Leistungsaufnahme als _Ableitungssensor_ der elektrischen Energie
+2. **Elektrische Leistungsaufnahme** als _Ableitungssensor_ der elektrischen Energie
    - Name: _boiler_powerconstotal_
    - Eingangssensor: _ems-esp Boiler Gesamtmessung_
    - Genauigkeit: _2_ decimals
    - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
    - Zeiteinheit: _Stunden_
-3. COP als Template für einen Sensor
-
+3. **COP** als _Template für einen Sensor_
    - Helfer &rarr; Template &rarr; Template für einen Sensor
    - Name: _boiler_cop_
    - Zustandstemplate:
-
      {% raw %}
-
      ```
      {% set q = states('sensor.boiler_powertotal') | float %}
      {% set p = states('sensor.boiler_powerconstotal') | float %}
@@ -416,13 +417,11 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
        0
      {% endif %}
      ```
-
      {% endraw %}
-
    - Geräteklasse: _Leistungsfaktor_
    - Gerät: _ems-esp Boiler_
 
-Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-Entitäten auch über einen Zeitraum im Verlauf betrachten:
+Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-Entitäten auch über einen frei wählbaren Zeitraum im Verlauf betrachten:
 
 [![Verlauf von Messwerten](/assets/images/HA-History_COP.png)](/assets/images/HA-History_COP.png)
 
@@ -491,6 +490,8 @@ Type string : WarmWaterMode "Warm Water Mode" [stateTopic="ems-esp/thermostat_da
 Weitere Details folgen in Kürze.
 
 ## InfluxDB & Grafana
+
+Wer die Daten lieber mit [Grafana](https://grafana.com) visualisieren möchte, kann die Daten entweder über Home Assistant oder OpenHAB oder alternativ über [Telegraf](https://www.influxdata.com/integration/mqtt-telegraf-consumer/) in eine [InfluxDB](https://www.influxdata.com/) schreiben, auf die dann Grafana zugreift.
 
 [![Elektrische und thermische Leistung zur Außentemperatur in Grafana](/assets/images/GrafanaLeistungZurAT.png)](/assets/images/GrafanaLeistungZurAT.png)
 
