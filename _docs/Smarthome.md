@@ -407,6 +407,8 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
 - Name: boiler_cop
 - Zustandstemplate:
 
+{% raw %}
+
 ```
 {% set q = states('sensor.boiler_powertotal') | float %}
 {% set p = states('sensor.boiler_powerconstotal') | float %}
@@ -416,6 +418,8 @@ Dazu benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/h
   0
 {% endif %}
 ```
+
+{% endraw %}
 
 - Geräteklasse: Leistungsfaktor
 - Gerät: ems-esp Boiler
