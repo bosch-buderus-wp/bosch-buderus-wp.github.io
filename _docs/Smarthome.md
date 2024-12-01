@@ -351,7 +351,21 @@ Nach Bestätigung gelangt man zurück zur Übersicht, in der nun alle verfügbar
 
 [![Home Assistant: Übersicht](/assets/images/HA-Overview.png)](/assets/images/HA-Overview.png)
 
-Ein detailliertere Installationsanleitung kann man direkt bei [ems-esp](https://bbqkees-electronics.nl/wiki-archive/gateway/home-assistant-configuration.html) finden.
+Ein detailliertere Installationsanleitung kann man auch direkt bei [ems-esp](https://bbqkees-electronics.nl/wiki-archive/gateway/home-assistant-configuration.html) finden.
+
+### Messwerteverlauf visualisieren
+
+Und dann kann es auch schon mit den ersten Messwerten losgehen!
+Um die Funktionsweise der Wärmepumpe genauer zu verstehen und die Effizienz zu überwachen, macht es Sinn, sich einige Messwerte grafisch darstellen zu lassen.
+Mit Klick auf [_Verlauf_](https://my.home-assistant.io/redirect/history/) im Menü links kann man _Entitäten auswählen_, deren Verlauf man angezeigt bekommen möchte.
+Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
+
+- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der Heizkurve und der Außentemperatur (im Beispiel: -2..-5 °C)
+- _Boiler Aktuelle Vorlauftemperatur_: die reale Vorlauftemperatur, die wie im Diagramm zu sehen um die gewählte Vorlauftemperatur schwingt. Die Ausreißer nach unten sind Abtauvorgänge, da die Luftfeuchtigkeit bei ca. 90% lag.
+
+[![Verlauf von Messwerten](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
+
+[![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_curflowtemp%2Cnumber.boiler_selflowtemp)
 
 Weitere Details folgen in Kürze.
 
