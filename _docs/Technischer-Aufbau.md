@@ -87,6 +87,9 @@ Daher ist es wünschenswert
 Bei hoher Luftfeuchtigkeit und Temperaturen unter ca. 7 °C bildet sich Eis am Verdampfer auf der Rückseite der Außeneinheit.
 Das Eis behindert den Luftstrom und dadurch wird die Effizienz beeinträchtigt.
 Die Wärmepumpe beginnt dann automatisch den Abtauvorgang.
+
+{% include video id="T0AQs7d0COQ" provider="youtube" %}
+
 Es gibt zwei Verfahren für das Abtauen:
 
 - Außentemperatur > 5 °C: Bereits erwärmtes Wasser aus dem Pufferspeicher und/oder der Heizungsanlage wird über den Rücklauf zum Verdampfer geleitet, der dadurch abtaut.
