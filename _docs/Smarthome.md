@@ -29,6 +29,7 @@ Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und da
 
 ```shell
 curl http://ems-esp/api/thermostat/manualtemp
+> {"name":"manualtemp","fullname":"HK1 manuelle Temperatur","circuit":"hc1","value":21.5,"type":"number","min":0,"max":127,"uom":"°C","readable":true,"writeable":true,"visible":true}
 ```
 
 [![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
@@ -368,8 +369,10 @@ Um die Funktionsweise der Wärmepumpe genauer zu verstehen und die Effizienz zu 
 Mit Klick auf [_Verlauf_](https://my.home-assistant.io/redirect/history/) im Menü links kann man _Entitäten auswählen_, deren Verlauf man angezeigt bekommen möchte.
 Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 
-- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der Heizkurve und der Außentemperatur (im Beispiel: -2..-4 °C)
-- _Boiler Aktuelle Vorlauftemperatur_: die reale Vorlauftemperatur, die wie im Diagramm zu sehen um die gewählte Vorlauftemperatur schwingt. Die Ausreißer nach unten sind Abtauvorgänge, da die Luftfeuchtigkeit bei ca. 90% lag.
+- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der [eingestellten Heizkurve](/docs/einstellungen#heizkurve) und der Außentemperatur.
+  Im dargestellten Beispiel lag die Außentemperatur bei -2..-4 °C und die Sollvorlauftemperatur bei 32..35 °C.
+- _Boiler Aktuelle Vorlauftemperatur_: die reale Vorlauftemperatur, die wie im Diagramm zu sehen um die gewählte Vorlauftemperatur schwingt.
+  Die Ausreißer nach unten sind Abtauvorgänge, da die Luftfeuchtigkeit bei ca. 90% lag.
 
 [![Verlauf von Messwerten](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
 
