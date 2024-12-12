@@ -17,6 +17,7 @@ heatpump
 heatup
 Heißgasabtauung
 hyst
+Invertersteuerung
 Kmin
 Legionellengefahr
 lmin

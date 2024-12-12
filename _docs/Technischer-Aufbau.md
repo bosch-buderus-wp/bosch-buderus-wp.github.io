@@ -80,7 +80,12 @@ Um bei einer Außentemperatur von 12 °C den Vorlauf auf 27 °C zu heben, sind m
 Würde die Wärmepumpe bei geringem Bedarf immer mit voller Leistung produziert, wäre der Sollwert für den Vorlauf schnell erreicht und die Wärmepumpe müsste abschalten.
 Wenn kurz darauf die Vorlauftemperatur wieder abkühlt, müsste sie wieder kurzzeitig anspringen, um kurz darauf wieder abzuschalten.
 Dieses ständige An- und Abschalten nennt man **Takten** und verringert Effizienz und erhöht den Verschleiß.
-Daher ist es wünschenswert
+
+Um dem Takten entgegenzuwirken, hat die Bosch/Buderus Wärmepumpe eine so genannte Invertersteuerung, die die Drehzahl des Kompressors bis zu einem gewissen Grad dem Bedarf anpassen kann.
+Wird also weniger Wärme benötigt, so regelt die Invertersteuerung die Drehzahl nach unten, wodurch weniger Wärme erzeugt und somit das Takten verhindert wird.
+Doch die Invertersteuerung kann nicht beliebig weit nach unten modulieren und irgendwann ist das untere Limit erreicht und die Wärmepumpe muss takten.
+Außerdem laufen die Wärmepumpen im unteren Grenzbereich oft ineffizienter.
+Unsere Wärmepumpe läuft am effizientesten bei ca. 60% Modulation.
 
 ## Abtauvorgang
 
