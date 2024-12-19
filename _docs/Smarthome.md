@@ -13,7 +13,7 @@ Zusätzlich wird beschrieben, wie man die Messwerte in [Grafana](https://grafana
 Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, um Messwerte abzurufen oder Einstellungen vorzunehmen.
 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
-Wer die Hardware nicht selbst basteln möchte, kann bereits mit ems-esp geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
+Wer die Hardware nicht selbst basteln möchte, kann bereits mit _ems-esp_ geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
 Ich habe mich für das [ BBQKees Gateway S3](https://bbqkees-electronics.nl/product/gateway-s3-standard-wifi-ausgabe/?lang=de) entschieden.
 
 <figure class="half">
@@ -32,7 +32,7 @@ curl http://ems-esp/api/thermostat/manualtemp
 > {"name":"manualtemp","fullname":"HK1 manuelle Temperatur","circuit":"hc1","value":21.5,"type":"number","min":0,"max":127,"uom":"°C","readable":true,"writeable":true,"visible":true}
 ```
 
-[![Weboberfläche von ems-esp](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
+[![Weboberfläche von _ems-esp_](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
 
 Leider tritt bei manchen Nutzern sporadisch ein Verbindungsproblem auf, das hoffentlich bald gelöst wird (siehe [
 Bosch Heat Pump error: No communication on EMS bus](https://github.com/emsesp/EMS-ESP32/issues/2104)).
@@ -45,7 +45,7 @@ In der Weboberfläche werden direkt alle erkannten Geräte angezeigt:
 - **HMI800.2/Rego 3000, UI800, Logamatic BC400** (Thermostat) mit 71 Entitäten
 - **K30RF/WiFi module** (Gateway Module)
 
-Mit Klick auf ein Gerät sieht man die verfügbaren Entitäten.
+Hier ist eine Liste aller aktuell verfügbaren Entitäten sehen (mit Klick auf das kleine Dreieck könnt ihr die Liste aufklappen):
 
 <details>
   <summary>Übersicht aller 173 Boiler-Entitäten</summary>
@@ -318,7 +318,7 @@ In Home Assistant und OpenHAB kann Mosquitto leicht über das entsprechende [Add
 ```mermaid
 flowchart LR
     EMSESP[ems-esp] -->|Publish| MQTT@{ shape: bow-rect, label: "MQTT Broker" }
-    HA[Home Assistant<br/>OpenHAB<br/>Telegraf] --> |Subscribe| MQTT
+    HA[Home Assistant /<br/>OpenHAB /<br/>Telegraf] --> |Subscribe| MQTT
     HA -->|Persist| INFLUX[("InfluxDB")]
     GRAFANA[Grafana] -->|Read| INFLUX
 ```
@@ -343,7 +343,7 @@ Mit Klick auf _MEIN SMARTHOME ERSTELLEN_ wird man aufgefordert ein Benutzerkonto
 Im nächsten Schritt kann man Home Assistant optionale Telemetriedaten zur Verfügung stellen.
 Im letzten Schritt werden Geräte angezeigt, die Home Assistant bereits während der Installation im Heimnetz identifizieren konnte - z.B. Fritzbox und Smart Plugs von Shelly.
 
-ems-esp kann Home Assistant nicht direkt identifizieren.
+Home Assistant kann _ems-esp_ nicht direkt identifizieren.
 Dies lässt sich schnell ändern, indem man _Integration hinzufügen_ unter _Einstellungen &rarr; Geräte & Dienste_ auswählt.
 In der Anbietersuche gibt man _MQTT_ ein.
 
@@ -369,10 +369,10 @@ Um die Funktionsweise der Wärmepumpe genauer zu verstehen und die Effizienz zu 
 Mit Klick auf [_Verlauf_](https://my.home-assistant.io/redirect/history/) im Menü links kann man _Entitäten auswählen_, deren Verlauf man angezeigt bekommen möchte.
 Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 
-- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der [eingestellten Heizkurve](/docs/einstellungen#heizkurve) und der Außentemperatur.
+- _Boiler Gewählte Vorlauftemperatur_: die gewünschte Vorlauftemperatur, die sich aus der [eingestellten Heizkurve](/docs/einstellungen#heizkurve) und der Außentemperatur ergibt.
   Im dargestellten Beispiel lag die Außentemperatur bei -2..-4 °C und die Sollvorlauftemperatur bei 32..35 °C.
 - _Boiler Aktuelle Vorlauftemperatur_: die reale Vorlauftemperatur, die wie im Diagramm zu sehen um die gewählte Vorlauftemperatur schwingt.
-  Die Ausreißer nach unten sind Abtauvorgänge, da die Luftfeuchtigkeit bei ca. 90% lag.
+  Die Ausreißer nach unten sind [Abtauvorgänge](/docs/technischer-aufbau/#abtauvorgang), da die Luftfeuchtigkeit bei ca. 90% lag.
 
 [![Verlauf von Messwerten](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
 
@@ -381,7 +381,7 @@ Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 ### COP mit Helfer-Entitäten
 
 Interessante Einsicht in die Effizienz der Anlage bietet insbesondere der COP.
-Der COP ist nicht direkt über ems-esp verfügbar, kann aber einfach eingerichtet werden.
+Der COP ist nicht direkt über _ems-esp_ verfügbar, kann aber einfach eingerichtet werden.
 Der COP ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
 Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
 
@@ -395,19 +395,21 @@ Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/
 </figure>
 
 1. **Thermische Leistungsabgabe** als _Ableitungssensor_ der thermischen Energie
+   - Art: Helfer &rarr; Ableitungssensor
    - Name: _boiler_powertotal_
    - Eingangssensor: _ems-esp Boiler Gesamtenergie_
    - Genauigkeit: _2_ decimals
    - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
    - Zeiteinheit: _Stunden_
 2. **Elektrische Leistungsaufnahme** als _Ableitungssensor_ der elektrischen Energie
+   - Art: Helfer &rarr; Ableitungssensor
    - Name: _boiler_powerconstotal_
    - Eingangssensor: _ems-esp Boiler Gesamtmessung_
    - Genauigkeit: _2_ decimals
    - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
    - Zeiteinheit: _Stunden_
 3. **COP** als _Template für einen Sensor_
-   - Helfer &rarr; Template &rarr; Template für einen Sensor
+   - Art: Helfer &rarr; Template &rarr; Template für einen Sensor
    - Name: _boiler_cop_
    - Zustandstemplate:
      {% raw %}
