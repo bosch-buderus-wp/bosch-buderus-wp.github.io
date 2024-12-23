@@ -33,6 +33,7 @@ Normaußentemperatur
 Primärkreis
 Primärkreises
 Rego
+reinkopieren
 Siebdruckplatte
 Smarthome
 Sollvorlauftemperatur

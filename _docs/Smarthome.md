@@ -437,6 +437,21 @@ Die elektrische Leistungsaufnahme schwankt zwischen 530 W und 1600 W.
 Mit Hilfe der Umgebungswärme werden daraus zwischen 2000 W und 4700 W gewonnen.
 Der COP liegt bei ca. 3 im Normalbetrieb, und fällt stark ab, wenn der Abtauvorgang einsetzt, da thermische Energie zum Abtauen "verloren" geht.
 
+### Wärmepumpen Dashboard
+
+Um auf einen Blick alle relevanten Messwerte zu erhalten, empfiehlt es sich im nächsten Schritt ein Dashboard zu erstellen.
+Ein einfaches Dashboard für die Wärmepumpte sieht beispielsweise so aus:
+
+[![Einfaches Home Assistant Dashboard](/assets/images/HA-SimpleDashboard.png)](/assets/images/HA-SimpleDashboard.png)
+
+Die Konfiguration für dieses Dashboard findet ihr hier: [https://github.com/bosch-buderus-wp/home-assistant/blob/main/dashboards/simple-dashboard.yaml](https://github.com/bosch-buderus-wp/home-assistant/blob/main/dashboards/simple-dashboard.yaml).
+Um die Konfiguration zu übernehmen, erstellt euch einfach ein neues Dashboard in der Dashboard-Übersicht:
+
+[![Dashboard-Übersicht anzeigen](https://my.home-assistant.io/badges/lovelace_dashboards.svg "Dashboard-Übersicht anzeigen")](https://my.home-assistant.io/redirect/lovelace_dashboards/)
+
+und klickt dann oben rechts auf den Stift, dann auf die 3 Punkte und dann auf _Raw-Konfigurationseditor_.
+Dort könnt ihr dann die Konfiguration reinkopieren, speichern und das Dashboard direkt nutzen.
+
 Weitere Details folgen in Kürze.
 
 ## OpenHAB
