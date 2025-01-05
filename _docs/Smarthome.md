@@ -437,6 +437,26 @@ Die elektrische Leistungsaufnahme schwankt zwischen 530 W und 1600 W.
 Mit Hilfe der Umgebungswärme werden daraus zwischen 2000 W und 4700 W gewonnen.
 Die Arbeitszahl liegt bei ca. 3 im Normalbetrieb, und fällt stark ab, wenn der Abtauvorgang einsetzt, da thermische Energie zum Abtauen "verloren" geht.
 
+Vermutlich wollt ihr aber nicht nur die aktuelle Arbeitszahl sehen, sondern diese auch über die gesamte Laufzeit eurer Wärmepumpe auswerten.
+Dazu legt ihr euch einfach eine weitere Helfer-Entität für die **Jahresarbeitszahl** an:
+
+- Art: Helfer &rarr; Template &rarr; Template für einen Sensor
+- Name: _boiler_jaz_
+- Zustandstemplate:
+  {% raw %}
+  ```
+  {% set q = states('sensor.boiler_nrgsupptotal') | float %}
+  {% set p = states('sensor.boiler_nrgconstotal') | float %}
+  {% if q >= 0 and p > 0 %}
+  {{ (q / p) | round(2) }}
+  {% else %}
+    0
+  {% endif %}
+  ```
+  {% endraw %}
+- Geräteklasse: _Leistungsfaktor_
+- Gerät: _ems-esp Boiler_
+
 ### Wärmepumpen Dashboard
 
 Um auf einen Blick alle relevanten Messwerte zu erhalten, empfiehlt es sich im nächsten Schritt ein Dashboard zu erstellen.
