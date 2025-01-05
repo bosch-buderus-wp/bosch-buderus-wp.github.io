@@ -378,11 +378,11 @@ Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 
 [![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_curflowtemp%2Cnumber.boiler_selflowtemp)
 
-### COP mit Helfer-Entitäten
+### Arbeitszahl/COP mit Helfer-Entitäten
 
-Interessante Einsicht in die Effizienz der Anlage bietet insbesondere der COP.
-Der COP ist nicht direkt über _ems-esp_ verfügbar, kann aber einfach eingerichtet werden.
-Der COP ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
+Interessante Einsicht in die Effizienz der Anlage bietet insbesondere die Arbeitszahl, die manchmal auch als COP bezeichnet wird.
+Die Arbeitszahl ist nicht direkt über _ems-esp_ verfügbar, kann aber einfach eingerichtet werden.
+Die Arbeitszahl ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
 Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
 
 <figure class="third">
@@ -390,8 +390,8 @@ Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/
   <img src="/assets/images/HA-Helper_PowerTotal.png" alt="Helfer Entität für aktuelle thermische Leistungsabgabe"></a>
   <a href="/assets/images/HA-Helper_PowerConsTotal.png">
   <img src="/assets/images/HA-Helper_PowerConsTotal.png" alt="Helfer Entität für aktuelle elektrische Leistungsaufnahme"></a>
-  <a href="/assets/images/HA-Helper_COP.png">
-  <img src="/assets/images/HA-Helper_COP.png" alt="Helfer Entität für aktuellen COP"></a>
+  <a href="/assets/images/HA-Helper_Arbeitszahl.png">
+  <img src="/assets/images/HA-Helper_Arbeitszahl.png" alt="Helfer Entität für aktuelle Arbeitszahl"></a>
 </figure>
 
 1. **Thermische Leistungsabgabe** als _Ableitungssensor_ der thermischen Energie
@@ -408,9 +408,9 @@ Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/
    - Genauigkeit: _2_ decimals
    - Zeitfenster: mindestens _10 Minuten_, um die Messungenauigkeit etwas zu glätten
    - Zeiteinheit: _Stunden_
-3. **COP** als _Template für einen Sensor_
+3. **Arbeitszahl** als _Template für einen Sensor_
    - Art: Helfer &rarr; Template &rarr; Template für einen Sensor
-   - Name: _boiler_cop_
+   - Name: _boiler_az_
    - Zustandstemplate:
      {% raw %}
      ```
@@ -428,14 +428,14 @@ Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/
 
 Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-Entitäten auch über einen frei wählbaren Zeitraum im Verlauf betrachten:
 
-[![Verlauf von Messwerten](/assets/images/HA-History_COP.png)](/assets/images/HA-History_COP.png)
+[![Verlauf von Messwerten](/assets/images/HA-History_Arbeitszahl.png)](/assets/images/HA-History_Arbeitszahl.png)
 
 [![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_powerconstotal%2Csensor.boiler_powertotal%2Csensor.boiler_cop)
 
 Das Diagramm zeigt die 3 Helfer-Entitäten bei -5 °C Außentemperatur.
 Die elektrische Leistungsaufnahme schwankt zwischen 530 W und 1600 W.
 Mit Hilfe der Umgebungswärme werden daraus zwischen 2000 W und 4700 W gewonnen.
-Der COP liegt bei ca. 3 im Normalbetrieb, und fällt stark ab, wenn der Abtauvorgang einsetzt, da thermische Energie zum Abtauen "verloren" geht.
+Die Arbeitszahl liegt bei ca. 3 im Normalbetrieb, und fällt stark ab, wenn der Abtauvorgang einsetzt, da thermische Energie zum Abtauen "verloren" geht.
 
 ### Wärmepumpen Dashboard
 
