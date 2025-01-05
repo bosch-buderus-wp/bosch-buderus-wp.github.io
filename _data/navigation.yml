@@ -11,6 +11,8 @@ docs:
     url: /docs/technischer-aufbau/
   - title: "Einstellungen"
     url: /docs/einstellungen/
+  - title: "Softwareversionen"
+    url: /docs/sw-versionen/
   - title: "Optimierungen"
     url: /docs/optimierungen/
   - title: "App"
