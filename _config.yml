@@ -29,6 +29,13 @@ analytics:
 
 google_site_verification: "p088uW1OFFEeN7brDn_xvKE6IdyuqL-Yp21mpgjrsag"
 
+# Footer
+footer:
+  links:
+    - label: "Changelog"
+      icon: "fab fa-fw fa-solid fa-train"
+      url: "https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/commits/main/"
+
 # Outputting
 permalink: /:categories/:title/
 
