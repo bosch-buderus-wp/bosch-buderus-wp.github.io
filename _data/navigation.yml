@@ -19,5 +19,7 @@ docs:
     url: /docs/smarthome/
   - title: "Ideen"
     url: /docs/ideen/
+  - title: "Glossar"
+    url: /docs/glossar
   - title: "Changelog"
     url: https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/commits/main/
