@@ -23,7 +23,10 @@ _Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Heizkreis&nbsp;1 &rarr; So/
 Hier wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
 Hier ist zu beachten, dass die Umschaltung nicht direkt nach der gemessenen Temperatur des Außenthermometers erfolgt, sondern nach der gedämpften Außentemperatur.
 Die Stärke der Dämpfung ergibt sich aus der Einstellung _Anlageneinstellungen &rarr; Heizung/Kühlung &rarr; Anlageneinstellungen &rarr; Dämpfung&nbsp;Gebäudeart_.
-Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen.
+Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen wie man in nachfolgenden Diagrammen für mittlere und leichte Gebäudeart sieht:
+
+[![Außentemperatur & gedämpfte Außentemperatur für Gebäudeart=Mittel](/assets/images/Einstellung-GebäudeartMittel.png)](/assets/images/Einstellung-GebäudeartMittel.png)
+[![Außentemperatur & gedämpfte Außentemperatur für Gebäudeart=Leicht](/assets/images/Einstellung-GebäudeartLeicht.png)](/assets/images/Einstellung-GebäudeartLeicht.png)
 
 ### Normaußentemperatur
 
