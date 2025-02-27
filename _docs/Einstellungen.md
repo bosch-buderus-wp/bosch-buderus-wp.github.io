@@ -73,7 +73,7 @@ Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Sta
 
 ### Modusauswahl
 
-Die Auswahl des Modus für die Warmwasseraufbereitung kann wie folgt gewählt werden:
+Die Auswahl des Modus für die Warmwasseraufbereitung kann entweder in der [App](/docs/app/) oder auf dem Bedienfeld unter _Warmwasser_ erfolgen:
 
 - _Aus_: keine Warmwasseraufbereitung
 - _Manuell_: ein Modus wird manuell gewählt
@@ -81,3 +81,6 @@ Die Auswahl des Modus für die Warmwasseraufbereitung kann wie folgt gewählt we
   Dazu muss eingestellt werden, welches Program zu welcher Tageszeit aktiv sein soll.
 
 [![Zeitprogramm am UI-800](/assets/images/UI800-Zeitprogramm.jpg)](/assets/images/UI800-Zeitprogramm.jpg)
+
+Die Zeitprogramme für den _Auto_ Modus kann man entweder in der [App](/docs/app/) unter _Warmwasser &rarr; Kalender unten rechts_ oder auf dem Bedienfeld unter _Warmwasser &rarr; Mehr...> &rarr; Zeitprogramm &rarr; Bearbeiten_.
+In obiger Darstellung ist die Warmwasseraufbereitung von 21-8 Uhr aus, von 8-13 und 17-21 Uhr wird das Warmwasser mit dem Eco+ Modus aufgeheizt und von 13-17 Uhr wird das Warmwasser mit dem Eco Modus aufbereitet.
