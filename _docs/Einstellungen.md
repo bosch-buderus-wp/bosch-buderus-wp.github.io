@@ -39,8 +39,8 @@ Die Stärke dieser Erhöhung wird über die Heizkurve bestimmt.
 Die Regelungsart definiert, auf welcher Basis die Sollvorlauftemperatur bestimmt wird, und kann unter
 `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `Heizen` &rarr; `Regelungsart` eingestellt werden:
 
-- `Außentemperatur geführt`: die Heizkurve wird ausschließlich über die Vorlauftemperatur an der minimalen Außentemperatur definiert
-- `Außentemperatur mit Fußpunkt`: erlaubt zusätzlich die Einstellung der Vorlauftemperatur bei einer Außentemperatur von 20 °C, dem so genannten Fußpunkt
+- `Außentemperatur geführt`: die Heizkurve wird ausschließlich über die Vorlauftemperatur an der minimalen Außentemperatur definiert (ganz rechts bei -14 °C im Bild oben)
+- `Außentemperatur mit Fußpunkt`: erlaubt zusätzlich die Einstellung der Vorlauftemperatur bei einer Außentemperatur von 20 °C, dem so genannten Fußpunkt (ganz links im Bild oben)
 - `Einzelraumgeführt`: hiermit wird die tatsächliche Raumtemperatur hinzugezogen, wenn ein Raumthermostat aus dem Wärmepumpenzubehör verbunden ist
 
 ### Dämpfung der Außentemperatur
@@ -56,14 +56,7 @@ Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen 
 ### Heizgrenze
 
 Natürlich ist es nicht sinnvoll, die Heizung bei sommerlichen Außentemperaturen zu betreiben.
-Mit
-`Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `So/Wi Umschaltung` &rarr; `Heizbetrieb bis`
-
-oder
-
-`Startbildschirm` &rarr; `Wunschtemperatur` &rarr; `Mehr...` &rarr; `Heizen aus ab`
-
-wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
+Mit `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `So/Wi Umschaltung` &rarr; `Heizbetrieb bis` oder `Startbildschirm` &rarr; `Wunschtemperatur` &rarr; `Mehr...` &rarr; `Heizen aus ab` wird die Temperaturgrenze eingestellt, ab der die Heizperiode beginnen soll, z.B. 15°C.
 
 Dabei ist zu beachten, dass die Umschaltung nicht sofort bei Erreichen der Temperaturgrenze erfolgt, um ein ständiges Ein- und Ausschalten bei Außentemperaturen um den Grenzwert zu verhindern.
 Dafür kann man eine Verzögerung für den Übergang von Winter zu Sommer und Sommer zu Winter unter den folgenden Menüpunkten festlegen:
@@ -130,3 +123,49 @@ Die Auswahl des Modus für die Warmwasseraufbereitung kann entweder in der [App]
 
 Die Zeitprogramme für den _Auto_ Modus kann man entweder in der [App](/docs/app/) unter `Warmwasser` &rarr; `Kalender unten rechts` oder auf dem Startbildschirm des Bedienfelds (nicht im Servicemenü) unter `Warmwasser` &rarr; `Mehr...>` &rarr; `Zeitprogramm` &rarr; `Bearbeiten` einstellen.
 In obiger Darstellung ist die Warmwasseraufbereitung von 21-8 Uhr aus, von 8-13 und 17-21 Uhr wird das Warmwasser mit dem Eco+ Modus aufgeheizt und von 13-17 Uhr wird das Warmwasser mit dem Eco Modus aufbereitet.
+
+## Elektrischer Zuheizer
+
+Wärmepumpen sollten so dimensioniert werden, dass sie bis ca. -5 °C den Wärmebedarf des Gebäudes abdecken können ([Bosch](https://junkers-de-de-b.boschtt-documents.com/download/file/file/6721836891.pdf)).
+Für den Temperaturbereich darunter wird die Wärmepumpe durch einen elektrischen Zuheizer unterstützt.
+Die Einstellungen für den elektrischen Zuheizer können unter `Anlageneinstellungen` &rarr; `Zuheizer` vorgenommen werden.
+
+### Zuheizersperre
+
+Aktiviert man `Anlageneinstellungen` &rarr; `Zuheizer` &rarr; `Zuheizersperre` wird der elektrische Zuheizer auch bei niedrigen Temperaturen nicht für den regulären Heizungsbetrieb oder die Warmwasseraufbereitung genutzt.
+Zum Frostschutz und Abtauen kann er trotz Zuheizersperre eingesetzt werden.
+
+### Leistungsbegrenzung
+
+Unter `Anlageneinstellungen` &rarr; `Zuheizer` &rarr; `Elektrischer Zuheizer` kann man folgende Einstellungen vornehmen:
+
+#### Begrenzung mit Kompressor
+
+Wertebereich: 0kW, 3kW, 6kW, 9kW
+
+Mit dieser Einstellung definiert man die maximale Leistung des elektrischen Zuheizers, um die Wärmepumpe im Betrieb zu unterstützen.
+
+#### Begrenzung ohne Kompressor
+
+Wertebereich: 0kW, 3kW, 6kW, 9kW
+
+Hiermit lässt sich die maximale Leistung des elektrischen Zuheizers einstellen, wenn der Kompressor beispielsweise im Notbetrieb nicht läuft.
+
+#### Begrenzung im WW-Betrieb
+
+Wertebereich: 0kW, 3kW, 6kW, 9kW
+
+Diese Einstellung definiert die maximale Leistung des elektrischen Zuheizers, die für die Warmwasseraufbereitung aufgebracht werden darf.
+
+#### Bival.pkt. Parallelbetr.
+
+Die oben erwähnte Temperaturgrenze, ab der der Zuheizer die Wärmepumpe unterstützen soll, den so genannten Bivalenzpunkt, gibt man in diesem Menüpunkt vor, z.B. -7°C.
+
+### Verzögerung Heizung
+
+Das Zuschalten des Zuheizers erfolgt jedoch nicht auf Basis des eben eingestellten Bivalenzpunktes, sondern wird anhand des 'Nicht-Erreichens' der Sollvorlauftemperatur und zwar als Temperaturdifferenz-Zeitdauer-Produkt, z.B. 600 K\*min, eingestellt.
+600 K\*min bedeutet in diesem Fall, dass der Zuheizer in folgenden Beispielsituation zugeschaltet wird:
+
+- Die Sollvorlauftemperatur wird für 60 Minuten um 10 K (°C) überschritten
+- Die Sollvorlauftemperatur wird für 4 Stunden um 2,5 K (°C) überschritten
+- Die Sollvorlauftemperatur wird für 10 Stunden um 1 K (°C) überschritten
