@@ -76,43 +76,43 @@ IDs, die mit _"nrgsupp"_ beginnen, beziehen sich auf die erzeugte thermische Ene
 
 #### Messwerte
 
-| ID                                                                   | Name                               | Modul             | Typ | Einheit | RW  | Beschreibung                                                                                                    |
-| -------------------------------------------------------------------- | ---------------------------------- | ----------------- | --- | ------- | --- | --------------------------------------------------------------------------------------------------------------- |
-| [outdoortemp](http://ems-esp/api/boiler/outdoortemp)                 | Außentemperatur                    | boiler            | 🔢  | °C      |     | Außentemperatur gemessen durch Außenthermometer                                                                 |
-| [dampedoutdoortemp](http://ems-esp/api/thermostat/dampedoutdoortemp) | Gedämpfte Außentemperatur          | thermostat        | 🔢  | °C      |     | [Gedämpfte Außentemperatur](/docs/einstellungen/#d%C3%A4mpfung-der-au%C3%9Fentemperatur) - siehe auch _damping_ |
-| [curflowtemp](http://ems-esp/api/boiler/curflowtemp)                 | Aktuelle Vorlauftemperatur         | boiler            | 🔢  | °C      |     | Vorlauftemperatur nach Pufferspeicher (T0)                                                                      |
-| [rettemp](http://ems-esp/api/boiler/rettemp)                         | Rücklauftemperatur                 | boiler            | 🔢  | °C      |     | Rücklauftemperatur des Primärkreises beim Verlassen der Inneneinheit - identisch zu _hptc0_                     |
-| [hptc0](http://ems-esp/api/boiler/hptc0)                             | Kältemittelrücklauf (TC0)          | boiler            | 🔢  | °C      |     | Rücklauftemperatur des Primärkreises beim Verlassen der Inneneinheit                                            |
-| [hptc1](http://ems-esp/api/boiler/hptc1)                             | Kältemittelvorlauf (TC1)           | boiler            | 🔢  | °C      |     | Vorlauftemperatur des Primärkreises beim Eintritt in die Inneneinheit                                           |
-| [hptc3](http://ems-esp/api/boiler/hptc3)                             | Kondensatortemperatur (TC3)        | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels beim Eintritt in den Verflüssiger                                                   |
-| [hptr1](http://ems-esp/api/boiler/hptr1)                             | Kompressortemperatur (TR1)         | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels im Kompressor                                                                       |
-| [hptr3](http://ems-esp/api/boiler/hptr3)                             | Kältemittel (flüssig) (TR3)        | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels beim Verlassen des Verflüssigers                                                    |
-| [hptr4](http://ems-esp/api/boiler/hptr4)                             | Verdampfereingang (TR4)            | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels nach dem Expansionsventils                                                          |
-| [hptr5](http://ems-esp/api/boiler/hptr5)                             | Kompressoreingang (TR5)            | boiler            | 🔢  | °C      |     | Temperatur Sauggas                                                                                              |
-| [hptr6](http://ems-esp/api/boiler/hptr6)                             | Kompressorausgang (TR6)            | boiler            | 🔢  | °C      |     | Temperatur Heißgas                                                                                              |
-| [hptl2](http://ems-esp/api/boiler/hptl2)                             | Außenlufteintrittstemperatur (TL2) | boiler            | 🔢  | °C      |     | Lufttemperatur am Verdampfereingang                                                                             |
-| [hppl1](http://ems-esp/api/boiler/hppl1)                             | Niederdrucktemperatur (PL1)        | boiler            | 🔢  | °C      |     | Niederdrucktemperatur - identisch zu _hptr4_                                                                    |
-| [hpph1](http://ems-esp/api/boiler/hpph1)                             | Hochdrucktemperatur (PH1)          | boiler            | 🔢  | °C      |     | Hochdrucktemperatur - identisch zu _curflowtemp_                                                                |
-| [hpta4](http://ems-esp/api/boiler/hpta4)                             | Kondensatorwanne (TA4)             | boiler            | 🔢  | °C      |     | Temperatur an der Kondensatwanne                                                                                |
-| [targetflowtemp](http://ems-esp/api/thermostat/targetflowtemp)       | HK1 berechnete Vorlauftemperatur   | thermostat<br>hc1 | 🔢  | °C      |     | Die von der Anlage bestimmte Sollvorlauftemperatur - identisch zur schreibbaren _selflowtemp_                   |
+| ID                                                                   | Name                               | Modul             | Typ | Einheit | RW  | Beschreibung                                                                                                            |
+| -------------------------------------------------------------------- | ---------------------------------- | ----------------- | --- | ------- | --- | ----------------------------------------------------------------------------------------------------------------------- |
+| [outdoortemp](http://ems-esp/api/boiler/outdoortemp)                 | Außentemperatur                    | boiler            | 🔢  | °C      |     | Außentemperatur gemessen durch Außenthermometer                                                                         |
+| [dampedoutdoortemp](http://ems-esp/api/thermostat/dampedoutdoortemp) | Gedämpfte Außentemperatur          | thermostat        | 🔢  | °C      |     | [Gedämpfte Außentemperatur](/docs/einstellungen/#d%C3%A4mpfung-der-au%C3%9Fentemperatur) - siehe auch _damping_         |
+| [curflowtemp](http://ems-esp/api/boiler/curflowtemp)                 | Aktuelle Vorlauftemperatur         | boiler            | 🔢  | °C      |     | Vorlauftemperatur nach Pufferspeicher (T0)                                                                              |
+| [rettemp](http://ems-esp/api/boiler/rettemp)                         | Rücklauftemperatur                 | boiler            | 🔢  | °C      |     | Rücklauftemperatur des Primärkreises beim Verlassen der Inneneinheit - identisch zu _hptc0_                             |
+| [hptc0](http://ems-esp/api/boiler/hptc0)                             | Kältemittelrücklauf (TC0)          | boiler            | 🔢  | °C      |     | Rücklauftemperatur des Primärkreises beim Verlassen der Inneneinheit                                                    |
+| [hptc1](http://ems-esp/api/boiler/hptc1)                             | Kältemittelvorlauf (TC1)           | boiler            | 🔢  | °C      |     | Vorlauftemperatur des Primärkreises beim Eintritt in die Inneneinheit                                                   |
+| [hptc3](http://ems-esp/api/boiler/hptc3)                             | Kondensatortemperatur (TC3)        | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels beim Eintritt in den Verflüssiger                                                           |
+| [hptr1](http://ems-esp/api/boiler/hptr1)                             | Kompressortemperatur (TR1)         | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels im Kompressor                                                                               |
+| [hptr3](http://ems-esp/api/boiler/hptr3)                             | Kältemittel (flüssig) (TR3)        | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels beim Verlassen des Verflüssigers                                                            |
+| [hptr4](http://ems-esp/api/boiler/hptr4)                             | Verdampfereingang (TR4)            | boiler            | 🔢  | °C      |     | Temperatur des Kältemittels nach dem Expansionsventils                                                                  |
+| [hptr5](http://ems-esp/api/boiler/hptr5)                             | Kompressoreingang (TR5)            | boiler            | 🔢  | °C      |     | Temperatur Sauggas                                                                                                      |
+| [hptr6](http://ems-esp/api/boiler/hptr6)                             | Kompressorausgang (TR6)            | boiler            | 🔢  | °C      |     | Temperatur Heißgas                                                                                                      |
+| [hptl2](http://ems-esp/api/boiler/hptl2)                             | Außenlufteintrittstemperatur (TL2) | boiler            | 🔢  | °C      |     | Lufttemperatur am Verdampfereingang                                                                                     |
+| [hppl1](http://ems-esp/api/boiler/hppl1)                             | Niederdrucktemperatur (PL1)        | boiler            | 🔢  | °C      |     | Niederdrucktemperatur - identisch zu _hptr4_                                                                            |
+| [hpph1](http://ems-esp/api/boiler/hpph1)                             | Hochdrucktemperatur (PH1)          | boiler            | 🔢  | °C      |     | Hochdrucktemperatur - identisch zu _curflowtemp_                                                                        |
+| [hpta4](http://ems-esp/api/boiler/hpta4)                             | Kondensatorwanne (TA4)             | boiler            | 🔢  | °C      |     | Temperatur an der Kondensatwanne                                                                                        |
+| [targetflowtemp](http://ems-esp/api/thermostat/targetflowtemp)       | HK1 berechnete Vorlauftemperatur   | thermostat<br>hc1 | 🔢  | °C      |     | Die von der Anlage bestimmte Sollvorlauftemperatur (bei PV-Überschuss _targetflowtemp_ = _selflowtemp_ + _pvraiseheat_) |
 
 #### Einstellungen
 
-| ID                                                       | Name                          | Modul             | Typ | Einheit | RW  | Beschreibung                                                                                  |
-| -------------------------------------------------------- | ----------------------------- | ----------------- | --- | ------- | --- | --------------------------------------------------------------------------------------------- |
-| [selflowtemp](http://ems-esp/api/boiler/selflowtemp)     | Gewählte Vorlauftemperatur    | boiler            | 🔢  | °C      | ✔   | Die von der Anlage bestimmte Sollvorlauftemperatur - identisch zur read-only _targetflowtemp_ |
-| [heatingtemp](http://ems-esp/api/boiler/heatingtemp)     | Heiztemperatur                | boiler            | 🔢  | °C      | ✔   | Maximaler mögliche Vorlauftemperatur, z.B. 75°C bei CS6800i                                   |
-| [tempdiffheat](http://ems-esp/api/boiler/tempdiffheat)   | Temp.diff. TC3/TC0 Heizen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Heizen                   |
-| [tempdiffcool](http://ems-esp/api/boiler/tempdiffcool)   | Temp.diff. TC3/TC0 Kühlen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Kühlen                   |
-| [intoffset](http://ems-esp/api/thermostat/intoffset)     | Korrektur interner Temperatur | thermostat        | 🔢  | °C      | ✔   | Temperaturdifferenz, um die die Raumsolltemperatur korrigiert werden soll                     |
-| [minexttemp](http://ems-esp/api/thermostat/minexttemp)   | Min. Außentemperatur          | thermostat        | 🔢  | °C      | ✔   | [Normaußentemperatur](/docs/einstellungen/#normaußentemperatur)                               |
-| [summertemp](http://ems-esp/api/thermostat/summertemp)   | HK1 Sommertemperatur          | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Heizgrenze](/docs/einstellungen/#heizgrenze)                                                 |
-| [designtemp](http://ems-esp/api/thermostat/designtemp)   | HK1 Auslegungstemperatur      | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Vorlauftemperatur an der NAT](/docs/einstellungen/#vorlauftemperatur-nat)                    |
-| [offsettemp](http://ems-esp/api/thermostat/offsettemp)   | HK1 Temperaturanhebung        | thermostat<br>hc1 | 🔢  | °C      | ✔   | Wert, um den die Vorlauftemperatur manuell angehoben werden kann                              |
-| [seltemp](http://ems-esp/api/thermostat/seltemp)         | HK1 gewählte Raumtemperatur   | thermostat<br>hc1 | 🔢  | °C      | ✔   | Gewünschte Raumtemperatur                                                                     |
-| [manualtemp](http://ems-esp/api/thermostat/manualtemp)   | HK1 manuelle Temperatur       | thermostat<br>hc1 | 🔢  | °C      | ✔   | Manuell eingestellte Raumtemperatur - identisch zu _seltemp_ wenn _mode=Manuell_              |
-| [minflowtemp](http://ems-esp/api/thermostat/minflowtemp) | HK1 min. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Minimale Vorlauftemperatur                                                                    |
-| [maxflowtemp](http://ems-esp/api/thermostat/maxflowtemp) | HK1 max. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Maximale Vorlauftemperatur                                                                    |
+| ID                                                       | Name                          | Modul             | Typ | Einheit | RW  | Beschreibung                                                                     |
+| -------------------------------------------------------- | ----------------------------- | ----------------- | --- | ------- | --- | -------------------------------------------------------------------------------- |
+| [selflowtemp](http://ems-esp/api/boiler/selflowtemp)     | Gewählte Vorlauftemperatur    | boiler            | 🔢  | °C      | ✔   | Sollvorlauftemperatur ohne Anhebung durch Energiemanager/PV                      |
+| [heatingtemp](http://ems-esp/api/boiler/heatingtemp)     | Heiztemperatur                | boiler            | 🔢  | °C      | ✔   | Maximaler mögliche Vorlauftemperatur, z.B. 75°C bei CS6800i                      |
+| [tempdiffheat](http://ems-esp/api/boiler/tempdiffheat)   | Temp.diff. TC3/TC0 Heizen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Heizen      |
+| [tempdiffcool](http://ems-esp/api/boiler/tempdiffcool)   | Temp.diff. TC3/TC0 Kühlen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Kühlen      |
+| [intoffset](http://ems-esp/api/thermostat/intoffset)     | Korrektur interner Temperatur | thermostat        | 🔢  | °C      | ✔   | Temperaturdifferenz, um die die Raumsolltemperatur korrigiert werden soll        |
+| [minexttemp](http://ems-esp/api/thermostat/minexttemp)   | Min. Außentemperatur          | thermostat        | 🔢  | °C      | ✔   | [Normaußentemperatur](/docs/einstellungen/#normaußentemperatur)                  |
+| [summertemp](http://ems-esp/api/thermostat/summertemp)   | HK1 Sommertemperatur          | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Heizgrenze](/docs/einstellungen/#heizgrenze)                                    |
+| [designtemp](http://ems-esp/api/thermostat/designtemp)   | HK1 Auslegungstemperatur      | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Vorlauftemperatur an der NAT](/docs/einstellungen/#vorlauftemperatur-nat)       |
+| [offsettemp](http://ems-esp/api/thermostat/offsettemp)   | HK1 Temperaturanhebung        | thermostat<br>hc1 | 🔢  | °C      | ✔   | Wert, um den die Vorlauftemperatur manuell angehoben werden kann                 |
+| [seltemp](http://ems-esp/api/thermostat/seltemp)         | HK1 gewählte Raumtemperatur   | thermostat<br>hc1 | 🔢  | °C      | ✔   | Gewünschte Raumtemperatur                                                        |
+| [manualtemp](http://ems-esp/api/thermostat/manualtemp)   | HK1 manuelle Temperatur       | thermostat<br>hc1 | 🔢  | °C      | ✔   | Manuell eingestellte Raumtemperatur - identisch zu _seltemp_ wenn _mode=Manuell_ |
+| [minflowtemp](http://ems-esp/api/thermostat/minflowtemp) | HK1 min. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Minimale Vorlauftemperatur                                                       |
+| [maxflowtemp](http://ems-esp/api/thermostat/maxflowtemp) | HK1 max. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Maximale Vorlauftemperatur                                                       |
 
 ### Warmwasser
 
@@ -196,6 +196,16 @@ Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung
 | [heatoffdelay](http://ems-esp/api/thermostat/heatoffdelay)     | HK1 Ausschaltverzögerung Heizen | thermostat<br>hc1 | 🔢   | Stunden | ✔   | [Sommerbetriebsverzögerung](/docs/einstellungen/#heizgrenze) der auto. Sommer/Winter-Umschaltung                                                                     |
 | [instantstart](http://ems-esp/api/thermostat/instantstart)     | HK1 Sofortstart                 | thermostat<br>hc1 | 🔢   | K       | ✔   | [Temp-Differenz für den Sofortstart](/docs/einstellungen/#heizgrenze) der auto. Sommer/Winter-Umschaltung                                                            |
 
+### Photovoltaik
+
+| ID                                                       | Name                       | Modul      | Typ | Einheit | RW  | Beschreibung                                     |
+| -------------------------------------------------------- | -------------------------- | ---------- | --- | ------- | --- | ------------------------------------------------ |
+| [pvraiseheat](http://ems-esp/api/thermostat/pvraiseheat) | Anhebung Heizen mit PV     | thermostat | 🔢  | K       | ✔   | Anhebung der Raumtemperatur bei PV-Überschuss    |
+| [pvlowercool](http://ems-esp/api/thermostat/pvlowercool) | Absenkung Kühlen mit PV    | thermostat | 🔢  | K       | ✔   | Absenkung der Raumtemperatur bei PV-Überschuss   |
+| [pvmaxcomp](http://ems-esp/api/boiler/pvmaxcomp)         | PV max. Kompressorleistung | boiler     | 🔢  | kW      | ✔   | Max. Kompressorleistung bei PV-Überschuss        |
+| [pvcooling](http://ems-esp/api/boiler/pvcooling)         | Kühlen nur mit PV          | boiler     | ☑   |         | ✔   | Kühlbetrieb wird nur bei PV-Überschuss aktiviert |
+| [pvenabledhw](http://ems-esp/api/thermostat/pvenabledhw) | aktiviere WW-Anhebung      | thermostat | ☑   |         | ✔   | Anhebung der WW-Temperatur bei PV-Überschuss     |
+
 ### Elektrischer Zuheizer
 
 | ID                                                         | Name                          | Modul         | Typ  | Einheit | RW  | Beschreibung                                                                                                                                                  |
@@ -247,16 +257,25 @@ Die Anlage kann im Heizbetrieb, im Kühlbetrieb, im Warmwasserbetrieb oder im St
 
 ## Eingänge
 
-| ID                                             | Name                  | Modul  | Typ | Einheit | RW  | Beschreibung                                        |
-| ---------------------------------------------- | --------------------- | ------ | --- | ------- | --- | --------------------------------------------------- |
-| [hpin1](http://ems-esp/api/boiler/hpin1)       | Status Eingang 1      | boiler | ☑   |         |     | AN bei EVU-Sperrzeit                                |
+| Eingang 1 | Eingang 4 | Resultat                       |
+| --------- | --------- | ------------------------------ |
+| AN        | AUS       | EVU Sperrzeit                  |
+| AUS       | AUS       | Normalbetrieb                  |
+| AUS       | AN        | Verstärkter Betrieb            |
+| AN        | AN        | Erzwungener verstärker Betrieb |
+
+| ID                                             | Name                  | Modul  | Typ | Einheit | RW  | Beschreibung |
+| ---------------------------------------------- | --------------------- | ------ | --- | ------- | --- | ------------ |
+| [hpin1](http://ems-esp/api/boiler/hpin1)       | Status Eingang 1      | boiler | ☑   |         |     | AN oder AUS  |
 | [hpin1opt](http://ems-esp/api/boiler/hpin1opt) | Einstellung Eingang 1 | boiler | 🔠  |         | ✔   |
-| [hpin2](http://ems-esp/api/boiler/hpin2)       | Status Eingang 2      | boiler | ☑   |         |     | AN wenn Warmwasserbetrieb oder Heizbetrieb gesperrt |
+| [hpin2](http://ems-esp/api/boiler/hpin2)       | Status Eingang 2      | boiler | ☑   |         |     | AN oder AUS  |
 | [hpin2opt](http://ems-esp/api/boiler/hpin2opt) | Einstellung Eingang 2 | boiler | 🔠  |         | ✔   |
-| [hpin3](http://ems-esp/api/boiler/hpin3)       | Status Eingang 3      | boiler | ☑   |         |     | AN wenn Überhitzungsschutz HK1 aktiv                |
+| [hpin3](http://ems-esp/api/boiler/hpin3)       | Status Eingang 3      | boiler | ☑   |         |     | AN oder AUS  |
 | [hpin3opt](http://ems-esp/api/boiler/hpin3opt) | Einstellung Eingang 3 | boiler | 🔠  |         | ✔   |
-| [hpin4](http://ems-esp/api/boiler/hpin4)       | Status Eingang 4      | boiler | ☑   |         |     | AN wenn Überschuss der Photovoltaikanlage           |
+| [hpin4](http://ems-esp/api/boiler/hpin4)       | Status Eingang 4      | boiler | ☑   |         |     | AN oder AUS  |
 | [hpin4opt](http://ems-esp/api/boiler/hpin4opt) | Einstellung Eingang 4 | boiler | 🔠  |         | ✔   |
+
+Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your heat pump with the EMS Gateways](https://bbqkees-electronics.nl/2024/10/03/using-the-smart-grid-sg-and-photovoltaic-pv-function-of-your-heat-pump-with-the-ems-gateways/)
 
 ## Kommandos
 
@@ -301,13 +320,11 @@ Die Anlage kann im Heizbetrieb, im Kühlbetrieb, im Warmwasserbetrieb oder im St
 | [emergencyops](http://ems-esp/api/boiler/emergencyops)             | Notbetrieb                               | boiler         | ☑    |         | ✔   | ?            |
 | [emergencytemp](http://ems-esp/api/boiler/emergencytemp)           | Notfalltemperatur                        | boiler         | 🔢   | °C      | ✔   | ?            |
 | [hpmaxpower](http://ems-esp/api/boiler/hpmaxpower)                 | max. Kompressorleistung                  | boiler         | 🔢   | %       | ✔   | ---          |
-| [pvmaxcomp](http://ems-esp/api/boiler/pvmaxcomp)                   | PV max. Kompressorleistung               | boiler         | 🔢   | kW      | ✔   | ---          |
 | [powerreduction](http://ems-esp/api/boiler/powerreduction)         | Leistungsverringerung                    | boiler         | 🔢   | %       | ✔   | ---          |
 | [hpbrinepumpspd](http://ems-esp/api/boiler/hpbrinepumpspd)         | Solepumpendrehzahl                       | boiler         | 🔢   | %       |     |
 | [hpbrinein](http://ems-esp/api/boiler/hpbrinein)                   | Sole in/Verdampfer                       | boiler         | 🔢   | °C      |     |
 | [hpbrineout](http://ems-esp/api/boiler/hpbrineout)                 | Sole aus/Kondensator                     | boiler         | 🔢   | °C      |     |
 | [poolsettemp](http://ems-esp/api/boiler/poolsettemp)               | Sollwert Pooltemperatur                  | boiler         | 🔢   | °C      | ✔   |
-| [pvcooling](http://ems-esp/api/boiler/pvcooling)                   | Kühlen nur mit PV                        | boiler         | ☑    |         | ✔   |
 | [auxlimitstart](http://ems-esp/api/boiler/auxlimitstart)           | Zusatzheizer Grenze Start                | boiler         | 🔢   | K       | ✔   |
 | [auxheatrmode](http://ems-esp/api/boiler/auxheatrmode)             | Zusatzheizungsmodus                      | boiler         | enum |         | ✔   |
 | [hphystheat](http://ems-esp/api/boiler/hphystheat)                 | Schalthysterese Heizen                   | boiler         | 🔢   | K\*min  | ✔   | ---          |
@@ -380,9 +397,6 @@ Die Anlage kann im Heizbetrieb, im Kühlbetrieb, im Warmwasserbetrieb oder im St
 | [electricfactor](http://ems-esp/api/thermostat/electricfactor)             | Energiefaktor elektrisch                    | thermostat        | 🔢   |         | ✔   |
 | [delayboiler](http://ems-esp/api/thermostat/delayboiler)                   | Verzögerungsoption                          | thermostat        | 🔢   | Minuten | ✔   |
 | [tempdiffboiler](http://ems-esp/api/thermostat/tempdiffboiler)             | Temperaturdifferenzoption                   | thermostat        | 🔢   | °C      | ✔   |
-| [pvenabledhw](http://ems-esp/api/thermostat/pvenabledhw)                   | aktiviere WW-Anhebung                       | thermostat        | ☑    |         | ✔   |
-| [pvraiseheat](http://ems-esp/api/thermostat/pvraiseheat)                   | Anhebung Heizen mit PV                      | thermostat        | 🔢   | K       | ✔   |
-| [pvlowercool](http://ems-esp/api/thermostat/pvlowercool)                   | Absenkung Kühlen mit PV                     | thermostat        | 🔢   | K       | ✔   |
 | [currtemp](http://ems-esp/api/thermostat/currtemp)                         | HK1 aktuelle Raumtemperatur                 | thermostat<br>hc1 | 🔢   | °C      |     |
 | [haclimate](http://ems-esp/api/thermostat/haclimate)                       | HK1 Discovery aktuelle Raumtemperatur       | thermostat<br>hc1 | enum |         |     |
 | [modetype](http://ems-esp/api/thermostat/modetype)                         | HK1 Modustyp                                | thermostat<br>hc1 | enum |         |     |
