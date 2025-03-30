@@ -17,9 +17,19 @@ docs:
     url: /docs/optimierungen/
   - title: "App"
     url: /docs/app/
-  - title: "Smarthome"
-    url: /docs/smarthome/
   - title: "Ideen"
     url: /docs/ideen/
   - title: "Glossar"
     url: /docs/glossar
+  - title: "Smarthome"
+    children:
+      - title: "EMS-ESP"
+        url: /docs/smarthome/
+      - title: "Entitäten-Übersicht"
+        url: /docs/smarthome/entities
+      - title: "Home Assistant"
+        url: /docs/smarthome/ha
+      - title: "OpenHAB"
+        url: /docs/smarthome/openhab
+      - title: "Grafana"
+        url: /docs/smarthome/grafana
