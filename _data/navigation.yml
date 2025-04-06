@@ -33,3 +33,5 @@ docs:
         url: /docs/smarthome/openhab
       - title: "Grafana"
         url: /docs/smarthome/grafana
+      - title: "evcc"
+        url: /docs/smarthome/evcc
