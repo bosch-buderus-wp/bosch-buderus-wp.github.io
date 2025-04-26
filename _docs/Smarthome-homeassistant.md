@@ -5,8 +5,6 @@ permalink: /docs/smarthome/ha
 toc: true
 ---
 
-## Home Assistant
-
 Diese Anleitung setzt voraus, dass ihr bereits [ems-esp](/docs/smarthome/) installiert habt.
 
 ### Einbinden von ems-esp
@@ -58,7 +56,7 @@ Im nachfolgenden Verlauf werden die folgenden Messwerte dargestellt:
 
 Interessante Einsicht in die Effizienz der Anlage bietet insbesondere die Arbeitszahl, die manchmal auch als COP bezeichnet wird.
 Die Arbeitszahl ist nicht direkt über _ems-esp_ verfügbar, kann aber einfach eingerichtet werden.
-Die Arbeitszahl ist der Quotient aus thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
+Die Arbeitszahl ist der Quotient aus der thermischen Leistungsabgabe _Q_ und der elektrischen Leistungsaufnahme _P_.
 Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/redirect/helpers/):
 
 <figure class="third">
@@ -89,7 +87,7 @@ Zur Berechnung benötigt man 3 [Helfer-Entitäten](https://my.home-assistant.io/
    - Name: _boiler_az_
    - Zustandstemplate:
      {% raw %}
-     ```
+     ```jinja
      {% set q = states('sensor.boiler_powertotal') | float %}
      {% set p = states('sensor.boiler_powerconstotal') | float %}
      {% if q >= 0 and p > 0 %}
@@ -106,7 +104,7 @@ Wie bereits oben für den Vorlauf beschrieben, können wir die 3 neuen Helfer-En
 
 [![Verlauf von Messwerten](/assets/images/HA-History_Arbeitszahl.png)](/assets/images/HA-History_Arbeitszahl.png)
 
-[![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_powerconstotal%2Csensor.boiler_powertotal%2Csensor.boiler_cop)
+[![Diesen Verlauf direkt in Home Assistant öffnen](https://my.home-assistant.io/badges/history.svg "Diesen Verlauf direkt in Home Assistant öffnen")](http://homeassistant.local:8123/history?entity_id=sensor.boiler_powerconstotal%2Csensor.boiler_powertotal%2Csensor.boiler_az)
 
 Das Diagramm zeigt die 3 Helfer-Entitäten bei -5 °C Außentemperatur.
 Die elektrische Leistungsaufnahme schwankt zwischen 530 W und 1600 W.
@@ -120,7 +118,7 @@ Dazu legt ihr euch einfach eine weitere Helfer-Entität für die **Jahresarbeits
 - Name: _boiler_jaz_
 - Zustandstemplate:
   {% raw %}
-  ```
+  ```jinja
   {% set q = states('sensor.boiler_nrgsupptotal') | float %}
   {% set p = states('sensor.boiler_nrgconstotal') | float %}
   {% if q >= 0 and p > 0 %}
@@ -133,10 +131,56 @@ Dazu legt ihr euch einfach eine weitere Helfer-Entität für die **Jahresarbeits
 - Geräteklasse: _Leistungsfaktor_
 - Gerät: _ems-esp Boiler_
 
+### Fehler am Ableitungssensor beheben
+
+Solange die Wärmepumpe läuft und sich dadurch _ems-esp Boiler Gesamtenergie_ über die Zeit ändert, funktionieren die Helfer-Entitäten wie erwartet.
+Ist die Wärmepumpe jedoch aus, erfolgt keine Veränderung der _ems-esp Boiler Gesamtenergie_ mehr.
+In diesem Fall würde man erwarten, dass der oben erstellte Ableitungssensor _boiler_powertotal_ für die Leistungsabgabe 0 kW ausgibt und die daraus berechnete Arbeitszahl 0 ist.
+Jedoch reicht Home Assistant jegliche Aktualisierungen bei gleichbleibendem Wert nicht weiter.
+Dies führt leider dazu, dass der Ableitungssensor nicht aktualisiert wird und dadurch dessen Wert niemals 0 kW erreicht und die Arbeitszahl fälschlicherweise in die Höhe schnellt.
+
+Abhilfe hierfür schafft eine erzwungene Aktualisierung (_force_update_) mittels folgender Automation.
+Dazu öffnet man _Einstellungen &rarr; Automationen & Szenen_ und wählt dann unten rechts _AUTOMATION ERSTELLEN_ und _Neue Automation erstellen_ aus.
+Dann klickt man oben rechts auf die 3 Punkte und drückt auf _In YAML bearbeiten_ und fügt die folgende Konfiguration in das Textfeld ein:
+
+{% raw %}
+
+```yaml
+alias: "WP MQTT: Set force_update on boiler_nrgtotal if missing"
+description: >-
+  This automation adds 'force_update: true' to the discovery message of
+  'boiler_nrgtotal' when the flag is missing or false, preserving all other
+  content.
+triggers:
+  - topic: homeassistant/sensor/ems-esp/boiler_nrgtotal/config
+    trigger: mqtt
+conditions:
+  - condition: template
+    value_template: >
+      {% set payload = trigger.payload | from_json %} {{ not
+      payload.get('force_update', False) }}
+    enabled: true
+    alias: Only if force_update flag is false or missing entirely
+actions:
+  - data:
+      topic: homeassistant/sensor/ems-esp/boiler_nrgtotal/config
+      payload: >
+        {% set payload = trigger.payload | from_json %}{{ dict(payload,
+        force_update=true) | to_json }}
+      retain: false
+    action: mqtt.publish
+    enabled: true
+mode: single
+```
+
+{% endraw %}
+
+Nach dem _Speichern_ wird automatisch _force_update_ für _boiler_nrgtotal_ aktiviert und sowohl die Helfer-Entität für die Leistungsabgabe als auch die Arbeitszahl funktionieren wie erwartet - auch wenn die Wärmepumpe aus ist.
+
 ### Wärmepumpen Dashboard
 
 Um auf einen Blick alle relevanten Messwerte zu erhalten, empfiehlt es sich im nächsten Schritt ein Dashboard zu erstellen.
-Ein einfaches Dashboard für die Wärmepumpte sieht beispielsweise so aus:
+Ein einfaches Dashboard für die Wärmepumpe sieht beispielsweise so aus:
 
 [![Einfaches Home Assistant Dashboard](/assets/images/HA-SimpleDashboard.png)](/assets/images/HA-SimpleDashboard.png)
 
