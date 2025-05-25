@@ -9,6 +9,8 @@ Die Version 3.7.1 von [ems-esp](https://emsesp.org/) liefert 166 Entitäten für
 Auf dieser Seite findet ihr eine Erklärung aller Entitäten, soweit sie bekannt sind.
 Falls jemand noch weitere Informationen/Korrekturen hat, gerne hinzufügen.
 Die Spalte _RW_ (Read-Write) zeigt an, ob die Entität nur lesbar oder auch schreibbar ist.
+Einige Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
+Diese sind in der Beschreibung entsprechend markiert.
 
 ## Energiewerte
 
@@ -22,8 +24,10 @@ IDs, die _"comp"_ enthalten, beziehen sich auf die Wärmepumpe, _"eheat"_ und _"
 
 ### Mit 2 Nachkommastellen
 
-IDs, die mit _"nrg"_ oder _"nrgsupp"_ beginnen, beziehen sich auf die erzeugte thermische Energie (Wärme).
-IDs, die mit _"meter"_ beginnen, beziehen sich auf die eingesetzte elektrische Energie (Stromverbrauch).
+_"nrg..."_: erzeugte thermische Energie (Wärme)\
+_"meter..."_: eingesetzte elektrische Energie (Stromverbrauch)
+
+Die nachfolgenden Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
 
 | ID                                                 | Name               | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                                                |
 | -------------------------------------------------- | ------------------ | ------------- | --- | ------- | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -40,10 +44,10 @@ IDs, die mit _"meter"_ beginnen, beziehen sich auf die eingesetzte elektrische E
 
 ### Ohne Nachkommastellen
 
-IDs, die mit _"nrgcons"_ beginnen, beziehen sich auf die eingesetzte elektrische Energie (Stromverbrauch).
-IDs, die mit _"nrgconscomp"_ beginnen, beziehen sich auf eingesetzte elektrische Energie der Wärmepumpe.
-IDs, die mit _"auxelecheatnrgcons"_ beginnen, beziehen sich auf die eingesetzte elektrische Energie des elektrischen Zuheizers.
-IDs, die mit _"nrgsupp"_ beginnen, beziehen sich auf die erzeugte thermische Energie (Wärme).
+_"nrgsupp..."_: erzeugte thermische Energie (Wärme)\
+_"nrgcons..."_: eingesetzte elektrische Energie (Stromverbrauch)\
+_"nrgconscomp..."_: eingesetzte elektrische Energie der Wärmepumpe\
+_"auxelecheatnrgcons..."_: eingesetzte elektrische Energie des elektrischen Zuheizers
 
 | ID                                                                               | Name                                      | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                             |
 | -------------------------------------------------------------------------------- | ----------------------------------------- | ------------- | --- | ------- | --- | -------------------------------------------------------------------------------------------------------- |
@@ -98,52 +102,63 @@ IDs, die mit _"nrgsupp"_ beginnen, beziehen sich auf die erzeugte thermische Ene
 
 #### Einstellungen
 
-| ID                                                       | Name                          | Modul             | Typ | Einheit | RW  | Beschreibung                                                                     |
-| -------------------------------------------------------- | ----------------------------- | ----------------- | --- | ------- | --- | -------------------------------------------------------------------------------- |
-| [selflowtemp](http://ems-esp/api/boiler/selflowtemp)     | Gewählte Vorlauftemperatur    | boiler            | 🔢  | °C      | ✔   | Sollvorlauftemperatur ohne Anhebung durch Energiemanager/PV                      |
-| [heatingtemp](http://ems-esp/api/boiler/heatingtemp)     | Heiztemperatur                | boiler            | 🔢  | °C      | ✔   | Maximaler mögliche Vorlauftemperatur, z.B. 75°C bei CS6800i                      |
-| [tempdiffheat](http://ems-esp/api/boiler/tempdiffheat)   | Temp.diff. TC3/TC0 Heizen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Heizen      |
-| [tempdiffcool](http://ems-esp/api/boiler/tempdiffcool)   | Temp.diff. TC3/TC0 Kühlen     | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Kühlen      |
-| [intoffset](http://ems-esp/api/thermostat/intoffset)     | Korrektur interner Temperatur | thermostat        | 🔢  | °C      | ✔   | Temperaturdifferenz, um die die Raumsolltemperatur korrigiert werden soll        |
-| [minexttemp](http://ems-esp/api/thermostat/minexttemp)   | Min. Außentemperatur          | thermostat        | 🔢  | °C      | ✔   | [Normaußentemperatur](/docs/einstellungen/#normaußentemperatur)                  |
-| [summertemp](http://ems-esp/api/thermostat/summertemp)   | HK1 Sommertemperatur          | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Heizgrenze](/docs/einstellungen/#heizgrenze)                                    |
-| [designtemp](http://ems-esp/api/thermostat/designtemp)   | HK1 Auslegungstemperatur      | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Vorlauftemperatur an der NAT](/docs/einstellungen/#vorlauftemperatur-nat)       |
-| [offsettemp](http://ems-esp/api/thermostat/offsettemp)   | HK1 Temperaturanhebung        | thermostat<br>hc1 | 🔢  | °C      | ✔   | Wert, um den die Vorlauftemperatur manuell angehoben werden kann                 |
-| [seltemp](http://ems-esp/api/thermostat/seltemp)         | HK1 gewählte Raumtemperatur   | thermostat<br>hc1 | 🔢  | °C      | ✔   | Gewünschte Raumtemperatur                                                        |
-| [manualtemp](http://ems-esp/api/thermostat/manualtemp)   | HK1 manuelle Temperatur       | thermostat<br>hc1 | 🔢  | °C      | ✔   | Manuell eingestellte Raumtemperatur - identisch zu _seltemp_ wenn _mode=Manuell_ |
-| [minflowtemp](http://ems-esp/api/thermostat/minflowtemp) | HK1 min. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Minimale Vorlauftemperatur                                                       |
-| [maxflowtemp](http://ems-esp/api/thermostat/maxflowtemp) | HK1 max. Vorlauftemperatur    | thermostat<br>hc1 | 🔢  | °C      | ✔   | Maximale Vorlauftemperatur                                                       |
+| ID                                                       | Name                                                               | Modul             | Typ | Einheit | RW  | Beschreibung                                                                                          |
+| -------------------------------------------------------- | ------------------------------------------------------------------ | ----------------- | --- | ------- | --- | ----------------------------------------------------------------------------------------------------- |
+| [selflowtemp](http://ems-esp/api/boiler/selflowtemp)     | Gewählte Vorlauftemperatur                                         | boiler            | 🔢  | °C      | ✔   | Sollvorlauftemperatur ohne Anhebung durch Energiemanager/PV                                           |
+| [heatingtemp](http://ems-esp/api/boiler/heatingtemp)     | Heiztemperatur                                                     | boiler            | 🔢  | °C      | ✔   | Maximaler mögliche Vorlauftemperatur, z.B. 75°C bei CS6800i                                           |
+| [maxflowtemp](http://ems-esp/api/thermostat/maxflowtemp) | HK1 max. Vorlauftemperatur                                         | thermostat<br>hc1 | 🔢  | °C      | ✔   | Maximale Vorlauftemperatur in HK1                                                                     |
+| [minflowtemp](http://ems-esp/api/thermostat/minflowtemp) | HK1 min. Vorlauftemperatur                                         | thermostat<br>hc1 | 🔢  | °C      | ✔   | Minimale Vorlauftemperatur in HK1                                                                     |
+| [offsettemp](http://ems-esp/api/thermostat/offsettemp)   | HK1 Temperaturanhebung                                             | thermostat<br>hc1 | 🔢  | °C      | ✔   | Wert, um den die Vorlauftemperatur in HK1 manuell angehoben werden soll                               |
+| [designtemp](http://ems-esp/api/thermostat/designtemp)   | HK1 Auslegungstemperatur                                           | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Vorlauftemperatur an der NAT](/docs/einstellungen/#vorlauftemperatur-nat)                            |
+| [minexttemp](http://ems-esp/api/thermostat/minexttemp)   | Min. Außentemperatur                                               | thermostat        | 🔢  | °C      | ✔   | [Normaußentemperatur](/docs/einstellungen/#normaußentemperatur)                                       |
+| [summertemp](http://ems-esp/api/thermostat/summertemp)   | HK1 Sommertemperatur                                               | thermostat<br>hc1 | 🔢  | °C      | ✔   | [Heizgrenze](/docs/einstellungen/#heizgrenze)                                                         |
+| [tempdiffheat](http://ems-esp/api/boiler/tempdiffheat)   | Temp.diff. TC3/TC0 Heizen                                          | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Heizen                           |
+| [tempdiffcool](http://ems-esp/api/boiler/tempdiffcool)   | Temp.diff. TC3/TC0 Kühlen                                          | boiler            | 🔢  | K       | ✔   | Solltemperaturdifferenz zw. Vor- und Rücklauf des Primärkreises beim Kühlen                           |
+| [seltemp](http://ems-esp/api/thermostat/seltemp)         | HK1 gewählte [Raumtemperatur](/docs/einstellungen/#raumtemperatur) | thermostat<br>hc1 | 🔢  | °C      | ✔   | Gewünschte [Raumtemperatur](/docs/einstellungen/#raumtemperatur)                                      |
+| [manualtemp](http://ems-esp/api/thermostat/manualtemp)   | HK1 manuelle Temperatur                                            | thermostat<br>hc1 | 🔢  | °C      | ✔   | Manuell eingestellte Raumtemperatur - identisch zu _seltemp_ wenn _mode=Manuell_                      |
+| [intoffset](http://ems-esp/api/thermostat/intoffset)     | Korrektur interner Temperatur                                      | thermostat        | 🔢  | °C      | ✔   | [Raumtemperatur-Offset](/docs/einstellungen/#raumtemperatur), um der _seltemp_ korrigiert werden soll |
 
 ### Warmwasser
 
 #### Messwerte
 
-| ID                                             | Name                            | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                  |
-| ---------------------------------------------- | ------------------------------- | ------------- | --- | ------- | --- | --------------------------------------------------------------------------------------------- |
-| [settemp](http://ems-esp/api/boiler/settemp)   | WWK Solltemperatur              | boiler<br>dhw | 🔢  | °C      |     | Aktuelle Stopptemperatur im gerade aktiven Warmwassermodus                                    |
-| [curtemp](http://ems-esp/api/boiler/curtemp)   | WWK aktuelle interne Temperatur | boiler<br>dhw | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher (oberer Messpunkt, wenn verbaut) |
-| [curtemp2](http://ems-esp/api/boiler/curtemp2) | WWK aktuelle externe Temperatur | boiler<br>dhw | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher                                  |
-| [hptw1](http://ems-esp/api/boiler/hptw1)       | DHW Reservoir (TW1)             | boiler        | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher (unterer Messpunkt)              |
+| ID                                             | Name                            | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                            |
+| ---------------------------------------------- | ------------------------------- | ------------- | --- | ------- | --- | --------------------------------------------------------------------------------------------------------------------------------------- |
+| [settemp](http://ems-esp/api/boiler/settemp)   | WWK Solltemperatur              | boiler<br>dhw | 🔢  | °C      |     | Aktuelle Stopptemperatur im gerade aktiven Warmwassermodus                                                                              |
+| [curtemp2](http://ems-esp/api/boiler/curtemp2) | WWK aktuelle externe Temperatur | boiler<br>dhw | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher - identisch zu _hptw1_                                                     |
+| [hptw1](http://ems-esp/api/boiler/hptw1)       | DHW Reservoir (TW1)             | boiler        | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher (unterer Messpunkt) - identisch zu _curtemp2_                              |
+| [curtemp](http://ems-esp/api/boiler/curtemp)   | WWK aktuelle interne Temperatur | boiler<br>dhw | 🔢  | °C      |     | Aktuell gemessene Warmwassertemperatur im Warmwasserspeicher (oberer optionaler Messpunkt) wenn verbaut, ansonsten identisch zu _hptw1_ |
 
 #### Einstellungen
 
-Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung)
+Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung).
+Die Entitäten für die Differenz- und Stopptemperaturen sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
 
-| ID                                                             | Name                              | Modul         | Typ | Einheit | RW  | Beschreibung                                                                      |
-| -------------------------------------------------------------- | --------------------------------- | ------------- | --- | ------- | --- | --------------------------------------------------------------------------------- |
-| [comfdiff](http://ems-esp/api/boiler/comfdiff)                 | WWK Komfort Differenztemp.        | boiler<br>dhw | 🔢  | K       | ✔   | Ladedelta im Komfort Modus, mit dem die Vorlauftemperatur angehoben wird          |
-| [ecodiff](http://ems-esp/api/boiler/ecodiff)                   | WWK ECO Differenztemp.            | boiler<br>dhw | 🔢  | K       | ✔   | Ladedelta im Eco Modus, mit dem die Vorlauftemperatur angehoben wird              |
-| [ecoplusdiff](http://ems-esp/api/boiler/ecoplusdiff)           | WWK ECO+ Differenztemp.           | boiler<br>dhw | 🔢  | K       | ✔   | Ladedelta im Eco+ Modus, mit dem die Vorlauftemperatur angehoben wird             |
-| [comfstop](http://ems-esp/api/boiler/comfstop)                 | WWK Komfort Stopptemp.            | boiler<br>dhw | 🔢  | °C      | ✔   | Stopptemperatur im Komfort Modus, an der die Warmwasseraufbereitung beendet wird  |
-| [ecostop](http://ems-esp/api/boiler/ecostop)                   | WWK ECO Stopptemp.                | boiler<br>dhw | 🔢  | °C      | ✔   | Stopptemperatur im Eco Modus, an der die Warmwasseraufbereitung beendet wird      |
-| [ecoplusstop](http://ems-esp/api/boiler/ecoplusstop)           | WWK ECO+ Stopptemp.               | boiler<br>dhw | 🔢  | °C      | ✔   | Stopptemperatur im Eco+ Modus, an der die Warmwasseraufbereitung beendet wird     |
-| [seltempsingle](http://ems-esp/api/boiler/seltempsingle)       | WWK Einmalladungstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | Stopptemperatur für Extra-WW                                                      |
-| [disinfectiontemp](http://ems-esp/api/boiler/disinfectiontemp) | WWK Desinfektionstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | Stopptemperatur für die Warmwasserdesinfektion                                    |
-| [seltemp](http://ems-esp/api/boiler/seltemp)                   | WWK gewählte Temperatur           | boiler<br>dhw | 🔢  | °C      | ✔   | Starttemperatur im Komfort Modus, an der die Warmwasseraufbereitung begonnen wird |
-| [seltemplow](http://ems-esp/api/boiler/seltemplow)             | WWK ausgewählte untere Temperatur | boiler<br>dhw | 🔢  | °C      | ✔   | Starttemperatur im Eco Modus, an der die Warmwasseraufbereitung begonnen wird     |
-| [tempecoplus](http://ems-esp/api/boiler/tempecoplus)           | WWK ausgewählte ECO+ Temperatur   | boiler<br>dhw | 🔢  | °C      | ✔   | Starttemperatur im Eco+ Modus, bei der die Warmwasseraufbereitung begonnen wird   |
+| ID                                                             | Name                              | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                     |
+| -------------------------------------------------------------- | --------------------------------- | ------------- | --- | ------- | --- | -------------------------------------------------------------------------------------------------------------------------------- |
+| [comfdiff](http://ems-esp/api/boiler/comfdiff)                 | WWK Komfort Differenztemp.        | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, mit dem die Vorlauftemperatur angehoben wird          |
+| [ecodiff](http://ems-esp/api/boiler/ecodiff)                   | WWK ECO Differenztemp.            | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, mit dem die Vorlauftemperatur angehoben wird              |
+| [ecoplusdiff](http://ems-esp/api/boiler/ecoplusdiff)           | WWK ECO+ Differenztemp.           | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, mit dem die Vorlauftemperatur angehoben wird             |
+| [comfstop](http://ems-esp/api/boiler/comfstop)                 | WWK Komfort Stopptemp.            | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung beendet wird  |
+| [ecostop](http://ems-esp/api/boiler/ecostop)                   | WWK ECO Stopptemp.                | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung beendet wird      |
+| [ecoplusstop](http://ems-esp/api/boiler/ecoplusstop)           | WWK ECO+ Stopptemp.               | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, an der die Warmwasseraufbereitung beendet wird     |
+| [seltempsingle](http://ems-esp/api/boiler/seltempsingle)       | WWK Einmalladungstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) für Extra-WW                                                      |
+| [disinfectiontemp](http://ems-esp/api/boiler/disinfectiontemp) | WWK Desinfektionstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) für die Warmwasserdesinfektion                                    |
+| [seltemp](http://ems-esp/api/boiler/seltemp)                   | WWK gewählte Temperatur           | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung begonnen wird |
+| [seltemplow](http://ems-esp/api/boiler/seltemplow)             | WWK ausgewählte untere Temperatur | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung begonnen wird     |
+| [tempecoplus](http://ems-esp/api/boiler/tempecoplus)           | WWK ausgewählte ECO+ Temperatur   | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, bei der die Warmwasseraufbereitung begonnen wird   |
+
+Die WLW 196i liefert Stopptemperaturen unter folgenden Entitäten:
+
+| ID                                                 | Name                       | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                                   |
+| -------------------------------------------------- | -------------------------- | ------------- | --- | ------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| [comfoff](http://ems-esp/api/boiler/comfoff)       | WWK Komfort Ausschalttemp. | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i |
+| [ecooff](http://ems-esp/api/boiler/ecooff)         | WWK ECO Ausschalttemp.     | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i     |
+| [ecoplusoff](http://ems-esp/api/boiler/ecoplusoff) | WWK ECO+ Ausschalttemp.    | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i    |
 
 ## Pumpen
+
+Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
 
 | ID                                                         | Name                            | Modul         | Typ  | Einheit | RW  | Beschreibung                                                                                       |
 | ---------------------------------------------------------- | ------------------------------- | ------------- | ---- | ------- | --- | -------------------------------------------------------------------------------------------------- |
@@ -170,7 +185,7 @@ Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung
 | [hpactivity](http://ems-esp/api/boiler/hpactivity)                 | Kompressoraktivität          | boiler            | enum |         |     | Aktuelle Aktivität des Kompressors: "keine", "Heizen", "Kühlen", "Warmwasser", "Pool", "Unbekannt", "Abtauen" |
 | [hp4way](http://ems-esp/api/boiler/hp4way)                         | 4-Wege-Ventil (VR4)          | boiler            | enum |         |     | Aktuelle Stellung des 4-Wege-Ventils im Kältekreis: "Kühlen & Abtauen" oder "Heizen & Warmwasser"             |
 | [hpea0](http://ems-esp/api/boiler/hpea0)                           | Heizung Kondensatwanne (EA0) | boiler            | ☑    |         |     | AN wenn die Kondensatwannenheizung gerade aktiv ist                                                           |
-| [syspress](http://ems-esp/api/boiler/syspress)                     | Systemdruck                  | boiler            | 🔢   | bar     |     | Wasserdruck im Heizkreis                                                                                      |
+| [syspress](http://ems-esp/api/boiler/syspress)                     | Systemdruck                  | boiler            | 🔢   | bar     |     | Wasserdruck im Heizkreis<br>Nur CS5800/6800i & WLW176/186                                                     |
 | [charging](http://ems-esp/api/boiler/charging)                     | WWK Laden                    | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS                                                                       |
 | [3wayvalve](http://ems-esp/api/boiler/3wayvalve)                   | WWK 3-Wege-Ventil aktiv      | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS - identisch zu RWem _hp3way_                                          |
 | [auxheaterstatus](http://ems-esp/api/boiler/auxheaterstatus)       | Zusatzheizerstatus           | boiler            | 🔢   | %       |     | Aktuelle relative Leistung des Zuheizers                                                                      |
@@ -198,13 +213,13 @@ Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung
 
 ### Photovoltaik
 
-| ID                                                       | Name                       | Modul      | Typ | Einheit | RW  | Beschreibung                                     |
-| -------------------------------------------------------- | -------------------------- | ---------- | --- | ------- | --- | ------------------------------------------------ |
-| [pvraiseheat](http://ems-esp/api/thermostat/pvraiseheat) | Anhebung Heizen mit PV     | thermostat | 🔢  | K       | ✔   | Anhebung der Raumtemperatur bei PV-Überschuss    |
-| [pvlowercool](http://ems-esp/api/thermostat/pvlowercool) | Absenkung Kühlen mit PV    | thermostat | 🔢  | K       | ✔   | Absenkung der Raumtemperatur bei PV-Überschuss   |
-| [pvmaxcomp](http://ems-esp/api/boiler/pvmaxcomp)         | PV max. Kompressorleistung | boiler     | 🔢  | kW      | ✔   | Max. Kompressorleistung bei PV-Überschuss        |
-| [pvcooling](http://ems-esp/api/boiler/pvcooling)         | Kühlen nur mit PV          | boiler     | ☑   |         | ✔   | Kühlbetrieb wird nur bei PV-Überschuss aktiviert |
-| [pvenabledhw](http://ems-esp/api/thermostat/pvenabledhw) | aktiviere WW-Anhebung      | thermostat | ☑   |         | ✔   | Anhebung der WW-Temperatur bei PV-Überschuss     |
+| ID                                                       | Name                       | Modul      | Typ | Einheit | RW  | Beschreibung                                                                          |
+| -------------------------------------------------------- | -------------------------- | ---------- | --- | ------- | --- | ------------------------------------------------------------------------------------- |
+| [pvraiseheat](http://ems-esp/api/thermostat/pvraiseheat) | Anhebung Heizen mit PV     | thermostat | 🔢  | K       | ✔   | Anhebung der [Raumtemperatur](/docs/einstellungen/#raumtemperatur) bei PV-Überschuss  |
+| [pvlowercool](http://ems-esp/api/thermostat/pvlowercool) | Absenkung Kühlen mit PV    | thermostat | 🔢  | K       | ✔   | Absenkung der [Raumtemperatur](/docs/einstellungen/#raumtemperatur) bei PV-Überschuss |
+| [pvmaxcomp](http://ems-esp/api/boiler/pvmaxcomp)         | PV max. Kompressorleistung | boiler     | 🔢  | kW      | ✔   | Max. Kompressorleistung bei PV-Überschuss                                             |
+| [pvcooling](http://ems-esp/api/boiler/pvcooling)         | Kühlen nur mit PV          | boiler     | ☑   |         | ✔   | Kühlbetrieb wird nur bei PV-Überschuss aktiviert                                      |
+| [pvenabledhw](http://ems-esp/api/thermostat/pvenabledhw) | aktiviere WW-Anhebung      | thermostat | ☑   |         | ✔   | Anhebung der WW-Temperatur bei PV-Überschuss                                          |
 
 ### Elektrischer Zuheizer
 
@@ -247,13 +262,13 @@ Die Anlage kann im Heizbetrieb, im Kühlbetrieb, im Warmwasserbetrieb oder im St
 
 ### Kompressorstarts
 
-| ID                                                           | Name                      | Modul         | Typ | Einheit | RW  | Beschreibung                                      |
-| ------------------------------------------------------------ | ------------------------- | ------------- | --- | ------- | --- | ------------------------------------------------- |
-| [totalcompstarts](http://ems-esp/api/boiler/totalcompstarts) | Gesamtkompressorstarts    | boiler        | 🔢  |         |     | Gesamte Anzahl der Kompressorstarts               |
-| [heatingstarts](http://ems-esp/api/boiler/heatingstarts)     | Heizungsregelungstarts    | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Heizbetrieb       |
-| [coolingstarts](http://ems-esp/api/boiler/coolingstarts)     | Kühlregelungstarts        | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Kühlbetrieb       |
-| [starts2](http://ems-esp/api/boiler/starts2)                 | WWK Anzahl Starts Kreis 2 | boiler<br>dhw | 🔢  |         |     | Anzahl der Kompressorstarts für Warmwasserbetrieb |
-| [poolstarts](http://ems-esp/api/boiler/poolstarts)           | Poolsteuerungstarts       | boiler        | 🔢  |         |     | -- vermutlich nicht relevant --                   |
+| ID                                                           | Name                      | Modul         | Typ | Einheit | RW  | Beschreibung                                                                       |
+| ------------------------------------------------------------ | ------------------------- | ------------- | --- | ------- | --- | ---------------------------------------------------------------------------------- |
+| [totalcompstarts](http://ems-esp/api/boiler/totalcompstarts) | Gesamtkompressorstarts    | boiler        | 🔢  |         |     | Gesamte Anzahl der Kompressorstarts                                                |
+| [heatingstarts](http://ems-esp/api/boiler/heatingstarts)     | Heizungsregelungstarts    | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Heizbetrieb                                        |
+| [coolingstarts](http://ems-esp/api/boiler/coolingstarts)     | Kühlregelungstarts        | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Kühlbetrieb                                        |
+| [starts2](http://ems-esp/api/boiler/starts2)                 | WWK Anzahl Starts Kreis 2 | boiler<br>dhw | 🔢  |         |     | Anzahl der Kompressorstarts für Warmwasserbetrieb<br>Nur CS5800/6800i & WLW176/186 |
+| [poolstarts](http://ems-esp/api/boiler/poolstarts)           | Poolsteuerungstarts       | boiler        | 🔢  |         |     | -- vermutlich nicht relevant --                                                    |
 
 ## Eingänge
 
@@ -343,9 +358,6 @@ Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your hea
 | [hppowerlimit](http://ems-esp/api/boiler/hppowerlimit)             | Leistungsgrenze                          | boiler         | 🔢   | W       | ✔   | ---          |
 | [pc1rate](http://ems-esp/api/boiler/pc1rate)                       | PC1 Rate                                 | boiler         | 🔢   | %       |     | Immer 0%     |
 | [hptr7](http://ems-esp/api/boiler/hptr7)                           | Kältemittel (gasförmig) (TR7)            | boiler         | 🔢   | °C      |     |
-| [comfoff](http://ems-esp/api/boiler/comfoff)                       | WWK Komfort Ausschalttemp.               | boiler<br>dhw  | 🔢   | °C      | ✔   | ---          |
-| [ecooff](http://ems-esp/api/boiler/ecooff)                         | WWK ECO Ausschalttemp.                   | boiler<br>dhw  | 🔢   | °C      | ✔   | ---          |
-| [ecoplusoff](http://ems-esp/api/boiler/ecoplusoff)                 | WWK ECO+ Ausschalttemp.                  | boiler<br>dhw  | 🔢   | °C      | ✔   | Immer 0      |
 | [hpcircpump](http://ems-esp/api/boiler/hpcircpump)                 | WWK Zirkulation möglich bei WW-Bereitung | boiler<br>dhw  | ☑    |         | ✔   | ---          |
 | [tapactivated](http://ems-esp/api/boiler/tapactivated)             | WWK Durchlauferhitzer aktiv              | boiler<br>dhw  | ☑    |         | ✔   | ---          |
 | [seltempoff](http://ems-esp/api/boiler/seltempoff)                 | WWK ausgewählte Temperatur bei AUS       | boiler<br>dhw  | 🔢   | °C      |     | ---          |
