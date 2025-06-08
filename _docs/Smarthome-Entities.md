@@ -268,6 +268,7 @@ Die Anlage kann im Heizbetrieb, im Kühlbetrieb, im Warmwasserbetrieb oder im St
 | [heatingstarts](http://ems-esp/api/boiler/heatingstarts)     | Heizungsregelungstarts    | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Heizbetrieb                                        |
 | [coolingstarts](http://ems-esp/api/boiler/coolingstarts)     | Kühlregelungstarts        | boiler        | 🔢  |         |     | Anzahl der Kompressorstarts für Kühlbetrieb                                        |
 | [starts2](http://ems-esp/api/boiler/starts2)                 | WWK Anzahl Starts Kreis 2 | boiler<br>dhw | 🔢  |         |     | Anzahl der Kompressorstarts für Warmwasserbetrieb<br>Nur CS5800/6800i & WLW176/186 |
+| [startshp](http://ems-esp/api/boiler/starts2)                | WWK Anzahl Starts WP      | boiler<br>dhw | 🔢  |         |     | Anzahl der Kompressorstarts für Warmwasserbetrieb<br>Nur WLW196i                   |
 | [poolstarts](http://ems-esp/api/boiler/poolstarts)           | Poolsteuerungstarts       | boiler        | 🔢  |         |     | -- vermutlich nicht relevant --                                                    |
 
 ## Eingänge
@@ -307,7 +308,10 @@ Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your hea
 
 <details>
   <summary>Weitere Entiäten, deren Bedeutung aktuell noch unklar ist</summary>
-{% capture entities_boiler %}
+
+{% capture entities %}
+
+Boiler:
 
 | ID                                                                 | Name                                     | Modul          | Typ  | Einheit | RW  | Beschreibung |
 | ------------------------------------------------------------------ | ---------------------------------------- | -------------- | ---- | ------- | --- | ------------ |
@@ -385,16 +389,7 @@ Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your hea
 | [hpswitchvalve](http://ems-esp/api/boiler/hpswitchvalve)           | Schaltventil                             | boiler         | ☑    |         |     | Immer AUS    |
 | [headertemp](http://ems-esp/api/boiler/headertemp)                 | Hydr. Weiche                             | boiler         | 🔢   | °C      |     | Immer 0      |
 
-{% endcapture %}
-{{ entities_boiler | markdownify }}
-
-</details>
-
-## Thermostat
-
-<details>
-  <summary>Weitere Entiäten, deren Bedeutung aktuell noch unklar ist</summary>
-{% capture entities_thermostat %}
+Thermostat:
 
 | ID                                                                         | Name                                        | Modul             | Typ  | Einheit | RW  | Beschreibung |
 | -------------------------------------------------------------------------- | ------------------------------------------- | ----------------- | ---- | ------- | --- | ------------ |
@@ -459,7 +454,9 @@ Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your hea
 | [dailyheattime](http://ems-esp/api/thermostat/dailyheattime)               | WWK tägliche Heizzeit                       | thermostat<br>dhw | 🔢   | Minuten | ✔   |
 
 {% endcapture %}
-{{ entities_thermostat | markdownify }}
+{{ entities | markdownify }}
+
+</details>
 
 ## Entitäten auslesen
 
@@ -488,8 +485,6 @@ In Home Assistant wird das `dhw` durch `ww` ersetzt.
 
 ## Legende
 
-🔢 Datentyp: Number
-
-🔠 Datentyp: String
-
+🔢 Datentyp: Number \
+🔠 Datentyp: String \
 ☑ Datentyp: Boolean
