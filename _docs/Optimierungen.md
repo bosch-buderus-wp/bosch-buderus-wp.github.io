@@ -45,21 +45,32 @@ Es ist daher sinnvoll, die Warmwasseraufbereitung auf den frühen Nachmittag zwi
 
 Dazu kann man die [_Auto_ Modusauswahl](/docs/einstellungen#warmwasseraufbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
 
-- 13-17 Uhr = bevorzugte Zeit --> Eco
+- 13-17 Uhr = bevorzugte Zeit &rarr; Eco
   - _Starttemperatur_: 41 °C
   - _Stopptemperatur_: 48 °C
-- 17-21 Uhr = akzeptable Zeit --> Eco+
-  - _Starttemperatur_: 36 °C
-  - _Stopptemperatur_: 43 °C
-- 21-8 Uhr = inakzeptable Zeit --> Aus
-- 8-13 Uhr = akzeptable Zeit --> Eco+
-  - _Starttemperatur_: 36 °C
-  - _Stopptemperatur_: 43 °C
+- 17-21 Uhr = akzeptable Zeit &rarr; Eco+
+  - _Starttemperatur_: 33 °C
+  - _Stopptemperatur_: 40 °C
+- 21-8 Uhr = inakzeptable Zeit &rarr; Aus
+- 8-13 Uhr = akzeptable Zeit &rarr; Eco+
+  - _Starttemperatur_: 33 °C
+  - _Stopptemperatur_: 40 °C
 
 In diesem Beispiel wird zwischen 13-17 Uhr das Warmwasser aufbereitet, wenn dessen Temperatur unter 41 °C gefallen ist.
-Falls es in den Stunden zuvor oder danach unter die Schwelle von 36 °C fällt wird in den noch akzeptablen Vormittag- oder Abendstunden aufgeheizt.
+Falls sie in den Stunden zuvor oder danach unter die Schwelle von 33 °C fällt, wird in den noch akzeptablen Vormittag- oder Abendstunden aufgeheizt.
 In der Nacht wird nicht aufgeheizt.
-Die konkreten Temperaturen und Zeiten muss man natürlich individuell anpassen.
+
+Die obigen Einstellungen funktionieren nur gut, wenn ihr dem Warmwasserspeicher an üblichen Tagen etwa 7-14 °C entnehmt.
+Dann sollte an diesen üblichen Tagen die Warmwasseraufbereitung in die bevorzugte Zeit fallen.
+Liegt euer täglicher Verbrauch jedoch höher, so solltet ihr die Eco-Stopptemperatur entsprechend nach oben verschieben.
+Liegt euer täglicher Verbrauch niedriger, so solltet ihr die Eco-Stopptemperatur so anpassen, dass die Warmwasseraufbereitung auf jeden zweiten Mittag fällt.
+Überprüfen könnt ihr die aktuelle Warmwassertemperatur entweder am Startbildschirm des lokalen Bedienelements, in der [App](/docs/app/) oder über ein [Smarthome-System](/docs/smarthome/).
+An dieser Stelle möchte ich nochmals eindringlich darauf hinweisen, dass ihr bei derart niedrigen Wassertemperaturen entweder eine wöchentliche thermische Desinfektion oder einen Wasseraustausch aller Leitungen innerhalb weniger Tage sicherstellen müsst [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
+
+Auch für Besitzer von Photovoltaik-Anlagen und im Sinne der Energiewende kann die oben beschriebene Einstellung sinnvoll sein, denn in der Regel ist der höchste PV-Ertrag in Deutschland gegen 13 Uhr zu erwarten (siehe [energy-charts.de](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
+Wer eine PV-Anlage besitzt, kann noch einen Schritt weiter gehen und die Warmwasseraufbereitung mit PV-Überschuss optimieren.
+Dafür kommt der in den oben genannten Einstellungen nicht genutzte Komfortmodus zum Einsatz.
+Weitere Details zur Realisierung könnt ihr beispielsweise der Anleitung für [evcc](https://bosch-buderus-wp.github.io/docs/smarthome/evcc) entnehmen.
 
 ## Heizkurve und Thermischer Abgleich
 
