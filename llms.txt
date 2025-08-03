@@ -1,0 +1,26 @@
+# Knowledge base for Bosch CS5800/6800i and Buderus WLW176/186i heat pumps.
+
+> This website helps everyone who want to understand how the Bosch CS5800/6800i and Buderus WLW176/186i heat pumps work, how to optimize their settings and how to integrate them into smart home systems like home assistant, openHAB, InfluxDB/Grafana and more.
+
+## General
+
+- [Varianten](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Varianten.md): All variants of Bosch CS5800/6800i und Buderus WLW176/186i heat pumps
+- [Technischer Aufbau](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Technischer-Aufbau.md): Technical setup of the heat pump with descriptions of its general functionality, the 3 different circuits, modulation and defrosting process
+- [Einstellungen](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Einstellungen.md): Most important settings of the heat pump like heat curve, domestic hot water and auxiliary heater
+- [Optimierungen](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Optimierungen.md): Instructions how to optimize domestic hot water preparation, thermal balance and flow of the circuits
+
+
+## Smarthome
+
+- [EMS-ESP](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome.md): Introduction and setup of ems-esp gateway
+- [Entitäten-Übersicht](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-Entities.md): Definition of most important entities provided by ems-esp
+- [Home Assistant](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-homeassistant.md): Setup and configuration to use Home Assistant with the heatpump via ems-esp
+- [OpenHAB](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-openhab.md): Setup and configuration to use OpenHAB with the heatpump via ems-esp
+- [Grafana](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-grafana.md): Setup and configuration to use Grafana with the heatpump via ems-esp
+- [evcc](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-evcc.md): Setup and configuration to use the energy management system evcc with the heatpump via ems-esp
+
+## Optional
+
+- [Softwareversionen](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Softwareversionen.md): Software/firmware versions of the indoor and outdoor unit of the heat pump
+- [App](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/App.md): The Android and iOS app for the heat pump
+- [Glossar](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Glossar.md): Glossary for terms related to heat pumps and this heat pump in particular
