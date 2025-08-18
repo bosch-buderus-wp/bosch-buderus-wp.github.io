@@ -9,7 +9,10 @@ Für den effizienten Betrieb und eine lange Lebensdauer der Wärmepumpe gibt es 
 Diese Optimierungen sind abhängig von den lokalen Gegebenheiten und persönlichen Vorlieben und unterscheiden sich daher von Wärmepumpe zu Wärmepumpe.
 Nachfolgend sind einige dieser Optimierungen - von einfach bis etwas komplexer - aufgeführt.
 
-Für einen effizienten Betrieb gilt grundsätzlich: **Je geringer die Temperatur(-differenz), desto geringer der Energieverbrauch!**
+Für einen effizienten Betrieb gilt grundsätzlich:
+
+{: .notice--info}
+**Je geringer die Temperatur(-differenz), desto geringer der Energieverbrauch!**
 
 Grobe Faustregel: jedes zusätzliche Grad erhöht den Energieverbrauch um ca. 2,5% [[Quelle](https://www.heizungsdiscount24.de/pdf/Junkers-Bosch-Compress-CS7000iAW-3-13-kW-Planungsunterlage.pdf)]
 
@@ -71,6 +74,31 @@ Auch für Besitzer von Photovoltaik-Anlagen und im Sinne der Energiewende kann d
 Wer eine PV-Anlage besitzt, kann noch einen Schritt weiter gehen und die Warmwasseraufbereitung mit PV-Überschuss optimieren.
 Dafür kommt der in den oben genannten Einstellungen nicht genutzte Komfortmodus zum Einsatz.
 Weitere Details zur Realisierung könnt ihr beispielsweise der Anleitung für [evcc](https://bosch-buderus-wp.github.io/docs/smarthome/evcc) entnehmen.
+
+## Warmwasserzirkulation
+
+Steht Wasser länger in der Leitung kühlt es ab.
+Um beim Aufdrehen der Dusche oder des Wasserhahns gleich mit warmem Wasser begrüßt zu werden, wurden früher in vielen Häusern so genannte Zirkulationsleitungen verbaut.
+Mit Hilfe dieser zusätzlichen Leitung wird warmes Wasser aus dem Warmwasserspeicher, der sich oft im Heizungskeller befindet, in die anderen Stockwerke zirkuliert.
+Somit verschwendet man weniger Wasser, das unnötig in den Abfluss laufen würde, bis endlich warmes Wasser den Wasserhahn oder die Dusche erreicht.
+Klingt erst einmal sinnvoll, um sparsam mit der kostbaren Ressource Wasser umzugehen.
+
+Problem daran ist jedoch, dass durch die Zirkulation des warmen Wassers durch die Leitungen im kälteren Mauerwerk Wärmeenergie verloren geht.
+Im Winter könnte man argumentieren, dass damit zusätzlich das Haus mitgeheizt wird und somit keine Energie verloren geht.
+Da das Brauchwasser jedoch in der Regel eine höhere Temperatur als das Heizungswasser hat und dadurch mehr elektrische Energie nötig war, um es zu erzeugen, verschenkt man damit einiges an Potenzial.
+
+[![Alexa Routine: Bedarfsgesteuerte Warmwasserzirkulation](/assets/images/Optimierungen-AlexaRoutineZirkulation.png){:width="200px"}](/assets/images/Optimierungen-AlexaRoutineZirkulation.png)
+{: .align-right}
+
+Eine logische Schlussfolgerung wäre die Zirkulationspumpe einfach abzustellen.
+Aufgrund der Gefahr von Legionellen ist dies aber keine gute Idee.
+Eine erste Optimierung ist die Laufzeit der Zirkulationspumpe in den Einstellungen der Wärmepumpe zu reduzieren.
+Alternativ kann man sich die Zirkulationspumpe an eine eigene Steckdose legen lassen.
+Dann nutzt man einen programmierbaren Zwischenstecker, z.B. von Shelly, der zu Bedarfszeiten, z.B. morgens und abends, die Zirkulation für 5 Minuten aktiviert.
+Damit spart man Wasser und gleichzeitig reduziert man den Energieverlust der Zirkulation auf ein Minimum.
+
+Wer möchte, kann noch einen Schritt weitergehen und den Zwischenstecker bei Warmwasserbedarf mit einem Shelly-Button oder einer Amazon Alexa Routine einschalten.
+Dann drückt man einfach den Button oder sagt "Alexa, duschen" um die Zirkulationspumpe für 5 Minuten zu starten.
 
 ## Heizkurve und Thermischer Abgleich
 
