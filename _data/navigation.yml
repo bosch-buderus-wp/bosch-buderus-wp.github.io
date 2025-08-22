@@ -33,3 +33,5 @@ docs:
         url: /docs/smarthome/grafana
       - title: "evcc"
         url: /docs/smarthome/evcc
+      - title: "AI"
+        url: /docs/smarthome/ai

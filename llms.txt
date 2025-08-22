@@ -18,6 +18,7 @@
 - [OpenHAB](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-openhab.md): Setup and configuration to use OpenHAB with the heatpump via ems-esp
 - [Grafana](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-grafana.md): Setup and configuration to use Grafana with the heatpump via ems-esp
 - [evcc](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-evcc.md): Setup and configuration to use the energy management system evcc with the heatpump via ems-esp
+- [ai](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-ai.md): Setup and configuration to use your heatpump in GenAI solutions like Anthropic Claude
 
 ## Optional
 
