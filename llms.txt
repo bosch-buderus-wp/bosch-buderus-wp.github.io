@@ -14,6 +14,7 @@
 
 - [EMS-ESP](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome.md): Introduction and setup of ems-esp gateway
 - [Entitäten-Übersicht](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-Entities.md): Definition of most important entities provided by ems-esp
+- [Benachrichtigungen](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-Benachrichtigungen.md): Get notifications from your heatpump via ems-esp
 - [Home Assistant](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-homeassistant.md): Setup and configuration to use Home Assistant with the heatpump via ems-esp
 - [OpenHAB](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-openhab.md): Setup and configuration to use OpenHAB with the heatpump via ems-esp
 - [Grafana](https://raw.githubusercontent.com/bosch-buderus-wp/bosch-buderus-wp.github.io/refs/heads/main/_docs/Smarthome-grafana.md): Setup and configuration to use Grafana with the heatpump via ems-esp

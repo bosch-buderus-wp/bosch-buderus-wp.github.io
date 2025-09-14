@@ -25,6 +25,8 @@ docs:
         url: /docs/smarthome/
       - title: "Entitäten-Übersicht"
         url: /docs/smarthome/entities
+      - title: "Benachrichtigungen"
+        url: /docs/smarthome/benachrichtigungen
       - title: "Home Assistant"
         url: /docs/smarthome/ha
       - title: "OpenHAB"
