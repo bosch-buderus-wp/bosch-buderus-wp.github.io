@@ -1,12 +1,12 @@
 ---
 title: Smarthome
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Smarthome Systeme wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
+excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen in Smarthome Systeme wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
 permalink: /docs/smarthome/
 toc: true
 ---
 
-Nachfolgend findet ihr eine Anleitung, wie ihr die Bosch CS5800/6800i oder Buderus WLW176/186 in freie Smarthome-Systeme wie [OpenHAB](https://www.openhab.org/) oder [Home Assistant](https://www.home-assistant.io/) oder Energiemanagement-Systeme wie [evcc](https://evcc.io) integrieren könnt.
-Zusätzlich wird beschrieben, wie man die Messwerte in [Grafana](https://grafana.com) visualisiert.
+Nachfolgend findet ihr eine Anleitung, wie ihr die Bosch CS5800/6800i oder Buderus WLW176/186i in freie Smarthome-Systeme wie [OpenHAB](/docs/smarthome/openhab) oder [Home Assistant](/docs/smarthome/ha) oder Energiemanagement-Systeme wie [evcc](/docs/smarthome/evcc) integrieren könnt.
+Zusätzlich wird beschrieben, wie man die Messwerte in [Grafana](/docs/smarthome/grafana) visualisiert, die Wärmepumpe in [Gen-AI](/docs/smarthome/ai) Anwendungen wie Anthropic Claude einbindet oder einfach nur [Benachrichtigungen](/docs/smarthome/benachrichtigungen) der Wärmepumpe aufs Smartphone bekommt.
 
 ## EMS-ESP
 
@@ -15,6 +15,15 @@ Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
 Wer die Hardware nicht selbst basteln möchte, kann bereits mit _ems-esp_ geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
 Ich habe mich für das [ BBQKees Gateway S3](https://bbqkees-electronics.nl/product/gateway-s3-standard-wifi-ausgabe/?lang=de) entschieden.
+
+### Einbau
+
+Der einfachste Weg, um das _ems-esp_ Gateway mit eurer Wärmepumpe zu verbinden, ist die Servicebuchse.
+In meiner Bosch CS 6800i AW 12 MB befindet sich die Servicebuchse auf der linken Seite der Elektronikbox.
+Dazu öffnet ihr die vordere Blende der Inneneinheit durch Entfernen der Schraube auf der Oberseite und drückt die beiden Verriegelungsknöpfe.
+Um zur Servicebuchse zu gelangen, löst ihr die Schraube oben und klappt die graue Elektronikbox heraus.
+Dann verbindet ihr zuerst das Kabel mit dem _ems-esp_ Gateway und im nächsten Schritt steckt ihr das Kabel in die Servicebuchse (genau in dieser Reihenfolge).
+Daraufhin könnt ihr alles wieder zusammenbauen und das Kabel links oben durch die kleine Aussparung zwischen Frontblende und Gehäuse führen.
 
 <figure class="half">
   <a href="/assets/images/BBQKees-Gateway-S3.jpg">
@@ -25,35 +34,57 @@ Ich habe mich für das [ BBQKees Gateway S3](https://bbqkees-electronics.nl/prod
   </a>
 </figure>
 
-Nachdem man die Hardware an die Servicebuchse der Inneneinheit angesteckt und das WLAN konfiguriert hat, kann man Daten über die Weboberfläche unter [http://ems-esp](http://ems-esp) oder über die REST API auslesen:
+Um sporadische Verbindungsprobleme zu vermeiden, solltet ihr ein hochwertiges Verbindungskabel verwenden und das Gateway außerhalb der Inneneinheit aufbewahren.
+
+### Einrichtung
+
+Sobald das Gateway mit eurer Wärmepumpe verbunden ist, startet es automatisch und öffnet ein WLAN mit dem Namen _'ems-esp'_.
+Verbindet euch mit eurem Computer oder Smartphone mit diesem WLAN.
+Wenn ihr dann die Adresse [http://192.168.4.1](http://192.168.4.1) im Browser öffnet, erscheint die _ems-esp_ Weboberfläche.
+Default-Zugangsdaten sind _'admin'_ mit Passwort _'admin'_.
+
+[![Weboberfläche von _ems-esp_](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
+
+Nun müsst ihr noch euer heimisches WLAN unter [Einstellungen &rarr; Netzwerk](http://ems-esp/settings/network/settings) einrichten.
+Dann könnt ihr mit eurem Computer/Smartphone wieder zurück ins heimische WLAN wechseln.
+
+Euer _ems-esp_ Gateway sollte nun unter [http://ems-esp](http://ems-esp) oder [http://ems-esp.local](http://ems-esp.local) erreichbar sein.
+Die REST API erreicht ihr unter `/api`:
 
 ```shell
 curl http://ems-esp/api/thermostat/manualtemp
 > {"name":"manualtemp","fullname":"HK1 manuelle Temperatur","circuit":"hc1","value":21.5,"type":"number","min":0,"max":127,"uom":"°C","readable":true,"writeable":true,"visible":true}
 ```
 
-[![Weboberfläche von _ems-esp_](/assets/images/EMS-ESP.png "Weboberfläche ems-esp")](/assets/images/EMS-ESP.png)
+### Entitäten auslesen/setzen
 
-Leider tritt bei manchen Nutzern sporadisch ein Verbindungsproblem auf, das hoffentlich bald gelöst wird (siehe [
-Bosch Heat Pump error: No communication on EMS bus](https://github.com/emsesp/EMS-ESP32/issues/2104)).
+In der Weboberfläche taucht eure Wärmepumpe mit 3 Geräten auf:
 
-### Entitäten
+- **XCU_THH/CS\*800i, Logatherm WLW\*** (Boiler): die Wärmepumpensteuerung \
+  Der Boiler übernimmt die Steuerung aller wichtigen Funktionen der Wärmepumpe und bietet die meisten Entitäten an.
+- **HMI800.2/Rego 3000, UI800, Logamatic BC400** (Thermostat): das Bedienfeld an der Inneneinheit \
+  Das Thermostat ist im Wesentlichen für die Bestimmung der Vorlauftemperatur und ein paar weiterer Einstellungen verantwortlich.
+- **K30RF/WiFi module** (Gateway Module): optionales WiFi-Modul zur Anbindung der Bosch/Buderus App
 
-In der Weboberfläche werden direkt alle erkannten Geräte angezeigt:
+Die Entitäten, die von den Geräten ausgelesen werden können, sind entweder Messwerte (z.B. Vorlauftemperatur), Statusinformationen (z.B. Warmwasseraufbereitung aktiv), Einstellungen (z.B. gewünschte Raumtemperatur) oder Kommandos (z.B. Desinfektion starten).
+In meiner [Entitäten-Übersicht](/docs/smarthome/entities) findet ihr eine Liste mit Erklärungen der wichtigsten Entitäten.
 
-- **XCU_THH/CS\*800i, Logatherm WLW\*** (Boiler) mit 173 Entitäten
-- **HMI800.2/Rego 3000, UI800, Logamatic BC400** (Thermostat) mit 71 Entitäten
-- **K30RF/WiFi module** (Gateway Module)
+Jetzt könnt ihr auch schon loslegen und über die Weboberfläche die Entitäten einsehen und konfigurieren.
+Und über die REST API könnt ihr folgende Erweiterungen anbinden:
 
-Unter [Smarthome Entitäten](/docs/smarthome/entities) ist eine Liste aller aktuell verfügbaren Entitäten zu finden.
+- [Benachrichtigungen](/docs/smarthome/benachrichtigungen), um über Zustandsänderungen per Push-Notification auf euer Smartphone informiert zu werden
+- Energiemanagement-Systeme wie [evcc](/docs/smarthome/evcc) anbinden
+- [Gen-AI](/docs/smarthome/ai) Anwendung wie Anthropic Claude nutzen, um eure Entitäten auszuwerten.
+
+Wie ihr Smarthome-Systeme über MQTT verbindet, erfahrt ihr im nächsten Abschnitt.
 
 ## MQTT
 
 Für den Datenaustausch zwischen _ems-esp_ und einem Smarthome-System bietet sich MQTT an.
 Dazu braucht man einen MQTT-Broker, wie [Mosquitto](https://mosquitto.org/), der in vielen Smarthome-Systemen bereits als optionale Erweiterung mitgeliefert wird.
 In Home Assistant und OpenHAB kann Mosquitto leicht über das entsprechende [Add-on](https://github.com/home-assistant/addons/blob/master/mosquitto/DOCS.md) installiert werden.
-Die Kommunikation mit evcc funktioniert über die REST-API von ems-esp.
-Daher braucht ihr für evcc kein MQTT.
+Die Kommunikation mit _evcc_ funktioniert über die REST API von _ems-esp_.
+Daher braucht ihr für _evcc_ kein MQTT.
 
 ```mermaid
 flowchart LR
@@ -74,4 +105,3 @@ Mehr dazu in den nachfolgenden Abschnitten:
 - [Home Assistant](/docs/smarthome/ha)
 - [OpenHAB](/docs/smarthome/openhab)
 - [Grafana](/docs/smarthome/grafana)
-- [evcc](/docs/smarthome/evcc)
