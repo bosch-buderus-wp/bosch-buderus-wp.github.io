@@ -1,6 +1,6 @@
 ---
 title: Optimierungen
-excerpt: Optimierungen für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, um die Effizienz zu steigern
+excerpt: Optimierungen für Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen, um die Effizienz zu steigern
 permalink: /docs/optimierungen/
 toc: true
 ---
@@ -116,7 +116,7 @@ Die folgende 4-Schritt-Anleitung für den thermischen Abgleich stammt von [Energ
    Öffnen Sie das Ventilunterteil maximal und ändern Sie dann die Heizkurve, bis dieser Raum perfekt temperiert ist.
 2. Typischerweise werden die anderen Räume dann zu warm sein.
    Gehen Sie in jenen Raum, der am stärksten überhitzt ist und drehen das Ventilunterteil der Heizkörper dort etwas ein.
-   Beobachten sie die Temperatur dieses Raumes mindestens einen Tag lang und justieren ggf. nach.
+   Beobachten Sie die Temperatur dieses Raumes mindestens einen Tag lang und justieren ggf. nach.
    Je nach Qualität Ihrer Gebäudehülle kann es bis zu 3 Tage dauern, dass sich die Temperatur eingeschwungen hat.
 3. Wenn dieser Raum perfekt geheizt wird, gehen Sie zurück in den Leitraum.
    Da Sie die Gesamtmenge reduziert haben, wird der Leitraum wahrscheinlich zu warm geworden sein.
@@ -139,21 +139,43 @@ Um unnötiges Takten zu verhindern, ist eine niedrigere Heizgrenztemperatur vorz
 
 Um den Abgleich der Volumenströme zwischen [Primär-](/docs/technischer-aufbau#primärkreis) und [Heizkreis](/docs/technischer-aufbau#heizkreis) zu verstehen, muss man Regelung der Kreise etwas genauer betrachten.
 Im Primärkreis wird als Zielgröße die Temperaturdifferenz _dT_ zwischen Vorlauf (TC3) und Rücklauf (TC0), die so genannte Spreizung, eingestellt.
-Das Erreichen der Spreizung wird über den Volumenstrom der drehzahlgesteuerten Pumpe (PC0) geregelt.
-Ist die Spreizung zu niedrig, reduziert PC0 den Volumenstrom, damit das Wasser im Verflüssiger mehr Wärme aufnehmen kann und die Spreizung steigt.
+Das Erreichen der Spreizung wird über den Volumenstrom der drehzahlgesteuerten Primärkreispumpe (PC0) geregelt.
+Ist die Spreizung zu niedrig, reduziert PC0 den Volumenstrom, damit das Wasser im Wärmetauscher mehr Wärme aufnehmen kann und die Spreizung steigt.
 Ist die Spreizung zu hoch, erhöht PC0 den Volumenstrom.
 
-Im Heizkreis hingegen wird der Differenzdruck eingestellt und die Spreizung ergibt sich aus der Wärmeabnahme der Heizkörper bzw. Fußbodenheizung.
-Bei gleichbleibendem Differenzdruck nimmt das Haus immer gleich viel Energie ab und die Spreizung bleibt auf nahezu dem selben Wert.
-Leichte Veränderungen ergeben sich bei niedrigerer Außentemperatur durch die steigende Vorlauftemperatur.
-Diese Veränderung kann aber vernachlässigt werden.
+Im Heizkreis hingegen wird der Differenzdruck eingestellt.
+Die Spreizung ergibt sich aus der Wärmeabgabe der Heizkörper bzw. Fußbodenheizung und kann daher nicht eingestellt werden.
+Der eingestellte Differenzdruck sorgt für einen konstanten Volumenstrom im Heizkreis.
+Das gilt natürlich nur, wenn die Ventilstellung an den Heizkörpern bzw. der Fußbodenheizung unverändert bleibt.
+Ändert das Thermostat die Ventilstellung, dann ändert sich der Widerstand und, um den konstanten Differenzdruck sicherzustellen, muss PC1 den Volumenstrom anpassen.
+Für bessere Effizienz und Stabilität sollten die Thermostate daher immer möglichst weit offen sein und der Durchfluss, wie unter [Heizkurve und Thermischer Abgleich](#heizkurve-und-thermischer-abgleich) beschrieben, am Ventilunterteil bzw. Durchflussregler fest eingestellt werden.
+
+Standardmäßig ist bei der Bosch CS 5800/6800i und Buderus WLW 176/186 die Spreizung des Primärkreises auf 4,5 K bei Fußbodenheizung und 7,5 K bei Heizkörpern und ein Differenzdruck von 250 mbar hinterlegt.
 
 Wenn nun
 
 1. der Primärkreis einen höheren Volumenstrom aufweist als der Heizkreis abnehmen kann - dann zieht der Primärkreis warmes Wasser wieder direkt in den Rücklauf und die Wärmepumpe geht aus - oder
-2. der Primärkreis einen niedrigeren Volumenstrom aufbringt als der Heizkreis abnimmt - dann befördert der Heizkreis kälteres Wasser aus seinem Rücklauf direkt wieder in seinen Vorlauf (T0 > TC1).
+2. der Primärkreis einen niedrigeren Volumenstrom aufbringt als der Heizkreis abnimmt - dann befördert der Heizkreis kälteres Wasser aus seinem Rücklauf direkt wieder in seinen Vorlauf.
+   Dadurch würde die Temperatur im Heizkreis sinken.
+   Die Regelung der Wärmepumpe sorgt aber dafür, dass die Vorlauftemperatur (T0) im Heizkreis der Sollvorlauftemperatur aus der Heizkurve folgt.
+   Das erreicht die Regelung, in dem sie die Vorlauftemperatur im Primärkreis (TC3) erhöht.
+   Dafür bedarf es mehr Leistung und folglich sinkt die Effizienz.
 
-Standardmäßig ist bei der Bosch CS 5800/6800i und Buderus WLW 176/186 die Spreizung des Primärkreises auf 4,5 K bei Fußbodenheizung und 7,5 K bei Heizkörpern und ein Differenzdruck von 250 mbar hinterlegt.
+### Interaktiver Simulator der Kreisläufe
 
-Grundsätzlich ist eine niedrigere Spreizung effizienter, denn um beispielsweise eine mittlere Temperatur von 30 °C zu erreichen, muss die Spreizung bei 4 K den Vorlauf auf 32 °C erwärmt werden.
-Bei einer Spreizung von 8 K müsste der Vorlauf auf 34 °C erwärmen.
+Mit dem folgenden Simulator kannst du die drei Kreisläufe (Kältekreis, Primärkreis und Heizkreis) anschaulich nachvollziehen.
+
+Achtung: Der Simulator ist nur ein erster, sehr vereinfachter Versuch, die Abläufe der Wärmepumpe zu simulieren, und hat mit Sicherheit noch einige Fehler.
+Falls du konkrete Verbesserungsvorschläge hast, erstelle gerne einen [Pull-Request](https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/pulls).
+
+<div id="heatpump-simulator"></div>
+
+<link rel="stylesheet" href="{{ '/assets/css/heatpump-simulator.css' | relative_url }}">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="/assets/js/heatpump-simulator/engine/compute.js"></script>
+<script src="/assets/js/heatpump-simulator/ui/controls.js"></script>
+<script src="/assets/js/heatpump-simulator/ui/diagram.js"></script>
+<script src="/assets/js/heatpump-simulator/heatpump-simulator.js"></script>
+
+<!-- prettier-ignore -->
+*[Spreizung]: Differenz zwischen Vor- und Rücklauf

@@ -1,0 +1,29 @@
+/* Heatpump Simulator Styles */
+.heatpump-sim { max-width: 1000px; margin: 0 auto; font-family: system-ui, sans-serif; }
+.heatpump-sim .sim-controls { display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-bottom: 10px; }
+.heatpump-sim .sim-ctrl-row { display: grid; grid-template-columns: clamp(120px, 35vw, 400px) 1fr auto; align-items: center; gap: 8px; }
+.heatpump-sim select { width: 100%; padding: 4px 6px; }
+.heatpump-sim .sim-ctrl-row label { font-size: 0.95rem; }
+.heatpump-sim .sim-ctrl-row input[type=range] { width: 100%; }
+.heatpump-sim .sim-ctrl-value { text-align: right; font-variant-numeric: tabular-nums; min-width: 120px; }
+.heatpump-sim .sim-diagram-wrap { position: relative; width: 100%; }
+.heatpump-sim .sim-svg { width: 100%; height: auto; display: block; }
+.heatpump-sim .label { font-size: 16px; dominant-baseline: middle; fill: #111; background: none; }
+.heatpump-sim .label-bold { font-weight: 700; }
+.odu { fill: #f6f8fa; stroke: #cbd5e1; stroke-width: 2; }
+.coil { fill: none; stroke: #9aa5b1; stroke-width: 6; }
+.coil.evap { stroke: #6ab3ff; }
+.coil.condenser { stroke: #ffb06a; }
+.compressor { fill: #ffe0c2; stroke: #c27d3a; stroke-width: 2; }
+.compressor-spiral { fill: none; stroke: #a85b16; stroke-width: 2; }
+.comp-spin { pointer-events: none; }
+.comp-rotor { transform-origin: center; transform-box: fill-box; }
+@keyframes spin { 100% { transform: rotate(360deg); } }
+.buffer { fill: #f7fbff; stroke: #94a3b8; stroke-width: 2; }
+.flow { fill: none; stroke-linecap: round; stroke-linejoin: round; }
+.flow.refrig { filter: drop-shadow(0 0 2px rgba(0,0,0,0.15)); }
+.flow.air { stroke: #66aaff; stroke-width: 6; }
+@keyframes dash-forward { to { stroke-dashoffset: -1000; } }
+@keyframes dash-reverse { to { stroke-dashoffset: 1000; } }
+.animate-forward { animation-name: dash-forward; animation-iteration-count: infinite; animation-timing-function: linear; }
+.animate-reverse { animation-name: dash-reverse; animation-iteration-count: infinite; animation-timing-function: linear; }
