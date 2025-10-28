@@ -1,29 +1,234 @@
 /* Heatpump Simulator Styles */
-.heatpump-sim { max-width: 1000px; margin: 0 auto; font-family: system-ui, sans-serif; }
-.heatpump-sim .sim-controls { display: flex; flex-direction: column; gap: 10px; align-items: stretch; margin-bottom: 10px; }
-.heatpump-sim .sim-ctrl-row { display: grid; grid-template-columns: clamp(120px, 35vw, 400px) 1fr auto; align-items: center; gap: 8px; }
-.heatpump-sim select { width: 100%; padding: 4px 6px; }
-.heatpump-sim .sim-ctrl-row label { font-size: 0.95rem; }
-.heatpump-sim .sim-ctrl-row input[type=range] { width: 100%; }
-.heatpump-sim .sim-ctrl-value { text-align: right; font-variant-numeric: tabular-nums; min-width: 120px; }
-.heatpump-sim .sim-diagram-wrap { position: relative; width: 100%; }
-.heatpump-sim .sim-svg { width: 100%; height: auto; display: block; }
-.heatpump-sim .label { font-size: 16px; dominant-baseline: middle; fill: #111; background: none; }
-.heatpump-sim .label-bold { font-weight: 700; }
-.odu { fill: #f6f8fa; stroke: #cbd5e1; stroke-width: 2; }
-.coil { fill: none; stroke: #9aa5b1; stroke-width: 6; }
-.coil.evap { stroke: #6ab3ff; }
-.coil.condenser { stroke: #ffb06a; }
-.compressor { fill: #ffe0c2; stroke: #c27d3a; stroke-width: 2; }
-.compressor-spiral { fill: none; stroke: #a85b16; stroke-width: 2; }
-.comp-spin { pointer-events: none; }
-.comp-rotor { transform-origin: center; transform-box: fill-box; }
-@keyframes spin { 100% { transform: rotate(360deg); } }
-.buffer { fill: #f7fbff; stroke: #94a3b8; stroke-width: 2; }
-.flow { fill: none; stroke-linecap: round; stroke-linejoin: round; }
-.flow.refrig { filter: drop-shadow(0 0 2px rgba(0,0,0,0.15)); }
-.flow.air { stroke: #66aaff; stroke-width: 6; }
-@keyframes dash-forward { to { stroke-dashoffset: -1000; } }
-@keyframes dash-reverse { to { stroke-dashoffset: 1000; } }
-.animate-forward { animation-name: dash-forward; animation-iteration-count: infinite; animation-timing-function: linear; }
-.animate-reverse { animation-name: dash-reverse; animation-iteration-count: infinite; animation-timing-function: linear; }
+.heatpump-sim {
+  max-width: 1000px;
+  margin: 0 auto;
+  font-family: system-ui, sans-serif;
+}
+.heatpump-sim .sim-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: stretch;
+  margin-bottom: 5px;
+}
+.heatpump-sim .sim-ctrl-row {
+  display: grid;
+  grid-template-columns: clamp(120px, 35vw, 400px) 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+.heatpump-sim select {
+  width: 100%;
+  padding: 4px 6px;
+}
+.heatpump-sim .sim-ctrl-row label {
+  font-size: 0.95rem;
+}
+.heatpump-sim .sim-ctrl-row input[type="range"] {
+  width: 100%;
+}
+.heatpump-sim .sim-ctrl-value {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+  min-width: 120px;
+}
+.heatpump-sim .sim-diagram-wrap {
+  position: relative;
+  width: 100%;
+}
+.heatpump-sim .sim-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.heatpump-sim .label {
+  font-size: 16px;
+  dominant-baseline: middle;
+  fill: #111;
+  background: none;
+}
+.heatpump-sim .label-bold {
+  font-weight: 700;
+}
+.odu {
+  fill: #f6f8fa;
+  stroke: #cbd5e1;
+  stroke-width: 2;
+}
+.coil {
+  fill: none;
+  stroke: #9aa5b1;
+  stroke-width: 6;
+}
+.coil.evap {
+  stroke: #6ab3ff;
+}
+.coil.condenser {
+  stroke: #ffb06a;
+}
+.compressor {
+  fill: #ffe0c2;
+  stroke: #c27d3a;
+  stroke-width: 2;
+}
+.compressor-spiral {
+  fill: none;
+  stroke: #a85b16;
+  stroke-width: 2;
+}
+.comp-spin {
+  pointer-events: none;
+}
+.comp-rotor {
+  transform-origin: center;
+  transform-box: fill-box;
+}
+@keyframes spin {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+.buffer {
+  fill: #f7fbff;
+  stroke: #94a3b8;
+  stroke-width: 2;
+}
+.flow {
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.flow.refrig {
+  filter: drop-shadow(0 0 2px rgba(0, 0, 0, 0.15));
+}
+.flow.air {
+  stroke: #66aaff;
+  stroke-width: 6;
+}
+@keyframes dash-forward {
+  to {
+    stroke-dashoffset: -1000;
+  }
+}
+@keyframes dash-reverse {
+  to {
+    stroke-dashoffset: 1000;
+  }
+}
+.animate-forward {
+  animation-name: dash-forward;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+.animate-reverse {
+  animation-name: dash-reverse;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+}
+
+/* Share icon placement and style */
+.heatpump-sim .sim-diagram-wrap {
+  position: relative;
+}
+.heatpump-sim .sim-sharebar {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+}
+.heatpump-sim #sim-share {
+  cursor: pointer;
+  vertical-align: middle;
+}
+.heatpump-sim #sim-share circle,
+.heatpump-sim #sim-share line {
+  stroke: #0070f3;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.heatpump-sim #sim-share:hover circle,
+.heatpump-sim #sim-share:hover line {
+  stroke: #0055b3;
+}
+
+/* Share popup overlay */
+.sim-share-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+.sim-share-popup {
+  background: #fff;
+  padding: 16px;
+  border-radius: 12px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
+  max-width: 90vw;
+  width: 560px;
+}
+.sim-share-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+.sim-share-title {
+  font-weight: 700;
+  color: #0f172a;
+  background: linear-gradient(90deg, #0ea5e9, #6366f1);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.sim-share-popup button {
+  cursor: pointer;
+}
+.sim-share-close {
+  font-size: 20px;
+  line-height: 20px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+}
+.sim-share-close:hover {
+  color: #0f172a;
+}
+.sim-share-popup p {
+  margin: 12px 0 10px 0;
+  color: #334155;
+}
+.sim-share-fields {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+.sim-share-popup .sim-share-copy-input {
+  flex: 1;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+.sim-share-popup .sim-share-copy-input:focus {
+  outline: none;
+  border-color: #6366f1;
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+.sim-share-popup .sim-share-copy-btn {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 1px solid #6366f1;
+  background: linear-gradient(90deg, #4f46e5, #0ea5e9);
+  color: white;
+  font-weight: 600;
+}
+.sim-share-popup .sim-share-copy-btn:hover {
+  filter: brightness(1.05);
+}
+.sim-share-popup .sim-share-copy-btn:active {
+  transform: translateY(1px);
+}

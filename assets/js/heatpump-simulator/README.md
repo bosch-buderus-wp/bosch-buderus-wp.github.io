@@ -1,10 +1,11 @@
 # Heatpump Simulator (Modular UI Wrapper)
 
-This directory contains the modular heat pump simulator composed of three parts:
+This directory contains the modular heat pump simulator composed of four parts:
 
 1) Engine (`engine/compute.js`) — Pure physics/model function `computeState(DEFAULTS) -> outputs`
 2) Controls (`ui/controls.js`) — Renders inputs and updates state via a callback
 3) Diagram (`ui/diagram.js`) — Renders the SVG visualization from engine outputs
+4) Share (`ui/share.js`) — Provides a share button and popup to copy a permalink for the current simulator state
 
 The entry point `heatpump-simulator.js` orchestrates these modules. It does not contain physics or SVG code.
 
@@ -52,5 +53,5 @@ The entry point `heatpump-simulator.js` orchestrates these modules. It does not 
 - Flow volume of PC1 at 150 mbar (l/h)
 
 ## Usage
-- Include d3 plus the three modules in this order: `engine/compute.js`, `ui/controls.js`, `ui/diagram.js`, then `heatpump-simulator.js`.
-- Add a container div with `id="heatpump-simulator"` or call `window.initHeatpumpSimulator('#your-id')`.
+- Include d3 plus the modules in this order: `engine/compute.js`, `ui/controls.js`, `ui/diagram.js`, `ui/share.js`, then `heatpump-simulator.js`.
+- Add a container div with `id="heatpump-simulator"` or call `window.initHeatpumpSimulator('#your-id')`. 

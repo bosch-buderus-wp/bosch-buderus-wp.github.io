@@ -13,15 +13,15 @@
 
     // Model selector
     const modelRow = container.append("div").attr("class", CLASSNAMES.ROW);
-    modelRow.append("label").text("Modell").attr("for", "ctrl_capModel");
-    const modelSelect = modelRow.append("select").attr("id", "ctrl_capModel");
+    modelRow.append("label").text("Modell").attr("for", "ctrl_hpModel");
+    const modelSelect = modelRow.append("select").attr("id", "ctrl_hpModel");
     Object.keys(window.HeatpumpEngine.CAP_MODELS_W35).forEach((name) => {
       modelSelect.append("option").attr("value", name).text(name);
     });
-    modelSelect.property("value", initialState.capModel);
+    modelSelect.property("value", initialState.hpModel);
     modelSelect.on("change", function () {
-      initialState.capModel = this.value;
-      onChange({ capModel: this.value });
+      initialState.hpModel = this.value;
+      onChange({ hpModel: this.value });
     });
 
     const ctrlConfig = [
@@ -62,7 +62,7 @@
         fmt: (v) => `${v.toFixed(1)} °C`,
       },
       {
-        key: "buildingHeatLoadAtStd_kW",
+        key: "buildingHeatLoadAtStdKw",
         label: "Gebäudeheizlast bei NAT",
         type: "range",
         min: 2,
@@ -89,7 +89,7 @@
         fmt: (v) => `${v.toFixed(0)} mbar`,
       },
       {
-        key: "heatingFlowAt150mbar_lph",
+        key: "heatingFlowAt150mbarLph",
         label: "Durchflussmenge PC1 bei 150 mbar",
         type: "range",
         min: 300,

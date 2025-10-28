@@ -17,4 +17,5 @@ Falls du konkrete Verbesserungsvorschläge hast, erstelle gerne einen [Pull-Requ
 <script src="/assets/js/heatpump-simulator/engine/compute.js"></script>
 <script src="/assets/js/heatpump-simulator/ui/controls.js"></script>
 <script src="/assets/js/heatpump-simulator/ui/diagram.js"></script>
+<script src="/assets/js/heatpump-simulator/ui/share.js"></script>
 <script src="/assets/js/heatpump-simulator/heatpump-simulator.js"></script>

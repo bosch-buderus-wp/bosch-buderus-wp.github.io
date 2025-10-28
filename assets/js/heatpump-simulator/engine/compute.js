@@ -7,10 +7,10 @@
     flowTempAt20C: 22,
     flowTempAtStdOutdoorC: 39,
     primarySpreadK: 3.5,
-    buildingHeatLoadAtStd_kW: 4.7,
+    buildingHeatLoadAtStdKw: 4.7,
     heatingPumpPressureMbar: 150,
-    heatingFlowAt150mbar_lph: 750,
-    capModel: "4 kW",
+    heatingFlowAt150mbarLph: 750,
+    hpModel: "4 kW",
   };
 
   // Physical constants and approaches
@@ -173,11 +173,11 @@
 
     const ambientTempC = params.ambientTempC;
     const pumpPressureMbar = Math.max(20, params.heatingPumpPressureMbar);
-    const k_h = k_h_from_calibration(params.heatingFlowAt150mbar_lph);
+    const k_h = k_h_from_calibration(params.heatingFlowAt150mbarLph);
     const mHeating_kgps = k_h * Math.sqrt(pumpPressureMbar / dp_ref);
 
     const deltaT_primaryK = Math.max(0.5, params.primarySpreadK);
-    const designLoadW = Math.max(0, params.buildingHeatLoadAtStd_kW) * 1000;
+    const designLoadW = Math.max(0, params.buildingHeatLoadAtStdKw) * 1000;
 
     // Target heating flow temperature per linear curve between standard outdoor temperature and 20°C
     const heatingFlowTargetC = flow_target_curve(
@@ -189,7 +189,7 @@
 
     // Capacity at current ambient and target flow temperature (linear derating from W35 to W55)
     const capMaxW =
-      capacityAt(ambientTempC, heatingFlowTargetC, params.capModel) * 1000;
+      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) * 1000;
 
     // Compute building heat load target per DIN EN 12831
     const theta_i_C = DEFAULT_THETA_I_C;
@@ -211,7 +211,7 @@
 
     // Available heat at current modulation (with flow-temp derating)
     const Q_available =
-      capacityAt(ambientTempC, heatingFlowTargetC, params.capModel) *
+      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) *
       1000 *
       clamp(mod, 0, 1);
     let Qh_cap = Math.max(0, Q_available);
@@ -263,10 +263,10 @@
         flowTempAt20C: params.flowTempAt20C,
         flowTempAtStdOutdoorC: params.flowTempAtStdOutdoorC,
         primarySpreadK: deltaT_primaryK,
-        buildingHeatLoadAtStd_kW: params.buildingHeatLoadAtStd_kW,
+        buildingHeatLoadAtStdKw: params.buildingHeatLoadAtStdKw,
         heatingPumpPressureMbar: pumpPressureMbar,
-        heatingFlowAt150mbar_lph: params.heatingFlowAt150mbar_lph,
-        capModel: params.capModel,
+        heatingFlowAt150mbarLph: params.heatingFlowAt150mbarLph,
+        hpModel: params.hpModel,
       },
       flows: { primaryMassFlow: mPrimary_kgps, heatingMassFlow: mHeating_kgps },
       heat: {
