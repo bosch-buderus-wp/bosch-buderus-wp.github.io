@@ -95,4 +95,7 @@ Verbesserungen:
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Oktober 2025
 
-Keine weiteren Informationen bekannt
+Verbesserungen:
+
+- Aktuelle **Thermische Leistung** als Entität über [ems-esp](/docs/smarthome/) abrufbar.
+  Ab dieser Version muss man für sein Smarthome die Wärmeleistung nicht mehr über die Ableitung der Energie berechnen, sondern kann direkt [boiler/hppower](/docs/smarthome/entities#leistung) verwenden.

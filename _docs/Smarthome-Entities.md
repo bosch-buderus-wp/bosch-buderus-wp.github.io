@@ -69,10 +69,10 @@ _"auxelecheatnrgcons..."_: eingesetzte elektrische Energie des elektrischen Zuhe
 
 ### Leistung
 
-| ID                                                   | Name                    | Modul  | Typ | Einheit | RW  | Beschreibung                                                                                             |
-| ---------------------------------------------------- | ----------------------- | ------ | --- | ------- | --- | -------------------------------------------------------------------------------------------------------- |
-| [hppower](http://ems-esp/api/boiler/hppower)         | Kompressorleistung      | boiler | 🔢  | kW      |     | Aktuelle Leistungsaufnahme der Wärmepumpe mit einer Nachkommastelle, z.B. 0,3 kW (Achtung: sehr ungenau) |
-| [hpcurrpower](http://ems-esp/api/boiler/hpcurrpower) | akt. Kompressorleistung | boiler | 🔢  | W       |     | Aktuelle Leistungsaufnahme der Wärmepumpe, z.B. 298 W                                                    |
+| ID                                                   | Name                    | Modul  | Typ | Einheit | RW  | Beschreibung                                                                                                                  |
+| ---------------------------------------------------- | ----------------------- | ------ | --- | ------- | --- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [hppower](http://ems-esp/api/boiler/hppower)         | Kompressorleistung      | boiler | 🔢  | kW      |     | Ab Version [12.11.1/9.15.0](/docs/sw-versionen/#12111--9150): Aktuelle thermische Leistungsabgabe der Wärmepumpe, z.B. 3,1 kW |
+| [hpcurrpower](http://ems-esp/api/boiler/hpcurrpower) | akt. Kompressorleistung | boiler | 🔢  | W       |     | Aktuelle Leistungsaufnahme der Wärmepumpe, z.B. 298 W                                                                         |
 
 ## Temperaturen
 
