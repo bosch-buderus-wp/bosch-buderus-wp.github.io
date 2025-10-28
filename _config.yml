@@ -49,6 +49,9 @@ collections:
   xps:
     output: true
     permalink: /:collection/:path/
+  simulator:
+    output: true
+    permalink: /:collection/:path/
 
 defaults:
   # _pages
@@ -75,6 +78,16 @@ defaults:
   - scope:
       path: ""
       type: xps
+    values:
+      layout: single
+      read_time: false
+      author_profile: true
+      share: false
+      comments: false
+  # _simulator
+  - scope:
+      path: ""
+      type: simulator
     values:
       layout: single
       read_time: false
