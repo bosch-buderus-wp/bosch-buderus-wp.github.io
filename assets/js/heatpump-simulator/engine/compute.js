@@ -2,15 +2,15 @@
 // Exposes window.HeatpumpEngine = { computeState, DEFAULTS, CAP_MODELS_W35 }
 (function () {
   const DEFAULTS = {
-    ambientTempC: 0.0,
+    hpModel: "4 kW",
     stdOutdoorTempC: -13.6,
     flowTempAt20C: 22,
     flowTempAtStdOutdoorC: 39,
-    primarySpreadK: 3.5,
     buildingHeatLoadAtStdKw: 4.7,
+    primarySpreadK: 3.5,
     heatingPumpPressureMbar: 150,
     heatingFlowAt150mbarLph: 750,
-    hpModel: "4 kW",
+    ambientTempC: 0.0,
   };
 
   // Physical constants and approaches
@@ -111,10 +111,11 @@
   const DEFAULT_THETA_I_C = 20; // indoor reference temperature θ_i (approx. 20°C)
 
   function din12831LoadScale(ambientTempC, theta_i_C, theta_e_design_C) {
-    // (θ_i − Ta) / (θ_i − θ_e,design) with protective denominator and clamping
+    // (θ_i − Ta) / (θ_i − θ_e,design) with protective denominator
+    // No upper clamping: allow extrapolation colder than design (load > design)
     const denomK = Math.max(1, theta_i_C - theta_e_design_C);
     const frac = (theta_i_C - ambientTempC) / denomK;
-    return clamp(frac, 0, 1);
+    return Math.max(0, frac);
   }
 
   function computeBuildingHeatLoad_W(
@@ -126,7 +127,8 @@
     /*
      * Building heat load model per DIN EN 12831:
      *   Φ_H(Ta) = Φ_design * (θ_i − Ta) / (θ_i − θ_e,design)
-     * with clamping to [0, 1] for temperatures above θ_i or far below θ_e,design.
+     * We do not clamp above 1 anymore: load can increase beyond design for Ta < θ_e,design.
+     * Values are still clamped at 0 for Ta > θ_i.
      */
     const scale = din12831LoadScale(ambientTempC, theta_i_C, theta_e_design_C);
     return Q_design_W * scale;
@@ -290,6 +292,7 @@
   }
 
   const api = {
+    capacityAt,
     computeState,
     DEFAULTS,
     CAP_MODELS_W35,

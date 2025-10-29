@@ -1,4 +1,5 @@
 /* Heatpump Simulator Styles */
+
 .heatpump-sim {
   max-width: 1000px;
   margin: 0 auto;
@@ -7,9 +8,9 @@
 .heatpump-sim .sim-controls {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 0px;
   align-items: stretch;
-  margin-bottom: 5px;
+  margin-bottom: 0px;
 }
 .heatpump-sim .sim-ctrl-row {
   display: grid;
@@ -159,9 +160,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 5000;
 }
 .sim-share-popup {
+  position: relative;
+  z-index: 5001;
   background: #fff;
   padding: 16px;
   border-radius: 12px;
@@ -231,4 +234,74 @@
 }
 .sim-share-popup .sim-share-copy-btn:active {
   transform: translateY(1px);
+}
+
+/* Heat curve chart */
+.sim-curve-tooltip {
+  z-index: 1200;
+  z-index: 1200;
+  z-index: 1500;
+  position: absolute;
+  pointer-events: none;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px 10px;
+  font: 12px system-ui, -apple-system, Segoe UI, Roboto, Arial;
+  color: #222;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+}
+.sim-curve-tooltip .tip-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+.sim-curve-tooltip .tip-val {
+  text-align: right;
+  min-width: 64px;
+}
+.hover-line {
+  stroke: #222;
+  stroke-width: 1.5;
+  shape-rendering: crispEdges;
+  stroke-dasharray: 4 3;
+  pointer-events: none;
+}
+.hover-capture {
+  cursor: crosshair;
+  fill: transparent;
+}
+
+.sim-curve-panel {
+  margin: 8px 0 12px;
+}
+.sim-curve-summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.sim-curve-body {
+  padding: 8px 0;
+}
+.sim-curve-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+.grid-x .tick line,
+.grid-y .tick line {
+  stroke: #eee;
+}
+.axes .domain,
+.axes .tick line {
+  stroke: #999;
+}
+.axis-title {
+  fill: #444;
+  font-size: 12px;
+}
+.legend-label {
+  font-size: 12px;
+  fill: #333;
 }

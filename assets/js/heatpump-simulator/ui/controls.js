@@ -26,15 +26,6 @@
 
     const ctrlConfig = [
       {
-        key: "ambientTempC",
-        label: "Außentemperatur",
-        type: "range",
-        min: -15,
-        max: 20,
-        step: 0.5,
-        fmt: (v) => `${v.toFixed(1)} °C`,
-      },
-      {
         key: "stdOutdoorTempC",
         label: "Normaußentemperatur",
         type: "range",
@@ -96,6 +87,15 @@
         max: 1000,
         step: 10,
         fmt: (v) => `${v.toFixed(0)} l/h`,
+      },
+      {
+        key: "ambientTempC",
+        label: "Aktuelle Außentemperatur",
+        type: "range",
+        min: -15,
+        max: 20,
+        step: 0.5,
+        fmt: (v) => `${v.toFixed(1)} °C`,
       },
     ];
 

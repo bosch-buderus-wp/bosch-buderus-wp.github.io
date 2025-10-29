@@ -64,6 +64,15 @@
 
     // Controls stay above the diagram
     const controlsDiv = container.append("div").attr("class", "sim-controls");
+
+    // Insert collapsible Heating Curve panel between controls and diagram (optional module)
+    const curveWrap = container.append("div").attr("class", "sim-curve-wrap");
+    const curveApi =
+      window.HeatpumpHeatingCurve &&
+      typeof window.HeatpumpHeatingCurve.initPanel === "function"
+        ? window.HeatpumpHeatingCurve.initPanel(curveWrap.node())
+        : { render: () => {} };
+
     const diagram = window.HeatpumpDiagram.initDiagram(selector);
 
     // Initialize Share UI via separate module; it will attach into the diagram wrapper
@@ -104,6 +113,10 @@
       // Refresh share tooltip
       if (shareApi && typeof shareApi.update === "function") {
         shareApi.update();
+      }
+      // Update curve panel from current inputs
+      if (curveApi && typeof curveApi.render === "function") {
+        curveApi.render(state);
       }
       const outputs = window.HeatpumpEngine.computeState(state);
       diagram.render(outputs);
