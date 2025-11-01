@@ -74,8 +74,8 @@ Verbesserungen:
 ## 9.7.0 / 9.10.0
 
 {: .notice}
-<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.7.0 \
-<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.10.0 \
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Außeneinheit: 9.10.0 \
 <i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Dezember 2024
@@ -89,8 +89,8 @@ Verbesserungen:
 ## 12.11.1 / 9.15.0
 
 {: .notice}
-<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 12.11.1 \
-<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.15.0 \
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Inneneinheit: 12.11.1 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Außeneinheit: 9.15.0 \
 <i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.11
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Oktober 2025
