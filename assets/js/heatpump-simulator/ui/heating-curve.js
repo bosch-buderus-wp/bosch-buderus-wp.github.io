@@ -21,12 +21,15 @@
     SAMPLE_POINTS: 64,
     HOVER_TOL_PX: 7,
     TIP_PAD_PX: 12,
-    LEGEND_SPACING: 240,
+    LEGEND_SPACING: 200,
     RIGHT_AXIS_STEP: 0.5,
+
     COLORS: {
       CURVE: "#1565c0",
       LOAD: "#2e7d32",
       CAP: "#ef6c00",
+      MOD: "#808080",
+      COP: "#00838f",
       BV_FILL: "#8e24aa",
       BV_STROKE: "#4a148c",
       VLINE: "#222",
@@ -36,7 +39,6 @@
   function clamp(x, a, b) {
     return Math.max(a, Math.min(b, x));
   }
-
   function flowTargetCurve(Ta, stdOutdoorTempC, flowAt20C, flowAtStdC) {
     const x0 = stdOutdoorTempC;
     const y0 = flowAtStdC;
@@ -122,9 +124,11 @@
       }
     });
 
-    const curveColor = CONFIG.COLORS.CURVE; // blue
-    const loadColor = CONFIG.COLORS.LOAD; // green
-    const capColor = CONFIG.COLORS.CAP; // orange
+    const curveColor = CONFIG.COLORS.CURVE;
+    const loadColor = CONFIG.COLORS.LOAD;
+    const capColor = CONFIG.COLORS.CAP;
+    const modColor = CONFIG.COLORS.MOD;
+    const copColor = CONFIG.COLORS.COP;
 
     const lineCurve = d3
       .line()
@@ -142,6 +146,20 @@
       .line()
       .x((d) => x(d.Ta))
       .y((d) => yRight(d.capKw))
+      .curve(d3.curveMonotoneX);
+
+    const lineCop = d3
+      .line()
+      .defined((d) => {
+        // Hide COP segments that exceed the current right-axis max (post-render domain)
+        const ymax =
+          yRight && typeof yRight.domain === "function"
+            ? yRight.domain()[1]
+            : Infinity;
+        return d.cop <= ymax;
+      })
+      .x((d) => x(d.Ta))
+      .y((d) => yRight(d.cop))
       .curve(d3.curveMonotoneX);
     // Scales (declared here, domains set during render)
     let x = d3.scaleLinear();
@@ -181,13 +199,14 @@
       .attr("class", "axis-title")
       .attr("transform", `translate(${innerW + 36}, ${innerH / 2}) rotate(90)`)
       .attr("text-anchor", "middle")
-      .text("Leistung / Last (kW)");
+      .text("Leistung / Last (kW) / COP");
 
     // Legend
     const legendItems = [
-      { label: "Heizkurve (Sollvorlauftemperatur)", color: curveColor },
+      { label: "Heizkurve (Sollvorlauftemp.)", color: curveColor },
       { label: "Gebäudeheizlast", color: loadColor },
       { label: "Max. Wärmepumpenleistung", color: capColor },
+      { label: "Optimaler COP", color: copColor },
     ];
     const legend = gLegend
       .selectAll("g")
@@ -225,12 +244,17 @@
       .attr("class", "load-line")
       .attr("stroke", loadColor)
       .attr("fill", "none")
-      .attr("stroke-width", 2)
-      .attr("stroke-dasharray", "6 4");
+      .attr("stroke-width", 2);
     const capPath = gLines
       .append("path")
       .attr("class", "cap-line")
       .attr("stroke", capColor)
+      .attr("fill", "none")
+      .attr("stroke-width", 2);
+    const copPath = gLines
+      .append("path")
+      .attr("class", "cop-line")
+      .attr("stroke", copColor)
       .attr("fill", "none")
       .attr("stroke-width", 2);
 
@@ -268,6 +292,7 @@
       const N = CONFIG.SAMPLE_POINTS;
       const data = [];
       let maxKw = Math.max(0.5, designKw);
+      let maxRight = Math.max(7, maxKw);
       const capAt = (Ta, Tf) => {
         try {
           if (
@@ -293,7 +318,12 @@
         const loadKw = buildingLoadKw(Ta, stdOutdoorTempC, designKw);
         const capKw = capAt(Ta, flowC);
         maxKw = Math.max(maxKw, loadKw, capKw);
-        data.push({ Ta, flowC, loadKw, capKw });
+        const cop =
+          window.HeatpumpEngine &&
+          typeof window.HeatpumpEngine.estimateCOP === "function"
+            ? window.HeatpumpEngine.estimateCOP(flowC, Ta)
+            : 0;
+        data.push({ Ta, flowC, loadKw, capKw, cop });
       }
       // Find crossing of load and capacity to mark Bivalenzpunkt
       bivalencePt = null;
@@ -318,8 +348,9 @@
       if (bivalencePt) maxKw = Math.max(maxKw, bivalencePt.kW);
       const yRightMax = Math.max(
         1,
-        Math.ceil(Math.max(0.1, maxKw) / CONFIG.RIGHT_AXIS_STEP) *
-          CONFIG.RIGHT_AXIS_STEP
+        Math.ceil(
+          Math.max(0.1, Math.max(maxKw, maxRight)) / CONFIG.RIGHT_AXIS_STEP
+        ) * CONFIG.RIGHT_AXIS_STEP
       );
       yRight = d3
         .scaleLinear()
@@ -361,6 +392,7 @@
       curvePath.datum(data).attr("d", lineCurve);
       loadPath.datum(data).attr("d", lineLoad);
       capPath.datum(data).attr("d", lineCap);
+      copPath.datum(data).attr("d", lineCop);
 
       // Draw/update bivalence point (dot only; label removed per request)
       if (bivalencePt) {
@@ -404,7 +436,12 @@
             );
           }
         } catch (e) {}
-        return { Ta, flowC, loadKw, capKw };
+        const cop =
+          window.HeatpumpEngine &&
+          typeof window.HeatpumpEngine.estimateCOP === "function"
+            ? window.HeatpumpEngine.estimateCOP(flowC, Ta)
+            : 0;
+        return { Ta, flowC, loadKw, capKw, cop };
       }
 
       function renderTip(e, pxt, py) {
@@ -440,22 +477,30 @@
           : "";
 
         const html = `
-          <div class="tip-row"><div><b>Außentemp.:</b></div><div class="tip-val">${fmt(
+          <div class="tip-row"><div><b>Außentemperatur:</b></div><div class="tip-val">${fmt(
             d.Ta,
             1
           )}°C</div></div>
-          <div class="tip-row"><div><span style=\"color:${curveColor}\"><b>Vorlauftemp.:</b></span></div><div class="tip-val">${fmt(
+          <div class="tip-row"><div><span style=\"color:${curveColor}\"><b>Vorlauftemperatur:</b></span></div><div class="tip-val">${fmt(
           d.flowC,
           1
         )}°C</div></div>
-          <div class="tip-row"><div><span style=\"color:${loadColor}\"><b>Geb.-Heizlast:</b></span></div><div class="tip-val">${fmt(
+          <div class="tip-row"><div><span style=\"color:${loadColor}\"><b>Gebäudeheizlast:</b></span></div><div class="tip-val">${fmt(
           d.loadKw,
           2
         )} kW</div></div>
-          <div class="tip-row"><div><span style=\"color:${capColor}\"><b>WP-Leistung:</b></span></div><div class="tip-val">${fmt(
+                  <div class="tip-row"><div><span style=\"color:${capColor}\"><b>Max. WP-Leistung:</b></span></div><div class="tip-val">${fmt(
           d.capKw,
           2
         )} kW</div></div>
+          <div class="tip-row"><div><span style=\"color:${modColor}\"><b>Modulation:</b></span></div><div class="tip-val">${fmt(
+          d.capKw > 0 ? (d.loadKw / d.capKw) * 100 : 0,
+          0
+        )} %</div></div>
+          <div class="tip-row"><div><span style=\"color:${copColor}\"><b>Optimaler COP:</b></span></div><div class="tip-val">${fmt(
+          d.cop,
+          2
+        )}</div></div>
           ${badgeHtml}
         `;
         tip.html(html).style("opacity", 1);

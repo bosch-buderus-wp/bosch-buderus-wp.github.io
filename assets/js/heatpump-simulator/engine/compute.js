@@ -145,7 +145,7 @@
     const Tc_elec = T_primaryFlowOutC + TC_APPROACH_ELEC;
     const dT_lift_K = Math.max(5, toK(Tc_elec) - toK(Te_elec));
     const COP_carnot = toK(Tc_elec) / dT_lift_K;
-    return clamp(eta_carnot * COP_carnot, 1.0, 7.0);
+    return eta_carnot * COP_carnot;
   }
 
   // Compute derating slope per model from A7/W35 and A7/W55 anchors
@@ -294,6 +294,7 @@
   const api = {
     capacityAt,
     computeState,
+    estimateCOP,
     DEFAULTS,
     CAP_MODELS_W35,
   };
