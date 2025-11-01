@@ -40,7 +40,7 @@
         type: "range",
         min: 20,
         max: 30,
-        step: 0.1,
+        step: 1,
         fmt: (v) => `${v.toFixed(1)} °C`,
       },
       {
@@ -49,7 +49,7 @@
         type: "range",
         min: 25,
         max: 60,
-        step: 0.1,
+        step: 1,
         fmt: (v) => `${v.toFixed(1)} °C`,
       },
       {
@@ -60,6 +60,15 @@
         max: 15,
         step: 0.1,
         fmt: (v) => `${v.toFixed(1)} kW`,
+      },
+      {
+        key: "heatingLimitC",
+        label: "Heizgrenze",
+        type: "range",
+        min: 10,
+        max: 20,
+        step: 1,
+        fmt: (v) => `${v.toFixed(0)} °C`,
       },
       {
         key: "primarySpreadK",

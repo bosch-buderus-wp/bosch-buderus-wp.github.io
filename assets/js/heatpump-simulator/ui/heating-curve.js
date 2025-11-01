@@ -39,21 +39,16 @@
   function clamp(x, a, b) {
     return Math.max(a, Math.min(b, x));
   }
-  function flowTargetCurve(Ta, stdOutdoorTempC, flowAt20C, flowAtStdC) {
-    const x0 = stdOutdoorTempC;
-    const y0 = flowAtStdC;
-    const x1 = 20;
-    const y1 = flowAt20C;
-    const t = (Ta - x0) / Math.max(1e-6, x1 - x0);
-    const y = y0 + t * (y1 - y0);
-    return clamp(y, 15, 60);
-  }
 
-  function buildingLoadKw(Ta, stdOutdoorTempC, designKw) {
-    const theta_i = 20; // indoor reference (consistent with engine)
-    const denom = Math.max(1, theta_i - stdOutdoorTempC);
-    const frac = (theta_i - Ta) / denom;
-    return Math.max(0, frac) * Math.max(0, designKw);
+  function flowTargetCurve(Ta, stdOutdoorTempC, flowAt20C, flowAtStdC) {
+    const engine = window.HeatpumpEngine;
+    const y = engine.flowTargetCurve(
+      Ta,
+      stdOutdoorTempC,
+      flowAt20C,
+      flowAtStdC
+    );
+    return clamp(y, 15, 60);
   }
 
   function initPanel(containerSel) {
@@ -293,6 +288,7 @@
       const data = [];
       let maxKw = Math.max(0.5, designKw);
       let maxRight = Math.max(7, maxKw);
+      const heatingLimitC = state.heatingLimitC;
       const capAt = (Ta, Tf) => {
         try {
           if (
@@ -315,7 +311,17 @@
           flowAt20C,
           flowAtStdC
         );
-        const loadKw = buildingLoadKw(Ta, stdOutdoorTempC, designKw);
+        const loadKw = (function () {
+          const engine = window.HeatpumpEngine;
+          const Q_design_W = Math.max(0, designKw) * 1000;
+          const Q_W = engine.computeBuildingHeatLoad_W(
+            Q_design_W,
+            Ta,
+            heatingLimitC,
+            stdOutdoorTempC
+          );
+          return Math.max(0, Q_W) / 1000;
+        })();
         const capKw = capAt(Ta, flowC);
         maxKw = Math.max(maxKw, loadKw, capKw);
         const cop =
@@ -423,7 +429,17 @@
           flowAt20C,
           flowAtStdC
         );
-        const loadKw = buildingLoadKw(Ta, stdOutdoorTempC, designKw);
+        const loadKw = (function () {
+          const engine = window.HeatpumpEngine;
+          const Q_design_W = Math.max(0, designKw) * 1000;
+          const Q_W = engine.computeBuildingHeatLoad_W(
+            Q_design_W,
+            Ta,
+            heatingLimitC,
+            stdOutdoorTempC
+          );
+          return Math.max(0, Q_W) / 1000;
+        })();
         let capKw = 0;
         try {
           if (

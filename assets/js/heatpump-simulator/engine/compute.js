@@ -7,6 +7,7 @@
     flowTempAt20C: 22,
     flowTempAtStdOutdoorC: 39,
     buildingHeatLoadAtStdKw: 4.7,
+    heatingLimitC: 15,
     primarySpreadK: 3.5,
     heatingPumpPressureMbar: 150,
     heatingFlowAt150mbarLph: 750,
@@ -92,7 +93,7 @@
     return Math.max(0, pts[n - 1].kW + slope * (Ta - pts[n - 1].Ta));
   }
 
-  function flow_target_curve(
+  function flowTargetCurve(
     ambientTempC,
     stdOutdoorTempC,
     flowTempAt20C,
@@ -108,20 +109,18 @@
   }
 
   // --- Building load per DIN EN 12831 ---
-  const DEFAULT_THETA_I_C = 20; // indoor reference temperature θ_i (approx. 20°C)
-
-  function din12831LoadScale(ambientTempC, theta_i_C, theta_e_design_C) {
+  function din12831LoadScale(ambientTempC, heatingLimitC, theta_e_design_C) {
     // (θ_i − Ta) / (θ_i − θ_e,design) with protective denominator
     // No upper clamping: allow extrapolation colder than design (load > design)
-    const denomK = Math.max(1, theta_i_C - theta_e_design_C);
-    const frac = (theta_i_C - ambientTempC) / denomK;
+    const denomK = Math.max(1, heatingLimitC - theta_e_design_C);
+    const frac = (heatingLimitC - ambientTempC) / denomK;
     return Math.max(0, frac);
   }
 
   function computeBuildingHeatLoad_W(
     Q_design_W,
     ambientTempC,
-    theta_i_C,
+    heatingLimitC,
     theta_e_design_C
   ) {
     /*
@@ -130,7 +129,11 @@
      * We do not clamp above 1 anymore: load can increase beyond design for Ta < θ_e,design.
      * Values are still clamped at 0 for Ta > θ_i.
      */
-    const scale = din12831LoadScale(ambientTempC, theta_i_C, theta_e_design_C);
+    const scale = din12831LoadScale(
+      ambientTempC,
+      heatingLimitC,
+      theta_e_design_C
+    );
     return Q_design_W * scale;
   }
 
@@ -182,7 +185,7 @@
     const designLoadW = Math.max(0, params.buildingHeatLoadAtStdKw) * 1000;
 
     // Target heating flow temperature per linear curve between standard outdoor temperature and 20°C
-    const heatingFlowTargetC = flow_target_curve(
+    const heatingFlowTargetC = flowTargetCurve(
       ambientTempC,
       params.stdOutdoorTempC,
       params.flowTempAt20C,
@@ -194,11 +197,11 @@
       capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) * 1000;
 
     // Compute building heat load target per DIN EN 12831
-    const theta_i_C = DEFAULT_THETA_I_C;
+    const heatingLimitC = params.heatingLimitC;
     const buildingLoadW = computeBuildingHeatLoad_W(
       designLoadW,
       ambientTempC,
-      theta_i_C,
+      heatingLimitC,
       params.stdOutdoorTempC
     );
 
@@ -293,6 +296,8 @@
 
   const api = {
     capacityAt,
+    computeBuildingHeatLoad_W,
+    flowTargetCurve,
     computeState,
     estimateCOP,
     DEFAULTS,
