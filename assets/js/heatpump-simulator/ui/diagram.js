@@ -37,6 +37,30 @@
     return;
   }
 
+  // --- Small helpers (formatting, titles, flow scaling) ---
+  function setTitle(selection, text) {
+    if (!selection || !selection.node) return;
+    selection.select("title").remove();
+    if (text != null && text !== "") {
+      selection.append("title").text(String(text));
+    }
+  }
+
+  const fmt = {
+    deg: (v) => `${Number(v).toFixed(1)} °C`,
+    kW: (w) => `${(Number(w) / 1000).toFixed(2)} kW`,
+    lph: (kgps) =>
+      `${Math.max(0, Number(kgps) * SECONDS_PER_HOUR).toFixed(0)} l/h`,
+    percent: (v) => `${Math.round(Number(v) * 100)}%`,
+  };
+
+  const widthForMod = (mod) => 6 + 8 * Math.max(0, Number(mod));
+  const speedForMod = (mod) => 1 + 6 * Math.max(0, Number(mod));
+  const computeSpinDuration = (mod) =>
+    FLOW_CONST.COMP_SPIN_BASE_S *
+    (FLOW_CONST.COMP_SPIN_MIN_FACTOR /
+      (1 + FLOW_CONST.COMP_SPIN_SCALE * Math.max(0, Number(mod))));
+
   function tempColor(tC) {
     const clamp = (x, a, b) => Math.max(a, Math.min(b, x));
     const v = clamp((tC - 0) / 50, 0, 1);
@@ -385,94 +409,137 @@
         .attr("y", geom.heatY + 100)
         .attr("class", "label tag-hmean")
         .attr("text-anchor", "start"),
+      // Modulation label above compressor
+      mod: gLabels
+        .append("text")
+        .attr("x", geom.oduX + geom.oduW / 2)
+        .attr("y", geom.oduY - 8)
+        .attr("class", "label tag-mod")
+        .attr("text-anchor", "middle"),
+      // Bottom performance metrics line
       metrics: gLabels
         .append("text")
         .attr("x", 500)
-        .attr("y", 440)
+        .attr("y", 400)
         .attr("class", "label tag-perf")
         .attr("text-anchor", "middle"),
+      // Visual fraction showing COP = Q̇ / P_el
+      copfrac: gLabels
+        .append("g")
+        .attr("class", "cop-frac")
+        .attr("transform", "translate(600, 420)"),
     };
 
     // --- Render helpers ---
+    function buildPrimaryFlowTooltip(r) {
+      const lines = [
+        "Vorlauftemperatur des Primärkreises TC3 gemessen in der Außeneinheit",
+      ];
+      if (r.flows.primaryMassFlow < r.flows.heatingMassFlow) {
+        lines.push(
+          "\nTC3 muss über T0 angehoben werden aufgrund der Zumischung des kälteren Rücklaufs durch den Pendelpuffer"
+        );
+      }
+      const cpWh = 1.163; // Wh/(kg·K)
+      const QkW = r.heat.heatingPowerW / 1000; // kW
+      const m = r.flows.primaryMassFlow; // kg/s
+      const dT = Math.max(
+        0.001,
+        r.temps.primaryFlowTempC - r.temps.primaryReturnTempC
+      ); // K
+      const mh = m * 3600; // kg/h
+      lines.push(`\nVolumenstrom PC0 = Q̇_Heizleistung / (c_p · ΔT_Primär)`);
+      lines.push(
+        `        = ${QkW.toFixed(2)} kW / (${cpWh} Wh/(l·K) · ${dT.toFixed(
+          1
+        )} K)`
+      );
+      lines.push(`        ≈ ${mh.toFixed(0).toString()} l/h`);
+      return lines.join("\n");
+    }
+
+    function buildPrimaryReturnTooltip(r) {
+      const lines = ["Rücklauftemperatur des Primärkreises TC0"];
+      if (r.flows.primaryMassFlow > r.flows.heatingMassFlow) {
+        lines.push(
+          "\nTemperatur ergibt sich aus Mischung der Rücklauftemperatur des Heizkreises und Vorlauftemperatur des Primärkreises durch den Pendelpuffer"
+        );
+      }
+      return lines.join("\n");
+    }
+
+    function buildHeatingFlowTooltip(r) {
+      const lines = ["Sollvorlauftemperatur T0 aus Heizkurve"];
+      if (r.flows.primaryMassFlow < r.flows.heatingMassFlow) {
+        lines.push(
+          "\nTemperatur ergibt sich aus Mischung der Vorlauftemperatur des Primärkreises und Rücklauftemperatur des Heizkreises durch den Pendelpuffer"
+        );
+      }
+      return lines.join("\n");
+    }
+
+    function buildHeatingReturnTooltip(r) {
+      const cpWh = 1.163; // Wh/(kg·K) - spezifische Wärmekapazität von Wasser
+      const T_flow = r.temps.heatingFlowTempC;
+      const m_heating = r.flows.heatingMassFlow; // kg/s
+      const mh = m_heating * 3600; // kg/h
+      const Q_building = r.heat.buildingLoadW; // W
+      const dT_heating = Q_building / Math.max(1e-6, mh * cpWh);
+      const T_return = r.temps.heatingReturnTempC;
+
+      const lines = [
+        "Rücklauftemperatur (Heizkreis) aus skalierter Gebäudeheizlast und Volumenstrom:\n",
+        "ΔT = Q̇_Gebäude / (c_p · ṁ)",
+        `        = ${Q_building.toFixed(
+          0
+        )} W / (${cpWh} Wh/(l·K) · ${mh.toFixed(0)} l/h)`,
+        `        ≈ ${dT_heating.toFixed(2)} K`,
+        "T_R = T_V - ΔT",
+        ` = ${T_flow.toFixed(1)} °C - ${dT_heating.toFixed(2)} K`,
+        `= ${T_return.toFixed(1)} °C`,
+      ];
+      return lines.join("\n");
+    }
+
     function renderLabels(r) {
+      // Update modulation label above compressor
+      labels.mod.text(`Mod: ${fmt.percent(r.derived.modulation)}`);
+      setTitle(
+        labels.mod,
+        `Kompressor-Modulation: ${fmt.percent(r.derived.modulation)}`
+      );
+
       labels.ambient.text(`${r.inputs.ambientTempC.toFixed(1)} °C`);
       labels.evapin.text(`${r.temps.evapTempC.toFixed(1)} °C`);
       labels.evap.text(`${r.temps.suctionTempC.toFixed(1)} °C`);
-      labels.compout.text(`TR1: ${r.temps.compOutTempC.toFixed(1)} °C`);
+      labels.compout.text(`TR1: ${fmt.deg(r.temps.compOutTempC)}`);
+      // Tooltip for refrigerant temperature after compressor
+      setTitle(labels.compout, "Kältemitteltemperatur nach Kompressor TR1");
       labels.pflow
         .text(
-          `TC3: ${r.temps.primaryFlowTempC.toFixed(1)} °C  | PC0: ${(
-            r.flows.primaryMassFlow * SECONDS_PER_HOUR
-          ).toFixed(0)} l/h`
+          `TC3: ${fmt.deg(r.temps.primaryFlowTempC)}  | PC0: ${fmt.lph(
+            r.flows.primaryMassFlow
+          )}`
         )
         .attr("y", geom.yFlow - 30);
+      // Tooltip for primary flow (TC3)
+      setTitle(labels.pflow, buildPrimaryFlowTooltip(r));
       labels.preturn
-        .text(`TC0: ${r.temps.primaryReturnTempC.toFixed(1)} °C`)
+        .text(`TC0: ${fmt.deg(r.temps.primaryReturnTempC)}`)
         .attr("y", geom.yReturn + 30);
+      // Tooltip for primary return (TC0)
+      setTitle(labels.preturn, buildPrimaryReturnTooltip(r));
       labels.hflow.text(
-        `T0: ${r.temps.heatingFlowTempC.toFixed(1)} °C  | PC1: ${(
-          r.flows.heatingMassFlow * SECONDS_PER_HOUR
-        ).toFixed(0)} l/h`
+        `T0: ${fmt.deg(r.temps.heatingFlowTempC)}  | PC1: ${fmt.lph(
+          r.flows.heatingMassFlow
+        )}`
       );
       labels.hflow.attr("y", geom.yFlow - 30);
-      // Add live tooltip for T0 (Sollvorlauftemperatur) from heating curve
-      (function () {
-        const Ta = r.inputs.ambientTempC;
-        const x0 = r.inputs.stdOutdoorTempC; // θ_e,design
-        const y0 = r.inputs.flowTempAtStdOutdoorC; // Tflow at θ_e,design
-        const x1 = 20; // indoor comfort reference for curve end
-        const y1 = r.inputs.flowTempAt20C; // Tflow at 20°C
-        const denom = Math.max(1e-6, x1 - x0);
-        const t = (Ta - x0) / denom;
-        const T0_raw = y0 + t * (y1 - y0);
-        const T0 = Math.max(15, Math.min(60, T0_raw));
-        const T_flow_actual = r.temps.heatingFlowTempC;
-
-        const needClamp = T0 !== T0_raw;
-        const lines = [
-          "Sollvorlauftemperatur T0 aus Heizkurve",
-          "Linear zwischen (Ta=θ_e,design → Tflow=T@θe) und (Ta=20°C → Tflow=T20)",
-          `Ta = ${Ta.toFixed(1)} °C, θ_e,design = ${x0.toFixed(1)} °C`,
-          `T@θe = ${y0.toFixed(1)} °C, T20 = ${y1.toFixed(1)} °C`,
-          `t = (Ta − θ_e,design) / (20 − θ_e,design) = (${Ta.toFixed(
-            1
-          )} − ${x0.toFixed(1)}) / (20 − ${x0.toFixed(1)}) = ${t.toFixed(3)}`,
-          `T0,roh = T@θe + t · (T20 − T@θe) = ${y0.toFixed(1)} + ${t.toFixed(
-            3
-          )} · (${y1.toFixed(1)} − ${y0.toFixed(1)}) = ${T0_raw.toFixed(2)} °C`,
-          needClamp
-            ? `Begrenzt auf [15, 60] °C → T0 = ${T0.toFixed(1)} °C`
-            : `T0 = ${T0.toFixed(1)} °C`,
-          `Aktueller Vorlauf (gemischt): ${T_flow_actual.toFixed(1)} °C`,
-        ];
-        labels.hflow.select("title").remove();
-        labels.hflow.append("title").text(lines.join("\n"));
-      })();
-      labels.hreturn.text(`${r.temps.heatingReturnTempC.toFixed(1)} °C`);
+      // Simplified tooltip for heating flow T0
+      setTitle(labels.hflow, buildHeatingFlowTooltip(r));
+      labels.hreturn.text(`${fmt.deg(r.temps.heatingReturnTempC)}`);
       // Add live tooltip detailing how T_return is calculated
-      (function () {
-        const cp = 4180; // J/(kg*K)
-        const T_flow = r.temps.heatingFlowTempC;
-        const m_heating = r.flows.heatingMassFlow; // kg/s
-        const Q_building = r.heat.buildingLoadW; // W
-        const dT_heating = Q_building / Math.max(1e-6, m_heating * cp);
-        const T_return = r.temps.heatingReturnTempC;
-
-        const lines = [
-          "Rücklauftemperatur (Heizkreis) aus skalierter Gebäudeheizlast und Volumenstrom:",
-          "T_R = T_V - ΔT_Heizkreis",
-          "ΔT_Heizkreis = Q_Gebäude / (ṁ_Heizkreis · c_p)",
-          `Q_Gebäude = ${Q_building.toFixed(0)} W`,
-          `ṁ_Heizkreis = ${m_heating.toFixed(4)} kg/s`,
-          `c_p = ${cp} J/(kg·K)`,
-          `ΔT_Heizkreis = ${Q_building.toFixed(0)} / (${m_heating.toFixed(
-            4
-          )} · ${cp}) = ${dT_heating.toFixed(2)} K`,
-          `T_V = ${T_flow.toFixed(1)} °C → T_R = ${T_return.toFixed(1)} °C`,
-        ];
-        labels.hreturn.select("title").remove();
-        labels.hreturn.append("title").text(lines.join("\n"));
-      })();
+      setTitle(labels.hreturn, buildHeatingReturnTooltip(r));
 
       const meanTempStr = `⌀ ${(
         (r.temps.heatingFlowTempC + r.temps.heatingReturnTempC) /
@@ -488,13 +555,121 @@
         .attr("fill", isDeficit ? "#c62828" : null)
         .attr("font-weight", isDeficit ? "700" : null)
         .text(buildingLoadStr);
+      // Tooltip for mean heating temperature and building load
+      setTitle(
+        labels.hmean,
+        "Mittlere Temperatur im Heizkreis und aktuell benötigte Gebäudeheizlast. Die Gebäudeheizlast skaliert mit der Außentemperatur."
+      );
 
-      labels.metrics.html(
-        `Mod ${Math.round(r.derived.modulation * 100)}% | P\u2091\u2097 ${(
-          r.heat.electricalPowerW / 1000
-        ).toFixed(2)} kW |  Q\u2095 ${(r.heat.heatingPowerW / 1000).toFixed(
-          2
-        )} kW  |  COP ${r.heat.COP.toFixed(2)}`
+      // Bottom metrics now reduced; explanation moved to visual fraction
+      labels.metrics.text("");
+
+      // Render visual explanation and numeric fraction: COP = [Q_label]/[P_label] = [Q]/[P] = COP
+      const Pel = (r.heat.electricalPowerW / 1000).toFixed(2);
+      const Q = (r.heat.heatingPowerW / 1000).toFixed(2);
+      const COPv = r.heat.COP.toFixed(2);
+
+      const g = labels.copfrac;
+      g.selectAll("*").remove();
+
+      // Layout constants
+      const labelFracW = 300; // width for text fraction
+      const numFracW = 90; // width for numeric fraction
+      const gapEq = 14; // space around '='
+      const baseY = 4;
+
+      // 'COP =' on the left
+      g.append("text")
+        .attr("class", "cop-eq")
+        .attr("x", -labelFracW / 2 - 20)
+        .attr("y", baseY)
+        .attr("text-anchor", "end")
+        .text("COP =");
+
+      // Text fraction: Q_label / P_label
+      const labelCenter = 0;
+      g.append("text")
+        .attr("class", "cop-label numerator")
+        .attr("text-anchor", "middle")
+        .attr("x", labelCenter)
+        .attr("y", baseY - 12)
+        .text("Erzeugte Wärmeleistung");
+      g.append("line")
+        .attr("class", "cop-line")
+        .attr("x1", labelCenter - labelFracW / 2)
+        .attr("x2", labelCenter + labelFracW / 2)
+        .attr("y1", baseY - 4)
+        .attr("y2", baseY - 4);
+      g.append("text")
+        .attr("class", "cop-label denominator")
+        .attr("text-anchor", "middle")
+        .attr("x", labelCenter)
+        .attr("y", baseY + 16)
+        .text("Eingesetzte elektrische Leistung");
+
+      // '=' between label fraction and numeric fraction
+      g.append("text")
+        .attr("class", "cop-eq")
+        .attr("x", labelCenter + labelFracW / 2 + gapEq)
+        .attr("y", baseY)
+        .attr("text-anchor", "start")
+        .text("=");
+
+      // Numeric fraction centered to the right
+      const numCenter =
+        labelCenter + labelFracW / 2 + gapEq + 24 + numFracW / 2;
+      g.append("text")
+        .attr("class", "metric value")
+        .attr("text-anchor", "middle")
+        .attr("x", numCenter)
+        .attr("y", baseY - 10)
+        .text(`${Q} kW`);
+      g.append("line")
+        .attr("class", "cop-line")
+        .attr("x1", numCenter - numFracW / 2)
+        .attr("x2", numCenter + numFracW / 2)
+        .attr("y1", baseY - 4)
+        .attr("y2", baseY - 4);
+      g.append("text")
+        .attr("class", "metric value")
+        .attr("text-anchor", "middle")
+        .attr("x", numCenter)
+        .attr("y", baseY + 16)
+        .text(`${Pel} kW`);
+
+      // '=' and COP value to the right
+      g.append("text")
+        .attr("class", "cop-eq")
+        .attr("x", numCenter + numFracW / 2 + gapEq)
+        .attr("y", baseY)
+        .attr("text-anchor", "start")
+        .text("=");
+      g.append("text")
+        .attr("class", "metric value")
+        .attr("x", numCenter + numFracW / 2 + gapEq + 20)
+        .attr("y", baseY)
+        .attr("text-anchor", "start")
+        .text(COPv);
+
+      // Background rounded rectangle around the whole group
+      const bbox = g.node().getBBox();
+      const padX = 10,
+        padY = 8;
+      const box = g
+        .append("rect")
+        .attr("class", "cop-box")
+        .attr("x", bbox.x - padX)
+        .attr("y", bbox.y - padY)
+        .attr("rx", 8)
+        .attr("ry", 8)
+        .attr("width", bbox.width + 2 * padX)
+        .attr("height", bbox.height + 2 * padY);
+      if (box.lower) box.lower();
+
+      // Tooltip
+      setTitle(
+        g,
+        `COP = (Erzeugte Wärmeleistung / Eingesetzte elektrische Leistung) = ${Q} kW / ${Pel} kW = ${COPv}`
       );
     }
 
@@ -517,22 +692,22 @@
       setFlow(
         refrig.fromEvapToComp,
         tempColor(r.temps.suctionTempC),
-        6 + 8 * r.derived.modulation,
-        1 + 6 * r.derived.modulation,
+        widthForMod(r.derived.modulation),
+        speedForMod(r.derived.modulation),
         +1
       );
       setFlow(
         refrig.fromCompToCond,
         tempColor(r.temps.compOutTempC),
-        6 + 8 * r.derived.modulation,
-        1 + 6 * r.derived.modulation,
+        widthForMod(r.derived.modulation),
+        speedForMod(r.derived.modulation),
         +1
       );
       setFlow(
         refrig.fromCondBottomToEvapBottom,
         tempColor((r.temps.primaryReturnTempC + r.temps.primaryFlowTempC) / 2),
-        6 + 8 * r.derived.modulation,
-        1 + 6 * r.derived.modulation,
+        widthForMod(r.derived.modulation),
+        speedForMod(r.derived.modulation),
         +1
       );
       const T_ref_mean_right =
@@ -542,15 +717,15 @@
       setFlow(
         refrig.closeCond,
         tempColor(T_ref_mean_right),
-        6 + 8 * r.derived.modulation,
-        1 + 6 * r.derived.modulation,
+        widthForMod(r.derived.modulation),
+        speedForMod(r.derived.modulation),
         +1
       );
       setFlow(
         refrig.fromEvapUpToComp,
         tempColor(r.temps.evapTempC),
-        6 + 8 * r.derived.modulation,
-        1 + 6 * r.derived.modulation,
+        widthForMod(r.derived.modulation),
+        speedForMod(r.derived.modulation),
         +1
       );
 
@@ -559,7 +734,7 @@
         air,
         tempColor(r.inputs.ambientTempC),
         6,
-        2 + 3 * r.derived.modulation,
+        2 + 3 * Math.max(0, r.derived.modulation),
         +1
       );
 
@@ -618,11 +793,7 @@
       else
         compRotor.style(
           "animation",
-          `spin ${
-            FLOW_CONST.COMP_SPIN_BASE_S *
-            (FLOW_CONST.COMP_SPIN_MIN_FACTOR /
-              (1 + FLOW_CONST.COMP_SPIN_SCALE * r.derived.modulation))
-          }s linear infinite`
+          `spin ${computeSpinDuration(r.derived.modulation)}s linear infinite`
         );
     }
 

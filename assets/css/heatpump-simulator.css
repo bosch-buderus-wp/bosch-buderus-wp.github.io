@@ -24,7 +24,29 @@
 }
 .heatpump-sim .sim-ctrl-row label {
   font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
 }
+.heatpump-sim .sim-ctrl-row .info-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #eef6ff;
+  color: #0a66c2;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 1;
+}
+.heatpump-sim .sim-ctrl-row .info-link:hover {
+  background: #dbeafe;
+  text-decoration: none;
+}
+
 .heatpump-sim .sim-ctrl-row input[type="range"] {
   width: 100%;
 }
@@ -234,6 +256,59 @@
 }
 .sim-share-popup .sim-share-copy-btn:active {
   transform: translateY(1px);
+}
+
+/* Modulation label above compressor */
+.heatpump-sim .tag-mod {
+  font-weight: 700;
+  font-size: 16px;
+  paint-order: stroke fill;
+  stroke: #fff;
+  stroke-width: 3px;
+  stroke-linejoin: round;
+}
+
+/* Metrics readability tweaks */
+.heatpump-sim .tag-perf {
+  font-size: 14px;
+  paint-order: stroke fill; /* ensure outline sits behind fill */
+  stroke: #fff;
+  stroke-width: 1px; /* subtle halo for readability on busy background */
+  stroke-linejoin: round;
+}
+.heatpump-sim .tag-perf .metric.label {
+  fill: #333;
+}
+.heatpump-sim .tag-perf .metric.value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums; /* align numbers better */
+}
+.heatpump-sim .tag-perf .metric.sep {
+  fill: #666;
+}
+/* COP fraction mini-visual */
+.heatpump-sim .cop-box {
+  fill: rgba(255, 255, 255, 0.85);
+  stroke: #ccc;
+  stroke-width: 1px;
+}
+
+.heatpump-sim .cop-frac .cop-eq {
+  fill: #333;
+  font-weight: 500;
+}
+.heatpump-sim .cop-frac .cop-line {
+  stroke: #333;
+  stroke-width: 1.5px;
+  shape-rendering: crispEdges;
+}
+
+.heatpump-sim .tag-perf .metric.value {
+  font-weight: 700;
+  font-variant-numeric: tabular-nums; /* align numbers better */
+}
+.heatpump-sim .tag-perf .metric.sep {
+  fill: #666;
 }
 
 /* Heat curve chart */

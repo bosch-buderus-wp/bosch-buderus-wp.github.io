@@ -110,7 +110,18 @@
 
     ctrlConfig.forEach((cfg) => {
       const row = container.append("div").attr("class", CLASSNAMES.ROW);
-      row.append("label").text(cfg.label).attr("for", `ctrl_${cfg.key}`);
+      const labelEl = row.append("label").text(cfg.label).attr("for", `ctrl_${cfg.key}`);
+      // Add info icon next to Normaußentemperatur label linking to Klimakarte
+      if (cfg.key === "stdOutdoorTempC") {
+        labelEl
+          .append("a")
+          .attr("class", "info-link")
+          .attr("href", "https://www.waermepumpe.de/werkzeuge/klimakarte/")
+          .attr("target", "_blank")
+          .attr("rel", "noopener noreferrer")
+          .attr("title", "Klimakarte (neuer Tab)")
+          .text("ℹ︎");
+      }
       const valueLabel = row.append("span").attr("class", CLASSNAMES.VALUE);
       const input = row
         .append("input")
