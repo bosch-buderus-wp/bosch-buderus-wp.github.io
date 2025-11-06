@@ -1,0 +1,48 @@
+# Jekyll build artifacts
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Ruby / Bundler
+.bundle/
+vendor/
+# If using vendor/bundle to cache gems locally, ignore it explicitly
+vendor/bundle/
+
+# Node.js
+node_modules/
+.vite/
+# Vitest coverage output
+coverage/
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Environment files
+.env
+.env.*
+.env.local
+.env.*.local
+
+# Editor/OS files
+**/.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Cache/temp
+.tmp/
+.cache/
+tmp/
+
+# Build output (if used)
+dist/
+build/
+
+# Misc tool caches
+.ruby-lsp/
