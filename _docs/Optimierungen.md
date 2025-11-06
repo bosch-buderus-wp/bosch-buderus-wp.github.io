@@ -100,6 +100,42 @@ Damit spart man Wasser und gleichzeitig reduziert man den Energieverlust der Zir
 Wer möchte, kann noch einen Schritt weitergehen und den Zwischenstecker bei Warmwasserbedarf mit einem Shelly-Button oder einer Amazon Alexa Routine einschalten.
 Dann drückt man einfach den Button oder sagt "Alexa, duschen" um die Zirkulationspumpe für 5 Minuten zu starten.
 
+## Taktverhalten
+
+Mit Hilfe der eingestellten [Heizkurve](/docs/einstellungen/#heizkurve) bestimmt die Wärmepumpe die nötige Sollvorlauftemperatur für die aktuelle/gedämpfte Außentemperatur.
+Optimal wäre, wenn die reale Vorlauftemperatur im Heizkreis (T0) immer genau der Sollvorlauftemperatur folgen würde.
+Vor allem in der Übergangszeit mit verhältnismäßig hohen Außentemperaturen ist dies aber nicht immer möglich, da die [Modulation](/docs/technischer-aufbau/#modulation) die Leistung nicht beliebig weit runterregeln kann.
+Je nach Modell liegt die Grenze zwischen 12% und 25% der Maximalleistung.
+Wird dann immer noch zu viel Wärme produziert, schaltet die Wärmepumpe ab.
+Die Abschaltung erfolgt, wenn die gemessene Vorlauftemperatur die Sollvorlauftemperatur um 4 K überschreitet.
+Fällt die gemessene Vorlauftemperatur um etwa 2 K unter die Sollvorlauftemperatur startet die Wärmepumpe erneut.
+
+Im nachfolgenden Diagramm sieht man, dass um 10:32 Uhr die gemessene Vorlauftemperatur T0 die Sollvorlauftemperatur um 4 K überschreitet.
+Die Wärmepumpe geht aus.
+Daraufhin sinkt die gemessene Vorlauftemperatur ab bis um 12:22 Uhr die gemessene Vorlauftemperatur ca. 2 K unter der Sollvorlauftemperatur liegt.
+Die Wärmepumpe startet wieder.
+
+[![An- & Abschaltverhalten](https://i.ibb.co/xqg0vJtp/An-Abschaltregelung.png)](https://i.ibb.co/xqg0vJtp/An-Abschaltregelung.png)
+
+Dieses Taktverhalten lässt sich in der Übergangszeit nicht verhindern.
+Jedoch sollte es nicht zu häufig auftreten, denn der Kompressor muss nach dem Start erst auf Betriebsmodus gebracht werden, was die Effizienz reduziert und jeder unnötige Start erhöht den Verschleiß.
+Die Anzahl der Kompressorstarts kann man entweder auf dem Bedienfeld im Servicemenü unter `Info` &rarr; `Wärmepumpe` &rarr; `Statistik` oder in der App abrufen.
+Dort seht ihr auch die Kompressor-Betriebsstunden und wenn ihr die beiden Werte dividiert, erhaltet ihr die durchschnittliche Länge eines Taktes.
+Bei mir sind das aktuell 4,8 Stunden pro Takt.
+Ist euer Wert sehr klein, z.B. kleiner 1, dann könnt ihr folgende Optimierungen probieren:
+
+1. Minimale Vorlauftemperatur setzen:
+   Durch das Setzen der minimalen Vorlauftemperatur im Servicemenü unter `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `Heizen` &rarr; `Minimale Vorlauftemperatur` stellt ihr sicher, dass auch bei höheren Außentemperaturen die Sollvorlauftemperatur nicht unter den eingestellten Wert fällt.
+   Würde die minimale Vorlauftemperatur auf 28 °C stehen, würde die gelbe Linie im Bild oben um 10:30 Uhr nicht weiter absinken.
+   Dadurch würde die Abschaltgrenze nicht erreicht und die Wärmepumpe würde weiterlaufen.
+   Das hat aber natürlich zur Folge, dass die Raumtemperatur steigt und ihr unnötig Strom verbraucht.
+2. Alternativ oder zusätzlich könnt ihr daher auch versuchen, das Takten zu akzeptieren, aber die Anzahl der Takte zu reduzieren, indem ihr die [Raumtemperatur-Nachtabsenkung](/docs/einstellungen/#raumtemperatur) nutzt.
+   Damit könnt ihr für mehrere Stunden die Raumtemperatur stark reduzieren, was die Wärmepumpe vermutlich zum Ausschalten zwingt.
+   Danach ist die Vorlauftemperatur wahrscheinlich stark gesunken und die Wärmepumpe braucht mehrere Arbeitsstunden ohne Takte, um die Sollvorlauftemperatur wieder zu erreichen.
+   Durch die schwankenden Raumtemperaturen könnte das Verhalten Komforteinbußen mit sich bringen.
+
+Am besten ist es natürlich, wenn ihr bereits beim Kauf der Wärmepumpe darauf achtet, dass sie nicht überdimensioniert ist, damit die Modulation auch in der Übergangszeit weitestgehend ausreicht.
+
 ## Heizkurve und Thermischer Abgleich
 
 Nun gehen wir vom Warmwasser zur Optimierung der Heizung.
