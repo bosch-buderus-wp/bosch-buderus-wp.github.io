@@ -54,6 +54,18 @@
       { Ta: 2, kW: 7.09 },
       { Ta: 7, kW: 7.97 },
     ],
+    "10 kW": [
+      { Ta: -10, kW: 9.99 },
+      { Ta: -7, kW: 9.57 },
+      { Ta: 2, kW: 11.66 },
+      { Ta: 7, kW: 12.67 },
+    ],
+    "12 kW": [
+      { Ta: -10, kW: 11.82 },
+      { Ta: -7, kW: 11.56 },
+      { Ta: 2, kW: 12.61 },
+      { Ta: 7, kW: 12.9 },
+    ],
   };
 
   // Additional anchor points at A7/W55 provided by spec (kW)
@@ -61,6 +73,8 @@
     "4 kW": 4.53,
     "5 kW": 6.18,
     "7 kW": 7.45,
+    "10 kW": 12.07,
+    "12 kW": 12.84,
   };
 
   function clamp(x, a, b) {
