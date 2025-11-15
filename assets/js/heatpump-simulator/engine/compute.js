@@ -17,11 +17,13 @@
   // Physical constants and approaches
   const CONST = {
     cp_J_per_kgK: 4180, // J/(kg*K)
-    etaCarnot: 0.45,
-    TE_APPROACH_K: 5, // K
+    etaCarnot: 0.5,
+    TE_APPROACH_K: 7, // K
     TC_APPROACH_K: 5, // K
-    TE_APPROACH_ELEC_K: 3, // K
-    TC_APPROACH_ELEC_K: 3, // K
+    SUPERHEAT_K: 10, // K
+    // Lift factor increases efficiency at low lift and decreases at high lift around a reference
+    ETA_LIFT_FACTOR_PER_K: 0.007, // 1/K
+    ETA_LIFT_REF_K: 47, // K (~A7/W35 typical lift)
     dp_ref_mbar: 150, // mbar
   };
   const {
@@ -29,8 +31,9 @@
     etaCarnot: eta_carnot,
     TE_APPROACH_K: TE_APPROACH,
     TC_APPROACH_K: TC_APPROACH,
-    TE_APPROACH_ELEC_K: TE_APPROACH_ELEC,
-    TC_APPROACH_ELEC_K: TC_APPROACH_ELEC,
+    SUPERHEAT_K,
+    ETA_LIFT_FACTOR_PER_K,
+    ETA_LIFT_REF_K,
     dp_ref_mbar: dp_ref,
   } = CONST;
 
@@ -158,11 +161,17 @@
 
   function estimateCOP(T_primaryFlowOutC, ambientTempC) {
     // Mirror the existing thermodynamic estimate logic exactly
-    const Te_elec = ambientTempC - TE_APPROACH_ELEC;
-    const Tc_elec = T_primaryFlowOutC + TC_APPROACH_ELEC;
-    const dT_lift_K = Math.max(5, toK(Tc_elec) - toK(Te_elec));
+    const Te_elec = ambientTempC - TE_APPROACH;
+    const Tc_elec = T_primaryFlowOutC + TC_APPROACH;
+    const dT_lift_K = toK(Tc_elec) - toK(Te_elec);
     const COP_carnot = toK(Tc_elec) / dT_lift_K;
-    return eta_carnot * COP_carnot;
+
+    // Adjust effective fraction of Carnot around a reference lift
+    // If dT < ref: eta increases; if dT > ref: eta decreases.
+    const eta_eff =
+      eta_carnot * (1 + ETA_LIFT_FACTOR_PER_K * (ETA_LIFT_REF_K - dT_lift_K));
+
+    return eta_eff * COP_carnot;
   }
 
   // Compute derating slope per model from A7/W35 and A7/W55 anchors
@@ -226,7 +235,7 @@
     const mod = computeModulation(buildingLoadW, capMaxW);
 
     const Te = ambientTempC - TE_APPROACH;
-    const T_suction = Te + 5;
+    const T_suction = Te + SUPERHEAT_K;
 
     // Available heat at current modulation (with flow-temp derating)
     const Q_available =
@@ -272,7 +281,7 @@
     let Qh = Qh_cap;
     const Pel = Qh / COP;
 
-    const T_comp_out = T_suction + 0.9 * (Tc - Te) + 5;
+    const T_comp_out = T_suction + 0.85 * (Tc - Te); // TODO
     const Q_load = mHeating_kgps * cp * deltaT_heatingK;
 
     return {
