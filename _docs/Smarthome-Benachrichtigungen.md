@@ -35,9 +35,15 @@ Nehmt eine ausreichend lange `<ZUFÄLLIGE-ZEICHENFOLGE>` als `topic`, denn jeder
 Also wählt mindestens 10 Zeichen, die keine leicht erratbaren Wörter oder Zeichenfolgen enthalten.
 
 Dieser Zeitplan schickt nun immer eine Benachrichtigung, wenn sich die `custom/message` ändert.
+Wie man die `custom/message` mit relevant Zustandsänderungen befüllt, erfahrt ihr in den nächsten Kapiteln.
 
-Nun müssen wir noch einen weiteren Zeitplan erstellen, der die `custom/message` befüllt.
-Um über Zustandsänderungen der Kompressoraktivität (_aus, Heizen, Warmwasser, Abtauen, Alarmkompressor, ..._) benachrichtigt zu werden, erstellt ihr einen Zeitplan, der...
+Dafür müsst ihr euch noch die ntfy App aus dem [App](https://apps.apple.com/us/app/ntfy/id1625396347)/[Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy) Store laden und das Topic mit der oben gewählten Zeichenfolge abonnieren.
+
+## Zustandsänderungen
+
+### Kompressoraktivität
+
+Um beispielsweise über Zustandsänderungen der Kompressoraktivität (_aus, Heizen, Warmwasser, Abtauen, Alarmkompressor, ..._) benachrichtigt zu werden, erstellt ihr einen Zeitplan, der...
 
 - `Bei Änderung` der `boiler/hpactivity`
 - den Befehl `custom/message`
@@ -47,6 +53,13 @@ Die Konfiguration sollte dann so aussehen:
 
 [![Konfiguration im ems-esp Planer](https://i.ibb.co/ZpcpFYH1/emsesp-ntfy.png)](https://i.ibb.co/ZpcpFYH1/emsesp-ntfy.png)
 
-Dann müsst ihr euch noch die ntfy App aus dem [App](https://apps.apple.com/us/app/ntfy/id1625396347)/[Play](https://play.google.com/store/apps/details?id=io.heckel.ntfy) Store laden und das Topic mit der oben gewählten Zeichenfolge abonnieren und schon seid ihr immer auf dem neuesten Stand eurer Kompressoraktivität.
+### Elektrischer Zuheizer
 
-Die Konfiguration für den Heizstab füge ich in Kürze hinzu.
+Eine weitere sehr interessante Zuständsänderung, über die man gerne informiert wäre, ist die Aktivität des elektrischen Zuheizers.
+Dazu müsst ihr einfach einen Zeitplan hinzufügen, der...
+
+- `Bei Änderung` der `boiler/auxheaterlevel`
+- den Befehl `custom/message`
+- mit dem Wert `"Zuheizer: boiler/auxheaterlevel %"` ausführt.
+
+Dann bekommt ihr Benachrichtigungen wie `Zuheizer: 33 %`, wenn der Heizstab mit 3 kW unterstützt.

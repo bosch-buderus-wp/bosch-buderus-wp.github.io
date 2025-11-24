@@ -12,18 +12,22 @@
     heatingPumpPressureMbar: 150,
     heatingFlowAt150mbarLph: 750,
     ambientTempC: 0.0,
+    // Modulation mode:
+    //  - "capacity" (default): modulation from building load vs. available thermal capacity
+    //  - "electrical": modulation from electrical power (incl. base loads) vs. model electrical max
+    modulationMode: "electrical",
   };
 
   // Physical constants and approaches
   const CONST = {
     cp_J_per_kgK: 4180, // J/(kg*K)
-    etaCarnot: 0.5,
+    etaCarnot: 0.55,
     TE_APPROACH_K: 7, // K
     TC_APPROACH_K: 5, // K
     SUPERHEAT_K: 10, // K
     // Lift factor increases efficiency at low lift and decreases at high lift around a reference
-    ETA_LIFT_FACTOR_PER_K: 0.007, // 1/K
-    ETA_LIFT_REF_K: 47, // K (~A7/W35 typical lift)
+    ETA_LIFT_FACTOR_PER_K: 0.016, // 1/K
+    ETA_LIFT_REF_K: 47.6, // K (~A7/W35 typical lift)
     dp_ref_mbar: 150, // mbar
   };
   const {
@@ -78,6 +82,43 @@
     "7 kW": 7.45,
     "10 kW": 12.07,
     "12 kW": 12.84,
+  };
+
+  // Electrical profiles per model to support Pel-based modulation mapping
+  const ELECTRICAL_PROFILES = {
+    "4 kW": { minPowerConsW: 300, maxPowerConsW: 1340, minMod: 0.26 },
+    "5 kW": { minPowerConsW: 300, maxPowerConsW: 2210, minMod: 0.18 },
+    "7 kW": { minPowerConsW: 300, maxPowerConsW: 2510, minMod: 0.15 },
+    "10 kW": { minPowerConsW: 500, maxPowerConsW: 4110, minMod: 0.13 },
+    "12 kW": { minPowerConsW: 500, maxPowerConsW: 4780, minMod: 0.12 },
+  };
+
+  const COP_PARAMS = {
+    "4 kW": {
+      etaCarnot: 0.55,
+      ETA_LIFT_FACTOR_PER_K: 0.0158,
+      ETA_LIFT_REF_K: 47.6,
+    },
+    "5 kW": {
+      etaCarnot: 0.534,
+      ETA_LIFT_FACTOR_PER_K: 0.0211,
+      ETA_LIFT_REF_K: 47.6,
+    },
+    "7 kW": {
+      etaCarnot: 0.565,
+      ETA_LIFT_FACTOR_PER_K: 0.0128,
+      ETA_LIFT_REF_K: 47.6,
+    },
+    "10 kW": {
+      etaCarnot: 0.657,
+      ETA_LIFT_FACTOR_PER_K: -0.00767,
+      ETA_LIFT_REF_K: 47.6,
+    },
+    "12 kW": {
+      etaCarnot: 0.657,
+      ETA_LIFT_FACTOR_PER_K: -0.00767,
+      ETA_LIFT_REF_K: 47.6,
+    },
   };
 
   function clamp(x, a, b) {
@@ -155,11 +196,36 @@
   }
 
   // --- Modulation & performance ---
-  function computeModulation(Q_load_target_W, Q_cap_max_W) {
+  function computeThermalModulation(Q_load_target_W, Q_cap_max_W) {
     return clamp(Q_load_target_W / Math.max(1e-9, Q_cap_max_W), 0, 1);
   }
 
-  function estimateCOP(T_primaryFlowOutC, ambientTempC) {
+  // From the anchors, derive a base-load and an electrical max so that
+  //   mod = (Pel + baseW) / pelMaxW
+  // satisfies (Pel_anchor -> mod_anchor) and (Pel_full -> 1.0)
+  function deriveElectricalBaseAndMax(modelName) {
+    const p = ELECTRICAL_PROFILES[modelName];
+    if (!p) return { baseW: 0, pelMaxW: Math.max(1e-6, 1) };
+    const Pel0 = p.minPowerConsW; // minimal electrical power consumption at minimal modulation
+    const m0 = p.minMod; // target minimal possible modulation fraction
+    const PelF = p.maxPowerConsW; // total electrical at 100% modulation
+    // Interpret PelF as total electrical max. Then choose pelMaxW = PelF and solve for baseW:
+    //   m0 = (Pel0 + baseW) / PelF  => baseW = m0*PelF - Pel0
+    const baseW = Math.max(0, m0 * PelF - Pel0);
+    const pelMaxW = Math.max(1e-9, PelF);
+    return { baseW, pelMaxW };
+  }
+
+  function computeElectricModulation(pelW, modelName) {
+    const { baseW, pelMaxW } = deriveElectricalBaseAndMax(modelName);
+    return (pelW + baseW) / Math.max(1e-9, pelMaxW);
+  }
+
+  function estimateCOP(
+    T_primaryFlowOutC,
+    ambientTempC,
+    modelName = DEFAULTS.hpModel
+  ) {
     // Mirror the existing thermodynamic estimate logic exactly
     const Te_elec = ambientTempC - TE_APPROACH;
     const Tc_elec = T_primaryFlowOutC + TC_APPROACH;
@@ -168,8 +234,12 @@
 
     // Adjust effective fraction of Carnot around a reference lift
     // If dT < ref: eta increases; if dT > ref: eta decreases.
+    const cp_params = COP_PARAMS[modelName] || COP_PARAMS[DEFAULTS.hpModel];
     const eta_eff =
-      eta_carnot * (1 + ETA_LIFT_FACTOR_PER_K * (ETA_LIFT_REF_K - dT_lift_K));
+      cp_params.etaCarnot *
+      (1 +
+        cp_params.ETA_LIFT_FACTOR_PER_K *
+          (cp_params.ETA_LIFT_REF_K - dT_lift_K));
 
     return eta_eff * COP_carnot;
   }
@@ -207,7 +277,7 @@
     const deltaT_primaryK = Math.max(0.5, params.primarySpreadK);
     const designLoadW = Math.max(0, params.buildingHeatLoadAtStdKw) * 1000;
 
-    // Target heating flow temperature per linear curve between standard outdoor temperature and 20°C
+    // 1. Target heating flow temperature per linear curve between standard outdoor temperature and 20°C
     const heatingFlowTargetC = flowTargetCurve(
       ambientTempC,
       params.stdOutdoorTempC,
@@ -215,11 +285,7 @@
       params.flowTempAtStdOutdoorC
     );
 
-    // Capacity at current ambient and target flow temperature (linear derating from W35 to W55)
-    const capMaxW =
-      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) * 1000;
-
-    // Compute building heat load target per DIN EN 12831
+    // 2. Compute building heat load target per DIN EN 12831
     const heatingLimitC = params.heatingLimitC;
     const buildingLoadW = computeBuildingHeatLoad_W(
       designLoadW,
@@ -228,23 +294,21 @@
       params.stdOutdoorTempC
     );
 
-    // Equivalent required secondary-side deltaT to satisfy building load
+    // 3. Equivalent required secondary-side deltaT to satisfy building load
     const deltaT_heatingK = buildingLoadW / Math.max(1e-6, mHeating_kgps * cp);
-
-    // Analytic modulation, smooth in ambient temperature
-    const mod = computeModulation(buildingLoadW, capMaxW);
 
     const Te = ambientTempC - TE_APPROACH;
     const T_suction = Te + SUPERHEAT_K;
 
     // Available heat at current modulation (with flow-temp derating)
-    const Q_available =
-      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) *
-      1000 *
-      clamp(mod, 0, 1);
-    let Qh_cap = Math.max(0, Q_available);
+    // const Q_available =
+    //   capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) *
+    //   1000 *
+    //   modCapacity;
+    // let Qh_cap = Math.max(0, Q_available);
+    let Qh_cap = buildingLoadW;
 
-    // Primary-side flow from available heat and chosen spread
+    // 4. Primary-side flow from available heat and chosen spread
     let mPrimary_kgps = Qh_cap > 0 ? Qh_cap / (cp * deltaT_primaryK) : 0;
 
     // Hydronic temperature network resolution
@@ -275,14 +339,28 @@
 
     const Tc = T_primaryFlowOutC + TC_APPROACH;
 
-    // COP estimation
-    const COP = estimateCOP(T_primaryFlowOutC, ambientTempC);
+    // 5. Estimate COP
+    const COP = estimateCOP(T_primaryFlowOutC, ambientTempC, params.hpModel);
 
+    // 6. Compute electrical power Pel
     let Qh = Qh_cap;
-    const Pel = Qh / COP;
+    const Pel = Qh / Math.max(1e-9, COP);
+
+    // 7.a Compute capacity-based modulation, smooth in ambient temperature
+    // Capacity at current ambient and target flow temperature (linear derating from W35 to W55)
+    const capMaxW =
+      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) * 1000;
+    const modCapacity = computeThermalModulation(buildingLoadW, capMaxW);
+
+    // 7.b Compute electrical-based modulation from Pel against model electrical max incl. base loads
+    const modElectrical = computeElectricModulation(Pel, params.hpModel);
+
+    const modulation =
+      params.modulationMode === "electrical" ? modElectrical : modCapacity;
 
     const T_comp_out = T_suction + 0.85 * (Tc - Te); // TODO
     const Q_load = mHeating_kgps * cp * deltaT_heatingK;
+    console.log(Q_load, buildingLoadW);
 
     return {
       inputs: {
@@ -303,7 +381,11 @@
         electricalPowerW: Pel,
         COP: COP,
       },
-      derived: { modulation: mod },
+      derived: {
+        modulation,
+        modulationCapacity: modCapacity,
+        modulationElectrical: modElectrical,
+      },
       temps: {
         evapTempC: Te,
         suctionTempC: T_suction,
@@ -323,8 +405,10 @@
     flowTargetCurve,
     computeState,
     estimateCOP,
+    COP_PARAMS,
     DEFAULTS,
     CAP_MODELS_W35,
+    ELECTRICAL_PROFILES,
   };
   if (typeof window !== "undefined") {
     window.HeatpumpEngine = api;
