@@ -17,7 +17,7 @@ Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz er
 Mit `Startbildschirm` &rarr; `Wunschtemperatur` stellt man die gewünschte Temperatur ein, die man in den beheizten Räumen erzielen möchte.
 Ohne ein verbundenes Raumthermometer aus dem Wärmepumpenzubehör, entspricht die eingestellte Raumtemperatur nicht zwangsläufig der tatsächlichen Raumtemperatur.
 Dies spielt technisch keine große Rolle.
-Wer dennoch die beiden Werte abgleichen möchte, kann dazu unter `Anlageneinstellungen` &rarr; `Heizung Kühlung` &rarr; `Heizkreis 1` &rarr; `Heizen` &rarr; `Raumtemperatur-Offset` einen Korrekturwert einstellen.
+Wer dennoch die beiden Werte abgleichen möchte, kann dazu unter `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `Heizen` &rarr; `Raumtemperatur-Offset` einen Korrekturwert einstellen.
 
 Für eine möglichst konstant niedrige Leistungserbringung, ist eine konstante Raumtemperatur vorzuziehen.
 Dies erreicht man mit der Auswahl `Manuell` unter `Startbildschirm` &rarr; `Wunschtemperatur`.
@@ -166,6 +166,6 @@ Die oben erwähnte Temperaturgrenze, ab der der Zuheizer die Wärmepumpe unterst
 Das Zuschalten des Zuheizers erfolgt jedoch nicht auf Basis des eben eingestellten Bivalenzpunktes, sondern wird anhand des 'Nicht-Erreichens' der Sollvorlauftemperatur und zwar als Temperaturdifferenz-Zeitdauer-Produkt, z.B. 600 K\*min, eingestellt.
 600 K\*min bedeutet in diesem Fall, dass der Zuheizer in folgenden Beispielsituation zugeschaltet wird:
 
-- Die Sollvorlauftemperatur wird für 60 Minuten um 10 K (°C) überschritten
-- Die Sollvorlauftemperatur wird für 4 Stunden um 2,5 K (°C) überschritten
-- Die Sollvorlauftemperatur wird für 10 Stunden um 1 K (°C) überschritten
+- Die Sollvorlauftemperatur wird für 60 Minuten um 10 K (°C) unterschritten
+- Die Sollvorlauftemperatur wird für 4 Stunden um 2,5 K (°C) unterschritten
+- Die Sollvorlauftemperatur wird für 10 Stunden um 1 K (°C) unterschritten
