@@ -32,6 +32,9 @@ footer:
     - label: "Changelog"
       icon: "fa-fw fa-solid fa-train"
       url: "https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/commits/main/"
+    - label: "Impressum"
+      icon: "fa-fw fa-solid fa-stamp"
+      url: "/impressum/"
 
 # Outputting
 permalink: /:categories/:title/
