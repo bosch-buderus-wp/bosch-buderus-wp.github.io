@@ -37,3 +37,23 @@ docs:
         url: /docs/smarthome/evcc
       - title: "AI"
         url: /docs/smarthome/ai
+
+metrics:
+  - title: "Dashboard"
+    url: /metrics/
+  - title: "Werte"
+    children:
+      - title: "Jahresübersicht"
+        url: /metrics/#/yearly
+      - title: "Monatsübersicht"
+        url: /metrics/#/monthly
+      - title: "Tagesübersicht"
+        url: /metrics/#/daily
+  - title: "Anlagen"
+    children:
+      - title: "Alle Anlagen"
+        url: /metrics/#/systems
+      - title: "Meine Anlage"
+        url: /metrics/#/dashboard
+  - title: "Mitmach-Guide"
+    url: /metrics/howto
