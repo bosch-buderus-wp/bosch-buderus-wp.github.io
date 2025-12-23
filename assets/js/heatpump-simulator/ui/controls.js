@@ -93,7 +93,7 @@
         label: "Durchflussmenge PC1 bei 150 mbar",
         type: "range",
         min: 300,
-        max: 1000,
+        max: 1500,
         step: 10,
         fmt: (v) => `${v.toFixed(0)} l/h`,
       },
