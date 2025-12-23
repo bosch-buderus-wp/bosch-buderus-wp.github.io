@@ -27,17 +27,47 @@ Daher bitte ich euch, mit der Plattform ressourcenschonend umzugehen:
 
 Danke! 💚
 
+## Übersicht der Auswertungen
+
+Die **Jahresübersicht** zeigt alle Monate des ausgewählten Jahres.
+Die Balkenhöhe ergibt sich aus dem Durchschnitt aller in der Tabelle ausgewählten Monatswerten.
+
+Die **Monatsübersicht** zeigt alle Tage des ausgewählten Monats.
+Die Balkenhöhe ergibt sich aus dem Durchschnitt aller in der Tabelle ausgewählten Tageswerten.
+
+Die **Tagesübersicht** zeigt alle Stunden des ausgewählten Tages.
+Die Balkenhöhe ergibt sich aus dem Durchschnitt aller in der Tabelle ausgewählten Stundenwerten.
+
+Und die Daten ergeben sich wie folgt:
+
+- **Stundenwerte** kann man direkt von ems-esp oder Home Assistant stündlich hochladen
+- **Tageswerte** werden automatisch aus den Stundenwerten berechnet
+- **Monatswerte** werden entweder automatisch aus den Stundenwerten berechnet oder können manuell eingegeben werden (für diejenigen, die kein ems-esp haben)
+
 ## Anleitungen
 
 ### Monatswerte manuell eingeben
 
 Die Monatswerte kannst du manuell unter [Meine Anlage](/metrics/#/my-account) &rarr; `Monatswerte pflegen` für jeden Monat ab Januar 2025 eingeben.
+Damit siehst du deine Anlage in der Jahresübersicht.
+Willst du deine Anlage auch in der Monatsübersicht oder Tagesübersicht sehen?
+Dann musst du die Messwerte stündlich bereitstellen.
+Wie das entweder über ems-esp oder Home Assistant möglich ist, erfährst du in den folgenden Abschnitten.
 
 ### Messwerte direkt aus ems-esp übertragen
 
 Willst du deine Messwerte stündlich automatisch übertragen?
 Dann kannst du das über den Planer/Scheduler in deinem ems-esp Gateway einstellen.
-Lege hierfür einen neuen Zeitplan an und setze:
+Für folgende ems-esp Hardware funktioniert das jedoch leider nicht:
+
+- ESP32-C3 Mini 4MB no psram
+- ESP32 4MB no psram
+- ESP32 16M no psram
+- ESP32-S2 4MB with psram
+
+Falls du aber Home Assistant einsetzt, folge der Anleitung im nächsten Abschnitt.
+
+Für andere Hardware lege einen neuen Zeitplan an und setze:
 
 - Trigger: `Timer`
 - Aktiv: `Ja`
@@ -56,4 +86,85 @@ API-Key und Anlagen-ID findest du unter [Meine Anlage](/metrics/#/my-account).
 
 Bitte lade die Daten nicht mehr als einmal pro Stunde hoch, um nicht unnötig viele Daten in der Datenbank zu erzeugen.
 
-Wenn du stündlich die Daten hochlädst, werden jede Nacht die vorübergehenden Monatswerte automatisch berechnet.
+### Messwerte aus Home Assistant übertragen
+
+Um stündlich Messwerte aus Home Assistant zu übertragen, füge folgende Konfiguration in `configuration.yaml` ein.
+Da ems-esp unterschiedliche Entitäts-ID Formate im MQTT-Discovery unterstützt, findet ihr nachfolgend für die verschiedene Versionen angepasste Konfigurationen.
+
+Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`:
+
+<details open>
+<summary>Einzelinstanz, MQTT-Namen (v3.5 und v3.6)</summary>
+
+{% capture entities %}
+{% raw %}
+
+```yaml
+rest_command:
+  send_heatpump_metrics:
+    url: "https://heatpump-metrics-proxy.vercel.app/api/proxy"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "api_key": ".......",
+        "heating_id": ".......",
+        "thermal_energy_kwh": "{{ states('sensor.boiler_nrgtotal') }}",
+        "electrical_energy_kwh": "{{ states('sensor.boiler_metertotal') }}",
+        "thermal_energy_heating_kwh": "{{ states('sensor.boiler_nrgheat') }}",
+        "electrical_energy_heating_kwh": "{{ states('sensor.boiler_meterheat') }}",
+        "outdoor_temperature_c": "{{ states('sensor.boiler_outdoortemp') }}",
+        "flow_temperature_c": "{{ states('sensor.boiler_curflowtemp') }}"
+      }
+```
+
+{% endraw %}
+{% endcapture %}
+{{ entities | markdownify }}
+
+</details>
+
+<details>
+<summary>Einzelinstanz, MQTT-Namen (v3.7)</summary>
+
+{% capture entities %}
+{% raw %}
+
+```yaml
+TODO
+```
+
+{% endraw %}
+{% endcapture %}
+{{ entities | markdownify }}
+
+</details>
+
+\
+Nicht vergessen, die `.......` durch deinen API-Key und die Anlagen-ID zu ersetzen.
+API-Key und Anlagen-ID findest du unter [Meine Anlage](/metrics/#/my-account).
+
+Dann müsst ihr Home Assistant neu starten (oder falls möglich RESTful Commands neu laden), um die Änderungen zu übernehmen.
+Um die Messwerte stündlich zu übertragen, braucht ihr dann noch eine Automation, die ihr unter Home Assistant unter `Einstellungen` &rarr; `Automationen & Szenen` &rarr; `Automation erstellen` findet.
+Im Dialogfenster `Neue Automation erstellen` auswählen und einen `Auslöser hinzufügen`.
+Dann `Zeitschema` auswählen und bei Minuten eine beliebige Zahl zwischen 0 und 59 eintragen und die anderen Felder leer lassen.
+Sucht euch bitte eine beliebige Zahl aus, damit nicht alle Nutzer ihre Messwerte gleichzeitig hochladen.
+Dann müsst ihr noch eine `Aktion hinzufügen` und `Aktion ausführen` auswählen.
+Im Feld `Aktion` dann `rest_command.send_heatpump_metrics` eingeben oder auswählen.
+Mit `Speichern` könnt ihr eure Automation speichern.
+
+Falls ihr den YAML-Editor verwendet, sollte die Automation wie folgt aussehen:
+
+```yaml
+alias: Send Heatpump Metrics
+description: ""
+triggers:
+  - trigger: time_pattern
+    minutes: "13"
+conditions: []
+actions:
+  - action: rest_command.send_heatpump_metrics
+    data: {}
+mode: single
+```
