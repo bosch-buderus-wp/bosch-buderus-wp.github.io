@@ -3,6 +3,8 @@ main:
     url: /docs/intro/
   - title: "Erfahrungen"
     url: /xps/matthias/
+  - title: "Metriken"
+    url: /metrics/
 
 docs:
   - title: "Varianten"
