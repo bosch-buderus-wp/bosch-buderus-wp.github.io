@@ -125,6 +125,38 @@ rest_command:
 
 </details>
 
+<details open>
+<summary>Einzelinstanz, Langname (v3.4)</summary>
+
+{% capture entities %}
+{% raw %}
+
+```yaml
+rest_command:
+  send_heatpump_metrics:
+    url: "https://heatpump-metrics-proxy.vercel.app/api/proxy"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "api_key": ".......",
+        "heating_id": ".......",
+        "thermal_energy_kwh": "{{ states('sensor.boiler_total_energy') }}",
+        "electrical_energy_kwh": "{{ states('sensor.boiler_total_energy_consumption') }}",
+        "thermal_energy_heating_kwh": "{{ states('sensor.boiler_energy_heating') }}",
+        "electrical_energy_heating_kwh": "{{ states('sensor.boiler_meter_heating') }}",
+        "outdoor_temperature_c": "{{ states('sensor.boiler_outside_temperature') }}",
+        "flow_temperature_c": "{{ states('sensor.boiler_current_flow_temperature') }}"
+      }
+```
+
+{% endraw %}
+{% endcapture %}
+{{ entities | markdownify }}
+
+</details>
+
 <details>
 <summary>Einzelinstanz, MQTT-Namen (v3.7)</summary>
 
