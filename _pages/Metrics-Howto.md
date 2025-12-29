@@ -143,7 +143,7 @@ rest_command:
         "api_key": ".......",
         "heating_id": ".......",
         "thermal_energy_kwh": "{{ states('sensor.boiler_total_energy') }}",
-        "electrical_energy_kwh": "{{ states('sensor.boiler_total_energy_consumption') }}",
+        "electrical_energy_kwh": "{{ states('sensor.boiler_meter_total') }}",
         "thermal_energy_heating_kwh": "{{ states('sensor.boiler_energy_heating') }}",
         "electrical_energy_heating_kwh": "{{ states('sensor.boiler_meter_heating') }}",
         "outdoor_temperature_c": "{{ states('sensor.boiler_outside_temperature') }}",
