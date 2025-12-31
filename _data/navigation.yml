@@ -51,6 +51,10 @@ metrics:
         url: /metrics/#/monthly
       - title: "Tagesübersicht"
         url: /metrics/#/daily
+  - title: "Analysen"
+    children:
+      - title: "AZ-Temperatur"
+        url: /metrics/#/az-temp-evaluation
   - title: "Anlagen"
     children:
       - title: "Alle Anlagen"
