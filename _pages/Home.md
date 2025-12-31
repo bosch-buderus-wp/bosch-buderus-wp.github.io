@@ -25,7 +25,7 @@ feature_row:
     excerpt: "Datensammlung- und Visualisierung"
     url: "/metrics/"
     btn_class: "btn--primary"
-    btn_label: "Lesen"
+    btn_label: "Öffnen"
   - alt: "Erfahrungen"
     title: "Erfahrungen"
     excerpt: "Erfahrungsberichte"
