@@ -502,8 +502,11 @@
     }
 
     function renderLabels(r) {
-      // Update modulation label above compressor
-      labels.mod.text(`Mod: ${fmt.percent(r.derived.modulation)}`);
+      const isDeficit = r.derived.modulation > 1;
+      labels.mod
+        .style("fill", isDeficit ? "#c62828" : null)
+        .style("font-weight", isDeficit ? "700" : null)
+        .text(`Mod: ${fmt.percent(r.derived.modulation)}`);
       setTitle(
         labels.mod,
         `Kompressor-Modulation: ${fmt.percent(r.derived.modulation)}`
@@ -546,14 +549,11 @@
         2
       ).toFixed(1)} °C | `;
       const buildingLoadStr = `${(r.heat.buildingLoadW / 1000).toFixed(2)} kW`;
-      const isDeficit = r.heat.buildingLoadW - 100 > r.heat.heatingPowerW;
       labels.hmean.attr("y", (geom.yFlow + geom.yReturn) / 2).text(null);
       labels.hmean.append("tspan").text(meanTempStr);
       labels.hmean
         .append("tspan")
         .attr("class", "hmean-building-load")
-        .attr("fill", isDeficit ? "#c62828" : null)
-        .attr("font-weight", isDeficit ? "700" : null)
         .text(buildingLoadStr);
       // Tooltip for mean heating temperature and building load
       setTitle(

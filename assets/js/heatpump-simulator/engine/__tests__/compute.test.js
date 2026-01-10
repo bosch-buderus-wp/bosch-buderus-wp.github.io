@@ -1,158 +1,83 @@
 import { describe, it, expect } from "vitest";
-import Engine from "../compute.js";
+import engine from "../compute.js";
 
-// Common approximate helper for relative/absolute checks
-function approx(actual, expected, { abs = null, rel = 0.06 } = {}) {
-  const diff = Math.abs(actual - expected);
-  if (abs != null) return diff <= abs;
-  const denom = Math.max(1e-9, Math.abs(expected));
-  return diff / denom <= rel;
-}
+const { THERMAL_PROFILES, DEFAULTS } = engine;
 
-describe("HeatpumpEngine.computeState", () => {
-  it("returns structured outputs with defaults", () => {
-    const out = Engine.computeState(Engine.DEFAULTS);
-    expect(out).toBeTruthy();
-    expect(out.inputs).toBeTruthy();
-    expect(out.flows).toBeTruthy();
-    expect(out.temps).toBeTruthy();
-    expect(out.heat).toBeTruthy();
-    expect(out.derived).toBeTruthy();
-  });
+describe("Heat Pump Engine Specification Validation", () => {
+  Object.keys(THERMAL_PROFILES).forEach((model) => {
+    describe(`Model: ${model}`, () => {
+      const profile = THERMAL_PROFILES[model];
+      Object.keys(profile).forEach((taStr) => {
+        const Ta = parseInt(taStr, 10);
+        const data = profile[taStr];
 
-  it("capacity interpolation tendency: heatingPowerW decreasing with ambient temp (tendency)", () => {
-    const TaVals = [10, 7, 2, 0, -2, -7];
-    let prev = -Infinity;
-    for (const Ta of TaVals) {
-      const s = Engine.computeState({ ...Engine.DEFAULTS, ambientTempC: Ta });
-      expect(s.heat.heatingPowerW).toBeGreaterThanOrEqual(0);
-      if (prev > -Infinity && Ta >= -10) {
-        expect(s.heat.heatingPowerW + 1e-6).toBeGreaterThanOrEqual(prev);
-      }
-      prev = s.heat.heatingPowerW;
-    }
-  });
+        const testPoints = [];
+        if (data.COPmax !== undefined) {
+          testPoints.push({
+            load: data.Qmax_kW,
+            targetCOP: data.COPmax,
+            label: "Full Load",
+          });
+        }
+        if (data.COPlower !== undefined) {
+          testPoints.push({
+            load: data.Qlower_kW,
+            targetCOP: data.COPlower,
+            label: "Part Load",
+          });
+        }
 
-  it("snapshot at 9°C matches verified measurements within tolerances", () => {
-    const inputs = {
-      ...Engine.DEFAULTS,
-      ambientTempC: 6.0,
-      modulationMode: "capacity",
-    };
-    const out = Engine.computeState(inputs);
-    const expected = {
-      derived: { modulation: 0.3 },
-      flows: { primaryMassFlow: 0.105, heatingMassFlow: 0.2083 },
-      temps: {
-        evapTempC: 4.0,
-        suctionTempC: 9.0,
-        primaryReturnTempC: 27.38,
-        primaryFlowTempC: 30.88,
-        heatingFlowTempC: 29.08,
-        heatingReturnTempC: 27.38,
-        compOutTempC: 40.35,
-        condTempC: 34.3,
-      },
-      heat: {
-        heatingPowerW: 1479,
-        electricalPowerW: 330,
-        buildingLoadW: 1479,
-        COP: 5.39,
-      },
-    };
+        testPoints.forEach(({ load, targetCOP, label }) => {
+          it(`should reach COP ${targetCOP} at A${Ta}/W35 (${label})`, () => {
+            const loadW = load * 1000;
+            const spreadK = 5.0; // Typical spread
+            const cp = 4180;
 
-    const rel = 0.06;
-    const absSmall = 0.4;
-    console.log(out, expected);
-    expect(
-      approx(out.derived.modulation, expected.derived.modulation, { rel })
-    ).toBe(true);
+            // To ensure no temperature is lost in the buffer (primaryFlowTempC = heatingFlowTempC),
+            // we must ensure that primary mass flow matches heating mass flow.
+            //
+            // 1. mPrimary = loadW / (cp * deltaT_primaryK)
+            // 2. mHeating = (heatingFlowLph / 3600) * sqrt(pressure / 150)
+            //
+            // Setting pressure = 150 and deltaT_primaryK = spreadK:
+            // heatingFlowLph = (loadW / (cp * spreadK)) * 3600
+            const targetFlowLph = (loadW / (cp * spreadK)) * 3600;
 
-    expect(
-      approx(out.flows.primaryMassFlow, expected.flows.primaryMassFlow, { rel })
-    ).toBe(true);
-    expect(
-      approx(out.flows.heatingMassFlow, expected.flows.heatingMassFlow, { rel })
-    ).toBe(true);
+            const params = {
+              ...DEFAULTS,
+              hpModel: model,
+              ambientTempC: Ta,
+              // Force W35 target temperature
+              stdOutdoorTempC: Ta,
+              flowTempAtStdOutdoorC: 35,
+              flowTempAt20C: 35,
+              buildingHeatLoadAtStdKw: load,
+              heatingLimitC: Ta + 10,
+              primarySpreadK: spreadK,
+              heatingPumpPressureMbar: 150,
+              heatingFlowAt150mbarLph: targetFlowLph,
+              efficiencyModulation: "on",
+            };
 
-    // expect(
-    //   approx(out.temps.evapTempC, expected.temps.evapTempC, { abs: absSmall })
-    // ).toBe(true);
-    // expect(
-    //   approx(out.temps.suctionTempC, expected.temps.suctionTempC, {
-    //     abs: absSmall,
-    //   })
-    // ).toBe(true);
-    expect(
-      approx(out.temps.primaryReturnTempC, expected.temps.primaryReturnTempC, {
-        abs: 0.6,
-      })
-    ).toBe(true);
-    expect(
-      approx(out.temps.primaryFlowTempC, expected.temps.primaryFlowTempC, {
-        abs: 0.6,
-      })
-    ).toBe(true);
-    expect(
-      approx(out.temps.heatingFlowTempC, expected.temps.heatingFlowTempC, {
-        abs: 0.6,
-      })
-    ).toBe(true);
-    expect(
-      approx(out.temps.heatingReturnTempC, expected.temps.heatingReturnTempC, {
-        abs: 0.6,
-      })
-    ).toBe(true);
-    expect(
-      approx(out.temps.compOutTempC, expected.temps.compOutTempC, { abs: 1.0 })
-    ).toBe(true);
-    // expect(
-    //   approx(out.temps.condTempC, expected.temps.condTempC, { abs: 0.8 })
-    // ).toBe(true);
+            const state = engine.computeState(params);
 
-    expect(
-      approx(out.heat.heatingPowerW, expected.heat.heatingPowerW, { rel })
-    ).toBe(true);
-    expect(
-      approx(out.heat.electricalPowerW, expected.heat.electricalPowerW, {
-        rel: 0.25,
-      })
-    ).toBe(true);
-    expect(
-      approx(out.heat.buildingLoadW, expected.heat.buildingLoadW, { rel })
-    ).toBe(true);
-    expect(approx(out.heat.COP, expected.heat.COP, { rel })).toBe(true);
-  });
+            // Test Setup Verification
+            // Verify building load matches expectation
+            expect(state.heat.buildingLoadW).toBeCloseTo(loadW, 1);
+            // Verify hydronics are "balanced" so no temperature is lost in buffer
+            // We allow a small margin for numerical stability
+            expect(state.temps.heatingFlowTempC).toBeCloseTo(35, 0.5);
+            expect(state.temps.primaryFlowTempC).toBeCloseTo(35, 0.5);
 
-  it("invariants: sensible bounds and ordering", () => {
-    const s = Engine.computeState(Engine.DEFAULTS);
-    expect(s.derived.modulation).toBeGreaterThanOrEqual(0);
-    expect(s.derived.modulation).toBeLessThanOrEqual(1);
-    expect(s.temps.primaryFlowTempC).toBeGreaterThanOrEqual(
-      s.temps.primaryReturnTempC
-    );
-    expect(s.heat.heatingPowerW).toBeGreaterThanOrEqual(0);
-    expect(s.heat.electricalPowerW).toBeGreaterThanOrEqual(0);
-  });
-});
-describe("HeatpumpEngine COP calibration (4kW, W35)", () => {
-  // Spec 4kW:
-  //   * A-10/W35 with 3.63 kW thermal power output (max modulation): COP=2.7
-  //   * A-7/W35 with 3.92 kW thermal power output (max modulation): COP=2.89
-  //   * A+2/W35 with 4.31 kW thermal power output (max modulation): COP=3.21
-  //   * A+2/W35 with 2.09 kW thermal power output (lower modulation): COP=3.94
-  //   * A+7/W35 with 4.99 kW thermal power output (max modulation): COP=3.59
-  //   * A+7/W35 with 2.84 kW thermal power output (lower modulation): COP=4.85
-  it("matches target COPs at A-7/W35, A+2/W35, A+7/W35 within tolerance", () => {
-    const W35 = 35;
-    const tolAbs = 0.08; // absolute tolerance for COP matching
+            // COP Validation
+            const actualCOP = state.heat.COP;
+            const errorPercent = Math.abs(actualCOP - targetCOP) / targetCOP;
 
-    const cop_Aneg7 = Engine.estimateCOP(W35, -7, "4 kW");
-    const cop_Apos2 = Engine.estimateCOP(W35, 2, "4 kW");
-    const cop_Apos7 = Engine.estimateCOP(W35, 7, "4 kW");
-
-    expect(Math.abs(cop_Aneg7 - 2.89)).toBeLessThanOrEqual(tolAbs);
-    expect(Math.abs(cop_Apos2 - 3.94)).toBeLessThanOrEqual(tolAbs);
-    expect(Math.abs(cop_Apos7 - 4.85)).toBeLessThanOrEqual(tolAbs);
+            // The user requested +- 10% tolerance
+            expect(errorPercent).toBeLessThan(0.1);
+          });
+        });
+      });
+    });
   });
 });

@@ -1,0 +1,12 @@
+{
+  "name": "bosch-buderus-wp.github.io",
+  "private": true,
+  "scripts": {
+    "test": "vitest run",
+    "test:ui": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.3"
+  }
+}

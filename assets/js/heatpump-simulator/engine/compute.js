@@ -1,6 +1,9 @@
 // Engine: heat pump compute logic (pure, no DOM)
-// Exposes window.HeatpumpEngine = { computeState, DEFAULTS, CAP_MODELS_W35 }
+// Exposes window.HeatpumpEngine = { computeState, DEFAULTS, THERMAL_PROFILES, ... }
 (function () {
+  /**
+   * Default simulation parameters.
+   */
   const DEFAULTS = {
     hpModel: "4 kW",
     stdOutdoorTempC: -13.6,
@@ -12,79 +15,96 @@
     heatingPumpPressureMbar: 150,
     heatingFlowAt150mbarLph: 750,
     ambientTempC: 0.0,
-    // Modulation mode:
-    //  - "capacity" (default): modulation from building load vs. available thermal capacity
-    //  - "electrical": modulation from electrical power (incl. base loads) vs. model electrical max
-    modulationMode: "electrical",
+    modulationMode: "electrical", // "capacity" | "electrical"
+    efficiencyModulation: "on", // "off" | "on"
   };
 
-  // Physical constants and approaches
+  /**
+   * Physical constants and simulation approaches.
+   */
   const CONST = {
     cp_J_per_kgK: 4180, // J/(kg*K)
-    etaCarnot: 0.55,
-    TE_APPROACH_K: 7, // K
-    TC_APPROACH_K: 5, // K
-    SUPERHEAT_K: 10, // K
-    // Lift factor increases efficiency at low lift and decreases at high lift around a reference
-    ETA_LIFT_FACTOR_PER_K: 0.016, // 1/K
-    ETA_LIFT_REF_K: 47.6, // K (~A7/W35 typical lift)
-    dp_ref_mbar: 150, // mbar
+    TE_APPROACH_K: 7, // Evaporator temperature approach
+    TC_APPROACH_K: 5, // Condenser temperature approach
+    SUPERHEAT_K: 10, // Degree of superheat
+    ETA_LIFT_REF_K: 47.6, // Reference temperature lift (K) for lift-factor calculation
+    dp_ref_mbar: 150, // Reference pressure for hydraulic flow scaling
   };
+
   const {
     cp_J_per_kgK: cp,
-    etaCarnot: eta_carnot,
     TE_APPROACH_K: TE_APPROACH,
     TC_APPROACH_K: TC_APPROACH,
     SUPERHEAT_K,
-    ETA_LIFT_FACTOR_PER_K,
     ETA_LIFT_REF_K,
     dp_ref_mbar: dp_ref,
   } = CONST;
 
-  // Capacity curves at W35 provided by spec
-  const CAP_MODELS_W35 = {
-    "4 kW": [
-      { Ta: -10, kW: 3.63 },
-      { Ta: -7, kW: 3.92 },
-      { Ta: 2, kW: 4.31 },
-      { Ta: 7, kW: 4.99 },
-    ],
-    "5 kW": [
-      { Ta: -10, kW: 5.45 },
-      { Ta: -7, kW: 5.42 },
-      { Ta: 2, kW: 6.43 },
-      { Ta: 7, kW: 6.8 },
-    ],
-    "7 kW": [
-      { Ta: -10, kW: 5.86 },
-      { Ta: -7, kW: 6.71 },
-      { Ta: 2, kW: 7.09 },
-      { Ta: 7, kW: 7.97 },
-    ],
-    "10 kW": [
-      { Ta: -10, kW: 9.99 },
-      { Ta: -7, kW: 9.57 },
-      { Ta: 2, kW: 11.66 },
-      { Ta: 7, kW: 12.67 },
-    ],
-    "12 kW": [
-      { Ta: -10, kW: 11.82 },
-      { Ta: -7, kW: 11.56 },
-      { Ta: 2, kW: 12.61 },
-      { Ta: 7, kW: 12.9 },
-    ],
+  // Thermal performance profiles (Capacity and COP anchors at W35)
+  const THERMAL_PROFILES = {
+    "4 kW": {
+      "-10": { Qmax_kW: 3.63, COPmax: 2.7 },
+      "-7": { Qmax_kW: 3.92, COPmax: 2.89 },
+      "+2": { Qmax_kW: 4.31, COPmax: 3.21, Qlower_kW: 2.09, COPlower: 3.94 },
+      "+7": {
+        Qmax_kW: 4.99,
+        COPmax: 3.59,
+        Qlower_kW: 2.84,
+        COPlower: 4.85,
+        QmaxW55: 4.53,
+      },
+    },
+    "5 kW": {
+      "-10": { Qmax_kW: 5.45, COPmax: 2.59 },
+      "-7": { Qmax_kW: 5.42, COPmax: 2.51 },
+      "+2": { Qmax_kW: 6.43, COPmax: 2.91, Qlower_kW: 2.41, COPlower: 3.92 },
+      "+7": {
+        Qmax_kW: 6.8,
+        COPmax: 3.16,
+        Qlower_kW: 2.84,
+        COPlower: 4.85,
+        QmaxW55: 6.18,
+      },
+    },
+    "7 kW": {
+      "-10": { Qmax_kW: 5.86, COPmax: 2.23 },
+      "-7": { Qmax_kW: 6.71, COPmax: 2.36 },
+      "+2": { Qmax_kW: 7.09, COPmax: 2.83, Qlower_kW: 2.87, COPlower: 4.06 },
+      "+7": {
+        Qmax_kW: 7.97,
+        COPmax: 3.07,
+        Qlower_kW: 2.84,
+        COPlower: 4.85,
+        QmaxW55: 7.45,
+      },
+    },
+    "10 kW": {
+      "-10": { Qmax_kW: 9.99, COPmax: 2.72 },
+      "-7": { Qmax_kW: 9.57, COPmax: 2.47 },
+      "+2": { Qmax_kW: 11.66, COPmax: 2.84, Qlower_kW: 4.59, COPlower: 4.48 },
+      "+7": {
+        Qmax_kW: 12.67,
+        COPmax: 3.0,
+        Qlower_kW: 5.58,
+        COPlower: 4.84,
+        QmaxW55: 12.07,
+      },
+    },
+    "12 kW": {
+      "-10": { Qmax_kW: 11.82, COPmax: 2.46 },
+      "-7": { Qmax_kW: 11.56, COPmax: 2.43 },
+      "+2": { Qmax_kW: 12.61, COPmax: 2.64, Qlower_kW: 4.59, COPlower: 4.48 },
+      "+7": {
+        Qmax_kW: 12.9,
+        COPmax: 2.71,
+        Qlower_kW: 5.58,
+        COPlower: 4.84,
+        QmaxW55: 12.84,
+      },
+    },
   };
 
-  // Additional anchor points at A7/W55 provided by spec (kW)
-  const CAP_A7_W55 = {
-    "4 kW": 4.53,
-    "5 kW": 6.18,
-    "7 kW": 7.45,
-    "10 kW": 12.07,
-    "12 kW": 12.84,
-  };
-
-  // Electrical profiles per model to support Pel-based modulation mapping
+  // Electrical limits for modulation mapping
   const ELECTRICAL_PROFILES = {
     "4 kW": { minPowerConsW: 300, maxPowerConsW: 1340, minMod: 0.26 },
     "5 kW": { minPowerConsW: 300, maxPowerConsW: 2210, minMod: 0.18 },
@@ -93,44 +113,69 @@
     "12 kW": { minPowerConsW: 500, maxPowerConsW: 4780, minMod: 0.12 },
   };
 
+  // Thermodynamic calibration parameters per model
   const COP_PARAMS = {
     "4 kW": {
-      etaCarnot: 0.55,
-      ETA_LIFT_FACTOR_PER_K: 0.0158,
+      etaCarnot: 0.62,
+      ETA_LIFT_FACTOR_PER_K: 0.004,
       ETA_LIFT_REF_K: 47.6,
     },
     "5 kW": {
-      etaCarnot: 0.534,
-      ETA_LIFT_FACTOR_PER_K: 0.0211,
+      etaCarnot: 0.635,
+      ETA_LIFT_FACTOR_PER_K: 0.006,
       ETA_LIFT_REF_K: 47.6,
     },
     "7 kW": {
-      etaCarnot: 0.565,
-      ETA_LIFT_FACTOR_PER_K: 0.0128,
+      etaCarnot: 0.64,
+      ETA_LIFT_FACTOR_PER_K: 0.004,
       ETA_LIFT_REF_K: 47.6,
     },
     "10 kW": {
-      etaCarnot: 0.657,
-      ETA_LIFT_FACTOR_PER_K: -0.00767,
+      etaCarnot: 0.665,
+      ETA_LIFT_FACTOR_PER_K: -0.012,
       ETA_LIFT_REF_K: 47.6,
     },
     "12 kW": {
-      etaCarnot: 0.657,
-      ETA_LIFT_FACTOR_PER_K: -0.00767,
+      etaCarnot: 0.675,
+      ETA_LIFT_FACTOR_PER_K: -0.009,
       ETA_LIFT_REF_K: 47.6,
     },
   };
 
+  // --- Utility Functions ---
+
   function clamp(x, a, b) {
     return Math.max(a, Math.min(b, x));
   }
+
   function toK(C) {
     return C + 273.15;
   }
-  function k_h_from_calibration(m_h150_lph) {
-    return m_h150_lph / 3600.0;
+
+  /**
+   * Scaled mass flow calculation (kg/s) based on pump pressure.
+   */
+  function computeMassFlow_kgps(flowAt150Lph, pumpPressureMbar) {
+    const k_h = flowAt150Lph / 3600.0;
+    return k_h * Math.sqrt(Math.max(20, pumpPressureMbar) / dp_ref);
   }
 
+  /**
+   * Retrieves capacity anchor points for a specific model.
+   */
+  function getCapacityPoints(modelName) {
+    const spec = THERMAL_PROFILES[modelName];
+    if (!spec) return [];
+    return Object.keys(spec)
+      .map((k) => ({ Ta: parseInt(k, 10), data: spec[k] }))
+      .filter((e) => !Number.isNaN(e.Ta))
+      .map((e) => ({ Ta: e.Ta, kW: e.data.Qmax_kW }))
+      .sort((a, b) => a.Ta - b.Ta);
+  }
+
+  /**
+   * Interpolates maximum thermal capacity at W35.
+   */
   function hp_capacity_w35(Ta, pts) {
     if (!pts || !pts.length) return 0;
     if (Ta <= pts[0].Ta) {
@@ -151,6 +196,9 @@
     return Math.max(0, pts[n - 1].kW + slope * (Ta - pts[n - 1].Ta));
   }
 
+  /**
+   * Calculates target flow temperature based on heating curve settings.
+   */
   function flowTargetCurve(
     ambientTempC,
     stdOutdoorTempC,
@@ -166,119 +214,175 @@
     return Math.max(15, Math.min(60, y));
   }
 
-  // --- Building load per DIN EN 12831 ---
+  /**
+   * Calculates the building load scale factor per DIN EN 12831.
+   */
   function din12831LoadScale(ambientTempC, heatingLimitC, theta_e_design_C) {
-    // (θ_i − Ta) / (θ_i − θ_e,design) with protective denominator
-    // No upper clamping: allow extrapolation colder than design (load > design)
     const denomK = Math.max(1, heatingLimitC - theta_e_design_C);
     const frac = (heatingLimitC - ambientTempC) / denomK;
     return Math.max(0, frac);
   }
 
-  function computeBuildingHeatLoad_W(
-    Q_design_W,
-    ambientTempC,
-    heatingLimitC,
-    theta_e_design_C
-  ) {
-    /*
-     * Building heat load model per DIN EN 12831:
-     *   Φ_H(Ta) = Φ_design * (θ_i − Ta) / (θ_i − θ_e,design)
-     * We do not clamp above 1 anymore: load can increase beyond design for Ta < θ_e,design.
-     * Values are still clamped at 0 for Ta > θ_i.
-     */
-    const scale = din12831LoadScale(
-      ambientTempC,
-      heatingLimitC,
-      theta_e_design_C
-    );
-    return Q_design_W * scale;
-  }
-
-  // --- Modulation & performance ---
-  function computeThermalModulation(Q_load_target_W, Q_cap_max_W) {
-    return clamp(Q_load_target_W / Math.max(1e-9, Q_cap_max_W), 0, 1);
-  }
-
-  // From the anchors, derive a base-load and an electrical max so that
-  //   mod = (Pel + baseW) / pelMaxW
-  // satisfies (Pel_anchor -> mod_anchor) and (Pel_full -> 1.0)
+  /**
+   * Derives electrical base load and max consumption for modulation mapping.
+   */
   function deriveElectricalBaseAndMax(modelName) {
     const p = ELECTRICAL_PROFILES[modelName];
-    if (!p) return { baseW: 0, pelMaxW: Math.max(1e-6, 1) };
-    const Pel0 = p.minPowerConsW; // minimal electrical power consumption at minimal modulation
-    const m0 = p.minMod; // target minimal possible modulation fraction
-    const PelF = p.maxPowerConsW; // total electrical at 100% modulation
-    // Interpret PelF as total electrical max. Then choose pelMaxW = PelF and solve for baseW:
-    //   m0 = (Pel0 + baseW) / PelF  => baseW = m0*PelF - Pel0
-    const baseW = Math.max(0, m0 * PelF - Pel0);
-    const pelMaxW = Math.max(1e-9, PelF);
+    if (!p) return { baseW: 0, pelMaxW: 1 };
+    const baseW = Math.max(0, p.minMod * p.maxPowerConsW - p.minPowerConsW);
+    const pelMaxW = Math.max(1e-9, p.maxPowerConsW);
     return { baseW, pelMaxW };
   }
 
-  function computeElectricModulation(pelW, modelName) {
-    const { baseW, pelMaxW } = deriveElectricalBaseAndMax(modelName);
-    return (pelW + baseW) / Math.max(1e-9, pelMaxW);
+  /**
+   * Prepares efficiency calibration curves (mopt and alpha) from profile data.
+   */
+  function buildModulationEfficiencyCalib(modelName) {
+    const spec = THERMAL_PROFILES[modelName] || {};
+    const keys = Object.keys(spec)
+      .map((k) => ({ Ta: parseInt(k, 10), data: spec[k] }))
+      .filter((e) => !Number.isNaN(e.Ta))
+      .sort((a, b) => a.Ta - b.Ta);
+
+    const anchors = [];
+    for (const { Ta, data } of keys) {
+      if (
+        data &&
+        data.Qmax_kW != null &&
+        data.COPmax != null &&
+        data.Qlower_kW != null &&
+        data.COPlower != null
+      ) {
+        const mopt = data.Qlower_kW / Math.max(1e-9, data.Qmax_kW);
+        const r = data.COPlower / Math.max(1e-9, data.COPmax);
+        const alpha = Math.max(
+          0,
+          (r - 1) / Math.max(1e-9, (1 - mopt) * (1 - mopt))
+        );
+        anchors.push({ Ta, mopt, alpha });
+      }
+    }
+
+    function interp(x, arr, key) {
+      if (arr.length === 0) return null;
+      if (x <= arr[0].Ta) return arr[0][key];
+      if (x >= arr[arr.length - 1].Ta) return arr[arr.length - 1][key];
+      for (let i = 0; i < arr.length - 1; i++) {
+        const a = arr[i],
+          b = arr[i + 1];
+        if (x >= a.Ta && x <= b.Ta) {
+          const t = (x - a.Ta) / (b.Ta - a.Ta);
+          return a[key] + t * (b[key] - a[key]);
+        }
+      }
+      return arr[arr.length - 1][key];
+    }
+
+    return {
+      moptAt: (Ta) => {
+        const v = interp(Ta, anchors, "mopt");
+        return v == null ? 0.5 : clamp(v, 0.4, 0.7);
+      },
+      alphaAt: (Ta) => {
+        const v = interp(Ta, anchors, "alpha");
+        return v == null ? 1.0 : clamp(v, 0.3, 2.5);
+      },
+    };
   }
 
-  function estimateCOP(
-    T_primaryFlowOutC,
-    ambientTempC,
-    modelName = DEFAULTS.hpModel
-  ) {
-    // Mirror the existing thermodynamic estimate logic exactly
+  /**
+   * Predicts steady-state COP based on Carnot efficiency and temperature lift.
+   */
+  function estimateCOP(T_flowOutC, ambientTempC, modelName = DEFAULTS.hpModel) {
     const Te_elec = ambientTempC - TE_APPROACH;
-    const Tc_elec = T_primaryFlowOutC + TC_APPROACH;
+    const Tc_elec = T_flowOutC + TC_APPROACH;
     const dT_lift_K = toK(Tc_elec) - toK(Te_elec);
     const COP_carnot = toK(Tc_elec) / dT_lift_K;
 
-    // Adjust effective fraction of Carnot around a reference lift
-    // If dT < ref: eta increases; if dT > ref: eta decreases.
     const cp_params = COP_PARAMS[modelName] || COP_PARAMS[DEFAULTS.hpModel];
     const eta_eff =
       cp_params.etaCarnot *
-      (1 +
-        cp_params.ETA_LIFT_FACTOR_PER_K *
-          (cp_params.ETA_LIFT_REF_K - dT_lift_K));
+      (1 + cp_params.ETA_LIFT_FACTOR_PER_K * (ETA_LIFT_REF_K - dT_lift_K));
 
     return eta_eff * COP_carnot;
   }
 
-  // Compute derating slope per model from A7/W35 and A7/W55 anchors
-  function computeDerateSlopePerK(modelName) {
-    const pts = CAP_MODELS_W35[modelName];
-    if (!pts) return 0;
-    // Interpolate capacity at Ta=7°C for W35 curve
-    const cap35_A7 = hp_capacity_w35(7, pts);
-    const cap55_A7 = CAP_A7_W55[modelName];
-    if (!cap55_A7 || cap35_A7 <= 0) return 0;
-    // Linear derate: cap(Tflow) = cap35 * (1 - k*(Tflow-35)), with cap(55)=cap55
-    // => k = (1 - cap55/cap35) / 20 [per K]
-    return (1 - cap55_A7 / cap35_A7) / 20;
-  }
-
+  /**
+   * Calculates max thermal capacity considering flow temperature derating.
+   */
   function capacityAt(Ta, Tflow, modelName) {
-    const pts = CAP_MODELS_W35[modelName];
-    if (!pts) return 0;
+    const pts = getCapacityPoints(modelName);
+    if (!pts || pts.length < 2) return 0;
     const cap35 = hp_capacity_w35(Ta, pts);
-    const k = computeDerateSlopePerK(modelName);
+
+    // Derate slope k: linear capacity loss between W35 and W55 anchors at A7
+    const spec = THERMAL_PROFILES[modelName];
+    const cap35_A7 = hp_capacity_w35(7, pts);
+    const cap55_A7 = spec?.["+7"]?.QmaxW55;
+    const k = cap55_A7 && cap35_A7 > 0 ? (1 - cap55_A7 / cap35_A7) / 20 : 0;
+
     const derate = 1 - k * (Tflow - 35);
     return Math.max(0, cap35 * derate);
   }
 
+  /**
+   * Resolves the hydronic temperatures in the buffer/bypass network.
+   */
+  function resolveHydronicTemperatures(
+    Q_load_W,
+    targetFlowC,
+    mPrimary,
+    mHeating,
+    spreadK
+  ) {
+    const deltaT_heating = Q_load_W / Math.max(1e-9, mHeating * cp);
+    const T_heatingReturn = targetFlowC - deltaT_heating;
+
+    if (mPrimary <= 1e-6) {
+      return {
+        T_primFlow: T_heatingReturn + spreadK,
+        T_primRet: T_heatingReturn,
+        T_heatFlow: targetFlowC,
+        T_heatRet: T_heatingReturn,
+      };
+    }
+
+    let T_primFlow, T_primRet, T_heatFlow, T_heatRet;
+    if (mPrimary >= mHeating) {
+      // Surplus primary flow: return water is mixed with flow water (downward bypass)
+      const bypassRatio = (mPrimary - mHeating) / mPrimary;
+      T_primRet = T_heatingReturn + bypassRatio * spreadK;
+      T_primFlow = T_primRet + spreadK;
+      T_heatFlow = T_primFlow;
+    } else {
+      // Deficit primary flow: return water is mixed into supply (upward bypass)
+      const mixRatio = mPrimary / mHeating;
+      T_primRet = T_heatingReturn;
+      T_primFlow = T_primRet + spreadK;
+      T_heatFlow = T_heatingReturn + mixRatio * spreadK;
+    }
+
+    return {
+      T_primFlow: Math.max(T_primRet + spreadK, T_primFlow),
+      T_primRet,
+      T_heatFlow,
+      T_heatRet: T_heatingReturn,
+    };
+  }
+
+  /**
+   * Primary engine interface: calculates system state from parameters.
+   */
   function computeState(params) {
-    // Inputs unpacking
-
     const ambientTempC = params.ambientTempC;
-    const pumpPressureMbar = Math.max(20, params.heatingPumpPressureMbar);
-    const k_h = k_h_from_calibration(params.heatingFlowAt150mbarLph);
-    const mHeating_kgps = k_h * Math.sqrt(pumpPressureMbar / dp_ref);
-
-    const deltaT_primaryK = Math.max(0.5, params.primarySpreadK);
+    const mHeating_kgps = computeMassFlow_kgps(
+      params.heatingFlowAt150mbarLph,
+      params.heatingPumpPressureMbar
+    );
     const designLoadW = Math.max(0, params.buildingHeatLoadAtStdKw) * 1000;
 
     // 1. Target heating flow temperature per linear curve between standard outdoor temperature and 20°C
-    const heatingFlowTargetC = flowTargetCurve(
+    const targetFlowC = flowTargetCurve(
       ambientTempC,
       params.stdOutdoorTempC,
       params.flowTempAt20C,
@@ -286,100 +390,82 @@
     );
 
     // 2. Compute building heat load target per DIN EN 12831
-    const heatingLimitC = params.heatingLimitC;
-    const buildingLoadW = computeBuildingHeatLoad_W(
-      designLoadW,
-      ambientTempC,
-      heatingLimitC,
-      params.stdOutdoorTempC
+    const buildingLoadW =
+      designLoadW *
+      din12831LoadScale(
+        ambientTempC,
+        params.heatingLimitC,
+        params.stdOutdoorTempC
+      );
+
+    // 3. Primary-side flow from available heat and chosen spread
+    const deltaT_primaryK = Math.max(0.5, params.primarySpreadK);
+    const mPrimary_kgps =
+      buildingLoadW > 0 ? buildingLoadW / (cp * deltaT_primaryK) : 0;
+
+    // 4. Equivalent required secondary-side deltaT to satisfy building load
+    const hydraulics = resolveHydronicTemperatures(
+      buildingLoadW,
+      targetFlowC,
+      mPrimary_kgps,
+      mHeating_kgps,
+      deltaT_primaryK
     );
 
-    // 3. Equivalent required secondary-side deltaT to satisfy building load
-    const deltaT_heatingK = buildingLoadW / Math.max(1e-6, mHeating_kgps * cp);
-
-    const Te = ambientTempC - TE_APPROACH;
-    const T_suction = Te + SUPERHEAT_K;
-
-    // Available heat at current modulation (with flow-temp derating)
-    // const Q_available =
-    //   capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) *
-    //   1000 *
-    //   modCapacity;
-    // let Qh_cap = Math.max(0, Q_available);
-    let Qh_cap = buildingLoadW;
-
-    // 4. Primary-side flow from available heat and chosen spread
-    let mPrimary_kgps = Qh_cap > 0 ? Qh_cap / (cp * deltaT_primaryK) : 0;
-
-    // Hydronic temperature network resolution
-    let T_primaryFlowOutC, T_primaryReturnInC, T_heatingFlowC, T_heatingReturnC;
-    if (mPrimary_kgps <= 1e-6) {
-      T_heatingFlowC = heatingFlowTargetC;
-      T_heatingReturnC = T_heatingFlowC - deltaT_heatingK;
-      T_primaryReturnInC = T_heatingReturnC;
-      T_primaryFlowOutC = T_primaryReturnInC + deltaT_primaryK;
-    } else {
-      T_heatingReturnC = heatingFlowTargetC - deltaT_heatingK;
-      if (mPrimary_kgps >= mHeating_kgps) {
-        const f_down =
-          (mPrimary_kgps - mHeating_kgps) / Math.max(1e-6, mPrimary_kgps);
-        T_primaryReturnInC = T_heatingReturnC + f_down * deltaT_primaryK;
-        T_primaryFlowOutC = T_primaryReturnInC + deltaT_primaryK;
-        T_heatingFlowC = T_primaryFlowOutC;
-      } else {
-        const f_up = mPrimary_kgps / Math.max(1e-6, mHeating_kgps);
-        T_primaryReturnInC = T_heatingReturnC;
-        T_primaryFlowOutC = T_primaryReturnInC + deltaT_primaryK;
-        T_heatingFlowC = T_heatingReturnC + f_up * deltaT_primaryK;
-      }
-    }
-    if (T_primaryFlowOutC < T_primaryReturnInC) {
-      T_primaryFlowOutC = T_primaryReturnInC + Math.abs(deltaT_primaryK);
-    }
-
-    const Tc = T_primaryFlowOutC + TC_APPROACH;
-
     // 5. Estimate COP
-    const COP = estimateCOP(T_primaryFlowOutC, ambientTempC, params.hpModel);
+    const COP_base = estimateCOP(
+      hydraulics.T_primFlow,
+      ambientTempC,
+      params.hpModel
+    );
 
     // 6. Compute electrical power Pel
-    let Qh = Qh_cap;
-    const Pel = Qh / Math.max(1e-9, COP);
+    const Pel_ideal = buildingLoadW / Math.max(1e-9, COP_base);
 
     // 7.a Compute capacity-based modulation, smooth in ambient temperature
-    // Capacity at current ambient and target flow temperature (linear derating from W35 to W55)
     const capMaxW =
-      capacityAt(ambientTempC, heatingFlowTargetC, params.hpModel) * 1000;
-    const modCapacity = computeThermalModulation(buildingLoadW, capMaxW);
+      capacityAt(ambientTempC, targetFlowC, params.hpModel) * 1000;
+    const modCapacity = clamp(buildingLoadW / Math.max(1e-9, capMaxW), 0, 1);
 
-    // 7.b Compute electrical-based modulation from Pel against model electrical max incl. base loads
-    const modElectrical = computeElectricModulation(Pel, params.hpModel);
+    // 7.b Electrical-based path, optionally with modulation-dependent efficiency
+    let Pel_out = Pel_ideal;
+    let COP_out = COP_base;
+    let modElectrical;
+
+    if (params.efficiencyModulation === "on") {
+      const { baseW, pelMaxW } = deriveElectricalBaseAndMax(params.hpModel);
+      const calib = buildModulationEfficiencyCalib(params.hpModel);
+      const mopt = calib.moptAt(ambientTempC);
+      const alpha = calib.alphaAt(ambientTempC);
+
+      // Apply modulation penalty (efficiency loss at high loads)
+      const penalty = 1 + alpha * Math.pow(Math.max(0, modCapacity - mopt), 2);
+      Pel_out = (Pel_ideal + baseW) * penalty;
+      COP_out = buildingLoadW / Math.max(1e-9, Pel_out);
+
+      modElectrical = Pel_out / Math.max(1e-9, pelMaxW);
+    } else {
+      const { baseW, pelMaxW } = deriveElectricalBaseAndMax(params.hpModel);
+      modElectrical = (Pel_ideal + baseW) / Math.max(1e-9, pelMaxW);
+    }
 
     const modulation =
       params.modulationMode === "electrical" ? modElectrical : modCapacity;
 
-    const T_comp_out = T_suction + 0.85 * (Tc - Te); // TODO
-    const Q_load = mHeating_kgps * cp * deltaT_heatingK;
-    console.log(Q_load, buildingLoadW);
-
     return {
       inputs: {
-        ambientTempC: ambientTempC,
-        stdOutdoorTempC: params.stdOutdoorTempC,
-        flowTempAt20C: params.flowTempAt20C,
-        flowTempAtStdOutdoorC: params.flowTempAtStdOutdoorC,
-        primarySpreadK: deltaT_primaryK,
-        buildingHeatLoadAtStdKw: params.buildingHeatLoadAtStdKw,
-        heatingPumpPressureMbar: pumpPressureMbar,
-        heatingFlowAt150mbarLph: params.heatingFlowAt150mbarLph,
-        hpModel: params.hpModel,
+        ...params,
+        heatingFlowTargetC: targetFlowC,
       },
-      flows: { primaryMassFlow: mPrimary_kgps, heatingMassFlow: mHeating_kgps },
+      flows: {
+        primaryMassFlow: mPrimary_kgps,
+        heatingMassFlow: mHeating_kgps,
+      },
       heat: {
-        heatingPowerW: Qh,
-        buildingLoadW: Q_load,
-        electricalPowerW: Pel,
-        COP: COP,
+        heatingPowerW: buildingLoadW,
+        buildingLoadW: buildingLoadW,
+        electricalPowerW: Pel_out,
+        COP: COP_out,
       },
       derived: {
         modulation,
@@ -387,29 +473,39 @@
         modulationElectrical: modElectrical,
       },
       temps: {
-        evapTempC: Te,
-        suctionTempC: T_suction,
-        condTempC: Tc,
-        compOutTempC: T_comp_out,
-        primaryFlowTempC: T_primaryFlowOutC,
-        primaryReturnTempC: T_primaryReturnInC,
-        heatingFlowTempC: T_heatingFlowC,
-        heatingReturnTempC: T_heatingReturnC,
+        evapTempC: ambientTempC - TE_APPROACH,
+        suctionTempC: ambientTempC - TE_APPROACH + SUPERHEAT_K,
+        condTempC: hydraulics.T_primFlow + TC_APPROACH,
+        compOutTempC:
+          ambientTempC -
+          TE_APPROACH +
+          SUPERHEAT_K +
+          0.85 *
+            (hydraulics.T_primFlow +
+              TC_APPROACH -
+              (ambientTempC - TE_APPROACH)),
+        primaryFlowTempC: hydraulics.T_primFlow,
+        primaryReturnTempC: hydraulics.T_primRet,
+        heatingFlowTempC: hydraulics.T_heatFlow,
+        heatingReturnTempC: hydraulics.T_heatRet,
       },
     };
   }
 
   const api = {
-    capacityAt,
-    computeBuildingHeatLoad_W,
-    flowTargetCurve,
-    computeState,
-    estimateCOP,
-    COP_PARAMS,
-    DEFAULTS,
-    CAP_MODELS_W35,
-    ELECTRICAL_PROFILES,
+    capacityAt: capacityAt,
+    computeBuildingHeatLoad_W: function (Q, Ta, TL, Te) {
+      return Q * din12831LoadScale(Ta, TL, Te);
+    },
+    flowTargetCurve: flowTargetCurve,
+    computeState: computeState,
+    estimateCOP: estimateCOP,
+    COP_PARAMS: COP_PARAMS,
+    DEFAULTS: DEFAULTS,
+    THERMAL_PROFILES: THERMAL_PROFILES,
+    ELECTRICAL_PROFILES: ELECTRICAL_PROFILES,
   };
+
   if (typeof window !== "undefined") {
     window.HeatpumpEngine = api;
   }

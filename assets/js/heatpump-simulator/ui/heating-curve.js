@@ -51,7 +51,7 @@
     return clamp(y, 15, 60);
   }
 
-  function initPanel(containerSel) {
+  function initPanel(containerSel, config = {}) {
     const container = d3.select(containerSel);
     if (container.empty()) {
       console.warn("HeatingCurve container not found");
@@ -59,7 +59,10 @@
     }
 
     // Collapsible wrapper using <details>
-    const panel = container.append("details").attr("class", "sim-curve-panel"); // collapsed by default
+    const panel = container.append("details").attr("class", "sim-curve-panel");
+    if (config.open) {
+      panel.attr("open", true);
+    }
 
     const summary = panel
       .append("summary")
@@ -194,15 +197,19 @@
       .attr("class", "axis-title")
       .attr("transform", `translate(${innerW + 36}, ${innerH / 2}) rotate(90)`)
       .attr("text-anchor", "middle")
-      .text("Leistung / Last (kW) / COP");
+      .text(
+        config.showCOP ? "Leistung / Last (kW) / COP" : "Leistung / Last (kW)"
+      );
 
     // Legend
     const legendItems = [
       { label: "Heizkurve (Sollvorlauftemp.)", color: curveColor },
       { label: "Gebäudeheizlast", color: loadColor },
       { label: "Max. Wärmepumpenleistung", color: capColor },
-      { label: "Optimaler COP", color: copColor },
     ];
+    if (config.showCOP) {
+      legendItems.push({ label: "Optimaler COP", color: copColor });
+    }
     const legend = gLegend
       .selectAll("g")
       .data(legendItems)
@@ -398,7 +405,11 @@
       curvePath.datum(data).attr("d", lineCurve);
       loadPath.datum(data).attr("d", lineLoad);
       capPath.datum(data).attr("d", lineCap);
-      copPath.datum(data).attr("d", lineCop);
+      if (config.showCOP) {
+        copPath.datum(data).attr("d", lineCop).style("opacity", 1);
+      } else {
+        copPath.style("opacity", 0);
+      }
 
       // Draw/update bivalence point (dot only; label removed per request)
       if (bivalencePt) {
@@ -509,14 +520,18 @@
           d.capKw,
           2
         )} kW</div></div>
-          <div class="tip-row"><div><span style=\"color:${modColor}\"><b>Modulation:</b></span></div><div class="tip-val">${fmt(
+          <div class="tip-row"><div><span style=\"color:${modColor}\"><b>Rel. Wärmebedarf:</b></span></div><div class="tip-val">${fmt(
           d.capKw > 0 ? (d.loadKw / d.capKw) * 100 : 0,
           0
         )} %</div></div>
-          <div class="tip-row"><div><span style=\"color:${copColor}\"><b>Optimaler COP:</b></span></div><div class="tip-val">${fmt(
-          d.cop,
-          2
-        )}</div></div>
+          ${
+            config.showCOP
+              ? `<div class="tip-row"><div><span style=\"color:${copColor}\"><b>Optimaler COP:</b></span></div><div class="tip-val">${fmt(
+                  d.cop,
+                  2
+                )}</div></div>`
+              : ""
+          }
           ${badgeHtml}
         `;
         tip.html(html).style("opacity", 1);

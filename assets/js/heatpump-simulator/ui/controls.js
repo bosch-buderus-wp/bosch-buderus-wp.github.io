@@ -6,23 +6,30 @@
     VALUE: "sim-ctrl-value",
   };
 
-  function initControls(containerSel, initialState, onChange) {
+  function initControls(containerSel, initialState, onChange, config = {}) {
     const container = d3.select(containerSel);
     container.html("");
     container.classed("sim-controls", true);
 
+    const hidden = config.hiddenControls || [];
+
     // Model selector
-    const modelRow = container.append("div").attr("class", CLASSNAMES.ROW);
-    modelRow.append("label").text("Modell").attr("for", "ctrl_hpModel");
-    const modelSelect = modelRow.append("select").attr("id", "ctrl_hpModel");
-    Object.keys(window.HeatpumpEngine.CAP_MODELS_W35).forEach((name) => {
-      modelSelect.append("option").attr("value", name).text(name);
-    });
-    modelSelect.property("value", initialState.hpModel);
-    modelSelect.on("change", function () {
-      initialState.hpModel = this.value;
-      onChange({ hpModel: this.value });
-    });
+    if (!hidden.includes("hpModel")) {
+      const modelRow = container.append("div").attr("class", CLASSNAMES.ROW);
+      modelRow.append("label").text("Modell").attr("for", "ctrl_hpModel");
+      const modelSelect = modelRow.append("select").attr("id", "ctrl_hpModel");
+
+      const thermalProfiles =
+        (window.HeatpumpEngine && window.HeatpumpEngine.THERMAL_PROFILES) || {};
+      Object.keys(thermalProfiles).forEach((name) => {
+        modelSelect.append("option").attr("value", name).text(name);
+      });
+      modelSelect.property("value", initialState.hpModel);
+      modelSelect.on("change", function () {
+        initialState.hpModel = this.value;
+        onChange({ hpModel: this.value });
+      });
+    }
 
     const ctrlConfig = [
       {
@@ -109,8 +116,14 @@
     ];
 
     ctrlConfig.forEach((cfg) => {
+      // Skip if marked as hidden via config
+      if (hidden.includes(cfg.key)) return;
+
       const row = container.append("div").attr("class", CLASSNAMES.ROW);
-      const labelEl = row.append("label").text(cfg.label).attr("for", `ctrl_${cfg.key}`);
+      const labelEl = row
+        .append("label")
+        .text(cfg.label)
+        .attr("for", `ctrl_${cfg.key}`);
       // Add info icon next to Normaußentemperatur label linking to Klimakarte
       if (cfg.key === "stdOutdoorTempC") {
         labelEl

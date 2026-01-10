@@ -32,6 +32,9 @@ footer:
     - label: "Changelog"
       icon: "fa-fw fa-solid fa-train"
       url: "https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/commits/main/"
+    - label: "Unterstützung"
+      icon: "fa-fw fa-solid fa-money-bill-1"
+      url: "https://github.com/sponsors/bosch-buderus-wp"
     - label: "Impressum"
       icon: "fa-fw fa-solid fa-stamp"
       url: "/impressum/"
@@ -47,9 +50,6 @@ collections:
     output: true
     permalink: /:collection/:path/
   xps:
-    output: true
-    permalink: /:collection/:path/
-  simulator:
     output: true
     permalink: /:collection/:path/
 
@@ -78,16 +78,6 @@ defaults:
   - scope:
       path: ""
       type: xps
-    values:
-      layout: single
-      read_time: false
-      author_profile: true
-      share: false
-      comments: false
-  # _simulator
-  - scope:
-      path: ""
-      type: simulator
     values:
       layout: single
       read_time: false

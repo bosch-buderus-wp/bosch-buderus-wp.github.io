@@ -1,8 +1,12 @@
 ---
 title: Wärmepumpen Simulator
-excerpt: Simulator für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
+excerpt: Simulator für Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen
 permalink: /simulator
 toc: false
+read_time: false
+author_profile: false
+share: false
+comments: false
 ---
 
 Mit dem folgenden Simulator kannst du die Funktionsweise der Wärmepumpe anschaulich nachvollziehen.
