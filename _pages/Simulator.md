@@ -24,3 +24,13 @@ Falls du konkrete Verbesserungsvorschläge hast, erstelle gerne einen [Pull-Requ
 <script src="/assets/js/heatpump-simulator/ui/diagram.js"></script>
 <script src="/assets/js/heatpump-simulator/ui/share.js"></script>
 <script src="/assets/js/heatpump-simulator/heatpump-simulator.js"></script>
+
+Wie funktioniert der Simulator?
+
+1. Bestimmung der **Sollvorlauftemperatur** des Heizkreises anhand der Heizkurve
+2. Bestimmung der **Gebäudeheizlast** zur aktuellen Außentemperatur
+3. Bestimmung des **Volumenstroms** im Primärkreis anhand der Primärkreisspeizung und der Gebäudeheizlast
+4. Bestimmung der **Vorlauftemperatur** im Primärkreis anhand Spreizung und Pufferdurchmischung
+5. Bestimmung des **COP** des Kältekreises mit Carnot-Prozess anhand Vorlauftemperatur und Außentemperatur
+6. Bestimmung des **elektrischen Leistungsbedarfs** anhand Gebäudeheizlast und COP - ergänzt um Grundlast für Pumpen, Elektronik, ...
+7. Bestimmung der **Modulation** anhand des aktuellen und maximalen elektrischen Leistungsbedarfs

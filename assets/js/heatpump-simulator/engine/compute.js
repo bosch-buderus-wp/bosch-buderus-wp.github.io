@@ -25,9 +25,9 @@
   const CONST = {
     cp_J_per_kgK: 4180, // J/(kg*K)
     TE_APPROACH_K: 7, // Evaporator temperature approach
-    TC_APPROACH_K: 5, // Condenser temperature approach
+    TC_APPROACH_K: 4, // Condenser temperature approach
     SUPERHEAT_K: 10, // Degree of superheat
-    ETA_LIFT_REF_K: 47.6, // Reference temperature lift (K) for lift-factor calculation
+    SYSTEM_OVERHEAD_FACTOR: 1.03, // System overhead factor (piping losses, aux pumps, defrosting)
     dp_ref_mbar: 150, // Reference pressure for hydraulic flow scaling
   };
 
@@ -116,7 +116,7 @@
   // Thermodynamic calibration parameters per model
   const COP_PARAMS = {
     "4 kW": {
-      etaCarnot: 0.62,
+      etaCarnot: 0.6,
       ETA_LIFT_FACTOR_PER_K: 0.004,
       ETA_LIFT_REF_K: 47.6,
     },
@@ -126,17 +126,17 @@
       ETA_LIFT_REF_K: 47.6,
     },
     "7 kW": {
-      etaCarnot: 0.64,
+      etaCarnot: 0.62,
       ETA_LIFT_FACTOR_PER_K: 0.004,
       ETA_LIFT_REF_K: 47.6,
     },
     "10 kW": {
-      etaCarnot: 0.665,
-      ETA_LIFT_FACTOR_PER_K: -0.012,
+      etaCarnot: 0.652,
+      ETA_LIFT_FACTOR_PER_K: -0.013,
       ETA_LIFT_REF_K: 47.6,
     },
     "12 kW": {
-      etaCarnot: 0.675,
+      etaCarnot: 0.65,
       ETA_LIFT_FACTOR_PER_K: -0.009,
       ETA_LIFT_REF_K: 47.6,
     },
@@ -302,7 +302,9 @@
     const cp_params = COP_PARAMS[modelName] || COP_PARAMS[DEFAULTS.hpModel];
     const eta_eff =
       cp_params.etaCarnot *
-      (1 + cp_params.ETA_LIFT_FACTOR_PER_K * (ETA_LIFT_REF_K - dT_lift_K));
+      (1 +
+        cp_params.ETA_LIFT_FACTOR_PER_K *
+          (cp_params.ETA_LIFT_REF_K - dT_lift_K));
 
     return eta_eff * COP_carnot;
   }
@@ -438,9 +440,10 @@
       const mopt = calib.moptAt(ambientTempC);
       const alpha = calib.alphaAt(ambientTempC);
 
-      // Apply modulation penalty (efficiency loss at high loads)
-      const penalty = 1 + alpha * Math.pow(Math.max(0, modCapacity - mopt), 2);
-      Pel_out = (Pel_ideal + baseW) * penalty;
+      // Apply modulation penalty (efficiency loss at both high and low deviations from optimum)
+      const penalty = 1 + alpha * Math.pow(modCapacity - mopt, 2);
+      // Realistic system overhead (piping losses, aux pumps, defrosting)
+      Pel_out = (Pel_ideal + baseW) * penalty * CONST.SYSTEM_OVERHEAD_FACTOR;
       COP_out = buildingLoadW / Math.max(1e-9, Pel_out);
 
       modElectrical = Pel_out / Math.max(1e-9, pelMaxW);
