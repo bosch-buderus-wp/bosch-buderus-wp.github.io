@@ -81,6 +81,31 @@ Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den P
 
 Zusätzlich zu diesen Werten kann man auch den Fuß- und Komfortpunkt definieren, falls die einfache Heizkurve nicht ausreichen sollte.
 
+### Heizkurven-Simulator
+
+Hier kannst du deine Werte für die Heizkurve prüfen:
+
+<div id="heating-curve-only"></div>
+<link rel="stylesheet" href="{{ '/assets/css/heatpump-simulator.css' | relative_url }}">
+<script src="https://cdn.jsdelivr.net/npm/d3@7.9.0/dist/d3.min.js"></script>
+<script src="/assets/js/heatpump-simulator/engine/compute.js"></script>
+<script src="/assets/js/heatpump-simulator/ui/controls.js"></script>
+<script src="/assets/js/heatpump-simulator/ui/heating-curve.js"></script>
+<script src="/assets/js/heatpump-simulator/heatpump-simulator.js"></script>
+<script>
+  window.initHeatpumpSimulator("#heating-curve-only", {
+    showDiagram: false,
+    showCurve: true,
+    showShare: false,
+    openCurve: true,
+    hiddenControls: [
+      'primarySpreadK',
+      'heatingPumpPressureMbar',
+      'heatingFlowAt150mbarLph'
+    ]
+  });
+</script>
+
 ## Warmwasseraufbereitung
 
 Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
