@@ -71,11 +71,11 @@ Verbesserungen:
   Das führte oft zu unnötig vielen Aufwärmphasen und einem unnötig hohen Stromverbrauch.
   In dieser Version wurde die Grenze auf 6 K abgesenkt, was die unnötigen Aufwärmphasen und somit auch den Stromverbrauch reduziert.
 
-## 9.7.0 / 9.10.0
+## 9.10.0 / 9.7.0
 
 {: .notice}
-<i class="fa-solid fa-fan" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
-<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Außeneinheit: 9.10.0 \
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.10.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
 <i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Dezember 2024
@@ -86,11 +86,18 @@ Verbesserungen:
   Im Vergleich zu vorigen Versionen taut die Wärmepumpe nun etwas früher, aber dafür kürzer ab.
   Damit vereist der Verdampfer nicht mehr so stark und die Arbeitszahl wird leicht verbessert.
 
-## 12.11.1 / 9.15.0
+## 9.12.0 / 9.7.0
 
 {: .notice}
-<i class="fa-solid fa-fan" style="color: #646464;"></i> Inneneinheit: 12.11.1 \
-<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Außeneinheit: 9.15.0 \
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.12.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.12
+
+## 9.15.0 / 12.11.1
+
+{: .notice}
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.15.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 12.11.1 \
 <i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.11
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Oktober 2025
@@ -99,3 +106,8 @@ Verbesserungen:
 
 - Aktuelle **Thermische Leistung** als Entität über [ems-esp](/docs/smarthome/) abrufbar.
   Ab dieser Version muss man für sein Smarthome die Wärmeleistung nicht mehr über die Ableitung der Energie berechnen, sondern kann direkt [boiler/hppower](/docs/smarthome/entities#leistung) verwenden.
+- **Spreizung beim WW** kann auf 4K reduziert werden (vorher 6K, Nutzen: Verzögerung zur Effizienzsteigerung)
+- **Eingänge** haben umfangreiche Konfigurationsmöglichkeiten für SG-Ready, PV, EMS, ... bekommen
+- **Lüfter am Kompressor** (PL3 Gebläse) lässt sich am Gerät anzeigen und per [ems-esp](/docs/smarthome/) als individuelle Entitäten anlegen/auslesen
+- **Bypass Abfrage** hinzugefügt
+- Anzahl der Stufen beim **Heizprogramm** von 2 auf 4 erhöht
