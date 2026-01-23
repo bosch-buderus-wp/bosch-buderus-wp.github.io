@@ -15,7 +15,7 @@ sidebar:
   nav: "metrics"
 ---
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.4.5-release/app.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.4.6-release/app.css">
 
 <script>
   window.HEAT_PUMP_METRICS_EMBEDDED = true;
@@ -27,4 +27,4 @@ sidebar:
 
 <div id="root"></div>
 
-<script type="module" src="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.4.5-release/app.js"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.4.6-release/app.js"></script>
