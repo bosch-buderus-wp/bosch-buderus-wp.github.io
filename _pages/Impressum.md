@@ -40,6 +40,12 @@ Die Mitwirkung am Projekt begründet keine Mitverantwortung der Mitwirkenden fü
 
 ---
 
+**Unabhängigkeit und Markenhinweis**
+
+Diese Website ist ein unabhängiges, inoffizielles Projekt und steht in keinerlei Geschäftsbeziehung zu der Robert Bosch GmbH bzw. Buderus (Bosch Thermotechnik GmbH). Sie wird weder von Bosch/Buderus betrieben, noch genehmigt oder beeinflusst. Alle Marken, Logos und Produktnamen sind Eigentum der jeweiligen Rechteinhaber.
+
+---
+
 **Haftungsausschluss**
 
 Die bereitgestellten Inhalte dienen ausschließlich zu Informationszwecken.
