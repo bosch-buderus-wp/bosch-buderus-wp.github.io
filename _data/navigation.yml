@@ -55,6 +55,8 @@ metrics:
     children:
       - title: "AZ-Temperatur"
         url: /metrics/#/az-temp-evaluation
+      - title: "AZ-Jahresheizbedarf"
+        url: /metrics/#/az-energy-evaluation
       - title: "Heizkurve"
         url: /metrics/#/heating-curve
   - title: "Anlagen"
