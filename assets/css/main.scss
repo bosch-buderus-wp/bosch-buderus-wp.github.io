@@ -10,3 +10,30 @@ $right-sidebar-width: 240px !default;
 
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
+
+.masthead__menu a[href="/metrics/"] {
+  display: inline-flex;
+  align-items: flex-start;
+}
+
+.masthead__menu a[href="/metrics/"]::after {
+  content: "Neu";
+  display: inline-block;
+  margin-left: -0.2rem;
+  padding: 0.05rem 0.26rem;
+  border: 1px solid #d9a24c;
+  border-radius: 0.35rem;
+  background: linear-gradient(180deg, #fff6df 0%, #f7dfab 100%);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
+  color: #7a4b00;
+  font-size: 0.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  transform: translateY(0.08rem) rotate(8deg);
+  transform-origin: center;
+  pointer-events: none;
+  position: relative;
+  z-index: 1;
+}
