@@ -1,6 +1,7 @@
 ---
-title: Smarthome
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen in Smarthome Systeme wie Home Assistant oder OpenHAB einzubinden oder mit Grafana Messwerte zu visualisieren
+title: "Wärmepumpe in Home Assistant, EMS-ESP, OpenHAB, Grafana & evcc"
+headline: "Smarthome"
+excerpt: "Übersicht zur Einbindung von Bosch CS5800/6800i und Buderus WLW176/186i in Home Assistant, OpenHAB, Grafana, evcc und andere Smarthome-Systeme."
 permalink: /docs/smarthome/
 toc: true
 ---
@@ -66,7 +67,7 @@ In der Weboberfläche taucht eure Wärmepumpe mit 3 Geräten auf:
   Das Thermostat ist im Wesentlichen für die Bestimmung der Vorlauftemperatur und ein paar weiterer Einstellungen verantwortlich.
 - **K30RF/WiFi module** (Gateway Module): optionales WiFi-Modul zur Anbindung der Bosch/Buderus App
 
-Die Entitäten, die von den Geräten ausgelesen werden können, sind entweder Messwerte (z.B. Vorlauftemperatur), Statusinformationen (z.B. Warmwasseraufbereitung aktiv), Einstellungen (z.B. gewünschte Raumtemperatur) oder Kommandos (z.B. Desinfektion starten).
+Die Entitäten, die von den Geräten ausgelesen werden können, sind entweder Messwerte (z.B. Vorlauftemperatur), Statusinformationen (z.B. Warmwasserbereitung aktiv), Einstellungen (z.B. gewünschte Raumtemperatur) oder Kommandos (z.B. Desinfektion starten).
 In meiner [Entitäten-Übersicht](/docs/smarthome/entities) findet ihr eine Liste mit Erklärungen der wichtigsten Entitäten.
 
 Jetzt könnt ihr auch schon loslegen und über die Weboberfläche die Entitäten einsehen und konfigurieren.

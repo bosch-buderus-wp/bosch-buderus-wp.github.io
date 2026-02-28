@@ -1,6 +1,7 @@
 ---
-title: Softwareversionen
-excerpt: Software Versionen der Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen
+title: "Softwareversionen, Firmware und Stände"
+headline: "Softwareversionen"
+excerpt: "Übersicht zu Softwareversionen und Firmware-Ständen der Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen."
 permalink: /docs/sw-versionen/
 toc: true
 ---

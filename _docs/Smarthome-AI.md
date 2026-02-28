@@ -1,6 +1,7 @@
 ---
-title: Wärmepumpe in Gen-AI Anwendungen nutzen
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Large Language Models (LLM), u.a. in Anthropic Claude, zu nutzen.
+title: "Wärmepumpe in Gen-AI Anwendungen nutzen"
+headline: "Wärmepumpe in Gen-AI Anwendungen nutzen"
+excerpt: "Anleitung, um Daten von Bosch CS5800/6800i und Buderus WLW176/186i in Gen-AI- und LLM-Anwendungen wie Claude zu verwenden."
 permalink: /docs/smarthome/ai
 toc: true
 ---

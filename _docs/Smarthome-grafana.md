@@ -1,6 +1,7 @@
 ---
-title: Grafana
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Grafana über InfluxDB einzubinden
+title: "Wärmepumpe in Grafana visualisieren mit InfluxDB"
+headline: "Grafana"
+excerpt: "Anleitung zur Visualisierung von Messwerten aus Bosch CS5800/6800i und Buderus WLW176/186i in Grafana über InfluxDB und EMS-ESP."
 permalink: /docs/smarthome/grafana
 toc: true
 ---
@@ -116,16 +117,16 @@ Das obige Dashboard enthält zusätzlich weitere Visualisierungen für das ausge
 {% capture dashboard-emsesp-influxdb-details2 %} \
 **Täglicher Energieeinsatz: Heizung vs. Warmwasser**
 
-Dieses Diagramm zeigt den täglichen Energieeinsatz für den Heizbetrieb und die Warmwasseraufbereitung.
+Dieses Diagramm zeigt den täglichen Energieeinsatz für den Heizbetrieb und die Warmwasserbereitung.
 Im Hintergrund ist die durchschnittliche Außentemperatur des Tages dargestellt.
 So ist leicht ersichtlich, dass an kälteren Tagen mehr Energie benötigt wird.
-In der Legende ist zudem die durchschnittlich eingesetzte Energie für den Heizbetrieb (7,69 kWh) und die Warmwasseraufbereitung (1,81 kWh) pro Tag aufgeführt - sowie die Durchschnittstemperatur (7,72 °C) im Zeitintervall.
+In der Legende ist zudem die durchschnittlich eingesetzte Energie für den Heizbetrieb (7,69 kWh) und die Warmwasserbereitung (1,81 kWh) pro Tag aufgeführt - sowie die Durchschnittstemperatur (7,72 °C) im Zeitintervall.
 
 **Verlauf der Warmwassertemperatur**
 
 In diesem Diagramm wird der zeitliche Verlauf der Wassertemperatur im Brauchwasserspeicher dargestellt.
 Damit könnt ihr prüfen, wie oft euer Warmwasser und zu welcher Tageszeit es erwärmt wird (siehe auch [Optimierungen](/docs/optimierungen/#tageszeit)).
-Über _Thresholds_ in den Einstellungen der Visualisierung könnt ihr eure [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) eintragen.
+Über _Thresholds_ in den Einstellungen der Visualisierung könnt ihr eure [Starttemperatur](/docs/einstellungen/#warmwasserbereitung) eintragen.
 Thresholds werden als horizontale Linie dargestellt.
 {% endcapture %}
 {{ dashboard-emsesp-influxdb-details2 | markdownify }}

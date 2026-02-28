@@ -1,8 +1,9 @@
 ---
-title: Glossar
-excerpt: Glossar für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, inkl. TC3-TC0 Temp.-diff., Drucksollwert, PC0, HK1, Zuheizer, gedämpfte Außentemperatur, ...
+title: "Glossar: Begriffe, Abkürzungen und Parameter"
+headline: "Glossar"
+excerpt: "Glossar zu Bosch CS5800/6800i und Buderus WLW176/186i mit Begriffen, Abkürzungen und Parametern wie COP, JAZ, HK1, Drucksollwert und mehr."
 permalink: /docs/glossar/
-toc: true
+toc: false
 ---
 
 | Begriff                   | Bedeutung                                                                                                                                                       |
@@ -12,6 +13,7 @@ toc: true
 | A7 W35                    | Außentemperatur von 7 °C und Vorlauftemperatur von 35 °C                                                                                                        |
 | CAN-Bus                   | Die Außeneinheit und Inneneinheit werden über eine Kommunikationsleitung, den CAN-BUS [24 V DC, Klasse III, Schutzkleinspannung (SELV)], miteinander verbunden. |
 | COP                       | Coefficient of Performance: Leistungszahl, die unter Laborbedingungen für verschiedene Außen-/Vorlauftemperatur-Kombinationen ermittelt wird, z.B. A7 W35       |
+| DHW                       | Domestic Hot Water: Warmwasser/Brauchwasser                                                                                                                     |
 | Drucksollwert             | Differenzdruck, mit dem die Heizkreispumpe PC1 geregelt wird                                                                                                    |
 | EMS-Bus                   | Zubehör wird an die Inneneinheit über einen EMS-BUS [15 V DC, Klasse III, Schutzkleinspannung (SELV)] angeschlossen                                             |
 | EVU-Sperrsignal           | Sperrsignal des Energieversorgungsunternehmens (EVU) - nicht mehr relevant                                                                                      |
@@ -39,5 +41,5 @@ toc: true
 | TR5                       | Temperaturfühler des Sauggases am Kompressoreinlass                                                                                                             |
 | T1                        | Außentemperaturfühler zur Steuerung der Vorlauftemperatur bei außentemperaturgeführter Regelung                                                                 |
 | UI 800                    | Bosch Bedienfeld an der Inneneinheit                                                                                                                            |
-| WW                        | Warmwasser                                                                                                                                                      |
+| WW                        | Warmwasser/Brauchwasser                                                                                                                                         |
 | Zuheizer                  | Elektrischer Zuheizer, der bei Unterschreiten der Bivalanztemperatur und im Notbetrieb den Wärmepumpenbetrieb unterstützt.                                      |

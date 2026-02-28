@@ -1,6 +1,7 @@
 ---
-title: Varianten
-excerpt: Variantenübersicht der Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen inkl. Heizleistung, COP, Vorlauftemperatur und Speicher
+title: "Varianten, Leistung und COP"
+headline: "Varianten"
+excerpt: "Variantenübersicht zu Bosch Compress 5800/6800i und Buderus WLW176/186i mit Heizleistung, COP, Vorlauftemperatur und Speichern."
 permalink: /docs/varianten/
 toc: true
 ---
@@ -39,8 +40,8 @@ Die Inneneinheiten unterscheiden sich nach der maximal möglichen Vorlauftempera
 
 | Typ   | Bosch      | Buderus |
 | :---- | :--------- | :------ |
-| 60 °C | CS5800i AW | WLW176  |
-| 75 °C | CS6800i AW | WLW186  |
+| 60 °C | CS5800i AW | WLW176i |
+| 75 °C | CS6800i AW | WLW186i |
 
 ### Speicher
 

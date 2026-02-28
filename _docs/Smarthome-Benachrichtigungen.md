@@ -1,6 +1,7 @@
 ---
-title: Benachrichtigungen der Wärmepumpe
-excerpt: Anleitung, um Benachrichtigungen der Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen zu erhalten.
+title: "Benachrichtigungen per EMS-ESP"
+headline: "Benachrichtigungen der Wärmepumpe"
+excerpt: "Anleitung für Benachrichtigungen und Alarme zu Bosch CS5800/6800i und Buderus WLW176/186i mit EMS-ESP."
 permalink: /docs/smarthome/benachrichtigungen
 toc: true
 ---
@@ -10,7 +11,7 @@ toc: true
 
 Wollt ihr benachrichtigt werden, wenn ...
 
-- die Warmwasseraufbereitung startet,
+- die Warmwasserbereitung startet,
 - die Außeneinheit abtaut,
 - der Heizstab zum Einsatz kommt oder
 - ein Fehler auftritt?

@@ -1,13 +1,14 @@
 ---
-title: Technischer Aufbau
-excerpt: Technischer Aufbau von Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen inkl. Kältekreis, Primärkreis und Heizkreis
+title: "Technischer Aufbau von Kältekreis, Primärkreis und Heizkreis"
+headline: "Technischer Aufbau"
+excerpt: "Erklärung des technischen Aufbaus von Bosch CS5800/6800i und Buderus WLW176/186i mit Kältekreis, Primärkreis und Heizkreis."
 permalink: /docs/technischer-aufbau/
 toc: true
 ---
 
 ## Funktionsweise der Luft/Wasser-Wärmepumpe
 
-Bosch CS5800/6800i und Buderus WLW176/186 sind Luft/Wasser-Wärmepumpen.
+Bosch CS5800/6800i und Buderus WLW176/186i sind Luft/Wasser-Wärmepumpen.
 Das bedeutet, sie entziehen der Umgebungsluft Energie und übertragen diese an das Wasser im Heizungssystem.
 
 Das gleiche Verfahren mit gegensätzlichem Effekt findet auch im Kühlschrank und in Klimaanlagen statt.
@@ -70,7 +71,7 @@ Siehe auch [Optimierungen](/docs/optimierungen#abgleich-der-volumenströme).
 Der Heizkreis durchströmt die Heizkörper und/oder Fußbodenheizung und gibt dabei Wärme an die Umgebungsluft und/oder den Estrich ab.
 Das abgekühlte Wasser wird zurück in den Rücklauf des Primärkreises geführt.
 
-Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil dafür, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
+Wird die Wärmepumpe auch zur Erwärmung des Warmwassers genutzt, sorgt das 3-Wege-Ventil dafür, dass zu gewissen Zeiten anstatt des Heizkreises der Warmwasserspeicher durchströmt wird (siehe auch [Warmwasserbereitung](/docs/einstellungen#warmwasserbereitung)).
 
 ## Modulation
 

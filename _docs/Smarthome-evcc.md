@@ -1,11 +1,12 @@
 ---
-title: evcc
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in evcc einzubinden
+title: "Wärmepumpe mit evcc verbinden für PV-Überschuss"
+headline: "evcc"
+excerpt: "Anleitung zur Einbindung von Bosch CS5800/6800i und Buderus WLW176/186i in evcc für PV-Überschussnutzung und SG-Ready-nahe Automatisierung."
 permalink: /docs/smarthome/evcc
 toc: true
 ---
 
-Besitzer einer PV-Anlage, einer Batterie und/oder eines dynamischen Stromtarifs, die Interesse an einer energieeffizienten Steuerung ihre Bosch CS5800/6800i oder Buderus WLW176/186 haben, sollten sich [_evcc_](https://evcc.io) anschauen.
+Besitzer einer PV-Anlage, einer Batterie und/oder eines dynamischen Stromtarifs, die Interesse an einer energieeffizienten Steuerung ihre Bosch CS5800/6800i oder Buderus WLW176/186i haben, sollten sich [_evcc_](https://evcc.io) anschauen.
 _evcc_ wurde ursprünglich für PV-Überschussladen von Elektrofahrzeugen konzipiert.
 Seit kurzem erprobt _evcc_ aber auch [Wärmepumpen](https://docs.evcc.io/docs/devices/heating#bosch-bosch-sg-ready) und unterstützt jetzt auch Bosch/Buderus Wärmepumpen über _ems-esp_.
 
@@ -21,7 +22,7 @@ Die standardisierte SG Ready Schnittstelle bietet 4 Funktionen:
 
 Eigentlich werden die SG Ready Funktionen über entsprechende Steuerleitungen realisiert.
 Für die Ansteuerung über _evcc_ braucht man keine Steuerleitungen, sondern bedient sich eines Tricks, der [hier](https://bbqkees-electronics.nl/2024/10/03/using-the-smart-grid-sg-and-photovoltaic-pv-function-of-your-heat-pump-with-the-ems-gateways/) genauer beschrieben ist.
-Die Idee dahinter ist den _Externen Eingang 4_ mit `curl -d '{ "value" : "1xxxxxxxxxxx" }' https://ems-esp/api/boiler/hpin4opt` zu invertieren, um so den _Verstärken Betrieb_ zu aktivieren.
+Die Idee dahinter ist den _Externen Eingang 4_ mit `curl -d '{ "value" : "1xxxxxxxxxxx" }' https://ems-esp/api/boiler/hpin4opt` zu invertieren, um so den _Verstärkten Betrieb_ zu aktivieren.
 
 ## Einrichtung
 
@@ -29,7 +30,7 @@ Um das Menü `Anlageneinstellungen` &rarr; `Photovoltaikanlage` im Bedienfeld de
 
 Daraufhin könnt ihr folgende Einstellungen unter `Anlageneinstellungen` &rarr; `Photovoltaikanlage` vornehmen:
 
-- `Erhöhung der Wunschtemp. beim Heizen`: signalisiert _evcc_ der Wärmepumpe einen PV-Überschuss so wird der Raumtemperatur-Sollwert um die Anzahl an Kelvin (°C) erhöht
+- `Erhöhung der Wunschtemp. beim Heizen`: signalisiert _evcc_ der Wärmepumpe einen PV-Überschuss so wird der Raumtemperatur-Sollwert um den eingestellten Wert erhöht
 - `Erhöhter Warmwasserkomfort`: bei PV-Überschuss wird das Warmwasser auf die Stopptemperatur des Betriebsmodus [_Komfort_](/docs/einstellungen/#modi) aufgeheizt.
 - `Absenkung der Wunschtemp. beim Kühlen`: bei PV-Übersschuss wird der Raumtemperatur-Sollwert um den eingestellten Wert abgesenkt
 - `Kühlen nur mit PV-Energie`: der Kühlbetrieb wird nur bei PV-Überschuss aktiviert
@@ -60,4 +61,12 @@ loadpoints:
     charger: wp
 ```
 
-Mehr Details folgen in Kürze.
+## Nutzung
+
+In der Oberfläche von _evcc_ sollte ihr nun in etwa folgende Darstellung sehen:
+
+Die Ladeeinstellung hat folgende Bedeutung:
+
+- `Aus`: Normalbetrieb - keine Nutzung des PV-Überschusses
+- `PV` und `Min+PV`: Bei PV-Überschuss wird der Wärmepumpe ein _Verstärkter Betrieb_ signalisiert
+- `Schnell`: Der Wärmepumpe wird sofort ein _Verstärkter Betrieb_ signalisiert

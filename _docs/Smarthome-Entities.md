@@ -1,6 +1,7 @@
 ---
-title: Smarthome Entitäten
-excerpt: Liste aller Entitäten der Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpe, die über EMS-ESP auslesbar sind
+title: "EMS-ESP Entitäten im Überblick"
+headline: "EMS-ESP Entitäten"
+excerpt: "Übersicht der über EMS-ESP auslesbaren Entitäten für Bosch CS5800/6800i und Buderus WLW176/186i."
 permalink: /docs/smarthome/entities
 toc: true
 ---
@@ -9,7 +10,7 @@ Die Version 3.7.1 von [ems-esp](https://emsesp.org/) liefert 166 Entitäten für
 Auf dieser Seite findet ihr eine Erklärung aller Entitäten, soweit sie bekannt sind.
 Falls jemand noch weitere Informationen/Korrekturen hat, gerne hinzufügen.
 Die Spalte _RW_ (Read-Write) zeigt an, ob die Entität nur lesbar oder auch schreibbar ist.
-Einige Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
+Einige Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186i verfügbar.
 Diese sind in der Beschreibung entsprechend markiert.
 
 ## Energiewerte
@@ -27,7 +28,7 @@ IDs, die _"comp"_ enthalten, beziehen sich auf die Wärmepumpe, _"eheat"_ und _"
 _"nrg..."_: erzeugte thermische Energie (Wärme)\
 _"meter..."_: eingesetzte elektrische Energie (Stromverbrauch)
 
-Die nachfolgenden Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
+Die nachfolgenden Entitäten sind nur für die Bosch CS5800/6800i und Buderus WLW176/186i verfügbar.
 
 | ID                                                 | Name               | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                                                |
 | -------------------------------------------------- | ------------------ | ------------- | --- | ------- | --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -131,34 +132,34 @@ _"auxelecheatnrgcons..."_: eingesetzte elektrische Energie des elektrischen Zuhe
 
 #### Einstellungen
 
-Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasseraufbereitung).
-Die Entitäten für die Differenz- und Stopptemperaturen sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
+Siehe auch [Warmwassereinstellungen](/docs/einstellungen/#warmwasserbereitung).
+Die Entitäten für die Differenz- und Stopptemperaturen sind nur für die Bosch CS5800/6800i und Buderus WLW176/186i verfügbar.
 
-| ID                                                             | Name                              | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                     |
-| -------------------------------------------------------------- | --------------------------------- | ------------- | --- | ------- | --- | -------------------------------------------------------------------------------------------------------------------------------- |
-| [comfdiff](http://ems-esp/api/boiler/comfdiff)                 | WWK Komfort Differenztemp.        | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, mit dem die Vorlauftemperatur angehoben wird          |
-| [ecodiff](http://ems-esp/api/boiler/ecodiff)                   | WWK ECO Differenztemp.            | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, mit dem die Vorlauftemperatur angehoben wird              |
-| [ecoplusdiff](http://ems-esp/api/boiler/ecoplusdiff)           | WWK ECO+ Differenztemp.           | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, mit dem die Vorlauftemperatur angehoben wird             |
-| [comfstop](http://ems-esp/api/boiler/comfstop)                 | WWK Komfort Stopptemp.            | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung beendet wird  |
-| [ecostop](http://ems-esp/api/boiler/ecostop)                   | WWK ECO Stopptemp.                | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung beendet wird      |
-| [ecoplusstop](http://ems-esp/api/boiler/ecoplusstop)           | WWK ECO+ Stopptemp.               | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, an der die Warmwasseraufbereitung beendet wird     |
-| [seltempsingle](http://ems-esp/api/boiler/seltempsingle)       | WWK Einmalladungstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) für Extra-WW                                                      |
-| [disinfectiontemp](http://ems-esp/api/boiler/disinfectiontemp) | WWK Desinfektionstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) für die Warmwasserdesinfektion                                    |
-| [seltemp](http://ems-esp/api/boiler/seltemp)                   | WWK gewählte Temperatur           | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung begonnen wird |
-| [seltemplow](http://ems-esp/api/boiler/seltemplow)             | WWK ausgewählte untere Temperatur | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung begonnen wird     |
-| [tempecoplus](http://ems-esp/api/boiler/tempecoplus)           | WWK ausgewählte ECO+ Temperatur   | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, bei der die Warmwasseraufbereitung begonnen wird   |
+| ID                                                             | Name                              | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                               |
+| -------------------------------------------------------------- | --------------------------------- | ------------- | --- | ------- | --- | -------------------------------------------------------------------------------------------------------------------------- |
+| [comfdiff](http://ems-esp/api/boiler/comfdiff)                 | WWK Komfort Differenztemp.        | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasserbereitung) im Komfort Modus, mit dem die Vorlauftemperatur angehoben wird       |
+| [ecodiff](http://ems-esp/api/boiler/ecodiff)                   | WWK ECO Differenztemp.            | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasserbereitung) im Eco Modus, mit dem die Vorlauftemperatur angehoben wird           |
+| [ecoplusdiff](http://ems-esp/api/boiler/ecoplusdiff)           | WWK ECO+ Differenztemp.           | boiler<br>dhw | 🔢  | K       | ✔   | [Ladedelta](/docs/einstellungen/#warmwasserbereitung) im Eco+ Modus, mit dem die Vorlauftemperatur angehoben wird          |
+| [comfstop](http://ems-esp/api/boiler/comfstop)                 | WWK Komfort Stopptemp.            | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Komfort Modus, an der die Warmwasserbereitung beendet wird  |
+| [ecostop](http://ems-esp/api/boiler/ecostop)                   | WWK ECO Stopptemp.                | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco Modus, an der die Warmwasserbereitung beendet wird      |
+| [ecoplusstop](http://ems-esp/api/boiler/ecoplusstop)           | WWK ECO+ Stopptemp.               | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco+ Modus, an der die Warmwasserbereitung beendet wird     |
+| [seltempsingle](http://ems-esp/api/boiler/seltempsingle)       | WWK Einmalladungstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) für Extra-WW                                                   |
+| [disinfectiontemp](http://ems-esp/api/boiler/disinfectiontemp) | WWK Desinfektionstemperatur       | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) für die Warmwasserdesinfektion                                 |
+| [seltemp](http://ems-esp/api/boiler/seltemp)                   | WWK gewählte Temperatur           | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasserbereitung) im Komfort Modus, an der die Warmwasserbereitung begonnen wird |
+| [seltemplow](http://ems-esp/api/boiler/seltemplow)             | WWK ausgewählte untere Temperatur | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco Modus, an der die Warmwasserbereitung begonnen wird     |
+| [tempecoplus](http://ems-esp/api/boiler/tempecoplus)           | WWK ausgewählte ECO+ Temperatur   | boiler<br>dhw | 🔢  | °C      | ✔   | [Starttemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco+ Modus, bei der die Warmwasserbereitung begonnen wird   |
 
 Die WLW 196i liefert Stopptemperaturen unter folgenden Entitäten:
 
-| ID                                                 | Name                       | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                                   |
-| -------------------------------------------------- | -------------------------- | ------------- | --- | ------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| [comfoff](http://ems-esp/api/boiler/comfoff)       | WWK Komfort Ausschalttemp. | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Komfort Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i |
-| [ecooff](http://ems-esp/api/boiler/ecooff)         | WWK ECO Ausschalttemp.     | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i     |
-| [ecoplusoff](http://ems-esp/api/boiler/ecoplusoff) | WWK ECO+ Ausschalttemp.    | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasseraufbereitung) im Eco+ Modus, an der die Warmwasseraufbereitung beendet wird<br>Nur WLW196i    |
+| ID                                                 | Name                       | Modul         | Typ | Einheit | RW  | Beschreibung                                                                                                                             |
+| -------------------------------------------------- | -------------------------- | ------------- | --- | ------- | --- | ---------------------------------------------------------------------------------------------------------------------------------------- |
+| [comfoff](http://ems-esp/api/boiler/comfoff)       | WWK Komfort Ausschalttemp. | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Komfort Modus, an der die Warmwasserbereitung beendet wird<br>Nur WLW196i |
+| [ecooff](http://ems-esp/api/boiler/ecooff)         | WWK ECO Ausschalttemp.     | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco Modus, an der die Warmwasserbereitung beendet wird<br>Nur WLW196i     |
+| [ecoplusoff](http://ems-esp/api/boiler/ecoplusoff) | WWK ECO+ Ausschalttemp.    | boiler<br>dhw | 🔢  | °C      | ✔   | [Stopptemperatur](/docs/einstellungen/#warmwasserbereitung) im Eco+ Modus, an der die Warmwasserbereitung beendet wird<br>Nur WLW196i    |
 
 ## Pumpen
 
-Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus WLW176/186 verfügbar.
+Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus WLW176/186i verfügbar.
 
 | ID                                                         | Name                            | Modul         | Typ  | Einheit | RW  | Beschreibung                                                                                       |
 | ---------------------------------------------------------- | ------------------------------- | ------------- | ---- | ------- | --- | -------------------------------------------------------------------------------------------------- |
@@ -185,7 +186,7 @@ Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus
 | [hpactivity](http://ems-esp/api/boiler/hpactivity)                 | Kompressoraktivität          | boiler            | enum |         |     | Aktuelle Aktivität des Kompressors: "keine", "Heizen", "Kühlen", "Warmwasser", "Pool", "Unbekannt", "Abtauen" |
 | [hp4way](http://ems-esp/api/boiler/hp4way)                         | 4-Wege-Ventil (VR4)          | boiler            | enum |         |     | Aktuelle Stellung des 4-Wege-Ventils im Kältekreis: "Kühlen & Abtauen" oder "Heizen & Warmwasser"             |
 | [hpea0](http://ems-esp/api/boiler/hpea0)                           | Heizung Kondensatwanne (EA0) | boiler            | ☑    |         |     | AN wenn die Kondensatwannenheizung gerade aktiv ist                                                           |
-| [syspress](http://ems-esp/api/boiler/syspress)                     | Systemdruck                  | boiler            | 🔢   | bar     |     | Wasserdruck im Heizkreis<br>Nur CS5800/6800i & WLW176/186                                                     |
+| [syspress](http://ems-esp/api/boiler/syspress)                     | Systemdruck                  | boiler            | 🔢   | bar     |     | Wasserdruck im Heizkreis<br>Nur CS5800/6800i & WLW176/186i                                                    |
 | [charging](http://ems-esp/api/boiler/charging)                     | WWK Laden                    | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS                                                                       |
 | [3wayvalve](http://ems-esp/api/boiler/3wayvalve)                   | WWK 3-Wege-Ventil aktiv      | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS - identisch zu RWem _hp3way_                                          |
 | [auxheaterstatus](http://ems-esp/api/boiler/auxheaterstatus)       | Zusatzheizerstatus           | boiler            | 🔢   | %       |     | Aktuelle relative Leistung des Zuheizers                                                                      |
@@ -196,7 +197,7 @@ Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus
 | ID                                                             | Name                            | Modul             | Typ  | Einheit | RW  | Beschreibung                                                                                                                                                         |
 | -------------------------------------------------------------- | ------------------------------- | ----------------- | ---- | ------- | --- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | [heatingactivated](http://ems-esp/api/boiler/heatingactivated) | Heizbetrieb aktiviert           | boiler            | ☑    |         | ✔   | AN wenn die Anlage für den Heizbetrieb genutzt werden soll                                                                                                           |
-| [activated](http://ems-esp/api/boiler/activated)               | WWK aktiviert                   | boiler<br>dhw     | ☑    |         | ✔   | AN wenn die Anlage für Warmwasseraufbereitung genutzt werden soll                                                                                                    |
+| [activated](http://ems-esp/api/boiler/activated)               | WWK aktiviert                   | boiler<br>dhw     | ☑    |         | ✔   | AN wenn die Anlage für Warmwasserbereitung genutzt werden soll                                                                                                       |
 | [alternatingop](http://ems-esp/api/boiler/alternatingop)       | WWK Wechselbetrieb              | boiler<br>dhw     | ☑    |         | ✔   | AN wenn der Heizbetrieb für den Warmwasserbetrieb unterbrochen werden kann und umgekehrt                                                                             |
 | [altopprioheat](http://ems-esp/api/boiler/altopprioheat)       | WWK Heizen bevorzugt vor WW     | boiler<br>dhw     | 🔢   | Minuten | ✔   | Max. Dauer im Warmwasserbetrieb bis in den Heizbetrieb gewechselt wird                                                                                               |
 | [altopprio](http://ems-esp/api/boiler/altopprio)               | WWK bevorzugt vor Heizen        | boiler<br>dhw     | 🔢   | Minuten | ✔   | Max. Dauer im Heizbetrieb bis in den Warmwasserbetrieb gewechselt wird                                                                                               |
@@ -225,7 +226,7 @@ Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus
 
 | ID                                                         | Name                          | Modul         | Typ  | Einheit | RW  | Beschreibung                                                                                                                                                  |
 | ---------------------------------------------------------- | ----------------------------- | ------------- | ---- | ------- | --- | ------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| [maxheatcomp](http://ems-esp/api/boiler/mayheatcomp)       | Heizstab Limit mit Kompressor | boiler        | enum |         | ✔   | [Max. Leistung des Zuheizers mit Kompressor](/docs/einstellungen/#begrenzung-mit-kompressor) [0kW\|3kW\|6kW\|9kW]                                             |
+| [maxheatcomp](http://ems-esp/api/boiler/maxheatcomp)       | Heizstab Limit mit Kompressor | boiler        | enum |         | ✔   | [Max. Leistung des Zuheizers mit Kompressor](/docs/einstellungen/#begrenzung-mit-kompressor) [0kW\|3kW\|6kW\|9kW]                                             |
 | [maxheatheat](http://ems-esp/api/boiler/maxheatheat)       | Heizstab Limit Leistung       | boiler        | enum |         | ✔   | [Max. Leistung des Zuheizers ohne Kompressor](/docs/einstellungen/#begrenzung-ohne-kompressor) [0kW\|3kW\|6kW\|9kW]                                           |
 | [maxheat](http://ems-esp/api/boiler/maxheat)               | WWK Heizstab Limit für WW     | boiler<br>dhw | enum |         | ✔   | [Max. Leistung des Zuheizers im Warmwasserbetrieb](https://bosch-buderus-wp.github.io/docs/einstellungen/#begrenzung-im-ww-betrieb) [0kW\|3kW\|6kW\|9kW]      |
 | [elheatstep1](http://ems-esp/api/boiler/elheatstep1)       | El. Heizer Stufe 1            | boiler        | ☑    |         | ✔   | AN wenn die erste Stufe (3kW) des elektischen Zuheizers aktuell läuft                                                                                         |

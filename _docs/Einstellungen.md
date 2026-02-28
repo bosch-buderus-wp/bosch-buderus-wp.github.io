@@ -1,11 +1,14 @@
 ---
-title: Einstellungen
-excerpt: Einstellungsübersicht für Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen, inkl. Raumtemperatur, Heizkurve, Warmwasseraufbereitung, ...
+title: "Einstellungen: Heizkurve, Warmwasser, Zuheizer, ..."
+headline: "Einstellungen: Heizkurve, Warmwasser, Zuheizer, ..."
+excerpt: "Einstellungsübersicht für Bosch CS5800/6800i und Buderus WLW176/186i mit Heizkurve, Raumtemperatur, Warmwasser, Kühlung und wichtigen Menüpunkten."
 permalink: /docs/einstellungen/
 toc: true
 ---
 
-Die Bosch CS 5800/6800i und Buderus WLW176/186 erlaubt eine Vielzahl an Einstellungen. Die meisten davon kann man im Servicemenü konfigurieren.
+Die Bosch CS 5800/6800i und Buderus WLW176/186i bietet eine Vielzahl an Einstellungen. Diese Seite zeigt die wichtigsten Menüpunkte rund um Heizkurve, Raumtemperatur, Warmwasser und weitere Parameter, die für Effizienz und Komfort relevant sind.
+
+Viele Einstellungen lassen sich im Servicemenü konfigurieren.
 Um ins Servicemenü zu gelangen, muss man mindestens 5 Sekunden die Service-Taste (3 Striche oben links im Display) drücken.
 Einige Einstellungen können auch direkt auf dem Startbildschirm des Bedienelements vorgenommen werden.
 Die meisten Einstellungen des Startbildschirm findet man auch in der [App](/docs/app/).
@@ -24,7 +27,7 @@ Dies erreicht man mit der Auswahl `Manuell` unter `Startbildschirm` &rarr; `Wuns
 Wer jedoch lieber mit einer Nachtabsenkung der Raumtemperatur arbeiten möchte, kann dies mit der Auswahl `Auto` realisieren.
 Und wer nicht auf die automatische Sommer-/Winterumstellung setzen möchte, kann in den Sommermonaten die Auswahl `Aus` tätigen.
 Damit ist die Heizung ausgeschaltet.
-Warmwasseraufbereitung ist weiterhin möglich.
+Warmwasserbereitung ist weiterhin möglich.
 
 ## Heizkurve
 
@@ -106,9 +109,11 @@ Hier kannst du deine Werte für die Heizkurve prüfen:
   });
 </script>
 
-## Warmwasseraufbereitung
+<span id="warmwasseraufbereitung"></span><!-- Legacy Anchor -->
 
-Die Warmwasseraufbereitung kann wahlweise durch diese 3 Modi erfolgen:
+## Warmwasserbereitung
+
+Die Warmwasserbereitung kann wahlweise durch diese 3 Modi erfolgen:
 
 - Komfort
 - Eco
@@ -118,9 +123,9 @@ Zusätzlich gibt es den Modus _Extra-Warmwasser_, der auf Anforderung für 1..48
 
 Für jeden Modus können folgende Werte individuell unter `Anlageneinstellungen` &rarr; `Warmwasser` eingestellt werden:
 
-- `Starttemperatur`: bei Unterschreitung dieser Temperaturgrenze startet die Warmwasseraufbereitung
-- `Stopptemperatur`: bei Erreichen dieser Temperaturgrenze wird die Warmwasseraufbereitung beendet
-- `Ladedelta`: der Vorlauf wird um diesen Wert zur Warmwasseraufbereitung angehoben - je höher das Ladedelta desto schneller erfolgt die Aufheizung
+- `Starttemperatur`: bei Unterschreitung dieser Temperaturgrenze startet die Warmwasserbereitung
+- `Stopptemperatur`: bei Erreichen dieser Temperaturgrenze wird die Warmwasserbereitung beendet
+- `Ladedelta`: der Vorlauf wird um diesen Wert zur Warmwasserbereitung angehoben - je höher das Ladedelta desto schneller erfolgt die Aufheizung
 
 Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=40°C, Stopptemperatur=48°C und Ladedelta=7K:
 
@@ -137,9 +142,9 @@ Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Sta
 
 ### Modusauswahl
 
-Die Auswahl des Modus für die Warmwasseraufbereitung kann entweder in der [App](/docs/app/) oder auf dem Bedienfeld unter `Startbildschirm` &rarr; `Warmwasser` erfolgen:
+Die Auswahl des Modus für die Warmwasserbereitung kann entweder in der [App](/docs/app/) oder auf dem Bedienfeld unter `Startbildschirm` &rarr; `Warmwasser` erfolgen:
 
-- `Aus`: keine Warmwasseraufbereitung
+- `Aus`: keine Warmwasserbereitung
 - `Manuell`: ein Modus wird manuell gewählt
 - `Auto`: der entsprechende Modus wird anhand der aktuellen Tageszeit automatisch ausgewählt.
   Dazu muss eingestellt werden, welches Program zu welcher Tageszeit aktiv sein soll.
@@ -147,7 +152,7 @@ Die Auswahl des Modus für die Warmwasseraufbereitung kann entweder in der [App]
 [![Zeitprogramm am UI-800](/assets/images/UI800-Zeitprogramm.jpg)](/assets/images/UI800-Zeitprogramm.jpg)
 
 Die Zeitprogramme für den _Auto_ Modus kann man entweder in der [App](/docs/app/) unter `Warmwasser` &rarr; `Kalender unten rechts` oder auf dem Startbildschirm des Bedienfelds (nicht im Servicemenü) unter `Warmwasser` &rarr; `Mehr...>` &rarr; `Zeitprogramm` &rarr; `Bearbeiten` einstellen.
-In obiger Darstellung ist die Warmwasseraufbereitung von 21-8 Uhr aus, von 8-13 und 17-21 Uhr wird das Warmwasser mit dem Eco+ Modus aufgeheizt und von 13-17 Uhr wird das Warmwasser mit dem Eco Modus aufbereitet.
+In obiger Darstellung ist die Warmwasserbereitung von 21-5 Uhr aus, von 5-13 und 17-21 Uhr wird das Warmwasser mit dem Eco+ Modus aufgeheizt und von 13-17 Uhr wird das Warmwasser mit dem Eco Modus aufbereitet.
 
 ## Elektrischer Zuheizer
 
@@ -157,7 +162,7 @@ Die Einstellungen für den elektrischen Zuheizer können unter `Anlageneinstellu
 
 ### Zuheizersperre
 
-Aktiviert man `Anlageneinstellungen` &rarr; `Zuheizer` &rarr; `Zuheizersperre` wird der elektrische Zuheizer auch bei niedrigen Temperaturen nicht für den regulären Heizungsbetrieb oder die Warmwasseraufbereitung genutzt.
+Aktiviert man `Anlageneinstellungen` &rarr; `Zuheizer` &rarr; `Zuheizersperre` wird der elektrische Zuheizer auch bei niedrigen Temperaturen nicht für den regulären Heizungsbetrieb oder die Warmwasserbereitung genutzt.
 Zum Frostschutz und Abtauen kann er trotz Zuheizersperre eingesetzt werden.
 
 ### Leistungsbegrenzung
@@ -180,7 +185,7 @@ Hiermit lässt sich die maximale Leistung des elektrischen Zuheizers einstellen,
 
 Wertebereich: 0kW, 3kW, 6kW, 9kW
 
-Diese Einstellung definiert die maximale Leistung des elektrischen Zuheizers, die für die Warmwasseraufbereitung aufgebracht werden darf.
+Diese Einstellung definiert die maximale Leistung des elektrischen Zuheizers, die für die Warmwasserbereitung aufgebracht werden darf.
 
 #### Bival.pkt. Parallelbetr.
 

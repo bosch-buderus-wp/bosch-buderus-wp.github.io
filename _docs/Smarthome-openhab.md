@@ -1,11 +1,10 @@
 ---
-title: OpenHAB
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in OpenHAB einzubinden
+title: "Wärmepumpe in OpenHAB einbinden mit EMS-ESP"
+headline: "OpenHAB"
+excerpt: "Anleitung zur Einbindung von Bosch CS5800/6800i und Buderus WLW176/186i in OpenHAB über EMS-ESP."
 permalink: /docs/smarthome/openhab
 toc: false
 ---
-
-## OpenHAB
 
 Diese Anleitung setzt voraus, dass ihr bereits [ems-esp](/docs/smarthome/) installiert habt.
 

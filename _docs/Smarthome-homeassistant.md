@@ -1,6 +1,7 @@
 ---
-title: Home Assistant
-excerpt: Anleitung, um Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen in Home Assistant einzubinden
+title: "Wärmepumpe in Home Assistant einbinden mit EMS-ESP"
+headline: "Home Assistant"
+excerpt: "Schritt-für-Schritt-Anleitung zur Einbindung von Bosch CS5800/6800i und Buderus WLW176/186i in Home Assistant mit EMS-ESP."
 permalink: /docs/smarthome/ha
 toc: true
 ---

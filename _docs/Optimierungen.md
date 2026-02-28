@@ -1,6 +1,7 @@
 ---
-title: Optimierungen
-excerpt: Optimierungen für Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen, um die Effizienz zu steigern
+title: "Optimierungen: Effizienz, Verbrauch und Heizkurve"
+headline: "Optimierungen"
+excerpt: "Tipps zur Optimierung von Bosch CS5800/6800i und Buderus WLW176/186i für bessere Effizienz, niedrigeren Verbrauch und passende Heizkurven."
 permalink: /docs/optimierungen/
 toc: true
 ---
@@ -16,9 +17,11 @@ Für einen effizienten Betrieb gilt grundsätzlich:
 
 Grobe Faustregel: jedes zusätzliche Grad erhöht den Energieverbrauch um ca. 2,5% [[Quelle](https://www.heizungsdiscount24.de/pdf/Junkers-Bosch-Compress-CS7000iAW-3-13-kW-Planungsunterlage.pdf)]
 
-## Warmwasseraufbereitung
+<span id="warmwasseraufbereitung"></span><!-- Legacy Anchor -->
 
-10-20% des jährlichen Energiebedarfs der Wärmepumpe wird für die Warmwasseraufbereitung verwendet.
+## Warmwasserbereitung
+
+10-20% des jährlichen Energiebedarfs der Wärmepumpe wird für die Warmwasserbereitung verwendet.
 Daher können Optimierung auch hier einen beträchtlichen Anteil beitragen.
 
 ### Temperatur
@@ -28,25 +31,25 @@ Das hat den weiteren Vorteil, dass mit niedrigerer Temperatur auch weniger Miner
 Demgegenüber steigt die Legionellengefahr, wenn das Wasser nicht ausreichend erhitzt wird.
 Eine regelmäßige Umwälzung oder thermische Desinfektion kann hier Abhilfe schaffen [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
 
-Die Warmwassertemperatur kann man mit der _Stopptemperatur_ festlegen. Siehe auch [Einstellungen zur Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung).
+Die Warmwassertemperatur kann man mit der _Stopptemperatur_ festlegen. Siehe auch [Einstellungen zur Warmwasserbereitung](/docs/einstellungen#warmwasserbereitung).
 
 ### Ladedelta
 
-Eine weitere Einstellung bei der Warmwasseraufbereitung ist das _Ladedelta_.
-Das _Ladedelta_ definiert, wie hoch die Vorlauftemperatur gegenüber der Warmwassertemperatur angehoben wird (siehe [Einstellungen zur Warmwasseraufbereitung](/docs/einstellungen#warmwasseraufbereitung)).
+Eine weitere Einstellung bei der Warmwasserbereitung ist das _Ladedelta_.
+Das _Ladedelta_ definiert, wie hoch die Vorlauftemperatur gegenüber der Warmwassertemperatur angehoben wird (siehe [Einstellungen zur Warmwasserbereitung](/docs/einstellungen#warmwasserbereitung)).
 Je höher das _Ladedelta_, desto schneller wird das Warmwasser aufgeheizt.
 Das bedeutet aber auch, dass bei einer Stopptemperatur von 48 °C und einem _Ladedelta_ von 12 K, die Vorlauftemperatur am Ende auf 60 °C angehoben wird.
-Reduziert man die Ladetemperatur hingegen auf 6 K, so muss am Ende lediglich auf 54 °C aufgeheizt werden, aber natürlich dauert die Warmwasseraufbereitung entsprechend länger.
+Reduziert man die Ladetemperatur hingegen auf 6 K, so muss am Ende lediglich auf 54 °C aufgeheizt werden, aber natürlich dauert die Warmwasserbereitung entsprechend länger.
 
 ### Tageszeit
 
 Mit steigender Außentemperatur kann die Wärmepumpe mehr Energie aus der Umgebungsluft gewinnen.
 Wie man im nachfolgenden Diagramm sieht, ist die durchschnittliche Außentemperatur in Deutschland am frühen Nachmittag am höchsten (Daten von [energy-charts.de](https://www.energy-charts.info/charts/climate_hours/chart.htm?l=de&c=DE&source=air_temperature&legendItems=fhy9f&interval=year&year=2023)).
-Es ist daher sinnvoll, die Warmwasseraufbereitung auf den frühen Nachmittag zwischen 13 und 15 Uhr zu legen.
+Es ist daher sinnvoll, die Warmwasserbereitung auf den frühen Nachmittag zwischen 13 und 15 Uhr zu legen.
 
 [![Durchschnittstemperatur je Tageszeit in 2023](/assets/images/Durchschnittstemperatur2023.svg)](/assets/images/Durchschnittstemperatur2023.svg)
 
-Dazu kann man die [_Auto_ Modusauswahl](/docs/einstellungen#warmwasseraufbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
+Dazu kann man die [_Auto_ Modusauswahl](/docs/einstellungen#warmwasserbereitung) mit beispielsweise 4 Zeitprogrammen und 2 Modi nutzen:
 
 - 13-17 Uhr = bevorzugte Zeit &rarr; Eco
   - _Starttemperatur_: 41 °C
@@ -64,14 +67,14 @@ Falls sie in den Stunden zuvor oder danach unter die Schwelle von 33 °C fällt,
 In der Nacht wird nicht aufgeheizt.
 
 Die obigen Einstellungen funktionieren nur gut, wenn ihr dem Warmwasserspeicher an üblichen Tagen etwa 7-14 °C entnehmt.
-Dann sollte an diesen üblichen Tagen die Warmwasseraufbereitung in die bevorzugte Zeit fallen.
+Dann sollte an diesen üblichen Tagen die Warmwasserbereitung in die bevorzugte Zeit fallen.
 Liegt euer täglicher Verbrauch jedoch höher, so solltet ihr die Eco-Stopptemperatur entsprechend nach oben verschieben.
-Liegt euer täglicher Verbrauch niedriger, so solltet ihr die Eco-Stopptemperatur so anpassen, dass die Warmwasseraufbereitung auf jeden zweiten Mittag fällt.
+Liegt euer täglicher Verbrauch niedriger, so solltet ihr die Eco-Stopptemperatur so anpassen, dass die Warmwasserbereitung auf jeden zweiten Mittag fällt.
 Überprüfen könnt ihr die aktuelle Warmwassertemperatur entweder am Startbildschirm des lokalen Bedienelements, in der [App](/docs/app/) oder über ein [Smarthome-System](/docs/smarthome/).
 An dieser Stelle möchte ich nochmals eindringlich darauf hinweisen, dass ihr bei derart niedrigen Wassertemperaturen entweder eine wöchentliche thermische Desinfektion oder einen Wasseraustausch aller Leitungen innerhalb weniger Tage sicherstellen müsst [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
 
 Auch für Besitzer von Photovoltaik-Anlagen und im Sinne der Energiewende kann die oben beschriebene Einstellung sinnvoll sein, denn in der Regel ist der höchste PV-Ertrag in Deutschland gegen 13 Uhr zu erwarten (siehe [energy-charts.de](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
-Wer eine PV-Anlage besitzt, kann noch einen Schritt weiter gehen und die Warmwasseraufbereitung mit PV-Überschuss optimieren.
+Wer eine PV-Anlage besitzt, kann noch einen Schritt weiter gehen und die Warmwasserbereitung mit PV-Überschuss optimieren.
 Dafür kommt der in den oben genannten Einstellungen nicht genutzte Komfortmodus zum Einsatz.
 Weitere Details zur Realisierung könnt ihr beispielsweise der Anleitung für [evcc](https://bosch-buderus-wp.github.io/docs/smarthome/evcc) entnehmen.
 
@@ -186,7 +189,7 @@ Das gilt natürlich nur, wenn die Ventilstellung an den Heizkörpern bzw. der Fu
 Ändert das Thermostat die Ventilstellung, dann ändert sich der Widerstand und, um den konstanten Differenzdruck sicherzustellen, muss PC1 den Volumenstrom anpassen.
 Für bessere Effizienz und Stabilität sollten die Thermostate daher immer möglichst weit offen sein und der Durchfluss, wie unter [Heizkurve und Thermischer Abgleich](#heizkurve-und-thermischer-abgleich) beschrieben, am Ventilunterteil bzw. Durchflussregler fest eingestellt werden.
 
-Standardmäßig ist bei der Bosch CS 5800/6800i und Buderus WLW 176/186 die Spreizung des Primärkreises auf 4,5 K bei Fußbodenheizung und 7,5 K bei Heizkörpern und ein Differenzdruck von 250 mbar hinterlegt.
+Standardmäßig ist bei der Bosch CS 5800/6800i und Buderus WLW 176/186i die Spreizung des Primärkreises auf 4,5 K bei Fußbodenheizung und 7,5 K bei Heizkörpern und ein Differenzdruck von 250 mbar hinterlegt.
 
 Wenn nun
 

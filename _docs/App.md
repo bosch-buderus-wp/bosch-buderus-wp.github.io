@@ -1,6 +1,7 @@
 ---
-title: HomeCom Easy & MyBuderus App
-excerpt: Funktionsumfang der HomeCom Easy & MyBuderus App zur Fernsteuerung und Monitoring von Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
+title: "Bosch HomeCom Easy & MyBuderus App: Funktionen, Grenzen und Probleme"
+headline: "HomeCom Easy & MyBuderus App"
+excerpt: "Überblick über Funktionen, Grenzen und typische Probleme der HomeCom Easy und MyBuderus App für Bosch CS5800/6800i und Buderus WLW176/186i."
 permalink: /docs/app/
 toc: true
 ---
@@ -41,7 +42,7 @@ Vom Startbildschirm gelangt man zu folgenden Funktionen:
     - Eco+
     - Eco
     - Komfort
-    - Auto: Der Warmwasseraufbereitungsmodus wird anhand der Tageszeit und den Zeitprogrammeinstellungen automatisch gewählt
+    - Auto: Der Warmwasserbereitungsmodus wird anhand der Tageszeit und den Zeitprogrammeinstellungen automatisch gewählt
   - Extra-Warmwasser
   - Zeitprogramme für Betriebsart=Auto
 - Energiemonitoring
