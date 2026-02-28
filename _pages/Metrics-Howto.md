@@ -1,6 +1,7 @@
 ---
-title: Anleitung zu den Wärmepumpen-Metriken
-excerpt: Metriken zu Bosch CS5800/6800i und Buderus WLW176/186 Wärmepumpen
+title: "Bosch/Buderus Wärmepumpen-Metriken einrichten: Upload, API und Vergleich"
+headline: "Anleitung zu den Wärmepumpen-Metriken"
+excerpt: "Schritt-für-Schritt-Anleitung, um Messwerte von Bosch CS5800/6800i und Buderus WLW176/186i hochzuladen und mit anderen Anlagen zu vergleichen."
 permalink: /metrics/howto
 toc: true
 toc_sticky: true
@@ -12,6 +13,8 @@ comments: false
 sidebar:
   nav: "metrics"
 ---
+
+Diese Anleitung zeigt, wie du Messwerte deiner Bosch- oder Buderus-Wärmepumpe für die Metriken-Plattform bereitstellst und reale Arbeitszahlen mit anderen Anlagen vergleichst. Ziel ist es, belastbare Praxisdaten für Betrieb, Effizienz und Optimierung sichtbar zu machen.
 
 Dieses Projekt soll uns allen helfen, die optimalen Betriebsbedingungen für unsere Wärmepumpen zu finden, und gleichzeitig Wärmepumpeninteressierten die Angst vor dem Umstieg nehmen, indem sie reale Daten einsehen können.
 Bitte tragt daher ausschließlich **geprüfte, wahre Daten** ein.

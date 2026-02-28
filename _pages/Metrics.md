@@ -1,6 +1,7 @@
 ---
-title: Wärmepumpen-Metriken
-excerpt: Live-Messwerte von Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen, inkl. reale Arbeitszahlen pro Jahr, Monat, Tag und Stunde.
+title: "Bosch/Buderus Wärmepumpen-Metriken: reale Arbeitszahlen, Verbrauch und Vergleich"
+headline: "Wärmepumpen-Metriken"
+excerpt: "Live-Messwerte und reale Arbeitszahlen von Bosch CS5800/6800i und Buderus WLW176/186i nach Jahr, Monat, Tag und Stunde vergleichen."
 permalink: /metrics/
 header:
   og_image: https://bosch-buderus-wp.github.io/assets/images/Metrics.png
