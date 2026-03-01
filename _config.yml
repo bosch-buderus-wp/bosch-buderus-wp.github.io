@@ -18,8 +18,8 @@ plugins:
 
 after_footer_scripts:
   - https://cdn.jsdelivr.net/npm/mermaid@11.4.0/dist/mermaid.min.js
-  - assets/js/mermaid.js
-  - assets/js/page-headline.js
+  - /assets/js/mermaid.js
+  - /assets/js/page-headline.js
 
 # Analytics
 analytics:
