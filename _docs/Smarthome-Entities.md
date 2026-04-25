@@ -306,11 +306,8 @@ Siehe auch [Using the Smart Grid (SG) and Photovoltaic (PV) function of your hea
 
 ## Andere
 
-<details>
-  <summary>Weitere Entiäten, deren Bedeutung aktuell noch unklar ist</summary>
-
-{% capture entities %}
-
+<details markdown="1">
+<summary>Weitere Entiäten, deren Bedeutung aktuell noch unklar ist</summary>
 Boiler:
 
 | ID                                                                 | Name                                     | Modul          | Typ  | Einheit | RW  | Beschreibung |
@@ -452,9 +449,6 @@ Thermostat:
 | [disinfecttime](http://ems-esp/api/thermostat/disinfecttime)               | WWK Desinfektionszeit                       | thermostat<br>dhw | 🔢   | Minuten | ✔   |
 | [dailyheating](http://ems-esp/api/thermostat/dailyheating)                 | WWK täglich Heizen                          | thermostat<br>dhw | ☑    |         | ✔   |
 | [dailyheattime](http://ems-esp/api/thermostat/dailyheattime)               | WWK tägliche Heizzeit                       | thermostat<br>dhw | 🔢   | Minuten | ✔   |
-
-{% endcapture %}
-{{ entities | markdownify }}
 
 </details>
 

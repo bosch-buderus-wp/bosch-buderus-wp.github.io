@@ -37,3 +37,11 @@ $right-sidebar-width: 240px !default;
   position: relative;
   z-index: 1;
 }
+
+details {
+  // Border with rounded corners
+  border: 1px solid #e5e7eb;
+  border-radius: 0.35rem;
+  padding: 0.75rem;
+  margin-bottom: 1rem;
+}

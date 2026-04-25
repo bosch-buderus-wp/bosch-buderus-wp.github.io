@@ -26,7 +26,8 @@ Daher können Optimierung auch hier einen beträchtlichen Anteil beitragen.
 
 ### Temperatur
 
-Wenn möglich sollte man versuchen, die Warmwassertemperatur möglichst niedrig einzustellen.
+Wie auch beim Heizbetrieb braucht die Wärmepumpe bei der Warmwasserbereitung mehr Energie, je höher die Zieltemperatur ist.
+Daher sollte man versuchen, die Warmwassertemperatur möglichst niedrig einzustellen.
 Das hat den weiteren Vorteil, dass mit niedrigerer Temperatur auch weniger Mineralsalze auskristallisieren und so weniger Kalkablagerungen entstehen, die zusätzlich die Effizienz beeinträchtigen.
 Demgegenüber steigt die Legionellengefahr, wenn das Wasser nicht ausreichend erhitzt wird.
 Eine regelmäßige Umwälzung oder thermische Desinfektion kann hier Abhilfe schaffen [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
@@ -44,7 +45,7 @@ Reduziert man die Ladetemperatur hingegen auf 6 K, so muss am Ende lediglich auf
 ### Tageszeit
 
 Mit steigender Außentemperatur kann die Wärmepumpe mehr Energie aus der Umgebungsluft gewinnen.
-Wie man im nachfolgenden Diagramm sieht, ist die durchschnittliche Außentemperatur in Deutschland am frühen Nachmittag am höchsten (Daten von [energy-charts.de](https://www.energy-charts.info/charts/climate_hours/chart.htm?l=de&c=DE&source=air_temperature&legendItems=fhy9f&interval=year&year=2023)).
+Wie man im nachfolgenden Diagramm sieht, ist die durchschnittliche Außentemperatur in Deutschland am frühen Nachmittag am höchsten (Daten von [energy-charts.info](https://www.energy-charts.info/charts/climate_hours/chart.htm?l=de&c=DE&source=air_temperature&legendItems=fhy9f&interval=year&year=2023)).
 Es ist daher sinnvoll, die Warmwasserbereitung auf den frühen Nachmittag zwischen 13 und 15 Uhr zu legen.
 
 [![Durchschnittstemperatur je Tageszeit in 2023](/assets/images/Durchschnittstemperatur2023.svg)](/assets/images/Durchschnittstemperatur2023.svg)
@@ -73,10 +74,102 @@ Liegt euer täglicher Verbrauch niedriger, so solltet ihr die Eco-Stopptemperatu
 Überprüfen könnt ihr die aktuelle Warmwassertemperatur entweder am Startbildschirm des lokalen Bedienelements, in der [App](/docs/app/) oder über ein [Smarthome-System](/docs/smarthome/).
 An dieser Stelle möchte ich nochmals eindringlich darauf hinweisen, dass ihr bei derart niedrigen Wassertemperaturen entweder eine wöchentliche thermische Desinfektion oder einen Wasseraustausch aller Leitungen innerhalb weniger Tage sicherstellen müsst [[bwp](https://www.waermepumpe.de/presse/news/details/kein-erhoehtes-legionellenrisiko-bei-waermepumpen/)].
 
-Auch für Besitzer von Photovoltaik-Anlagen und im Sinne der Energiewende kann die oben beschriebene Einstellung sinnvoll sein, denn in der Regel ist der höchste PV-Ertrag in Deutschland gegen 13 Uhr zu erwarten (siehe [energy-charts.de](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
+Auch für Besitzer von Photovoltaik-Anlagen und im Sinne der Energiewende kann die oben beschriebene Einstellung sinnvoll sein, denn in der Regel ist der höchste PV-Ertrag in Deutschland gegen 13 Uhr zu erwarten (siehe [energy-charts.info](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
 Wer eine PV-Anlage besitzt, kann noch einen Schritt weiter gehen und die Warmwasserbereitung mit PV-Überschuss optimieren.
 Dafür kommt der in den oben genannten Einstellungen nicht genutzte Komfortmodus zum Einsatz.
 Weitere Details zur Realisierung könnt ihr beispielsweise der Anleitung für [evcc](https://bosch-buderus-wp.github.io/docs/smarthome/evcc) entnehmen.
+
+### Hohe Temperaturverluste
+
+_Was tun bei hohen Warmwassertemperaturverlusten?_
+
+Ich bekomme regelmäßig Zuschriften von Lesern, die ihr Warmwasser mehrmals täglich bereiten müssen, obwohl sie die oben genannten Optimierungen vorgenommen haben.
+Auch wir hatten das Problem kürzlich von einem Tag auf den anderen, obwohl es zuvor über ein Jahr hinweg problemlos funktioniert hatte.
+In unserem Fall lag es an einer Kalkablagerung im Rückschlagventil in der Warmwasserzirkulationspumpe, die sich dann glücklicherweise von selbst löste.
+Bei anderen Lesern lag es an der kontinuierlich laufenden Zirkulationspumpe.
+Dazu mehr im nächsten Kapitel.
+Und bei einer dritten Gruppe lag es an einem fehlenden Thermosiphon in der Warmwasserleitung, den der Heizungsbauer dann noch nachrüsten musste.
+In allen drei Fällen fließt das Warmwasser kontinuierlich durch die Leitung und verliert dabei Wärme, die an die kalten Rohre und Mauern abgegeben wird.
+
+_Doch wann spricht man eigentlich von hohen Warmwasserverlusten?_
+
+Unser 277 Liter Warmwasserspeicher hat laut [Spezifikation](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6720872727) 67 W Wärmeverlust.
+Das bedeutet, dass das Warmwasser im Wasserspeicher 67 Watt bzw. 0,21 Kelvin pro Stunde verliert.
+Dabei wird meist eine Warmwassertemperatur von 65 °C und eine Umgebungstemperatur von 20 °C zugrunde gelegt.
+Nach einem Tag verliert der Warmwasserspeicher somit ungefähr 5 K und das 65 °C warme Wasser ist auf 60 °C abgekühlt.
+
+<details markdown="1">
+<summary><i class="fa-solid fa-calculator"></i>Mathematische Herleitung der Warmwasserverluste</summary>
+<br>
+Bei einer Warmwassertemperatur von 65 °C im 277 l Speicher und einer Umgebungstemperatur von 20 °C ergibt sich aus folgender Gleichung ein Temperaturabfall von rund 0,21 K pro Stunde:
+
+\\[
+\Delta T =
+\frac{P \cdot t}{c \cdot m} =
+\frac{67\,\text{W} \cdot 3600\,\text{s}}{4182\,\frac{\text{J}}{\text{kg}\cdot\text{K}} \cdot 277\,\text{kg}} \approx 0{,}21\,\text{K}
+\\]
+
+\\(\\Delta T\\) = Temperaturänderung in Kelvin (K) \\
+\\(P\\) = Verlustleistung in Watt (W) \\
+\\(t\\) = Zeitraum in Sekunden (s) \\
+\\(c\\) = spezifische Wärmekapazität von Wasser = 4182 \\(\frac{J}{kg \cdot K}\\) \\
+\\(m\\) = Masse des Wassers in Kilogramm (kg)
+
+</details>
+
+Ist jedoch die Warmwassertemperatur niedriger, so ist auch die Verlustleistung geringer.
+Sie nimmt proportional mit der Differenz der Temperaturen ab.
+Sie beträgt bei 45 °C Warmwassertemperatur etwa 37 W bzw. 0,11 K pro Stunde:
+
+<details markdown="1">
+<summary><i class="fa-solid fa-calculator"></i>Mathematische Herleitung der reduzierten Warmwasserverluste</summary>
+<br>
+\\[
+P_{neu} = P_{Norm} \cdot \frac{T_{Wasser,neu} - T_{Umgebung}}{T_{Wasser,Norm} - T_{Umgebung}} =
+\\]
+
+\\[
+67\,\text{W} \cdot \frac{45\,\text{°C} - 20\,\text{°C}}{65\,\text{°C} - 20\,\text{°C}} = 67\,\text{W} \cdot \frac{25\,\text{K}}{45\,\text{K}} \approx 37\,\text{W}
+\\]
+
+Damit ergibt sich für unseren Fall eine Temperaturabnahme von 0,11 K pro Stunde:
+
+\\[
+\Delta T =
+\frac{37\,\text{W} \cdot 3600\,\text{s}}{4182\,\frac{\text{J}}{\text{kg}\cdot\text{K}} \cdot 277\,\text{kg}} \approx 0{,}11\,\text{K}
+\\]
+
+</details>
+
+In der Realität sind wir nah an diesem berechneten Wert.
+Tatsächlich haben wir einen Temperaturverlust von 0,16 K pro Stunde, wenn wir kein Wasser entnehmen und die Zirkulationspumpe nicht läuft.
+Die Schwerkraftzirkulation unseres blockierten Rückschlagventils hatte einen zusätzlichen Temperaturverlust von 0,33 K pro Stunde zur Folge.
+Jährlich führt das zu zusätzlichen Kosten von knapp 100 € bei einem Strompreis von 32 Cent/kWh.
+
+<details markdown="1">
+<summary><i class="fa-solid fa-calculator"></i>Mathematische Herleitung der Kosten</summary>
+<br>
+Thermischer Verlust pro Stunde:
+
+\\[
+Q_{h} = 4182\,\frac{\text{J}}{\text{kg}\cdot\text{K}} \cdot 277\,\text{kg} \cdot 0{,}33\,\text{K} \approx 382\,\text{kJ}
+\\]
+
+Thermischer Verlust pro Jahr:
+
+\\[
+Q_{Jahr} = \frac{382\,\text{kJ} \cdot 8760\,\text{h}}{3.600\,\frac{\text{kJ}}{\text{kWh}}} \approx 930\,\text{kWh}_{\text{th}}
+\\]
+
+Strombedarf Wärmepumpe bei einer JAZ von 3:
+
+\\[
+E_{el} = \frac{Q_{Jahr}}{JAZ} = \frac{930\,\text{kWh}_{\text{th}}}{3} \approx 310\,\text{kWh}
+\\]
+
+</details>
+
+Den Temperaturverlust des Warmwassers im Auge zu behalten kann sich finanziell also durchaus lohnen.
 
 ## Warmwasserzirkulation
 
@@ -124,7 +217,7 @@ Dieses Taktverhalten lässt sich in der Übergangszeit nicht verhindern.
 Jedoch sollte es nicht zu häufig auftreten, denn der Kompressor muss nach dem Start erst auf Betriebsmodus gebracht werden, was die Effizienz reduziert und jeder unnötige Start erhöht den Verschleiß.
 Die Anzahl der Kompressorstarts kann man entweder auf dem Bedienfeld im Servicemenü unter `Info` &rarr; `Wärmepumpe` &rarr; `Statistik` oder in der App abrufen.
 Dort seht ihr auch die Kompressor-Betriebsstunden und wenn ihr die beiden Werte dividiert, erhaltet ihr die durchschnittliche Länge eines Taktes.
-Bei mir sind das aktuell 4,8 Stunden pro Takt.
+Bei mir sind das aktuell 6,5 Stunden pro Takt.
 Ist euer Wert sehr klein, z.B. kleiner 1, dann könnt ihr folgende Optimierungen probieren:
 
 1. Minimale Vorlauftemperatur setzen:

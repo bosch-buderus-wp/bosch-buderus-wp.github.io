@@ -96,12 +96,9 @@ Da ems-esp unterschiedliche Entitäts-ID Formate im MQTT-Discovery unterstützt,
 
 Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`:
 
-<details open>
+<details markdown="1" open>
 <summary>Einzelinstanz, MQTT-Namen (v3.5 und v3.6)</summary>
-
-{% capture entities %}
 {% raw %}
-
 ```yaml
 rest_command:
   send_heatpump_metrics:
@@ -121,18 +118,11 @@ rest_command:
         "flow_temperature_c": "{{ states('sensor.boiler_curflowtemp') }}"
       }
 ```
-
 {% endraw %}
-{% endcapture %}
-{{ entities | markdownify }}
-
 </details>
 
-<details open>
+<details  markdown="1" open>
 <summary>Einzelinstanz, Langname (v3.4)</summary>
-
-{% capture entities %}
-{% raw %}
 
 ```yaml
 rest_command:
@@ -154,29 +144,15 @@ rest_command:
       }
 ```
 
-{% endraw %}
-{% endcapture %}
-{{ entities | markdownify }}
-
 </details>
 
 <details>
 <summary>Einzelinstanz, MQTT-Namen (v3.7)</summary>
-
-{% capture entities %}
-{% raw %}
-
 ```yaml
 TODO
 ```
-
-{% endraw %}
-{% endcapture %}
-{{ entities | markdownify }}
-
 </details>
 
-\
 Nicht vergessen, die `.......` durch deinen API-Key und die Anlagen-ID zu ersetzen.
 API-Key und Anlagen-ID findest du unter [Meine Anlage](/metrics/#/my-account).
 

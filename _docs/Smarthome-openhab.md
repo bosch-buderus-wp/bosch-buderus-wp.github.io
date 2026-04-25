@@ -12,10 +12,8 @@ Wurde OpenHAB über [OpenHABian](https://www.openhab.org/docs/installation/openh
 Dann muss man noch das [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) hinzufügen und durch das Auto-Discovery werden alle Entitäten als _Things_ automatisch erkannt.
 Alternativ kann man alle oder ausgewählte Entitäten manuell als _Thing_ anlegen.
 
-<details>
-    <summary>mqtt.things</summary>
-{% capture mqtt_things %}
-
+<details markdown="1">
+<summary>mqtt.things</summary>
 ```java
 Bridge mqtt:broker:myMQTTBroker "My MQTT server"
 [
@@ -54,9 +52,7 @@ Type string : WarmWaterMode "Warm Water Mode" [stateTopic="ems-esp/thermostat_da
 
 ```
 
-{% endcapture %}
-{{ mqtt_things | markdownify }}
-
 </details>
 
 Weitere Details folgen in Kürze.
+```

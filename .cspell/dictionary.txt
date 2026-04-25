@@ -1,9 +1,11 @@
 # Custom Dictionary Words
 Abtauvorgang
 Abtauvorgänge
+Alexa
 Anbietersuche
 basepoint
 BBQKees
+Bedarfsgesteuerte
 Bivalenzpunkt
 Buderus
 drehzahlgesteuerten
@@ -11,6 +13,7 @@ eingeschwungen
 elec.
 Energieverbräuche
 Entitätsname
+evcc
 Fritzbox
 geflashte
 heatpump
@@ -19,6 +22,8 @@ Heißgasabtauung
 hyst
 Invertersteuerung
 Kmin
+Kompressorstarts
+Legionellen
 Legionellengefahr
 lmin
 Logamatic
@@ -32,6 +37,7 @@ nofrost
 Normaußentemperatur
 Primärkreis
 Primärkreises
+Primärkreispumpe
 Rego
 reinkopieren
 Siebdruckplatte
@@ -44,7 +50,12 @@ tapwater
 Telemetriedaten
 Variantenübersicht
 Verflüssiger
+Warmwasserbereitungsmodus
+Warmwasserzirkulationspumpe
 Wohlfühlgrenze
 Wohlfühltemperatur
+Zirkulationsleitungen
+Zirkulationspumpe
 Zuheizer
+Zuheizersperre
 Zustandstemplate
