@@ -94,11 +94,14 @@ Bitte lade die Daten nicht mehr als einmal pro Stunde hoch, um nicht unnötig vi
 Um stündlich Messwerte aus Home Assistant zu übertragen, füge folgende Konfiguration in `configuration.yaml` ein.
 Da ems-esp unterschiedliche Entitäts-ID Formate im MQTT-Discovery unterstützt, findet ihr nachfolgend für die verschiedene Versionen angepasste Konfigurationen.
 
-Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`:
+Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`. Wählt den passenden Tab für eure Version:
 
-<details markdown="1" open>
-<summary>Einzelinstanz, MQTT-Namen (v3.5 und v3.6)</summary>
+{% include tabs id="home-assistant-tabs" %}
+
+{% include tab id="v3.6" title="Einzelinstanz, MQTT-Namen (v3.5 und v3.6)" %}
+
 {% raw %}
+
 ```yaml
 rest_command:
   send_heatpump_metrics:
@@ -118,11 +121,13 @@ rest_command:
         "flow_temperature_c": "{{ states('sensor.boiler_curflowtemp') }}"
       }
 ```
-{% endraw %}
-</details>
 
-<details  markdown="1" open>
-<summary>Einzelinstanz, Langname (v3.4)</summary>
+{% endraw %}
+
+{% include endtab %}
+{% include tab id="v3.4" title="Einzelinstanz, Langname (v3.4)" %}
+
+{% raw %}
 
 ```yaml
 rest_command:
@@ -144,14 +149,10 @@ rest_command:
       }
 ```
 
-</details>
+{% endraw %}
 
-<details>
-<summary>Einzelinstanz, MQTT-Namen (v3.7)</summary>
-```yaml
-TODO
-```
-</details>
+{% include endtab %}
+{% include endtabs %}
 
 Nicht vergessen, die `.......` durch deinen API-Key und die Anlagen-ID zu ersetzen.
 API-Key und Anlagen-ID findest du unter [Meine Anlage](/metrics/#/my-account).

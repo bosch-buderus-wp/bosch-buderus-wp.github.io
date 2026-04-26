@@ -1,0 +1,7 @@
+{% assign tab_id = include.id | default: include.title | slugify %}
+<div
+class="tablist__panel"
+id="{{ tab_id }}"
+data-tab-title="{{ include.title | escape }}"
+markdown="1"
+>

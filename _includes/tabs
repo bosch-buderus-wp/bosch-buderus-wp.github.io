@@ -1,0 +1,111 @@
+<style>
+  .tablist-container {
+    margin: 1.5rem 0;
+  }
+
+  .tablist-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+    border-bottom: 1px solid #d7d7d7;
+  }
+
+  .tablist__tab {
+    margin: 0 0 -1px;
+    padding: 0.55rem 0.8rem;
+    border: 1px solid transparent;
+    border-radius: 4px 4px 0 0;
+    background: transparent;
+    color: inherit;
+    font: inherit;
+    font-size: 0.85rem;
+    cursor: pointer;
+  }
+
+  .tablist__tab:hover,
+  .tablist__tab:focus {
+    background: #f6f6f6;
+  }
+
+  .tablist__tab.active {
+    border-color: #d7d7d7 #d7d7d7 #fff;
+    background: #fff;
+    font-weight: 600;
+  }
+
+  .tablist__panel {
+    display: none;
+    padding-top: 1rem;
+  }
+
+  .tablist__panel.active {
+    display: block;
+  }
+</style>
+
+<script>
+  window.tablistClickHandle = function (evt, tablistName, tabTitle) {
+    var i;
+    var tabcontent = document.getElementsByClassName(tablistName + "-id-content");
+    var tablinks = document.getElementsByClassName(tablistName + "-id-tab");
+    var selectedPanel = document.getElementById(tabTitle);
+
+    for (i = 0; i < tabcontent.length; i++) {
+      tabcontent[i].classList.remove("active");
+    }
+
+    for (i = 0; i < tablinks.length; i++) {
+      tablinks[i].classList.remove("active");
+      tablinks[i].setAttribute("aria-selected", "false");
+    }
+
+    if (selectedPanel) {
+      selectedPanel.classList.add("active");
+    }
+
+    evt.currentTarget.classList.add("active");
+    evt.currentTarget.setAttribute("aria-selected", "true");
+  };
+
+  window.addEventListener("DOMContentLoaded", function () {
+    var tablists = document.querySelectorAll(".tablist-container[data-tablist-auto]");
+
+    for (var i = 0; i < tablists.length; i++) {
+      var tablist = tablists[i];
+      var tablistName = tablist.id;
+      var nav = tablist.querySelector(".tablist-nav");
+      var panels = tablist.querySelectorAll(".tablist__panel");
+
+      for (var j = 0; j < panels.length; j++) {
+        var panel = panels[j];
+        var panelId = panel.id;
+        var button = document.createElement("button");
+
+        panel.classList.toggle("active", j === 0);
+        panel.classList.add(tablistName + "-id-content");
+        panel.setAttribute("role", "tabpanel");
+        panel.setAttribute("aria-labelledby", tablistName + "-tab-" + panelId);
+
+        button.className = tablistName + "-id-tab tablist__tab" + (j === 0 ? " active" : "");
+        button.id = tablistName + "-tab-" + panelId;
+        button.type = "button";
+        button.setAttribute("role", "tab");
+        button.setAttribute("aria-controls", panelId);
+        button.setAttribute("aria-selected", j === 0 ? "true" : "false");
+        button.textContent = panel.getAttribute("data-tab-title");
+        button.onclick = (function (name, id) {
+          return function (event) {
+            tablistClickHandle(event, name, id);
+          };
+        })(tablistName, panelId);
+
+        nav.appendChild(button);
+      }
+    }
+  });
+</script>
+
+{% assign tablist_id = include.id | default: "tabs" %}
+<div class="tablist-container" id="{{ tablist_id }}" data-tablist-auto>
+<div class="tablist-nav" role="tablist">
+</div>
