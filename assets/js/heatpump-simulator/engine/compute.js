@@ -203,7 +203,7 @@
     ambientTempC,
     stdOutdoorTempC,
     flowTempAt20C,
-    flowTempAtStdOutdoorC
+    flowTempAtStdOutdoorC,
   ) {
     const x0 = stdOutdoorTempC;
     const y0 = flowTempAtStdOutdoorC;
@@ -257,7 +257,7 @@
         const r = data.COPlower / Math.max(1e-9, data.COPmax);
         const alpha = Math.max(
           0,
-          (r - 1) / Math.max(1e-9, (1 - mopt) * (1 - mopt))
+          (r - 1) / Math.max(1e-9, (1 - mopt) * (1 - mopt)),
         );
         anchors.push({ Ta, mopt, alpha });
       }
@@ -328,6 +328,17 @@
   }
 
   /**
+   * Estimates minimum thermal capacity from minimum electrical input and COP.
+   */
+  function minCapacityAt(Ta, Tflow, modelName) {
+    const p = ELECTRICAL_PROFILES[modelName];
+    if (!p) return 0;
+
+    const cop = estimateCOP(Tflow, Ta, modelName);
+    return Math.max(0, (p.minPowerConsW * cop) / 1000);
+  }
+
+  /**
    * Resolves the hydronic temperatures in the buffer/bypass network.
    */
   function resolveHydronicTemperatures(
@@ -335,7 +346,7 @@
     targetFlowC,
     mPrimary,
     mHeating,
-    spreadK
+    spreadK,
   ) {
     const deltaT_heating = Q_load_W / Math.max(1e-9, mHeating * cp);
     const T_heatingReturn = targetFlowC - deltaT_heating;
@@ -379,7 +390,7 @@
     const ambientTempC = params.ambientTempC;
     const mHeating_kgps = computeMassFlow_kgps(
       params.heatingFlowAt150mbarLph,
-      params.heatingPumpPressureMbar
+      params.heatingPumpPressureMbar,
     );
     const designLoadW = Math.max(0, params.buildingHeatLoadAtStdKw) * 1000;
 
@@ -388,7 +399,7 @@
       ambientTempC,
       params.stdOutdoorTempC,
       params.flowTempAt20C,
-      params.flowTempAtStdOutdoorC
+      params.flowTempAtStdOutdoorC,
     );
 
     // 2. Compute building heat load target per DIN EN 12831
@@ -397,7 +408,7 @@
       din12831LoadScale(
         ambientTempC,
         params.heatingLimitC,
-        params.stdOutdoorTempC
+        params.stdOutdoorTempC,
       );
 
     // 3. Primary-side flow from available heat and chosen spread
@@ -411,14 +422,14 @@
       targetFlowC,
       mPrimary_kgps,
       mHeating_kgps,
-      deltaT_primaryK
+      deltaT_primaryK,
     );
 
     // 5. Estimate COP
     const COP_base = estimateCOP(
       hydraulics.T_primFlow,
       ambientTempC,
-      params.hpModel
+      params.hpModel,
     );
 
     // 6. Compute electrical power Pel
@@ -427,6 +438,8 @@
     // 7.a Compute capacity-based modulation, smooth in ambient temperature
     const capMaxW =
       capacityAt(ambientTempC, targetFlowC, params.hpModel) * 1000;
+    const capMinW =
+      minCapacityAt(ambientTempC, targetFlowC, params.hpModel) * 1000;
     const modCapacity = clamp(buildingLoadW / Math.max(1e-9, capMaxW), 0, 1);
 
     // 7.b Electrical-based path, optionally with modulation-dependent efficiency
@@ -467,6 +480,8 @@
       heat: {
         heatingPowerW: buildingLoadW,
         buildingLoadW: buildingLoadW,
+        minHeatingPowerW: capMinW,
+        maxHeatingPowerW: capMaxW,
         electricalPowerW: Pel_out,
         COP: COP_out,
       },
@@ -497,6 +512,7 @@
 
   const api = {
     capacityAt: capacityAt,
+    minCapacityAt: minCapacityAt,
     computeBuildingHeatLoad_W: function (Q, Ta, TL, Te) {
       return Q * din12831LoadScale(Ta, TL, Te);
     },

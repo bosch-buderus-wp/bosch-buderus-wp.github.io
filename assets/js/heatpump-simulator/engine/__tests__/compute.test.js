@@ -1,7 +1,32 @@
 import { describe, it, expect } from "vitest";
 import engine from "../compute.js";
 
-const { THERMAL_PROFILES, DEFAULTS } = engine;
+const { THERMAL_PROFILES, DEFAULTS, ELECTRICAL_PROFILES } = engine;
+
+describe("Minimum thermal capacity approximation", () => {
+  it("uses minimum electrical input times model-specific COP", () => {
+    const Ta = 7;
+    const Tflow = 35;
+
+    Object.keys(ELECTRICAL_PROFILES).forEach((model) => {
+      const expected =
+        (ELECTRICAL_PROFILES[model].minPowerConsW *
+          engine.estimateCOP(Tflow, Ta, model)) /
+        1000;
+
+      expect(engine.minCapacityAt(Ta, Tflow, model)).toBeCloseTo(expected, 6);
+    });
+  });
+
+  it("exposes minimum and maximum heating power in computeState", () => {
+    const state = engine.computeState(DEFAULTS);
+
+    expect(state.heat.minHeatingPowerW).toBeGreaterThan(0);
+    expect(state.heat.maxHeatingPowerW).toBeGreaterThan(
+      state.heat.minHeatingPowerW
+    );
+  });
+});
 
 describe("Heat Pump Engine Specification Validation", () => {
   Object.keys(THERMAL_PROFILES).forEach((model) => {

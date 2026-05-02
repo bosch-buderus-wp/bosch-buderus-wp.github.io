@@ -10,7 +10,7 @@
   const CONFIG = {
     WIDTH: 900,
     HEIGHT: 260,
-    MARGIN: { top: 24, right: 56, bottom: 40, left: 50 },
+    MARGIN: { top: 42, right: 56, bottom: 40, left: 50 },
     FLOW_MIN: 15,
     FLOW_MAX: 60,
     X_EXTRA_MIN: -20,
@@ -21,13 +21,14 @@
     SAMPLE_POINTS: 64,
     HOVER_TOL_PX: 7,
     TIP_PAD_PX: 12,
-    LEGEND_SPACING: 200,
+    LEGEND_GAP: 18,
     RIGHT_AXIS_STEP: 0.5,
 
     COLORS: {
       CURVE: "#1565c0",
       LOAD: "#2e7d32",
       CAP: "#ef6c00",
+      MIN_CAP: "#ad6b00",
       MOD: "#808080",
       COP: "#00838f",
       BV_FILL: "#8e24aa",
@@ -94,7 +95,7 @@
     const gLegend = g
       .append("g")
       .attr("class", "legend")
-      .attr("transform", `translate(0, -8)`);
+      .attr("transform", `translate(0, -18)`);
 
     // Overlay for interaction
     const gOverlay = g.append("g").attr("class", "overlay");
@@ -125,6 +126,7 @@
     const curveColor = CONFIG.COLORS.CURVE;
     const loadColor = CONFIG.COLORS.LOAD;
     const capColor = CONFIG.COLORS.CAP;
+    const minCapColor = CONFIG.COLORS.MIN_CAP;
     const modColor = CONFIG.COLORS.MOD;
     const copColor = CONFIG.COLORS.COP;
 
@@ -144,6 +146,12 @@
       .line()
       .x((d) => x(d.Ta))
       .y((d) => yRight(d.capKw))
+      .curve(d3.curveMonotoneX);
+
+    const lineMinCap = d3
+      .line()
+      .x((d) => x(d.Ta))
+      .y((d) => yRight(d.minCapKw))
       .curve(d3.curveMonotoneX);
 
     const lineCop = d3
@@ -203,9 +211,10 @@
 
     // Legend
     const legendItems = [
-      { label: "Heizkurve (Sollvorlauftemp.)", color: curveColor },
+      { label: "Heizkurve", color: curveColor },
       { label: "Gebäudeheizlast", color: loadColor },
-      { label: "Max. Wärmepumpenleistung", color: capColor },
+      { label: "Max. WP-Leistung", color: capColor },
+      { label: "Min. WP-Leistung", color: minCapColor },
     ];
     if (config.showCOP) {
       legendItems.push({ label: "Optimaler COP", color: copColor });
@@ -214,11 +223,7 @@
       .selectAll("g")
       .data(legendItems)
       .enter()
-      .append("g")
-      .attr(
-        "transform",
-        (d, i) => `translate(${i * CONFIG.LEGEND_SPACING}, 0)`
-      );
+      .append("g");
     legend
       .append("line")
       .attr("x1", 0)
@@ -233,6 +238,13 @@
       .attr("y", 4)
       .attr("class", "legend-label")
       .text((d) => d.label);
+
+    let legendX = 0;
+    legend.each(function () {
+      const item = d3.select(this);
+      item.attr("transform", `translate(${legendX}, 0)`);
+      legendX += this.getBBox().width + CONFIG.LEGEND_GAP;
+    });
 
     // Lines groups
     const curvePath = gLines
@@ -253,6 +265,13 @@
       .attr("stroke", capColor)
       .attr("fill", "none")
       .attr("stroke-width", 2);
+    const minCapPath = gLines
+      .append("path")
+      .attr("class", "min-cap-line")
+      .attr("stroke", minCapColor)
+      .attr("fill", "none")
+      .attr("stroke-width", 2)
+      .attr("stroke-dasharray", "5 3");
     const copPath = gLines
       .append("path")
       .attr("class", "cop-line")
@@ -310,6 +329,20 @@
         } catch (e) {}
         return 0;
       };
+      const minCapAt = (Ta, Tf) => {
+        try {
+          if (
+            window.HeatpumpEngine &&
+            typeof window.HeatpumpEngine.minCapacityAt === "function"
+          ) {
+            return Math.max(
+              0,
+              window.HeatpumpEngine.minCapacityAt(Ta, Tf, state.hpModel)
+            );
+          }
+        } catch (e) {}
+        return 0;
+      };
       for (let i = 0; i < N; i++) {
         const Ta = xMin + (i / (N - 1)) * (xMax - xMin);
         const flowC = flowTargetCurve(
@@ -330,13 +363,14 @@
           return Math.max(0, Q_W) / 1000;
         })();
         const capKw = capAt(Ta, flowC);
-        maxKw = Math.max(maxKw, loadKw, capKw);
+        const minCapKw = minCapAt(Ta, flowC);
+        maxKw = Math.max(maxKw, loadKw, capKw, minCapKw);
         const cop =
           window.HeatpumpEngine &&
           typeof window.HeatpumpEngine.estimateCOP === "function"
-            ? window.HeatpumpEngine.estimateCOP(flowC, Ta)
+            ? window.HeatpumpEngine.estimateCOP(flowC, Ta, state.hpModel)
             : 0;
-        data.push({ Ta, flowC, loadKw, capKw, cop });
+        data.push({ Ta, flowC, loadKw, capKw, minCapKw, cop });
       }
       // Find crossing of load and capacity to mark Bivalenzpunkt
       bivalencePt = null;
@@ -405,6 +439,7 @@
       curvePath.datum(data).attr("d", lineCurve);
       loadPath.datum(data).attr("d", lineLoad);
       capPath.datum(data).attr("d", lineCap);
+      minCapPath.datum(data).attr("d", lineMinCap);
       if (config.showCOP) {
         copPath.datum(data).attr("d", lineCop).style("opacity", 1);
       } else {
@@ -452,6 +487,7 @@
           return Math.max(0, Q_W) / 1000;
         })();
         let capKw = 0;
+        let minCapKw = 0;
         try {
           if (
             window.HeatpumpEngine &&
@@ -463,12 +499,23 @@
             );
           }
         } catch (e) {}
+        try {
+          if (
+            window.HeatpumpEngine &&
+            typeof window.HeatpumpEngine.minCapacityAt === "function"
+          ) {
+            minCapKw = Math.max(
+              0,
+              window.HeatpumpEngine.minCapacityAt(Ta, flowC, state.hpModel)
+            );
+          }
+        } catch (e) {}
         const cop =
           window.HeatpumpEngine &&
           typeof window.HeatpumpEngine.estimateCOP === "function"
-            ? window.HeatpumpEngine.estimateCOP(flowC, Ta)
+            ? window.HeatpumpEngine.estimateCOP(flowC, Ta, state.hpModel)
             : 0;
-        return { Ta, flowC, loadKw, capKw, cop };
+        return { Ta, flowC, loadKw, capKw, minCapKw, cop };
       }
 
       function renderTip(e, pxt, py) {
@@ -518,6 +565,10 @@
         )} kW</div></div>
                   <div class="tip-row"><div><span style=\"color:${capColor}\"><b>Max. WP-Leistung:</b></span></div><div class="tip-val">${fmt(
           d.capKw,
+          2
+        )} kW</div></div>
+          <div class="tip-row"><div><span style=\"color:${minCapColor}\"><b>Min. WP-Leistung:</b></span></div><div class="tip-val">${fmt(
+          d.minCapKw,
           2
         )} kW</div></div>
           <div class="tip-row"><div><span style=\"color:${modColor}\"><b>Rel. Wärmebedarf:</b></span></div><div class="tip-val">${fmt(
