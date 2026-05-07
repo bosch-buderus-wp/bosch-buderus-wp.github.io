@@ -182,7 +182,48 @@ Dennoch wurde die Wärmepumpe zu 40% mit PV-Strom versorgt:
 | **Summe** | **3100 kWh** |          | **1245 kWh** | **1855 kWh** | **29 ct/kWh** | **541,51 €** |
 |           |              |          | **40%**      | **60%**      |               |              |
 
-# Anschlussisolierung
+Wer Interesse an einem dynamischen Stromanbieter hat, kann gerne meinen Einladungslink bei Tibber verwenden.
+Dann erhalten wir beide einen 50 € Bonus: [https://invite.tibber.com/42w39ln7](https://invite.tibber.com/42w39ln7).
+Ich bin seit 2023 bei Tibber und bisher wirklich sehr zufrieden.
+
+### Nachhaltigkeit
+
+Kürzlich hatte ich mich gefragt, wie viel der eingesetzten Energie für unsere Wärmepumpe tatsächlich aus erneuerbaren Energien stammt.
+Dazu habe ich mir ein Panel in [Grafana](https://bosch-buderus-wp.github.io/docs/smarthome/grafana) angelegt, das tagesgenau den Energieverbrauch unserer Wärmepumpe wie folgt anteilig aufschlüsselt:
+
+- WP-Energie, die von der PV-Anlage stammt (100% erneuerbar)
+- WP-Netzbezug:
+  - Erneuerbarer Anteil im deutschen Strommix an diesem Tag
+  - Fossiler Anteil im deutschen Strommix an diesem Tag
+
+Und damit kann ich dann den realen Anteil erneuerbarer Energien im Stromverbrauch unserer Wärmepumpe bestimmen.
+
+<details markdown="1">
+<summary><i class="fa-solid fa-calculator"></i>Berechnungsformel</summary>
+<br>
+\\[
+EEAnteil = \frac{E_{PV} \; + \; E_{Netz} \cdot EEAnteil_{Netz}}{E_{gesamt}}
+\\]
+\\[
+= \frac{E_{gesamt} \cdot Autarkie \; + \; E_{gesamt} \cdot (1 - Autarkie) \cdot EEAnteil_{Netz}}{E_{gesamt}} \\
+\\]
+\\[
+= Autarkie \; + \; (1 - Autarkie) \cdot EEAnteil_{Netz}
+\\]
+
+Die Daten zum deutschen Strommix stammen von [Greengrid Compass](https://www.greengrid-compass.eu/).
+
+</details>
+
+Die tagesgenaue Aufteilung in PV-Energie, erneuerbarer Anteil, fossiler Anteil, sowie der daraus resultierende Anteil erneuerbarer Energien im 2. Betriebsjahr ist im nachfolgenden Diagramm dargestellt:
+
+[![Realer Anteil erneuerbarer Energien](https://i.ibb.co/rKhvgn1G/Matthias-Realer-Anteil-Erneuerbarer-Enerigen.png)](https://i.ibb.co/rKhvgn1G/Matthias-Realer-Anteil-Erneuerbarer-Enerigen.png)
+
+Im Jahresdurchschnitt lag der Anteil erneuerbarer Energien bei sagenhaften 85%.
+Im Winter lag der Anteil natürlich etwas niedriger, aber dennoch meist über 50%.
+Und mit jedem weiteren Windrad und jeder zusätzlichen Solaranlage steigt der Anteil weiter 💚
+
+## Anschlussisolierung
 
 Da es beim Kauf unserer Wärmepumpe noch keine Isolierung für die Anschlüsse der Außeneinheit gab, habe ich mir die Isolierung aus einem Rest Siebdruckplatte, Steinwolle, wasserfesten Holzleim und ein paar Edelstahlschrauben selbst gebastelt.
 
