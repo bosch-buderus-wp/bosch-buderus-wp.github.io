@@ -239,7 +239,7 @@ GEM
       jekyll (>= 3.5, < 5.0)
       jekyll-feed (~> 0.9)
       jekyll-seo-tag (~> 2.1)
-    minimal-mistakes-jekyll (4.26.2)
+    minimal-mistakes-jekyll (4.28.0)
       jekyll (>= 3.7, < 5.0)
       jekyll-feed (~> 0.1)
       jekyll-gist (~> 1.5)
@@ -299,7 +299,7 @@ GEM
       tzinfo (>= 1.0.0)
     unicode-display_width (1.8.0)
     uri (1.0.3)
-    webrick (1.9.1)
+    webrick (1.9.2)
 
 PLATFORMS
   aarch64-linux-gnu
@@ -319,9 +319,9 @@ DEPENDENCIES
   jekyll-seo-tag
   jekyll-sitemap
   jemoji
-  minimal-mistakes-jekyll (~> 4.26.1)
+  minimal-mistakes-jekyll (~> 4.28.0)
   tzinfo-data
-  webrick (~> 1.8)
+  webrick (~> 1.9.2)
 
 BUNDLED WITH
    2.6.7
