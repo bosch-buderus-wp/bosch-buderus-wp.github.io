@@ -236,29 +236,35 @@ Am besten ist es natürlich, wenn ihr bereits beim Kauf der Wärmepumpe darauf a
 
 Nun gehen wir vom Warmwasser zur Optimierung der Heizung.
 Wie beim Warmwasser ist es essentiell, dass die Vorlauftemperatur gerade so niedrig ist, dass die Räume gerade noch so warm werden wie nötig.
-Dabei sollen nicht die Einzelraumregelungen (ERR) durch Takten, d.h. durch ständiges Öffnen und Schließen des Wasserzulaufs, die Raumtemperatur regeln - ähnlich wie bei einem Auto, das ständig auf Maximalgeschwindigkeit beschleunigt und dann wieder zum Stillstand abgebremst wird, anstatt mit einer konstanten Geschwindigkeit zu fahren.
+Dabei sollen nicht die Einzelraumregelungen (ERR) bzw. Heizkörperthermostate durch Takten, d.h. durch ständiges Öffnen und Schließen des Wasserzulaufs, die Raumtemperatur regeln - ähnlich wie bei einem Auto, das ständig auf Maximalgeschwindigkeit beschleunigt und dann wieder zum Stillstand abgebremst wird, anstatt mit einer konstanten Geschwindigkeit zu fahren.
 Ziel ist es daher, dass die Räume ununterbrochen mit der minimal notwendigen Wassertemperatur versorgt werden.
 Und so braucht die Wärmepumpe nur auf die minimale Vorlauftemperatur aufheizen, die gerade notwendig ist, um alle Räume auf Wohlfühltemperatur zu erwärmen.
 
 Die Einstellung dieser minimalen Vorlauftemperatur und die Feinjustierung des Durchflusses wird durch den so genannten thermischen Abgleich erzielt.
-Die folgende 4-Schritt-Anleitung für den thermischen Abgleich stammt von [Energiewende.eu](https://energiewende.eu/der-hydraulische-und-thermische-abgleich/):
+Die folgende 6-Schritt-Anleitung für den thermischen Abgleich stammt von [Haustechnikdialog.de](https://www.haustechnikdialog.de/SHKwissen/2711/Thermischer-Abgleich):
 
-1. Beginnen Sie mit dem am schlechtesten beheizten Raum des Gebäudes.
-   Dies ist Ihr "Leitraum".
-   Öffnen Sie das Ventilunterteil maximal und ändern Sie dann die Heizkurve, bis dieser Raum perfekt temperiert ist.
-2. Typischerweise werden die anderen Räume dann zu warm sein.
-   Gehen Sie in jenen Raum, der am stärksten überhitzt ist und drehen das Ventilunterteil der Heizkörper dort etwas ein.
-   Beobachten Sie die Temperatur dieses Raumes mindestens einen Tag lang und justieren ggf. nach.
-   Je nach Qualität Ihrer Gebäudehülle kann es bis zu 3 Tage dauern, dass sich die Temperatur eingeschwungen hat.
-3. Wenn dieser Raum perfekt geheizt wird, gehen Sie zurück in den Leitraum.
-   Da Sie die Gesamtmenge reduziert haben, wird der Leitraum wahrscheinlich zu warm geworden sein.
-   Passen Sie die Heizkurve an, bis dieser Raum wieder korrekt temperiert ist.
-4. Ermitteln Sie, welcher Raum nun am stärksten überhitzt ist (dies ist u.U. derselbe wie zuvor oder ein anderer).
-   Drehen Sie dort das Ventilunterteil etwas ein und justieren dessen Temperatur über einige Tage nach.
-   Wiederholen Sie die Schritte 3 und 4 so lange, bis alle Räume die perfekte Temperatur haben.
+1. **Anlage vorbereiten** \
+   Bei einer Fußbodenheizung sollten die ERRs während des Abgleichs deaktiviert oder die Stellantriebe abgenommen werden. An den Heizkreisverteilern werden alle Drosselungen vollständig geöffnet. Bei Heizkörpern werden die Thermostatköpfe vollständig geöffnet oder vorübergehend demontiert. 
+   Ziel ist, dass die ERRs/Thermostate während der Messphase nicht eingreifen. Die Raumtemperaturen sollen nur durch Heizkurve und Durchfluss bestimmt werden.
+2. **Heizkurve grob absenken** \
+   Warte nach der Vorbereitung mindestens 1-2 Tage. Sind danach alle regelmäßig beheizten Räume wärmer als gewünscht, ist die Heizkurve wahrscheinlich zu hoch.
+   Senke die Heizkurve nun schrittweise ab. Nach jeder Änderung sollte wieder ausreichend lange gewartet werden, bei trägen Fußbodenheizungen idealerweise etwa 48 Stunden. Reduziere die Heizkurve so lange, bis der erste Raum seine Wunschtemperatur gerade nicht mehr erreicht.
+   Dieser Raum ist dein Referenzraum. Er wird im weiteren Abgleich nicht gedrosselt.
+3. **Referenzraum wieder passend einstellen** \
+   Erhöhe die Heizkurve wieder leicht, sodass der Referenzraum seine Wunschtemperatur zuverlässig erreicht. Damit ist die Heizkurve zunächst so niedrig wie möglich eingestellt.
+   Alle Räume, die jetzt noch zu warm sind, bekommen zu viel Durchfluss und werden anschließend einzeln gedrosselt.
+4. **Zu warme Räume schrittweise drosseln** \
+   Beginne mit dem Raum, der im Verhältnis zur Wunschtemperatur am wärmsten ist. Drossele dort den Durchfluss nur leicht und warte anschließend wieder mindestens 1-2 Tage.
+   Wird der Raum danach immer noch zu warm, drossele erneut leicht nach. Wird er zu kalt, öffne den Durchfluss wieder etwas.
+5. **Heizkurve nach jeder Drosselrunde prüfen** \
+   Durch das Drosseln eines Raumes verändert sich die Verteilung des Heizwassers im restlichen System. Deshalb kann der Referenzraum anschließend wieder etwas wärmer werden.
+   Prüfe daher nach jeder Drosselrunde den Referenzraum. Wird er zu warm, kann die Heizkurve weiter leicht abgesenkt werden. Anschließend werden die bereits eingestellten Räume nochmals kontrolliert und bei Bedarf geringfügig korrigiert.
+6. **Raum für Raum wiederholen** \
+   Wiederhole dieses Vorgehen, bis alle regelmäßig beheizten Räume ihre Wunschtemperatur erreichen und die Heizkurve so niedrig wie möglich eingestellt ist.
+   Der thermische Abgleich ist kein einmaliger Arbeitsschritt, sondern eher eine schrittweise Feinjustierung über mehrere kalte Tage oder sogar über eine ganze Heizperiode.
 
 Das Vorgehen sollte an einem kalten Tag mit Minustemperaturen und geringer Sonneneinstrahlung vorgenommen werden.
-Für die Anpassung der Heizkurve in Schritt 3 reduziert man dann die [Vorlauftemperatur an der Normaußentemperatur (NAT)](/docs/einstellungen/#vorlauftemperatur-nat).
+Für die Anpassung der Heizkurve in Schritt 2+5 reduziert man dann die [Vorlauftemperatur an der Normaußentemperatur (NAT)](/docs/einstellungen/#vorlauftemperatur-nat).
 Hierbei ist noch zu bemerken, dass es keinen Sinn macht, wenn sich die Solltemperaturen in benachbarten Räumen stark unterscheiden.
 Einige wenige Grad Unterschied sind in Ordnung, aber wenn die Unterschiede zu groß sind, werden die kalten Räume einfach durch die warmen Räume mitgeheizt und man braucht wiederrum eine höhere Vorlauftemperatur im wärmeren Raum.
 
