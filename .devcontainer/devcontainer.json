@@ -2,7 +2,11 @@
 // README at: https://github.com/devcontainers/templates/tree/main/src/jekyll
 {
   "name": "Jekyll",
-  "image": "mcr.microsoft.com/devcontainers/jekyll:2-bullseye",
+  "image": "mcr.microsoft.com/devcontainers/jekyll",
+
+  "hostRequirements": {
+        "memory": "4gb"
+    },
 
   "forwardPorts": [
     // Jekyll server
@@ -11,5 +15,6 @@
     35729
   ],
 
+  "postCreateCommand": "bundle install",
   "postAttachCommand": "bundle exec jekyll serve --livereload"
 }
