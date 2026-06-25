@@ -343,44 +343,42 @@
    */
   function resolveHydronicTemperatures(
     Q_load_W,
-    targetFlowC,
+    targetT0C,
     mPrimary,
     mHeating,
-    spreadK,
   ) {
-    const deltaT_heating = Q_load_W / Math.max(1e-9, mHeating * cp);
-    const T_heatingReturn = targetFlowC - deltaT_heating;
+    const dT_heating = Q_load_W / Math.max(1e-9, mHeating * cp);
+    const dT_primary = Q_load_W / Math.max(1e-9, mPrimary * cp);
+
+    const T_heatFlow = targetT0C;
+    const T_heatRet = T_heatFlow - dT_heating;
 
     if (mPrimary <= 1e-6) {
       return {
-        T_primFlow: T_heatingReturn + spreadK,
-        T_primRet: T_heatingReturn,
-        T_heatFlow: targetFlowC,
-        T_heatRet: T_heatingReturn,
+        T_primFlow: T_heatFlow,
+        T_primRet: T_heatRet,
+        T_heatFlow,
+        T_heatRet,
       };
     }
 
-    let T_primFlow, T_primRet, T_heatFlow, T_heatRet;
     if (mPrimary >= mHeating) {
-      // Surplus primary flow: return water is mixed with flow water (downward bypass)
-      const bypassRatio = (mPrimary - mHeating) / mPrimary;
-      T_primRet = T_heatingReturn + bypassRatio * spreadK;
-      T_primFlow = T_primRet + spreadK;
-      T_heatFlow = T_primFlow;
+      // Surplus primary flow: T0 = TC3, return water is mixed with flow water (downward bypass)
+      return {
+        T_primFlow: T_heatFlow,
+        T_primRet: T_heatFlow - dT_primary,
+        T_heatFlow,
+        T_heatRet,
+      };
     } else {
       // Deficit primary flow: return water is mixed into supply (upward bypass)
-      const mixRatio = mPrimary / mHeating;
-      T_primRet = T_heatingReturn;
-      T_primFlow = T_primRet + spreadK;
-      T_heatFlow = T_heatingReturn + mixRatio * spreadK;
+      return {
+        T_primFlow: T_heatRet + dT_primary,
+        T_primRet: T_heatRet,
+        T_heatFlow,
+        T_heatRet,
+      };
     }
-
-    return {
-      T_primFlow: Math.max(T_primRet + spreadK, T_primFlow),
-      T_primRet,
-      T_heatFlow,
-      T_heatRet: T_heatingReturn,
-    };
   }
 
   /**
