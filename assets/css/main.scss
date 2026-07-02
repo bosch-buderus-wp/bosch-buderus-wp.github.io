@@ -45,3 +45,62 @@ details {
   padding: 0.75rem;
   margin-bottom: 1rem;
 }
+
+.sidebar-recommendation {
+  margin-top: 1.75rem;
+  padding: 1rem 0.9rem 0.95rem;
+  border: 1px solid #c9dfce;
+  border-top: 3px solid #55b86a;
+  border-radius: 0.4rem;
+  background: linear-gradient(145deg, #edf8ef 0%, #ffffff 78%);
+  box-shadow: 0 5px 16px rgba(25, 75, 38, 0.12);
+  color: #3d4540;
+
+  &__label {
+    display: block;
+    margin-bottom: 0.45rem;
+    color: #3b864b;
+    font-size: 0.58rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    display: block;
+    width: 7.5rem;
+    max-width: 78%;
+    height: auto;
+    margin: 0 0 0.75rem;
+  }
+
+  h2 {
+    margin: 0 0 0.45rem;
+    font-size: 0.82rem;
+    line-height: 1.25;
+  }
+
+  p {
+    margin: 0 0 0.7rem;
+    font-size: 0.68rem;
+    line-height: 1.45;
+  }
+
+  a {
+    color: #28743a;
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-decoration: none;
+
+    &:hover {
+      color: #175c27;
+      text-decoration: underline;
+    }
+  }
+}
+
+@media (max-width: 63.99em) {
+  .sidebar-recommendation {
+    margin: 1.25rem 0 1rem;
+  }
+}
