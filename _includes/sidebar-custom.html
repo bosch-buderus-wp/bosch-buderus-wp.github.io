@@ -1,4 +1,4 @@
-{% if page.collection == "docs" %}
+{% if page.collection == "docs" or page.url contains "/metrics" or page.url contains "/xps" %}
   <aside class="sidebar-recommendation" aria-labelledby="sidebar-recommendation-title">
     <span class="sidebar-recommendation__label">Empfehlung</span>
     <img

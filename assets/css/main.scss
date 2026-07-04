@@ -11,6 +11,78 @@ $right-sidebar-width: 240px !default;
 @import "minimal-mistakes/skins/{{ site.minimal_mistakes_skin | default: 'default' }}"; // skin
 @import "minimal-mistakes"; // main partials
 
+body.layout--splash .page__hero--overlay {
+  display: flex;
+  min-height: clamp(20rem, 44vw, 34rem);
+  align-items: flex-end;
+  padding: clamp(3rem, 8vw, 6.5rem) 0 clamp(2.5rem, 6vw, 5rem);
+  background-position: center;
+
+  &::before {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg, rgba(9, 25, 39, 0.9) 0%, rgba(9, 25, 39, 0.6) 48%, rgba(9, 25, 39, 0.12) 100%),
+      linear-gradient(0deg, rgba(9, 25, 39, 0.48) 0%, transparent 52%);
+    content: "";
+  }
+
+  .wrapper {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    transform: translateY(clamp(-7rem, -9vw, -3rem));
+
+    &::before {
+      display: block;
+      margin-bottom: 0.8rem;
+      color: #f2f6f8;
+      content: "Wissen · Daten · Praxis";
+      font-size: clamp(0.68rem, 1.2vw, 0.82rem);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+  }
+
+  .page__title {
+    max-width: 12ch;
+    margin: 0;
+    font-size: clamp(2.35rem, 6vw, 5.4rem);
+    font-weight: 800;
+    line-height: 0.95;
+    letter-spacing: -0.045em;
+    text-wrap: balance;
+    text-shadow: 0 0.08em 0.4em rgba(0, 0, 0, 0.28);
+
+    &::after {
+      display: block;
+      width: clamp(3.5rem, 9vw, 6.5rem);
+      height: 0.28rem;
+      margin-top: 1.15rem;
+      border-radius: 999px;
+      background: #e45c52;
+      content: "";
+    }
+  }
+
+  .page__lead {
+    max-width: 55rem;
+    margin: 1.15rem 0 0;
+    color: rgba(255, 255, 255, 0.92);
+    font-size: clamp(0.85rem, 1.35vw, 1.05rem);
+    font-weight: 500;
+    line-height: 1.45;
+    text-shadow: 0 0.08em 0.35em rgba(0, 0, 0, 0.36);
+  }
+}
+
+@media (min-width: 48em) {
+  body.layout--splash .page__hero--overlay .page__lead {
+    white-space: nowrap;
+  }
+}
+
 .masthead__menu a[href="/metrics/"] {
   display: inline-flex;
   align-items: flex-start;
@@ -47,6 +119,9 @@ details {
 }
 
 .sidebar-recommendation {
+  width: 13rem;
+  max-width: 100%;
+  box-sizing: border-box;
   margin-top: 1.75rem;
   padding: 1rem 0.9rem 0.95rem;
   border: 1px solid #c9dfce;
@@ -101,6 +176,55 @@ details {
 
 @media (max-width: 63.99em) {
   .sidebar-recommendation {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 0.7rem;
     margin: 1.25rem 0 1rem;
+    padding: 0.45rem 0.7rem;
+    border-top-width: 2px;
+
+    &__label {
+      display: none;
+    }
+
+    &__logo {
+      width: 5.5rem;
+      min-width: 5.5rem;
+      max-width: 5.5rem;
+      height: auto;
+      flex: 0 0 5.5rem;
+      margin: 0;
+    }
+
+    h2 {
+      min-width: 0;
+      flex: 1 1 auto;
+      margin: 0;
+      overflow: hidden;
+      font-size: 0.72rem;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    p {
+      display: none;
+    }
+
+    a {
+      flex: 0 0 auto;
+      margin-left: auto;
+      padding: 0.28rem 0.5rem;
+      border-radius: 999px;
+      background: #28743a;
+      color: #fff;
+      font-size: 0.62rem;
+      white-space: nowrap;
+
+      &:hover {
+        color: #fff;
+        text-decoration: none;
+      }
+    }
   }
 }
