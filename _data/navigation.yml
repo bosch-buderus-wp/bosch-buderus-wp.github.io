@@ -59,6 +59,8 @@ metrics:
         url: /metrics/#/az-energy-evaluation
       - title: "Heizkurve"
         url: /metrics/#/heating-curve
+      - title: "Gebäudevergleich"
+        url: /metrics/#/building-comparison
   - title: "Anlagen"
     children:
       - title: "Alle Anlagen"
