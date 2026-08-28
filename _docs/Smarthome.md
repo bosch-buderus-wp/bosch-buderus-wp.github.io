@@ -15,7 +15,7 @@ Die Bosch/Buderus Wärmepumpen bieten leider keine offizielle Schnittstelle an, 
 
 Glücklicherweise gibt es das open-source Projekt [ems-esp](https://emsesp.org).
 Wer die Hardware nicht selbst basteln möchte, kann bereits mit _ems-esp_ geflashte Hardware von [BBQKees](https://bbqkees-electronics.nl/?lang=de) beziehen.
-Ich habe mich für das [ BBQKees Gateway S3](https://bbqkees-electronics.nl/product/gateway-s3-standard-wifi-ausgabe/?lang=de) entschieden.
+Ich habe mich für das [ BBQKees Gateway E32 V2.2](https://bbqkees-electronics.nl/product/gateway-e32-v2-ethernet-wifi-ausgabe-v2-kit/?lang=de) entschieden.
 
 ### Einbau
 
@@ -27,8 +27,8 @@ Dann verbindet ihr zuerst das Kabel mit dem _ems-esp_ Gateway und im nächsten S
 Daraufhin könnt ihr alles wieder zusammenbauen und das Kabel links oben durch die kleine Aussparung zwischen Frontblende und Gehäuse führen.
 
 <figure class="half">
-  <a href="/assets/images/BBQKees-Gateway-S3.jpg">
-    <img src="/assets/images/BBQKees-Gateway-S3.jpg" alt="BBQKees Gateway S3">
+  <a href="https://i.ibb.co/hFFtpd81/BBQKees-Gateway-E32-V2-2.jpg">
+    <img src="https://i.ibb.co/hFFtpd81/BBQKees-Gateway-E32-V2-2.jpg" alt="BBQKees Gateway E32 V2.2">
   </a>
   <a href="/assets/images/Servicebuchse.jpg">
     <img src="/assets/images/Servicebuchse.jpg" alt="Servicebuchse an der Bosch Compress CS6800i AW 12 MB Inneneinheit">
