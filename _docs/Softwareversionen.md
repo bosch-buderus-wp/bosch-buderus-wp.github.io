@@ -112,3 +112,14 @@ Verbesserungen:
 - **Lüfter am Kompressor** (PL3 Gebläse) lässt sich am Gerät anzeigen und per [ems-esp](/docs/smarthome/) als individuelle Entitäten anlegen/auslesen
 - **Bypass Abfrage** hinzugefügt
 - Anzahl der Stufen beim **Heizprogramm** von 2 auf 4 erhöht
+
+## 9.17.2 / 12.17.1
+
+{: .notice}
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.17.2 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 12.17.1 \
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.12
+
+<i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Juli 2026
+
+Änderungen noch unbekannt
