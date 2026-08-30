@@ -112,3 +112,34 @@ Es gibt zwei Verfahren für das Abtauen:
 [![Abtauvorgang in Grafana](/assets/images/Grafana-Abtauvorgang.png)](/assets/images/Grafana-Abtauvorgang.png)
 
 Beim Abtauen wird erzeugte Wärmeenergie eingesetzt, um den Verdampfer in der Außeneinheit zu enteisen und geht somit 'verloren'. Daher ist der COP in dieser Zeit negativ.
+
+## Energiemonitoring und Stromverbrauch
+
+Für die Bewertung ist zunächst die **Bilanzgrenze** wichtig: Bei Bosch/Buderus fließen neben Verdichter und Ventilator auch Elektronik und Regelung, Kurbelgehäuseheizung, Standby-Verbrauch und elektrischer Zuheizer in den Stromverbrauch ein.
+Bosch/Buderus bilanziert die angezeigte Arbeitszahl vergleichsweise streng.
+Viele Nebenverbraucher werden dem eingesetzten Strom zugerechnet und die beim Abtauen verbrauchte Wärme wird von der erzeugten Wärme abgezogen.
+Andere Hersteller verwenden teilweise engere Bilanzgrenzen oder ziehen die "verlorene" Abtauenergie nicht ab.
+Dadurch können Bosch/Buderus-Anlagen auf dem Display eine schlechtere Arbeitszahl aufweisen, obwohl sie technisch nicht weniger effizient arbeiten.
+
+Das Energiemonitoring der Wärmepumpe basiert nicht auf realen Messwerten, sondern wird aus Betriebsdaten berechnet.
+Im Standby zeigt das Energiemonitoring konstant **25 W** an.
+Das ist ein gemittelter Rechenwert und nicht die reale Leistung.
+Praxismessungen der realen Leistung ergeben ungefähr folgende Werte für Innen- und Außeneinheit zusammen:
+
+| Betriebszustand | Kleine Außeneinheit (4/5/7) | Große Außeneinheit (10/12) |
+|---|---:|---:|
+| Normaler Standby | 12–16 W | 14–18 W |
+| Bei aktiver Kurbelgehäuseheizung zusätzlich | 70–85 W | 110–125 W |
+
+Im normalen Standby entfällt ungefähr die Hälfte des Gesamtverbrauchs auf die Innen- und die andere Hälfte auf die Außeneinheit.
+Läuft zusätzlich eine der Pumpen _PC0_ oder _PC1_ (Grundfos UPM4L (K) LIN), kommen je nach Drehzahl jeweils etwa 10–75 W hinzu.
+
+Die **Kurbelgehäuseheizung**, auch Kompressor- oder Ölsumpfheizung genannt, hält den abgeschalteten Verdichter warm.
+Dadurch wird verhindert, dass sich zu viel Kältemittel im Verdichteröl löst und beim nächsten Start die Schmierung beeinträchtigt.
+Wie häufig sie aktiviert wird, hängt von der Softwareversion und den Temperaturen ab. Mit neueren Softwareständen ab [9.6.0 / 9.6.1](https://bosch-buderus-wp.github.io/docs/sw-versionen/#960--961) wurde die Aktivierung vor allem im Sommer reduziert.
+
+Wichtig ist noch zu wissen, dass der Stromverbrauch dem Energiemonitoring der Heizung zugerechnet wird, wenn sich die Anlage im Standby befindet.
+Dadurch tritt auch im Sommer Stromverbrauch fürs Heizen auf, was teilweise zu Irritationen führt.
+Außerdem ist zu beachten, dass in der Übergangszeit und im Sommer, wenn nur das Warmwasser bereitet wird, die Arbeitszahl oft relativ niedrig ist.
+Grund hierfür ist, dass die relativ gute Arbeitszahl aus dem zeitlich reduzierten Heiz-/Warmwasser-/Kühlbetrieb durch den Standbyverbrauch während des Nichtbetriebs schlechter wird.
+Auch bei kleinen Anlagen mit insgesamt wenig Stromverbrauch im Betrieb führt der im Verhältnis hohe Systemverbrauch zu einer schlechteren Arbeitszahl.
