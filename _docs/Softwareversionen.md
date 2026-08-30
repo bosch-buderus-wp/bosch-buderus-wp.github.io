@@ -94,6 +94,11 @@ Verbesserungen:
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
 <i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.12
 
+Verbesserungen:
+
+- **4-Wege-Ventil nach Stromausfall**:
+  Bei älteren Versionen der Außeneinheit konnte das 4-Wege-Ventil VR4 nach einem Stromausfall in Mittelstellung verbleiben. Der dadurch entstehende unbeabsichtigte Druckausgleich kann zu den Meldungen [5184, 5161 oder 5162](/docs/fehler/#5161-5162-und-5184-kein-druckaufbau-nach-stromausfall) führen.
+
 ## 9.15.0 / 12.11.1
 
 {: .notice}

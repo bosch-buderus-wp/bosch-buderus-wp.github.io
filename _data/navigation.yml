@@ -17,6 +17,8 @@ docs:
     url: /docs/sw-versionen/
   - title: "Optimierungen"
     url: /docs/optimierungen/
+  - title: "Fehlerbehebung"
+    url: /docs/fehler/
   - title: "App"
     url: /docs/app/
   - title: "Glossar"
