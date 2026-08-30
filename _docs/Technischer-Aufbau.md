@@ -46,7 +46,7 @@ Der [GWP-Index](https://de.wikipedia.org/wiki/Treibhauspotential) gibt an, wie s
 
 Propan verdunstet bei -42.1 °C.
 D.h. bei üblichen Temperaturen im deutschen Winter nimmt das Kältemittel im Verdampfer von der wärmeren Umgebungsluft Wärme auf und wird gasförmig.
-Als Verdichter setzt die Wärmepumpe einen Scroll-Kompressor ein.
+Als Verdichter setzt die Wärmepumpe einen Rollkolbenkompressor von Hitachi-Highly (WHP07600/WHP013300) ein.
 
 ### Primärkreis
 
