@@ -41,6 +41,8 @@ docs:
         url: /docs/smarthome/evcc
       - title: "AI"
         url: /docs/smarthome/ai
+  - title: "Links"
+    url: /links
 
 metrics:
   - title: "Dashboard"
@@ -71,3 +73,13 @@ metrics:
         url: /metrics/#/dashboard
   - title: "Mitmach-Guide"
     url: /metrics/howto
+
+links:
+  - title: "Allgemein"
+    url: "/links/#allgemein"
+  - title: "Bosch"
+    url: "/links/#bosch-compress-5800i6800i-aw"
+  - title: "Buderus"
+    url: "/links/#buderus-logatherm-wlw176i186i"
+  - title: "Foren"
+    url: /links/#foren

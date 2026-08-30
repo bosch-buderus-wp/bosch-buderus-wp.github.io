@@ -79,6 +79,7 @@ defaults:
       share: false
       comments: false
       toc_sticky: true
+      toc_label: Inhalt
       sidebar:
         nav: "docs"
   # _xps

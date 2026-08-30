@@ -36,6 +36,13 @@ feature_row:
     url: "/xps/matthias/"
     btn_class: "btn--primary"
     btn_label: "Lesen"
+  - alt: "Links"
+    image_path: /assets/images/home-links.jpg
+    title: "Links"
+    excerpt: "Bücher, Installationsanleitungen & Foren"
+    url: "/links/"
+    btn_class: "btn--primary"
+    btn_label: "Lesen"
 ---
 
 {% include feature_row %}

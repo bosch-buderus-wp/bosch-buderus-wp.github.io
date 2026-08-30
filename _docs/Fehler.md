@@ -50,7 +50,7 @@ Quelle: [Bosch-Servicehandbuch](https://bosch-ch-de.boschhc-documents.com/downlo
 Eine lockere Kappe beziehungsweise Nabenabdeckung am Gebläse kann klackernde oder ratternde Geräusche verursachen.
 In diesem Fall kann der Kundendienst die Kappe austauschen, ohne dass zwingend das komplette Gebläse ersetzt werden muss.
 
-![Lüfterkappe](https://i.ibb.co/d0QPKjRt/ODU-Innen-Vorne.jpg)
+[![Lüfterkappe](https://i.ibb.co/d0QPKjRt/ODU-Innen-Vorne.jpg)](https://i.ibb.co/d0QPKjRt/ODU-Innen-Vorne.jpg)
 
 ## EPP-Luftführung am Verdampfer
 
