@@ -190,7 +190,7 @@ Die Entitäten für PC0 und PC1 sind nur für die Bosch CS5800/6800i und Buderus
 | [syspress](http://ems-esp/api/boiler/syspress)                     | Systemdruck                  | boiler            | 🔢   | bar     |     | Wasserdruck im Heizkreis<br>Nur CS5800/6800i & WLW176/186i                                                    |
 | [charging](http://ems-esp/api/boiler/charging)                     | WWK Laden                    | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS                                                                       |
 | [3wayvalve](http://ems-esp/api/boiler/3wayvalve)                   | WWK 3-Wege-Ventil aktiv      | boiler<br>dhw     | ☑    |         |     | AN bei Warmwasserbetrieb, ansonsten AUS - identisch zu RWem _hp3way_                                          |
-| [auxheaterstatus](http://ems-esp/api/boiler/auxheaterstatus)       | Zusatzheizerstatus           | boiler            | 🔢   | %       |     | Aktuelle relative Leistung des Zuheizers                                                                      |
+| [auxheaterlevel](http://ems-esp/api/boiler/auxheaterlevel)         | Zusatzheizer                 | boiler            | 🔢   | %       |     | Aktuelle relative Leistung des Zuheizers                                                                      |
 | [hpoperatingstate](http://ems-esp/api/thermostat/hpoperatingstate) | HK1 WP Betriebszustand       | thermostat<br>hc1 | enum |         |     | Ausgewählter Betriebszustand (z.B. durch auto. Sommer/Winterumschaltung): "Heizen"\|"aus"\|"Kühlen"           |
 
 ## Einstellungen
