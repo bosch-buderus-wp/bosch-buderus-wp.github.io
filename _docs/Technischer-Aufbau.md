@@ -46,7 +46,15 @@ Der [GWP-Index](https://de.wikipedia.org/wiki/Treibhauspotential) gibt an, wie s
 
 Propan verdunstet bei -42.1 °C.
 D.h. bei üblichen Temperaturen im deutschen Winter nimmt das Kältemittel im Verdampfer von der wärmeren Umgebungsluft Wärme auf und wird gasförmig.
-Als Verdichter setzt die Wärmepumpe einen Rollkolbenkompressor von Hitachi-Highly (WHP07600/WHP013300) ein.
+Als Verdichter setzt die Wärmepumpe einen Rollkolbenkompressor von Hitachi-Highly ([WHP07600/WHP013300](https://de.scribd.com/document/817999055/Hitachi-Highly-Compressors)) ein.
+
+Der Kältekreis ist auf Außentemperaturen von −22 bis 45 °C ausgelegt.
+Außerhalb dieses Bereichs übernimmt der elektrische Zuheizer die Arbeit.
+Steht die Außeneinheit in der prallen Sonne kann die Grenze von 45 °C im Sommer leicht überschritten werden.
+Das kann dazu führen, dass das Warmwasser allein durch den Zuheizer erwärmt wird.
+Wer dem entgegenwirken möchte, sollte die Warmwasserbereitung in die Morgen- oder Abendstunden legen (siehe [Einstellungen zur Warmwasserbereitung](/docs/einstellungen/#warmwasserbereitung)).
+Ein Wiederanlauf erfolgt bei −17 °C bzw. +42 °C.
+
 
 ### Primärkreis
 
