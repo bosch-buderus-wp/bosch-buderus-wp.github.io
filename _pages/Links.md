@@ -24,7 +24,7 @@ Hier findest du offizielle Anleitungen und weitere hilfreiche Quellen rund um Pl
 {: .align-right}
 
 _Energiesparkommissar Carsten Herbert_ \
-[Alles, was Sie über Wärmepumpen wissen müssen](https://www.thalia.de/shop/home/artikeldetails/A1069969622) \
+[Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm) \
 Leicht verständlicher Einstieg in Funktionsweise, Planung, Kosten und effizienten Betrieb von Wärmepumpen für Laien und angehende Fachleute.
 Sympathisch und ansprechend geschrieben wie alle Werke von Carsten Herbert.
 
