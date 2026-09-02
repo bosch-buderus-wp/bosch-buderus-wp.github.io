@@ -93,8 +93,7 @@ Dieses ständige An- und Abschalten nennt man **Takten** und verringert Effizien
 Um dem Takten entgegenzuwirken, hat die Bosch/Buderus Wärmepumpe eine so genannte Invertersteuerung, die die Drehzahl des Kompressors bis zu einem gewissen Grad dem Bedarf anpassen kann.
 Wird also weniger Wärme benötigt, so regelt die Invertersteuerung die Drehzahl nach unten, wodurch weniger Wärme erzeugt und somit das Takten verhindert wird.
 Doch die Invertersteuerung kann nicht beliebig weit nach unten modulieren und irgendwann ist das untere Limit erreicht und die Wärmepumpe muss takten.
-Außerdem laufen die Wärmepumpen im unteren Grenzbereich oft ineffizienter.
-Unsere Wärmepumpe läuft am effizientesten bei ca. 60% Modulation.
+Außerdem laufen die Wärmepumpen im unteren und oberen Grenzbereich oft ineffizienter.
 
 ## Abtauvorgang
 
@@ -102,14 +101,23 @@ Bei hoher Luftfeuchtigkeit und Temperaturen unter ca. 7 °C bildet sich Eis am V
 Das Eis behindert den Luftstrom und dadurch wird die Effizienz beeinträchtigt.
 Die Wärmepumpe beginnt dann automatisch den Abtauvorgang.
 
+Für die so genannte Heißgasabtauung kehrt das 4-Wege-Ventil die Fließrichtung des heißen Kältemittels um und schickt es zum Verdampfer anstatt zum Verflüssiger.
+Der eingefrorene Verdampfer wird kurzzeitig zum Verflüssiger und schmilzt das Eis.
+Dabei entsteht viel Wasser, das über die Kondensatwanne abläuft.
+Für einen guten Ablauf ist es wichtig, dass der Kondensatablauf groß genug dimensioniert ist und eisfrei bleibt.
+Die Kondesatwannenheizung bzw. das dazugehörige Heizband wird bei Bedarf zugeschaltet, um Eisbildung zu verhindern.
+Die gesamte Abtauung dauert ca. 4-7 Minuten.
+
 {% include video id="T0AQs7d0COQ" provider="youtube" %}
 
-Es gibt zwei Verfahren für das Abtauen:
+Bosch/Buderus Wärmepumpen starten in regelmäßigen Abständen Intensivabtauungen, auch Power- oder Super-Abtauung genannt.
+Diese Heißgasabtauungen dauern mit ca. 9-16 Minuten wesentlich länger.
+Bei neueren Softwareversionen (ab [9.10.0](/docs/sw-versionen/#9100--970)) ist jede 5. Abtauung eine Intensivabtauung, bei älteren Versionen jede 10. Abtauung.
+Wie der Name vermuten lässt, ist diese Abtauung intensiver, um hartnäckige Eisreste abzuschmelzen.
+Oft sieht man große Dampfwolken aufsteigen.
+Dafür werden bis zu 2 kWh Wärme benötigt.
 
-- Außentemperatur > 5 °C: Bereits erwärmtes Wasser aus dem Pufferspeicher und/oder der Heizungsanlage wird über den Rücklauf zum Verdampfer geleitet, der dadurch abtaut.
-- Außentemperatur < 5 °C: Das 4-Wege-Ventil kehrt die Fließrichtung des heißen Kältemittels um und schickt es zum Verdampfer anstatt zum Verflüssiger (Heißgasabtauung).
-
-[![Abtauvorgang in Grafana](/assets/images/Grafana-Abtauvorgang.png)](/assets/images/Grafana-Abtauvorgang.png)
+[![Abtauvorgang in Grafana](https://i.ibb.co/HTbNwSgN/Grafana-Abtauvorgang.png)](https://i.ibb.co/HTbNwSgN/Grafana-Abtauvorgang.png)
 
 Beim Abtauen wird erzeugte Wärmeenergie eingesetzt, um den Verdampfer in der Außeneinheit zu enteisen und geht somit 'verloren'. Daher ist der COP in dieser Zeit negativ.
 
@@ -143,3 +151,12 @@ Dadurch tritt auch im Sommer Stromverbrauch fürs Heizen auf, was teilweise zu I
 Außerdem ist zu beachten, dass in der Übergangszeit und im Sommer, wenn nur das Warmwasser bereitet wird, die Arbeitszahl oft relativ niedrig ist.
 Grund hierfür ist, dass die relativ gute Arbeitszahl aus dem zeitlich reduzierten Heiz-/Warmwasser-/Kühlbetrieb durch den Standbyverbrauch während des Nichtbetriebs schlechter wird.
 Auch bei kleinen Anlagen mit insgesamt wenig Stromverbrauch im Betrieb führt der im Verhältnis hohe Systemverbrauch zu einer schlechteren Arbeitszahl.
+
+## Weiterführende Grundlagen
+
+[![Buchcover: Alles, was Sie über Wärmepumpen wissen müssen](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg){:width="100px"}](https://link.amazon/B09tnIJmm){: rel="sponsored"}
+{: .align-right}
+
+Wer Funktionsweise, Auslegung und effizienten Betrieb von Wärmepumpen über diese technische Übersicht hinaus vertiefen möchte, findet im Buch [Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm){: rel="sponsored"} von Energiesparkommissar Carsten Herbert einen verständlichen Einstieg für Laien und angehende Fachleute.
+
+*Affiliate-Link: Bei einem Kauf erhalte ich möglicherweise eine Provision. Für dich entstehen keine zusätzlichen Kosten.*
