@@ -19,7 +19,7 @@ translation_url: /metrics/
 translation_generated: true
 ---
 
-<link rel="stylesheet" href="{{ '/assets/metrics/app.css' | relative_url }}">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.7.0-release/app.css">
 
 <script>
   window.HEAT_PUMP_METRICS_EMBEDDED = true;
@@ -31,4 +31,4 @@ translation_generated: true
 
 <div id="root"></div>
 
-<script type="module" src="{{ '/assets/metrics/app.js' | relative_url }}"></script>
+<script type="module" src="https://cdn.jsdelivr.net/gh/bosch-buderus-wp/heatpump-metrics-ui@v1.7.0-release/app.js"></script>
