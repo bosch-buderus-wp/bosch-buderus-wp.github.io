@@ -1,4 +1,101 @@
 {
   "version": 1,
-  "files": {}
+  "files": {
+    "_docs/App.md": {
+      "fingerprint": "ebfe4da020051765898ef1028d1fb0cbbae896deb2d5a76aeae4e1f2309db99e",
+      "target": "_en_docs/App.md"
+    },
+    "_docs/Einstellungen.md": {
+      "fingerprint": "27924e5cbf63f933c6d13929aeaeeaee6899df506163050b5378211914de8037",
+      "target": "_en_docs/Einstellungen.md"
+    },
+    "_docs/Fehler.md": {
+      "fingerprint": "fb4455cf55368a9cb95e2911d6d12d65514be1e65d6649ef9cee48e548e0b43f",
+      "target": "_en_docs/Fehler.md"
+    },
+    "_docs/Glossar.md": {
+      "fingerprint": "9c89866da0f15ca4a5b72e36fa63339b3e6c4f992ff12c9b6feec5d51375ac3e",
+      "target": "_en_docs/Glossar.md"
+    },
+    "_docs/Intro.md": {
+      "fingerprint": "13abf6071fa124859a31cb86db84d82b39019dc287fa734c7e9a4ca4b3451542",
+      "target": "_en_docs/Intro.md"
+    },
+    "_docs/Optimierungen.md": {
+      "fingerprint": "76fc2ff0ea160f3970ad96dda32c4a21cb434096c139d228d164e62768cb772f",
+      "target": "_en_docs/Optimierungen.md"
+    },
+    "_docs/Smarthome-AI.md": {
+      "fingerprint": "04e207f011a2986cd449026a54212c7dee043650ea0739df3b7d9bc7fed82adf",
+      "target": "_en_docs/Smarthome-AI.md"
+    },
+    "_docs/Smarthome-Benachrichtigungen.md": {
+      "fingerprint": "35550942e1456f3311a7760ab6dacedcb2b17f25346a92ec39119efa515b6093",
+      "target": "_en_docs/Smarthome-Benachrichtigungen.md"
+    },
+    "_docs/Smarthome-Entities.md": {
+      "fingerprint": "69307b25778f93f031d761fe378481238143e19ccf543e740715a6d1e55af4cb",
+      "target": "_en_docs/Smarthome-Entities.md"
+    },
+    "_docs/Smarthome-evcc.md": {
+      "fingerprint": "86a5dfddd6c2835cfb317e47734aaf1c5aaa390483aa4f1fe0416cc15016c547",
+      "target": "_en_docs/Smarthome-evcc.md"
+    },
+    "_docs/Smarthome-grafana.md": {
+      "fingerprint": "9adc0bbcbd1f437126c06955898c5cbcacaf1622466f0a5bb63f268b1ef57781",
+      "target": "_en_docs/Smarthome-grafana.md"
+    },
+    "_docs/Smarthome-homeassistant.md": {
+      "fingerprint": "129c26395dcb73d09ad97cfeaa74285f78be6852d66ff246002727abd453ced1",
+      "target": "_en_docs/Smarthome-homeassistant.md"
+    },
+    "_docs/Smarthome-openhab.md": {
+      "fingerprint": "dc8c44fb0a0b16af110191206271a7cf12f1b684f114dfb48f430406a0376c43",
+      "target": "_en_docs/Smarthome-openhab.md"
+    },
+    "_docs/Smarthome.md": {
+      "fingerprint": "a9fea9fc929d0f854075bd44caebb99ad7d814195b22741e0aa8d694efc001c3",
+      "target": "_en_docs/Smarthome.md"
+    },
+    "_docs/Softwareversionen.md": {
+      "fingerprint": "b2a8bef8b1bb6268dd96f66295823e1574c2cc2cce988c61165abfa8a1d8d8c8",
+      "target": "_en_docs/Softwareversionen.md"
+    },
+    "_docs/Technischer-Aufbau.md": {
+      "fingerprint": "dc3f05364b145f528bd093c8316ef5749ef82a97fc3d2cb6e7ed05fd2b300c17",
+      "target": "_en_docs/Technischer-Aufbau.md"
+    },
+    "_docs/Varianten.md": {
+      "fingerprint": "1ff85bfceb9085a7f3a8169b66a0135ca803e02ce417c6a616546ce64bede20c",
+      "target": "_en_docs/Varianten.md"
+    },
+    "_pages/Home.md": {
+      "fingerprint": "dda31bf1a207698b0bd09351d36fe790f092b2961e530dc017e40d7b7f606767",
+      "target": "en/Home.md"
+    },
+    "_pages/Impressum.md": {
+      "fingerprint": "43fa075ff65d6a7bf7a0795e8b0af925a11cd4122970d2072d64bf58f25fd64f",
+      "target": "en/Impressum.md"
+    },
+    "_pages/Links.md": {
+      "fingerprint": "da07a0a8c08551276dc5458bee984644817da99dc203c491fc4ea9acdf9fbf0d",
+      "target": "en/Links.md"
+    },
+    "_pages/Metrics-Howto.md": {
+      "fingerprint": "b5667e343a0587b9fecef91c0fba00ed07ebc4ad407db147c138d3bff64bb423",
+      "target": "en/Metrics-Howto.md"
+    },
+    "_pages/Metrics.md": {
+      "fingerprint": "3625954644992221afd8e2c8819c750c2ebf26b0db4cce992cf77871fe7fa354",
+      "target": "en/Metrics.md"
+    },
+    "_pages/Simulator.md": {
+      "fingerprint": "6511389e4da966161ffee59a66aaa10e18d615b63c4821bb12b016f017a6f390",
+      "target": "en/Simulator.md"
+    },
+    "_xps/Matthias.md": {
+      "fingerprint": "074b9f927f7c140daf985442381587b438c2c6b2e608338c0edf0636e568cc40",
+      "target": "_en_xps/Matthias.md"
+    }
+  }
 }
