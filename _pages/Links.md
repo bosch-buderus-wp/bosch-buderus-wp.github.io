@@ -1,7 +1,7 @@
 ---
-title: Relevante Link-Sammlung
-headline: Link-Sammlung
-excerpt: Bücher, technische Dokumente und Communitys für Bosch CS5800/6800i und Buderus WLW176/186i.
+title: "Bosch/Buderus Wärmepumpe: Anleitungen & Links"
+headline: "Anleitungen & Links"
+excerpt: "Bedienungs-, Installations- und Serviceanleitungen, sowie Links und Foren für Bosch Compress CS5800i/6800i und Buderus Logatherm WLW176i/186i"
 permalink: /links/
 toc: true
 toc_label: Inhalt
@@ -14,7 +14,7 @@ sidebar:
   nav: "links"
 ---
 
-Hier findest du offizielle Anleitungen und weitere hilfreiche Quellen rund um Planung, Betrieb, Optimierung und Fehlersuche bei den Wärmepumpen **Bosch Compress 5800i/6800i AW** und **Buderus Logatherm WLW176i/186i**.
+Hier findest du Bedienungsanleitungen, Installationsanleitungen, technische Dokumente und das gemeinsame Servicehandbuch für die Wärmepumpen **Bosch Compress 5800i/6800i** und **Buderus Logatherm WLW176i/186i**.
 
 ## Allgemein
 
@@ -24,7 +24,7 @@ Hier findest du offizielle Anleitungen und weitere hilfreiche Quellen rund um Pl
 {: .align-right}
 
 _Energiesparkommissar Carsten Herbert_ \
-[Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm) \
+[Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm){: rel="sponsored"} \
 Leicht verständlicher Einstieg in Funktionsweise, Planung, Kosten und effizienten Betrieb von Wärmepumpen für Laien und angehende Fachleute.
 Sympathisch und ansprechend geschrieben wie alle Werke von Carsten Herbert.
 
@@ -78,7 +78,9 @@ Auch die Anleitungen der Buderus-Außeneinheiten enthalten die technischen Einst
 
 ## Service und Fehlersuche
 
-- [Servicehandbuch Compress 5800i/6800i AW und Logatherm WLW176i/186i](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf) – gemeinsames Servicehandbuch für beide Marken, unter anderem mit Fehlercodes, Diagnosedaten und Arbeitsanweisungen
+- [Servicehandbuch Compress 5800i/6800i AW und Logatherm WLW176i/186i](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf): gemeinsames Servicehandbuch für beide Marken, unter anderem mit Fehlercodes, Diagnosedaten und Arbeitsanweisungen
+
+- [Bosch Fehlercode-Suche](https://www.bosch-homecomfort.com/de/de/wohngebaeude/service-und-support/bosch-fehlercode-suche/): Suche nach Fehlercodes
 
 Das Servicehandbuch richtet sich an qualifizierte Fachkräfte. Insbesondere Arbeiten am Kältemittelkreis der R290-Geräte dürfen nur mit entsprechender Ausbildung und Ausrüstung durchgeführt werden.
 
@@ -87,6 +89,15 @@ Das Servicehandbuch richtet sich an qualifizierte Fachkräfte. Insbesondere Arbe
 - [Technische Dokumentation von Bosch](https://bosch-de-de.boschhc-documents.com/): Suche nach Produkt- oder Dokumentnummer
 - [Technische Dokumentation von Buderus](https://buderus-de-de.boschhc-documents.com/): Suche nach Produkt- oder Dokumentnummer
 
+## Weiterführende Inhalte {#weiterfuehrende-inhalte}
+
+- [Varianten, Leistung und COP](/docs/varianten/): Leistungsgrößen, technische Kennwerte und Unterschiede der Gerätevarianten
+- [Heizkurve, Warmwasser und weitere Einstellungen](/docs/einstellungen/): wichtige Einstellungen für einen komfortablen und effizienten Betrieb
+- [Optimierung von Effizienz und Verbrauch](/docs/optimierungen/): praktische Hinweise aus dem laufenden Betrieb
+- [Häufige Fehler und Fehlerbehebung](/docs/fehler/): bekannte Fehlerbilder, Ursachen und Lösungsansätze
+- [Softwareversionen und Firmwarestände](/docs/sw-versionen/): Übersicht bekannter Softwarestände
+- [Technischer Aufbau der Wärmepumpe](/docs/technischer-aufbau/): Kältekreis, Primärkreis und Heizkreis verständlich erklärt
+
 ## Foren
 
 Community-Beiträge sind besonders bei Praxisfragen, Optimierung und typischen Fehlerbildern hilfreich. Gleiche technische Aussagen jedoch immer mit der aktuellen Herstellerdokumentation ab.
@@ -94,3 +105,15 @@ Community-Beiträge sind besonders bei Praxisfragen, Optimierung und typischen F
 - [Haustechnikdialog: Optimierung WP-Einstellungen Buderus WLW186i](https://www.haustechnikdialog.de/Forum/t/270919/Optimierung-WP-Einstellungen-Buderus-WLW186i)
 - [Facebook-Gruppe Bosch/Buderus Wärmepumpen – Fragen, Tipps & Lösungen](https://www.facebook.com/groups/1268145341752618)
 - [Facebook-Gruppe Bosch Wärmepumpe](https://www.facebook.com/groups/392520056537438)
+
+## Über diese Sammlung
+
+Die Dokumente wurden nach ihrer Relevanz für Betreiber und Fachkräfte ausgewählt.
+Verlinkt werden möglichst die offiziellen Herstellerdokumente.
+Prüfe vor der Verwendung trotzdem immer Modellbezeichnung und Revisionsstand, da sich Menüs, Anschlüsse und technische Daten ändern können.
+
+**Zuletzt geprüft:** August 2026
+
+**Affiliate-Hinweis:** Der Link zum Buch ist ein Affiliate-Link.
+Bei einem Kauf erhalte ich möglicherweise eine Provision.
+Für dich entstehen keine zusätzlichen Kosten.
