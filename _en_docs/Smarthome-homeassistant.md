@@ -2,15 +2,14 @@
 title: "Integrating a heat pump into Home Assistant with EMS-ESP"
 headline: "Home Assistant"
 excerpt: "Step-by-step instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into Home Assistant with EMS-ESP."
-permalink: /en/en/en/docs/smarthome/ha
+permalink: /en/docs/smarthome/ha
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/ha
+translation_url: /docs/smarthome/ha
 translation_generated: true
 ---
-
 
 This guide assumes that you have already installed [ems-esp](/en/docs/smarthome/).
 

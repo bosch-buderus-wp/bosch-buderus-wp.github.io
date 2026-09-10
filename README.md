@@ -29,4 +29,6 @@ Einrichtung:
 3. Unter `Settings → Actions → General → Workflow permissions` erlauben, dass GitHub Actions Pull Requests erstellen darf.
 4. Die Action einmal manuell mit `Translate all configured files again` starten. Danach läuft sie bei passenden Änderungen automatisch und aktualisiert den offenen Übersetzungs-PR.
 
+Falls die Organisation die automatische PR-Erstellung verbietet, beendet die Action den Lauf trotzdem erfolgreich und zeigt in der Job-Zusammenfassung einen Link zum manuellen Erstellen des Pull Requests an.
+
 Das Glossar liegt in `translation/glossary.yml`. Ein lokaler Lauf ohne API-Aufruf ist mit `node scripts/translate-content.mjs --dry-run` möglich.

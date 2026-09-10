@@ -2,15 +2,14 @@
 title: "Information, Settings, Optimization & Smart Home"
 headline: "Bosch/Buderus Heat Pumps"
 excerpt: "Central overview of Bosch CS5800/6800i and Buderus WLW176/186i with information on settings, optimization, app, smart home and technology."
-permalink: /en/en/docs/intro/
+permalink: /en/docs/intro/
 toc: false
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/intro/
+translation_url: /docs/intro/
 translation_generated: true
 ---
-
 
 These pages provide a central overview of the **Bosch Compress 5800/6800i** and **Buderus Logatherm WLW176/186i** heat pumps. The main topics are settings, heating curve, optimization, app usage, smart home integration with EMS-ESP, and technical background information.
 

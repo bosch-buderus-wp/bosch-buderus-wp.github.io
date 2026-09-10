@@ -2,15 +2,14 @@
 title: "Optimizations: Efficiency, Consumption and Heating Curve"
 headline: "Optimizations"
 excerpt: "Tips for optimizing Bosch CS5800/6800i and Buderus WLW176/186i for better efficiency, lower consumption and suitable heating curves."
-permalink: /en/en/docs/optimierungen/
+permalink: /en/docs/optimierungen/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/optimierungen/
+translation_url: /docs/optimierungen/
 translation_generated: true
 ---
-
 
 For efficient operation and a long service life of the heat pump, there are several optimizations that you can carry out yourself.
 These optimizations depend on local conditions and personal preferences and therefore differ from heat pump to heat pump.
@@ -83,7 +82,7 @@ At this point, I would like to emphasize once again that with such low water tem
 The setting described above can also make sense for owners of photovoltaic systems and in terms of the energy transition, because the highest PV yield in Germany can generally be expected around 1 p.m. (see [energy-charts.info](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
 Those who own a PV system can go one step further and optimize domestic hot water production using surplus PV power.
 The comfort mode not used in the settings mentioned above is used for this purpose.
-You can find further details on implementation, for example, in the guide for [evcc](https://bosch-buderus-wp.github.io/en/en/docs/smarthome/evcc).
+You can find further details on implementation, for example, in the guide for [evcc](https://bosch-buderus-wp.github.io/en/docs/smarthome/evcc).
 
 ### High Temperature Losses
 

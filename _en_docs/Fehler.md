@@ -2,15 +2,14 @@
 title: "Common Operating Errors"
 headline: "Troubleshooting"
 excerpt: "Errors of the Bosch CS5800/6800i and Buderus WLW176/186i with explanations and solutions"
-permalink: /en/en/docs/fehler/
+permalink: /en/docs/fehler/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/fehler/
+translation_url: /docs/fehler/
 translation_generated: true
 ---
-
 
 Users often report errors that occur during operation.
 Typical errors are listed on this page.

@@ -2,15 +2,14 @@
 title: "Visualizing a Heat Pump in Grafana with InfluxDB"
 headline: "Grafana"
 excerpt: "Guide to visualizing measurement values from Bosch CS5800/6800i and Buderus WLW176/186i in Grafana via InfluxDB and EMS-ESP."
-permalink: /en/en/en/docs/smarthome/grafana
+permalink: /en/docs/smarthome/grafana
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/grafana
+translation_url: /docs/smarthome/grafana
 translation_generated: true
 ---
-
 
 ![Grafana Logo](https://i.ibb.co/mCShBCws/grafana-logo.png)
 

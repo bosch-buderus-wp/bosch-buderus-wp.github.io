@@ -2,15 +2,14 @@
 title: "Connect heat pump to evcc for PV surplus"
 headline: "evcc"
 excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc for PV surplus utilisation and SG Ready-like automation."
-permalink: /en/en/en/docs/smarthome/evcc
+permalink: /en/docs/smarthome/evcc
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/evcc
+translation_url: /docs/smarthome/evcc
 translation_generated: true
 ---
-
 
 Owners of a PV system, a battery and/or a dynamic electricity tariff who are interested in energy-efficient control of their Bosch CS5800/6800i or Buderus WLW176/186i should take a look at [_evcc_](https://evcc.io).
 _evcc_ was originally designed for charging electric vehicles using PV surplus.

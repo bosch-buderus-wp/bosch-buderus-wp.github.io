@@ -2,7 +2,7 @@
 title: "Bosch/Buderus Heat Pump: Manuals & Links"
 headline: "Manuals & Links"
 excerpt: "Operating, installation, and service manuals, as well as links and forums for Bosch Compress CS5800i/6800i and Buderus Logatherm WLW176i/186i"
-permalink: /en/en/links/
+permalink: /en/links/
 toc: true
 toc_label: Contents
 layout: single
@@ -13,10 +13,9 @@ comments: false
 sidebar:
   nav: "en_links"
 lang: en
-translation_url: /en/links/
+translation_url: /links/
 translation_generated: true
 ---
-
 
 Here you will find operating manuals, installation manuals, technical documents, and the joint service manual for the **Bosch Compress 5800i/6800i** and **Buderus Logatherm WLW176i/186i** heat pumps.
 
@@ -24,11 +23,11 @@ Here you will find operating manuals, installation manuals, technical documents,
 
 ### Books
 
-[![Carsten Herbert: Everything You Need to Know About Heat Pumps](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg){:width="100px"}](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg)
+[![Carsten Herbert: Alles, was Sie über Wärmepumpen wissen müssen](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg){:width="100px"}](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg)
 {: .align-right}
 
 _Energy-saving commissioner Carsten Herbert_ \
-[Everything You Need to Know About Heat Pumps](https://link.amazon/B09tnIJmm){: rel="sponsored"} \
+[Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm){: rel="sponsored"} \
 An easy-to-understand introduction to the operation, planning, costs, and efficient operation of heat pumps for non-specialists and aspiring professionals.
 Written in a friendly and engaging style, like all of Carsten Herbert's works.
 

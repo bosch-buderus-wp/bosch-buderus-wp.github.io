@@ -83,12 +83,12 @@ body.layout--splash .page__hero--overlay {
   }
 }
 
-.masthead__menu a[href="/metrics/"] {
+#site-nav .masthead__metrics-link {
   display: inline-flex;
   align-items: flex-start;
 }
 
-.masthead__menu a[href="/metrics/"]::after {
+#site-nav .masthead__metrics-link::after {
   content: "Neu";
   display: inline-block;
   margin-left: -0.2rem;
@@ -108,6 +108,47 @@ body.layout--splash .page__hero--overlay {
   pointer-events: none;
   position: relative;
   z-index: 1;
+}
+
+.language-switcher {
+  display: inline-flex;
+  width: 2rem;
+  height: 2rem;
+  flex: 0 0 2rem;
+  align-items: center;
+  justify-content: center;
+  margin-left: 0.35rem;
+  border-radius: 50%;
+  font-size: 1.1rem;
+  line-height: 1;
+  text-decoration: none;
+  opacity: 0.7;
+  transition: opacity 0.15s ease, filter 0.15s ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 1;
+    filter: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #3d6f8e;
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+  }
+
+  > span {
+    display: block;
+    line-height: 1;
+  }
+}
+
+.language-switcher::after {
+  content: none !important;
+  display: none !important;
 }
 
 details {

@@ -1,7 +1,7 @@
 ---
 title: Matthias Bosch CS6800i AW
 excerpt: Experience report on the Bosch CS6800i AW heat pump in a semi-detached house with underfloor heating - COP, SPF, design, ...
-permalink: /en/en/xps/matthias/
+permalink: /en/xps/matthias/
 toc: true
 author:
   name: "Matthias"
@@ -13,10 +13,9 @@ author:
       icon: "fas fa-fw fa-link"
       url: "https://blog.roeckls.de"
 lang: en
-translation_url: /en/xps/matthias/
+translation_url: /xps/matthias/
 translation_generated: true
 ---
-
 
 [![Indoor unit + outdoor unit](/assets/images/Erfahrungen-Matthias-WP.png)](/assets/images/Erfahrungen-Matthias-WP.png)
 
@@ -193,7 +192,7 @@ I have been with Tibber since 2023 and have been very satisfied so far.
 ### Sustainability
 
 Recently, I wondered how much of the energy used for our heat pump actually comes from renewable energy sources.
-To find out, I created a panel in [Grafana](https://bosch-buderus-wp.github.io/en/en/docs/smarthome/grafana) that breaks down the daily energy consumption of our heat pump proportionally as follows:
+To find out, I created a panel in [Grafana](https://bosch-buderus-wp.github.io/en/docs/smarthome/grafana) that breaks down the daily energy consumption of our heat pump proportionally as follows:
 
 - HP energy originating from the PV system (100% renewable)
 - HP grid consumption:

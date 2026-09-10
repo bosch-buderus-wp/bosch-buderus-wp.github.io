@@ -24,6 +24,7 @@ const implementationHash = hash(
 const manifestPath = path.join(root, ".translation-cache.json");
 const forceAll = process.argv.includes("--all");
 const dryRun = process.argv.includes("--dry-run");
+const repairOnly = process.argv.includes("--repair");
 const model = process.env.OPENAI_TRANSLATION_MODEL || config.defaultModel;
 const apiKey = process.env.OPENAI_API_KEY;
 
@@ -37,12 +38,14 @@ const routeMap = new Map(
 const manifest = await readJson(manifestPath, { version: 1, files: {} });
 const currentKeys = new Set();
 let translated = 0;
+let repaired = 0;
 let skipped = 0;
 
 for (const source of sources) {
   const sourceKey = path.relative(root, source.absolutePath);
   const targetKey = path.relative(root, source.targetPath);
   const sourceUrl = sourceUrlFor(source, source.group);
+  const sourceHash = hash(source.content);
   const fingerprint = hash(
     JSON.stringify({
       content: source.content,
@@ -56,6 +59,32 @@ for (const source of sources) {
   currentKeys.add(sourceKey);
 
   const targetExists = await fileExists(source.targetPath);
+  if (repairOnly) {
+    if (!targetExists) {
+      console.log(`Skipping missing translation ${targetKey}`);
+      continue;
+    }
+    const cachedSourceHash = manifest.files[sourceKey]?.sourceHash;
+    if (cachedSourceHash && cachedSourceHash !== sourceHash) {
+      console.log(`Skipping stale translation ${targetKey}; source content changed`);
+      continue;
+    }
+    const currentTranslation = await readFile(source.targetPath, "utf8");
+    const repairedTranslation = finalizeTranslation(currentTranslation, {
+      sourceUrl,
+      targetUrl: routeMap.get(sourceUrl),
+      sidebar: source.group.sidebarByFile?.[source.relativePath] || source.group.sidebar,
+      routeMap,
+    });
+    if (currentTranslation !== repairedTranslation) {
+      console.log(`${dryRun ? "Would repair" : "Repairing"} ${targetKey}`);
+      if (!dryRun) await atomicWrite(source.targetPath, repairedTranslation);
+      repaired += 1;
+    }
+    if (!dryRun) manifest.files[sourceKey] = { fingerprint, sourceHash, target: targetKey };
+    continue;
+  }
+
   if (!forceAll && targetExists && manifest.files[sourceKey]?.fingerprint === fingerprint) {
     skipped += 1;
     continue;
@@ -77,7 +106,7 @@ for (const source of sources) {
   });
   await mkdir(path.dirname(source.targetPath), { recursive: true });
   await atomicWrite(source.targetPath, result);
-  manifest.files[sourceKey] = { fingerprint, target: targetKey };
+  manifest.files[sourceKey] = { fingerprint, sourceHash, target: targetKey };
   translated += 1;
 }
 
@@ -93,7 +122,11 @@ for (const [sourceKey, entry] of Object.entries(manifest.files)) {
 }
 
 if (!dryRun) await atomicWrite(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
-console.log(dryRun ? `Dry run complete: ${sources.length} source files found` : `Done: ${translated} translated, ${skipped} unchanged`);
+console.log(
+  dryRun
+    ? `Dry run complete: ${sources.length} source files found, ${repaired} translations need repair`
+    : `Done: ${translated} translated, ${repaired} repaired, ${skipped} unchanged`,
+);
 
 async function translate(markdown, { apiKey, model, glossary, config }) {
   const instructions = `You are a technical translator for a German website about Bosch and Buderus heat pumps.

@@ -30,8 +30,9 @@
 {% if page.lang == "en" %}<script>document.documentElement.lang = "en";</script>{% endif %}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
+    var navigation = document.querySelector(".greedy-nav");
     var list = document.querySelector(".greedy-nav .visible-links");
-    if (!list) return;
+    if (!navigation || !list) return;
 
     {% if page.lang == "en" %}
       var replacements = {
@@ -47,27 +48,38 @@
       });
     {% endif %}
 
-    var item = document.createElement("li");
-    item.className = "masthead__menu-item";
+    list.querySelectorAll("a").forEach(function (navigationLink) {
+      var pathname = new URL(navigationLink.href, window.location.origin).pathname;
+      if (/^\/(?:en\/)?metrics\/$/.test(pathname)) {
+        navigationLink.classList.add("masthead__metrics-link");
+      }
+    });
+
     var link = document.createElement("a");
+    link.className = "language-switcher";
     link.href = {{ translation_source | relative_url | jsonify }};
-    link.textContent = "DE";
     link.setAttribute("aria-label", "Zur deutschen Version wechseln");
     link.title = "Deutsch";
 
+    var flag = document.createElement("span");
+    flag.setAttribute("aria-hidden", "true");
+    flag.textContent = "🇩🇪";
+
     {% unless page.lang == "en" %}
       link.href = {{ translation_target | relative_url | jsonify }};
-      link.textContent = "EN";
       link.setAttribute("aria-label", "Switch to English");
       link.title = "English";
+      flag.textContent = "🇬🇧";
     {% endunless %}
 
     if (/^\/(?:en\/)?metrics\/$/.test(window.location.pathname) && window.location.hash.startsWith("#/")) {
       link.hash = window.location.hash;
     }
 
-    item.appendChild(link);
-    list.appendChild(item);
+    link.appendChild(flag);
+    var searchButton = navigation.querySelector(".search__toggle");
+    var menuButton = navigation.querySelector(".greedy-nav__toggle");
+    navigation.insertBefore(link, searchButton || menuButton);
   });
 </script>
 {% endif %}

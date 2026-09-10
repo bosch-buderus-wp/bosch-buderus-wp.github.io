@@ -2,15 +2,14 @@
 title: "Use heat pump in Gen-AI applications"
 headline: "Use heat pump in Gen-AI applications"
 excerpt: "Instructions for using data from Bosch CS5800/6800i and Buderus WLW176/186i in Gen-AI and LLM applications such as Claude."
-permalink: /en/en/en/docs/smarthome/ai
+permalink: /en/docs/smarthome/ai
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/ai
+translation_url: /docs/smarthome/ai
 translation_generated: true
 ---
-
 
 {% include video id="QTeLufsVr88" provider="youtube" %}
 
@@ -63,9 +62,9 @@ _What is an MCP server?_
 
 MCP stands for [Model Context Protocol](https://modelcontextprotocol.io/) and was published by Anthropic in November 2024 to enrich Large Language Models (LLMs) with contextual information.
 In this case, the context consists of the entities of the heat pump.
-In response to the request _"How warm is the domestic hot water right now"_, the LLM retrieves the [hptw1](https://bosch-buderus-wp.github.io/en/en/docs/smarthome/entities#messwerte-1) entity and creates a corresponding response in text form.
+In response to the request _"How warm is the domestic hot water right now"_, the LLM retrieves the [hptw1](https://bosch-buderus-wp.github.io/en/docs/smarthome/entities#messwerte-1) entity and creates a corresponding response in text form.
 However, the LLM can answer more than just trivial requests like this.
-In response to the request _"How efficiently is domestic hot water produced?"_, the LLM divides the [dhw.nrg](https://bosch-buderus-wp.github.io/en/en/docs/smarthome/entities#mit-2-nachkommastellen) entity by [dhw.meter](https://bosch-buderus-wp.github.io/en/en/docs/smarthome/entities#mit-2-nachkommastellen) and thus returns the COP/performance factor.
+In response to the request _"How efficiently is domestic hot water produced?"_, the LLM divides the [dhw.nrg](https://bosch-buderus-wp.github.io/en/docs/smarthome/entities#mit-2-nachkommastellen) entity by [dhw.meter](https://bosch-buderus-wp.github.io/en/docs/smarthome/entities#mit-2-nachkommastellen) and thus returns the COP/performance factor.
 
 {: .notice--info}
 _Can the LLM access my heat pump without my involvement, and what data is made available to the LLM?_

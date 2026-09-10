@@ -31,6 +31,24 @@ test("rewrites known internal page URLs but not asset URLs", () => {
   );
 });
 
+test("rewrites overlapping routes once and repairs duplicate English prefixes", () => {
+  const routes = new Map([
+    ["/docs/smarthome/", "/en/docs/smarthome/"],
+    ["/docs/smarthome/openhab", "/en/docs/smarthome/openhab"],
+  ]);
+  const markdown = [
+    "[OpenHAB](/docs/smarthome/openhab)",
+    "[Already translated](/en/docs/smarthome/openhab)",
+    "[Broken](/en/en/en/docs/smarthome/openhab)",
+  ].join(" ");
+  const expected = [
+    "[OpenHAB](/en/docs/smarthome/openhab)",
+    "[Already translated](/en/docs/smarthome/openhab)",
+    "[Broken](/en/docs/smarthome/openhab)",
+  ].join(" ");
+  assert.equal(rewriteInternalUrls(markdown, routes), expected);
+});
+
 test("adds translation metadata and replaces the sidebar", () => {
   const translated = `---
 title: Settings
@@ -52,4 +70,41 @@ Read [the introduction](/docs/intro/).
   assert.match(result, /lang: en/);
   assert.match(result, /translation_url: \/docs\/einstellungen\//);
   assert.match(result, /\]\(\/en\/docs\/intro\/\)/);
+});
+
+test("repairs generated front matter without translating its source URL", () => {
+  const result = finalizeTranslation(
+    `---
+title: OpenHAB
+permalink: /en/en/en/docs/smarthome/openhab
+translation_url: /en/en/docs/smarthome/openhab
+translation_generated: true
+---
+
+[Overview](/en/en/docs/smarthome/)
+`,
+    {
+      sourceUrl: "/docs/smarthome/openhab",
+      targetUrl: "/en/docs/smarthome/openhab",
+      sidebar: "en_docs",
+      routeMap: new Map([
+        ["/docs/smarthome/", "/en/docs/smarthome/"],
+        ["/docs/smarthome/openhab", "/en/docs/smarthome/openhab"],
+      ]),
+    },
+  );
+  assert.match(result, /permalink: \/en\/docs\/smarthome\/openhab/);
+  assert.match(result, /translation_url: \/docs\/smarthome\/openhab/);
+  assert.doesNotMatch(result, /\/en\/en\//);
+});
+
+test("finalizing an existing translation is idempotent", () => {
+  const options = {
+    sourceUrl: "/docs/app/",
+    targetUrl: "/en/docs/app/",
+    sidebar: "en_docs",
+    routeMap: new Map([["/docs/app/", "/en/docs/app/"]]),
+  };
+  const once = finalizeTranslation("---\ntitle: App\npermalink: /docs/app/\n---\n\nContent\n", options);
+  assert.equal(finalizeTranslation(once, options), once);
 });

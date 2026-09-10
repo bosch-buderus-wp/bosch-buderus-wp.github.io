@@ -39,10 +39,11 @@ export function normalizeUrl(url) {
 }
 
 export function finalizeTranslation(markdown, { sourceUrl, targetUrl, sidebar, routeMap }) {
-  const { frontMatter, body } = readFrontMatter(markdown);
+  const normalizedMarkdown = markdown.replace(/\/(?:en\/){2,}/g, "/en/");
+  const { frontMatter, body } = readFrontMatter(normalizedMarkdown);
   if (!frontMatter) throw new Error("Translated Markdown is missing YAML front matter");
 
-  let updated = frontMatter
+  let updated = rewriteInternalUrls(frontMatter, routeMap)
     .replace(/^lang:\s*.*(?:\r?\n|$)/gm, "")
     .replace(/^translation_url:\s*.*(?:\r?\n|$)/gm, "")
     .replace(/^translation_generated:\s*.*(?:\r?\n|$)/gm, "")
@@ -56,25 +57,33 @@ export function finalizeTranslation(markdown, { sourceUrl, targetUrl, sidebar, r
       updated += `\nsidebar:\n  nav: "${sidebar}"`;
     }
   }
+  updated = updated.trimEnd();
   updated += `\nlang: en\ntranslation_url: ${sourceUrl}\ntranslation_generated: true`;
 
-  return `---\n${rewriteInternalUrls(updated.trim(), routeMap)}\n---\n\n${rewriteInternalUrls(body, routeMap).trimEnd()}\n`;
+  const normalizedBody = body.replace(/^(?:\r?\n)+/, "");
+  return `---\n${updated.trim()}\n---\n\n${rewriteInternalUrls(normalizedBody, routeMap).trimEnd()}\n`;
 }
 
 export function rewriteInternalUrls(markdown, routeMap) {
-  const routes = [...routeMap.entries()].sort(([a], [b]) => b.length - a.length);
-  let result = markdown;
-  for (const [sourceUrl, targetUrl] of routes) {
-    if (sourceUrl === "/") {
-      result = result
-        .replace(/\]\(\/\)/g, `](${targetUrl})`)
-        .replace(/href=(["'])\/\1/g, `href=$1${targetUrl}$1`)
-        .replace(/^(\s*url:\s*["']?)\/(["']?\s*)$/gm, `$1${targetUrl}$2`);
-      continue;
-    }
-    const escaped = sourceUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-    const boundary = sourceUrl.endsWith("/") ? "" : "(?=[#?/'\\\"\\s)]|$)";
-    result = result.replace(new RegExp(`${escaped}${boundary}`, "g"), targetUrl);
+  let result = markdown.replace(/\/(?:en\/){2,}/g, "/en/");
+  const pageRoutes = [...routeMap.entries()]
+    .filter(([sourceUrl]) => sourceUrl !== "/")
+    .sort(([a], [b]) => b.length - a.length);
+
+  if (pageRoutes.length > 0) {
+    const alternatives = pageRoutes
+      .map(([sourceUrl]) => sourceUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+      .join("|");
+    const routePattern = new RegExp(`(?<!/en)(${alternatives})(?=[#?'\\"\\s)]|$)`, "g");
+    result = result.replace(routePattern, (sourceUrl) => routeMap.get(sourceUrl));
+  }
+
+  const rootTarget = routeMap.get("/");
+  if (rootTarget) {
+    result = result
+      .replace(/\]\(\/\)/g, `](${rootTarget})`)
+      .replace(/href=(["'])\/\1/g, `href=$1${rootTarget}$1`)
+      .replace(/^(\s*url:\s*["']?)\/(["']?\s*)$/gm, `$1${rootTarget}$2`);
   }
   return result;
 }

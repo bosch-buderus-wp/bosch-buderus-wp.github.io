@@ -2,15 +2,14 @@
 title: "Bosch HomeCom Easy & MyBuderus App: Functions, Limitations and Problems"
 headline: "HomeCom Easy & MyBuderus App"
 excerpt: "Overview of functions, limitations and typical problems of the HomeCom Easy and MyBuderus apps for Bosch CS5800/6800i and Buderus WLW176/186i."
-permalink: /en/en/docs/app/
+permalink: /en/docs/app/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/app/
+translation_url: /docs/app/
 translation_generated: true
 ---
-
 
 Anyone who has purchased the Bosch Connect-Key or the Buderus wireless module for their heat pump can use the **Bosch HomeCom Easy** or **Buderus MyBuderus** app to:
 

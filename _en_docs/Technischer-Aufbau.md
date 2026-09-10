@@ -2,15 +2,14 @@
 title: "Technical design of the refrigerant circuit, primary circuit, and heating circuit"
 headline: "Technical design"
 excerpt: "Explanation of the technical design of Bosch CS5800/6800i and Buderus WLW176/186i with refrigerant circuit, primary circuit, and heating circuit."
-permalink: /en/en/docs/technischer-aufbau/
+permalink: /en/docs/technischer-aufbau/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/technischer-aufbau/
+translation_url: /docs/technischer-aufbau/
 translation_generated: true
 ---
-
 
 ## How the air-to-water heat pump works
 
@@ -160,9 +159,9 @@ Even in small systems with low overall power consumption during operation, the r
 
 ## Further background information
 
-[![Book cover: Everything you need to know about heat pumps](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg){:width="100px"}](https://link.amazon/B09tnIJmm){: rel="sponsored"}
+[![Book cover: Alles, was Sie über Wärmepumpen wissen müssen](https://energiesparkommissar.de/wp-content/uploads/2024/03/alles-was-sie-ueber-waermepumpen-wissen-muessen-kompaktes-wissen-fuer-laien-und-profis-vom-energiesparkommissar-978-3-451-39767-7-84595.jpg){:width="100px"}](https://link.amazon/B09tnIJmm){: rel="sponsored"}
 {: .align-right}
 
-Anyone wishing to learn more about the operation, design, and efficient operation of heat pumps beyond this technical overview will find an accessible introduction for non-specialists and aspiring professionals in the book [Everything you need to know about heat pumps](https://link.amazon/B09tnIJmm){: rel="sponsored"} by energy-saving commissioner Carsten Herbert.
+Anyone wishing to learn more about the operation, design, and efficient operation of heat pumps beyond this technical overview will find an accessible introduction for non-specialists and aspiring professionals in the book [Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm){: rel="sponsored"} by energy-saving commissioner Carsten Herbert.
 
 *Affiliate link: If you make a purchase, I may receive a commission. You will not incur any additional costs.*

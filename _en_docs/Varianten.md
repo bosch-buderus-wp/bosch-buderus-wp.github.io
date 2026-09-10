@@ -2,15 +2,14 @@
 title: "Variants, Output and COP"
 headline: "Variants"
 excerpt: "Bosch and Buderus heat pumps compared: identical models CS5800i/WLW176i, CS6800i/WLW186i, CS8800i/WLW186i MBE+ and others."
-permalink: /en/en/docs/varianten/
+permalink: /en/docs/varianten/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/varianten/
+translation_url: /docs/varianten/
 translation_generated: true
 ---
-
 
 Bosch and Buderus are both part of the Bosch Home Comfort Group.
 Many heat pumps are therefore offered under two brand names: as **Bosch Compress** and as **Buderus Logatherm**.

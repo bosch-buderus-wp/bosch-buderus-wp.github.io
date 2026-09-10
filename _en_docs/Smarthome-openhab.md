@@ -2,15 +2,14 @@
 title: "Integrating a heat pump into OpenHAB with EMS-ESP"
 headline: "OpenHAB"
 excerpt: "Guide to integrating Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP."
-permalink: /en/en/en/docs/smarthome/openhab
+permalink: /en/docs/smarthome/openhab
 toc: false
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/openhab
+translation_url: /docs/smarthome/openhab
 translation_generated: true
 ---
-
 
 This guide assumes that you have already installed [ems-esp](/en/docs/smarthome/).
 

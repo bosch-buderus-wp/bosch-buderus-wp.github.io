@@ -88,9 +88,20 @@ jobs:
           if [[ -n "$pr_url" ]]; then
             echo "Updated existing translation pull request: $pr_url"
           else
-            gh pr create \
-              --base main \
-              --head "$TRANSLATION_BRANCH" \
-              --title "Review English translations" \
-              --body "Automatically generated English translations. Review and correct the Markdown changes before merging. Nothing in this pull request is published until it is merged into main."
+            compare_url="https://github.com/$GITHUB_REPOSITORY/compare/main...$TRANSLATION_BRANCH?expand=1"
+            if gh pr create \
+                --base main \
+                --head "$TRANSLATION_BRANCH" \
+                --title "Review English translations" \
+                --body "Automatically generated English translations. Review and correct the Markdown changes before merging. Nothing in this pull request is published until it is merged into main."; then
+              echo "Translation pull request created"
+            else
+              echo "::warning::GitHub Actions may not create pull requests in this repository. Create it manually: $compare_url"
+              {
+                echo "## English translations are ready"
+                echo
+                echo "GitHub Actions could not create the pull request automatically."
+                echo "[Create the translation pull request manually]($compare_url)"
+              } >> "$GITHUB_STEP_SUMMARY"
+            fi
           fi

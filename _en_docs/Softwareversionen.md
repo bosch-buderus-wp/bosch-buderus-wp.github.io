@@ -2,15 +2,14 @@
 title: "Software versions, firmware and releases"
 headline: "Software versions"
 excerpt: "Overview of software versions and firmware releases for Bosch CS5800/6800i and Buderus WLW176/186i heat pumps."
-permalink: /en/en/docs/sw-versionen/
+permalink: /en/docs/sw-versionen/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/sw-versionen/
+translation_url: /docs/sw-versionen/
 translation_generated: true
 ---
-
 
 The Bosch CS5800/6800i and Buderus WLW176/186i heat pumps receive new software versions for the indoor unit, outdoor unit and control panel at irregular intervals.
 Unfortunately, a new software version cannot be installed Over-the-Air.
@@ -117,7 +116,7 @@ Improvements:
 Improvements:
 
 - Current **thermal output** available as an entity via [ems-esp](/en/docs/smarthome/).
-  From this version onward, you no longer need to calculate the heat output for your smart home by deriving it from the energy; instead, you can directly use [boiler/hppower](/en/en/docs/smarthome/entities#leistung).
+  From this version onward, you no longer need to calculate the heat output for your smart home by deriving it from the energy; instead, you can directly use [boiler/hppower](/en/docs/smarthome/entities#leistung).
 - **Temperature difference during DHW** can be reduced to 4K (previously 6K, benefit: delay for increased efficiency)
 - **Inputs** received extensive configuration options for SG-Ready, PV, EMS, ...
 - **Fan on the compressor** (PL3 fan) can be displayed on the device and created/read as individual entities via [ems-esp](/en/docs/smarthome/)

@@ -2,7 +2,7 @@
 title: "Set up Bosch/Buderus heat pump metrics: Upload, API and comparison"
 headline: "Guide to heat pump metrics"
 excerpt: "Step-by-step guide for uploading measured values from Bosch CS5800/6800i and Buderus WLW176/186i and comparing them with other systems."
-permalink: /en/en/en/metrics/howto
+permalink: /en/metrics/howto
 toc: true
 toc_sticky: true
 layout: single
@@ -13,10 +13,9 @@ comments: false
 sidebar:
   nav: "en_metrics"
 lang: en
-translation_url: /en/en/metrics/howto
+translation_url: /metrics/howto
 translation_generated: true
 ---
-
 
 This guide explains how to provide measured values from your Bosch or Buderus heat pump for the metrics platform and compare real performance factors with other systems. The aim is to make reliable real-world data for operation, efficiency, and optimization visible.
 

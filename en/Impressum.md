@@ -1,7 +1,7 @@
 ---
 title: Legal Notice
 excerpt: Legal Notice
-permalink: /en/en/impressum/
+permalink: /en/impressum/
 toc: false
 layout: single
 read_time: false
@@ -9,10 +9,9 @@ author_profile: false
 share: false
 comments: false
 lang: en
-translation_url: /en/impressum/
+translation_url: /impressum/
 translation_generated: true
 ---
-
 
 Information pursuant to Section 5 of the German Digital Services Act (DDG)
 

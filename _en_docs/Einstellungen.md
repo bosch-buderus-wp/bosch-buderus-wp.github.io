@@ -2,15 +2,14 @@
 title: "Settings: Heating curve, domestic hot water, auxiliary heater, ..."
 headline: "Settings: Heating curve, domestic hot water, auxiliary heater, ..."
 excerpt: "Settings overview for Bosch CS5800/6800i and Buderus WLW176/186i with heating curve, room temperature, domestic hot water, cooling, and important menu items."
-permalink: /en/en/docs/einstellungen/
+permalink: /en/docs/einstellungen/
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/docs/einstellungen/
+translation_url: /docs/einstellungen/
 translation_generated: true
 ---
-
 
 The Bosch CS 5800/6800i and Buderus WLW176/186i offer a variety of settings. This page shows the most important menu items relating to the heating curve, room temperature, domestic hot water, and other parameters relevant to efficiency and comfort.
 

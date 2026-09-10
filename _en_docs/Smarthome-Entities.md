@@ -2,15 +2,14 @@
 title: "EMS-ESP Entities at a Glance"
 headline: "EMS-ESP Entities"
 excerpt: "Overview of the entities that can be read via EMS-ESP for Bosch CS5800/6800i and Buderus WLW176/186i."
-permalink: /en/en/en/docs/smarthome/entities
+permalink: /en/docs/smarthome/entities
 toc: true
 sidebar:
   nav: "en_docs"
 lang: en
-translation_url: /en/en/docs/smarthome/entities
+translation_url: /docs/smarthome/entities
 translation_generated: true
 ---
-
 
 Version 3.7.1 of [ems-esp](https://emsesp.org/) provides 166 entities for the boiler and 71 for the control unit.
 This page provides an explanation of all entities, insofar as they are known.
