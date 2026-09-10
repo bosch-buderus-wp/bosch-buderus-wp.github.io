@@ -1,0 +1,37 @@
+{
+  "sourceLanguage": "German",
+  "targetLanguage": "English",
+  "defaultModel": "gpt-5.6-luna",
+  "promptVersion": 1,
+  "groups": [
+    {
+      "sourceDirectory": "_docs",
+      "targetDirectory": "_en_docs",
+      "sidebar": "en_docs"
+    },
+    {
+      "sourceDirectory": "_xps",
+      "targetDirectory": "_en_xps"
+    },
+    {
+      "sourceDirectory": "_pages",
+      "targetDirectory": "en",
+      "include": [
+        "Home.md",
+        "Impressum.md",
+        "Links.md",
+        "Metrics-Howto.md",
+        "Metrics.md",
+        "Simulator.md"
+      ],
+      "sidebarByFile": {
+        "Links.md": "en_links",
+        "Metrics-Howto.md": "en_metrics",
+        "Metrics.md": "en_metrics"
+      }
+    }
+  ],
+  "excludeFilenameSuffixes": [
+    " copy.md"
+  ]
+}

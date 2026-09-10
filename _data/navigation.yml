@@ -81,5 +81,71 @@ links:
     url: "/links/#bosch-compress-5800i6800i-aw"
   - title: "Buderus"
     url: "/links/#buderus-logatherm-wlw176i186i"
+  - title: "Service & Fehlersuche"
+    url: "/links/#service-und-fehlersuche"
   - title: "Foren"
     url: /links/#foren
+
+en_docs:
+  - title: "Variants"
+    url: /en/docs/varianten/
+  - title: "Technical structure"
+    url: /en/docs/technischer-aufbau/
+  - title: "Settings"
+    url: /en/docs/einstellungen/
+  - title: "Software versions"
+    url: /en/docs/sw-versionen/
+  - title: "Optimizations"
+    url: /en/docs/optimierungen/
+  - title: "Troubleshooting"
+    url: /en/docs/fehler/
+  - title: "App"
+    url: /en/docs/app/
+  - title: "Glossary"
+    url: /en/docs/glossar/
+  - title: "Smart home"
+    children:
+      - title: "EMS-ESP"
+        url: /en/docs/smarthome/
+      - title: "Entity overview"
+        url: /en/docs/smarthome/entities
+      - title: "Notifications"
+        url: /en/docs/smarthome/benachrichtigungen
+      - title: "Home Assistant"
+        url: /en/docs/smarthome/ha
+      - title: "OpenHAB"
+        url: /en/docs/smarthome/openhab
+      - title: "Grafana"
+        url: /en/docs/smarthome/grafana
+      - title: "evcc"
+        url: /en/docs/smarthome/evcc
+      - title: "AI"
+        url: /en/docs/smarthome/ai
+  - title: "Links"
+    url: /en/links/
+
+en_metrics:
+  - title: "Dashboard"
+    url: /en/metrics/
+  - title: "Evaluations"
+    children:
+      - title: "Annual overview"
+        url: /en/metrics/#/yearly
+      - title: "Monthly overview"
+        url: /en/metrics/#/monthly
+      - title: "Daily overview"
+        url: /en/metrics/#/daily
+  - title: "Participation guide"
+    url: /en/metrics/howto
+
+en_links:
+  - title: "General"
+    url: "/en/links/#general"
+  - title: "Bosch"
+    url: "/en/links/#bosch-compress-5800i6800i-aw"
+  - title: "Buderus"
+    url: "/en/links/#buderus-logatherm-wlw176i186i"
+  - title: "Service & troubleshooting"
+    url: "/en/links/#service-and-troubleshooting"
+  - title: "Forums"
+    url: /en/links/#forums

@@ -1,3 +1,73 @@
 {% if page.headline %}
 <meta name="page-headline" content="{{ page.headline | escape_once }}">
 {% endif %}
+
+{% assign translation_source = nil %}
+{% assign translation_target = nil %}
+{% if page.lang == "en" and page.translation_url %}
+  {% assign translation_source = page.translation_url %}
+  {% assign translation_target = page.url %}
+{% elsif page.collection == "docs" or page.collection == "xps" %}
+  {% assign translation_source = page.url %}
+  {% assign translation_target = "/en" | append: page.url %}
+{% else %}
+  {% for translated_page in site.data.translations.pages %}
+    {% if page.url == translated_page %}
+      {% assign translation_source = page.url %}
+      {% if page.url == "/" %}
+        {% assign translation_target = "/en/" %}
+      {% else %}
+        {% assign translation_target = "/en" | append: page.url %}
+      {% endif %}
+    {% endif %}
+  {% endfor %}
+{% endif %}
+
+{% if translation_source and translation_target %}
+<link rel="alternate" hreflang="de" href="{{ translation_source | absolute_url }}">
+<link rel="alternate" hreflang="en" href="{{ translation_target | absolute_url }}">
+<link rel="alternate" hreflang="x-default" href="{{ translation_source | absolute_url }}">
+{% if page.lang == "en" %}<script>document.documentElement.lang = "en";</script>{% endif %}
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    var list = document.querySelector(".greedy-nav .visible-links");
+    if (!list) return;
+
+    {% if page.lang == "en" %}
+      var replacements = {
+        "/docs/intro/": ["/en/docs/intro/", "Documentation"],
+        "/xps/matthias/": ["/en/xps/matthias/", "Experience"],
+        "/metrics/": ["/en/metrics/", "Metrics"]
+      };
+      list.querySelectorAll("a").forEach(function (navigationLink) {
+        var pathname = new URL(navigationLink.href, window.location.origin).pathname;
+        if (!replacements[pathname]) return;
+        navigationLink.href = replacements[pathname][0];
+        navigationLink.textContent = replacements[pathname][1];
+      });
+    {% endif %}
+
+    var item = document.createElement("li");
+    item.className = "masthead__menu-item";
+    var link = document.createElement("a");
+    link.href = {{ translation_source | relative_url | jsonify }};
+    link.textContent = "DE";
+    link.setAttribute("aria-label", "Zur deutschen Version wechseln");
+    link.title = "Deutsch";
+
+    {% unless page.lang == "en" %}
+      link.href = {{ translation_target | relative_url | jsonify }};
+      link.textContent = "EN";
+      link.setAttribute("aria-label", "Switch to English");
+      link.title = "English";
+    {% endunless %}
+
+    if (/^\/(?:en\/)?metrics\/$/.test(window.location.pathname) && window.location.hash.startsWith("#/")) {
+      link.hash = window.location.hash;
+    }
+
+    item.appendChild(link);
+    list.appendChild(item);
+  });
+</script>
+{% endif %}

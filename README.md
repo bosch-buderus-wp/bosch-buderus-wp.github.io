@@ -17,3 +17,16 @@ Die Informationen stammen größtenteils aus Foren wie:
 
 Ich hoffe, die Informationen sind für den ein oder anderen hilfreich - dann gerne einen ⭐ hinterlassen.
 Bei Anregungen oder Korrekturen, würde ich mich über einen [Pull Request](https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/pulls) oder ein [Issue](https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/issues) zur weiteren Diskussion freuen.
+
+## Automatische englische Übersetzung
+
+Die GitHub Action `Translate website` übersetzt geänderte Markdown-Dateien mit der OpenAI Responses API und legt die generierten englischen Dateien unter `/en/` in einem Pull Request ab. Erst nach Prüfung und Merge des Pull Requests werden sie veröffentlicht und verlinkt.
+
+Einrichtung:
+
+1. Im GitHub-Repository unter `Settings → Secrets and variables → Actions` ein Repository-Secret `OPENAI_API_KEY` anlegen.
+2. Optional eine Repository-Variable `OPENAI_TRANSLATION_MODEL` setzen. Ohne Variable wird das Modell aus `translation/config.json` verwendet.
+3. Unter `Settings → Actions → General → Workflow permissions` erlauben, dass GitHub Actions Pull Requests erstellen darf.
+4. Die Action einmal manuell mit `Translate all configured files again` starten. Danach läuft sie bei passenden Änderungen automatisch und aktualisiert den offenen Übersetzungs-PR.
+
+Das Glossar liegt in `translation/glossary.yml`. Ein lokaler Lauf ohne API-Aufruf ist mit `node scripts/translate-content.mjs --dry-run` möglich.

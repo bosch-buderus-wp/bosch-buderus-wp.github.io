@@ -1,0 +1,96 @@
+name: Translate website
+
+on:
+  workflow_dispatch:
+    inputs:
+      translate_all:
+        description: Translate all configured files again
+        required: false
+        default: false
+        type: boolean
+  push:
+    branches: [main]
+    paths:
+      - "_docs/**/*.md"
+      - "_pages/**/*.md"
+      - "_xps/**/*.md"
+      - "scripts/translate-content.mjs"
+      - "scripts/translation-lib.mjs"
+      - "translation/**"
+      - ".github/workflows/translate.yml"
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  TRANSLATION_BRANCH: automation/english-translations
+
+concurrency:
+  group: website-translation
+  cancel-in-progress: false
+
+jobs:
+  translate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Prepare translation branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git fetch origin "$TRANSLATION_BRANCH:$TRANSLATION_BRANCH" || true
+          if git show-ref --verify --quiet "refs/heads/$TRANSLATION_BRANCH"; then
+            git switch "$TRANSLATION_BRANCH"
+            git merge --no-edit "$GITHUB_SHA"
+          else
+            git switch --create "$TRANSLATION_BRANCH" "$GITHUB_SHA"
+          fi
+
+      - name: Translate changed content
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_TRANSLATION_MODEL: ${{ vars.OPENAI_TRANSLATION_MODEL }}
+        run: |
+          if [[ "${{ inputs.translate_all }}" == "true" ]]; then
+            node scripts/translate-content.mjs --all
+          else
+            node scripts/translate-content.mjs
+          fi
+
+      - name: Commit generated translations to review branch
+        id: commit
+        run: |
+          if [[ -z "$(git status --porcelain -- .translation-cache.json _en_docs _en_xps en)" ]]; then
+            echo "No translation changes"
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git add .translation-cache.json _en_docs _en_xps en
+          git commit -m "Update English translations"
+          git push --set-upstream origin "$TRANSLATION_BRANCH"
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+
+      - name: Open or update translation pull request
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          pr_url="$(gh pr list --base main --head "$TRANSLATION_BRANCH" --state open --json url --jq '.[0].url')"
+          if [[ -n "$pr_url" ]]; then
+            echo "Updated existing translation pull request: $pr_url"
+          else
+            gh pr create \
+              --base main \
+              --head "$TRANSLATION_BRANCH" \
+              --title "Review English translations" \
+              --body "Automatically generated English translations. Review and correct the Markdown changes before merging. Nothing in this pull request is published until it is merged into main."
+          fi
