@@ -95,7 +95,6 @@ Die **Bosch Compress 3800i AW** und die **Buderus Logatherm WLW166i MBB AR** sin
 
 Die Baureihe ist für Ein- und kleine Mehrfamilienhäuser in Neubau und Bestand vorgesehen.
 Die kleinen Außeneinheiten besitzen einen, die beiden großen Geräte zwei Ventilatoren.
-Anstatt auf einen Rollkolbenverdichter setzt diese Modellfamilie auf einen Scrollverdichter, der etwas effizienter ist, aber weniger weit heruntermodulieren kann, was zu häufigeren Takten führen könnte.
 
 | Bauform | Bosch | Buderus | Integrierter Speicher |
 | :------- | :---- | :------ | :-------------------- |
