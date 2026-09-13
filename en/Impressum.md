@@ -39,17 +39,17 @@ The source code is publicly available at:
 
 [https://github.com/bosch-buderus-wp/](https://github.com/bosch-buderus-wp/)
 
-Participation in the project does not establish any joint responsibility on the part of contributors for the operation of the platform or the processing of personal data.
+Participation in the project does not establish any joint responsibility of the contributors for the operation of the platform or the processing of personal data.
 
 ---
 
 **Independence and Trademark Notice**
 
-This website is an independent, unofficial project and has no business relationship whatsoever with Robert Bosch GmbH or Buderus (Bosch Thermotechnik GmbH). It is neither operated nor approved or influenced by Bosch/Buderus. All trademarks, logos, and product names are the property of their respective rights holders.
+This website is an independent, unofficial project and has no business relationship whatsoever with Robert Bosch GmbH or Buderus (Bosch Thermotechnology GmbH). It is neither operated nor approved or influenced by Bosch/Buderus. All trademarks, logos, and product names are the property of their respective rights holders.
 
 ---
 
 **Disclaimer**
 
 The content provided is for informational purposes only.
-No guarantee is given for the accuracy, completeness, or currency of the published data.
+No guarantee is given for the accuracy, completeness, or timeliness of the published data.

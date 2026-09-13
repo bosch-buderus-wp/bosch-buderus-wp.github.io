@@ -15,12 +15,6 @@ import {
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const config = JSON.parse(await readFile(path.join(root, "translation/config.json"), "utf8"));
 const glossary = await readFile(path.join(root, "translation/glossary.yml"), "utf8");
-const implementationHash = hash(
-  await Promise.all([
-    readFile(fileURLToPath(import.meta.url), "utf8"),
-    readFile(path.join(root, "scripts/translation-lib.mjs"), "utf8"),
-  ]).then((files) => files.join("\n")),
-);
 const manifestPath = path.join(root, ".translation-cache.json");
 const forceAll = process.argv.includes("--all");
 const dryRun = process.argv.includes("--dry-run");
@@ -50,7 +44,6 @@ for (const source of sources) {
     JSON.stringify({
       content: source.content,
       glossary,
-      implementationHash,
       model,
       promptVersion: config.promptVersion,
       routeMap: [...routeMap],

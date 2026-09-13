@@ -2,122 +2,122 @@
   "version": 1,
   "files": {
     "_docs/App.md": {
-      "fingerprint": "a602955ba9d37fafc5fe3cf15e7e1b420b3c553d9c12fa3734b36a6bcb583cc6",
+      "fingerprint": "1fba315b05750667a9d5be191cc95da25956629eedb1a7d6c49c0fab0ec9abfc",
       "sourceHash": "ab6b55a31fbb432568cc7b65612165cfecde975a3bf8edf06bb20aaad9c11b44",
       "target": "_en_docs/App.md"
     },
     "_docs/Einstellungen.md": {
-      "fingerprint": "67c357b3ccbf42d5b5354f8780e87c1c91625952ded96d0a68a22ded736ec79d",
+      "fingerprint": "a9a98413a1b1d43a8b7975675df758e155bf09ca4e33ef6a875344580f840fe1",
       "sourceHash": "4cb9b8a1bda89b4583997963a0327f5595a1335741c5b03733089b284a386b23",
       "target": "_en_docs/Einstellungen.md"
     },
     "_docs/Fehler.md": {
-      "fingerprint": "99bfccb1cbc2312d7e51d13aab80f6517ea110b54bb3462970983e581e135aa9",
+      "fingerprint": "97028cfb4bd5a634707862051527059d39a691507070221b9de4937f055d56e3",
       "sourceHash": "778137c8d85e107aca024baeb0e83b78075648eee161344b3aa7aa1f9583fd2f",
       "target": "_en_docs/Fehler.md"
     },
     "_docs/Glossar.md": {
-      "fingerprint": "849d26cb2bae9e7e30bc58a977a4338ff820307708d9107eda92ad790204d2ba",
+      "fingerprint": "7b32626f20affc0e104da87e5b655c84cc5ee6d5b6c22cbfee6a0308fe212f2d",
       "sourceHash": "8aed6feaa5a274c85768669bf786a949e8f44f83139f10693d5fd1e9a4f3d8ac",
       "target": "_en_docs/Glossar.md"
     },
     "_docs/Intro.md": {
-      "fingerprint": "57e8d51970a321a5c59423dda2a0405b12bbb56cca654c3278d02212abf34ca9",
+      "fingerprint": "f5905a0db410f3af41f19298cdac75c05d5d4dc8ccc942817e014fedb055ac4e",
       "sourceHash": "78d79ff8832d8dbb88bbc29ed1c52c67011b40974c17d4675c705ad4112acf5e",
       "target": "_en_docs/Intro.md"
     },
     "_docs/Optimierungen.md": {
-      "fingerprint": "622ad230840e7930f78a021811bb947048139d1b41b88baaead42ffd8c6e2f77",
+      "fingerprint": "fd8b88fa7de56b80cf2fed4032ea424b0d5cd952ffb920b8700aff7614799c1f",
       "sourceHash": "14b74f0f49ee0723e62682c242e1b72e347923228cee46eb276cdeeec5e8c49e",
       "target": "_en_docs/Optimierungen.md"
     },
     "_docs/Smarthome-AI.md": {
-      "fingerprint": "b97620b05aa5dc918254325c27bbb8aef8eab31a7d28892d371c115eb0e8f9a2",
+      "fingerprint": "2efa250bb55dfb1ed204de32221839c9f21624e53a3abfc6a16d09fdb80d953e",
       "sourceHash": "7de42a4d893eb0c348a117ad00e389daf05236d5a42b184903e8638cfebf8100",
       "target": "_en_docs/Smarthome-AI.md"
     },
     "_docs/Smarthome-Benachrichtigungen.md": {
-      "fingerprint": "d9bf64f50c68f3f6ff9d6995fba4728596b3a73a8ee48c0b30d3609c4cd065f5",
+      "fingerprint": "f1466f28c54c38abcff9231fdc2688581b0b5f32745ef017eef537ec40a0f306",
       "sourceHash": "6063563561a3b348d5e8caffe7f7ac0506540d2fcf9b20cd56d306ed8c7e2033",
       "target": "_en_docs/Smarthome-Benachrichtigungen.md"
     },
     "_docs/Smarthome-Entities.md": {
-      "fingerprint": "94d553b974b51e5a131861612119f405b6ddcc8f3b7c3d353f14e4f94a3ec925",
+      "fingerprint": "e9bb1111d13fcb7f2e0319930213dcf9ab7d8461ed10abb657c6aec23d48027b",
       "sourceHash": "bf9c79fae5f02160727d158a1e944d58f8c58991e765d800bb794c9f04786d71",
       "target": "_en_docs/Smarthome-Entities.md"
     },
     "_docs/Smarthome-evcc.md": {
-      "fingerprint": "6df1a9ebf0540aff1ccbb38dc2d50c24d958fc9d64d66eab0f5c4e22b0099e92",
+      "fingerprint": "bbd855366cb7cf38994d3bc357b896a7f9b46206ebef458198d5b80b77e7bd58",
       "sourceHash": "adb76ab55049459e87201f7b88338d3a3f500844d5c81afbbaa12d250cee9e3d",
       "target": "_en_docs/Smarthome-evcc.md"
     },
     "_docs/Smarthome-grafana.md": {
-      "fingerprint": "b095a8c0bb5eff2d7b55ab4024d6b8d08e1c57bf16010d54b6384538189856fa",
+      "fingerprint": "989541aa93c9f515f469f46ab4465f7ec64a0da89437413da18c1f8cdcd2ac3c",
       "sourceHash": "d89225c0d6e5b158efa7e63235ee0c6c8ef16087bdf4208a4c875816f7ca5a14",
       "target": "_en_docs/Smarthome-grafana.md"
     },
     "_docs/Smarthome-homeassistant.md": {
-      "fingerprint": "0fc25d4e422895e9d31bf357677fc23c1dc421bd045d3719a352f1c80cdb5fdb",
+      "fingerprint": "03ec65f78898646ca75abc99c471f7eef14a9bfc635f47ae5a592352744c8f55",
       "sourceHash": "a0e6e5390f16f9ca7c9e36d4ff091aa049e17ce4a9f102ddb86950e0dc858970",
       "target": "_en_docs/Smarthome-homeassistant.md"
     },
     "_docs/Smarthome-openhab.md": {
-      "fingerprint": "0fca1924f9ca61c813fdea70f8be4c4b3b86bef3027be906fff605a266e0be54",
+      "fingerprint": "9a546ecf1350927e459de08375406c0d13afdcd0ea6c75cffd86fe231eff0944",
       "sourceHash": "29182472610d353f15daac798f3e87a1c84a45f49e1f12178a42ba0ce273412a",
       "target": "_en_docs/Smarthome-openhab.md"
     },
     "_docs/Smarthome.md": {
-      "fingerprint": "63a9325a85183f9ee956979c6e155af65dc0516d490770e7bf9736b18a530bde",
+      "fingerprint": "2238eb278ecba2773ceed0e3e4b06fbb1445fbb28523bfb38feb2ff26757364e",
       "sourceHash": "0e4e02c6b519005cf9d2ac55950fe3a2827bd11d63edc18e18d1e8aeb218560b",
       "target": "_en_docs/Smarthome.md"
     },
     "_docs/Softwareversionen.md": {
-      "fingerprint": "2975a810f1e22d38d6db5f2f1e14e545c5bb80acfe0aea9ee5de7a1f32ace5e0",
+      "fingerprint": "23b2f088537bd4982b6d6691c7568781302be83db13bd4c1aa5a9364e34c0b77",
       "sourceHash": "f1cf03ce28426a6d1c2a30404a294949fa5776b278fe9d6391a20958149e03da",
       "target": "_en_docs/Softwareversionen.md"
     },
     "_docs/Technischer-Aufbau.md": {
-      "fingerprint": "89391823cc6186c228a57f59798b8744dca019c3909af2cce044bb57b7ecab9d",
+      "fingerprint": "fcbee6d671ddcbc2ab009302434bbcff5c87a4ad5ecb384bdd790bcc2781847b",
       "sourceHash": "a2f270779ce9940ef63a6f9404dca8bcad3a04664c2be60cc16c4453c8b6e233",
       "target": "_en_docs/Technischer-Aufbau.md"
     },
     "_docs/Varianten.md": {
-      "fingerprint": "8580b834032db70b85e745c99c5be2afb87c0762ac026b0db2d7cf845dcea6c5",
+      "fingerprint": "18e14e156abf112a6c823a4e334d8b048f881eb00cf5c97ed33c0c37c5854202",
       "sourceHash": "19b25f0ef28a08e4793612e61cc8800ea3d628cb4fdc8d6788171861f9bdfaab",
       "target": "_en_docs/Varianten.md"
     },
     "_pages/Home.md": {
-      "fingerprint": "d5373173d65f7c950df9ce90f7e57eb61c6f36190cb7b7e5baa44b7f45d57523",
+      "fingerprint": "01c9903b35f8c4a1dd90f44cce922a0f15812b0872407bc5addfcc16128e254d",
       "sourceHash": "922dec4078f669a8ef83b384939674b86ff364c64e16248ad9715b83e5eff570",
       "target": "en/Home.md"
     },
     "_pages/Impressum.md": {
-      "fingerprint": "ab6001b8aeac1184bb2d5094fe7bbdc5e204b88591e5b330b3b08165d95f8bd6",
+      "fingerprint": "55add98236f29ede9ae4aaed0a7b482917cd36f22c1fe05913549e09a5a9aa9b",
       "sourceHash": "0d5c6e099524bf8d2788629bb2764950239493548a17629666cf942a712db37d",
       "target": "en/Impressum.md"
     },
     "_pages/Links.md": {
-      "fingerprint": "695fc63b74a72e13fff1d9aa9affcdd310af24285753a1e153ff1f01551ec721",
+      "fingerprint": "b4b9f8652e2d872e1fddad1203f5ad676925617b159bfe7f37721639b0e26d97",
       "sourceHash": "e146bc8c6bac38eee8e69cfda3830289575eece1462b043ee351a52844aef527",
       "target": "en/Links.md"
     },
     "_pages/Metrics-Howto.md": {
-      "fingerprint": "869fd2ce7d0525c97355a62761360c1f619c5af9c8d5576d2383be78423872a9",
+      "fingerprint": "9c7869b8ce0043e26241696f82c96e947eb418c7b32c8e73a3f5522f3856f97d",
       "sourceHash": "bfb4860a0b6ff5fa042421a5f2ab83342b48716e0371f82e209ea5b4a5651f46",
       "target": "en/Metrics-Howto.md"
     },
     "_pages/Metrics.md": {
-      "fingerprint": "b3920ff493e426d7e9b11e80ebec91a3fec7662abbf64f9244bf4a81df3941e3",
+      "fingerprint": "806aa5b8abd471c3d18662b028ed9283bac5a59348289dc61e87b967457976f9",
       "sourceHash": "dca55469da18912ee189550a266d50e63f30f2d8efffa2b1bbe0a195aebbb278",
       "target": "en/Metrics.md"
     },
     "_pages/Simulator.md": {
-      "fingerprint": "341965c6d8602035279a4e2962c6824d143194911dcd4d27d1994cd5a59bb3f9",
+      "fingerprint": "dd305cc8935a16d8451afb9d456d5406b58bde80c241c2de4e8e2800986333c3",
       "sourceHash": "66df60a3463a297c69dfa8cfb86b25c89fe6d130a8c90777c102cf0e90388eb5",
       "target": "en/Simulator.md"
     },
     "_xps/Matthias.md": {
-      "fingerprint": "3c719520bb4fe9381766372c73b98350e04128f72b9e2f4db744db0f0c3344fc",
+      "fingerprint": "8ae0feb1d94699ef12adbd943e1aca5835bdc18e7227627aa12592f930e03504",
       "sourceHash": "abb416f5e9e95cae822f3c25ed1d62f28e1f49914c5f047d649a2eeeee8f7af6",
       "target": "_en_xps/Matthias.md"
     }
