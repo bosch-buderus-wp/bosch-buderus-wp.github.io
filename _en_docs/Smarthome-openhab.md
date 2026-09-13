@@ -1,7 +1,7 @@
 ---
-title: "Integrating a Heat Pump into OpenHAB with EMS-ESP"
+title: "Integrating a heat pump into OpenHAB with EMS-ESP"
 headline: "OpenHAB"
-excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP."
+excerpt: "Guide to integrating Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP."
 permalink: /en/docs/smarthome/openhab
 toc: false
 sidebar:
@@ -14,8 +14,8 @@ translation_generated: true
 This guide assumes that you have already installed [ems-esp](/en/docs/smarthome/).
 
 If OpenHAB was installed via [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html), Mosquitto can be installed via `sudo openhabian-config` -> `20 | Optional Components`.
-You then need to add the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/); Auto-Discovery will automatically detect all entities as _Things_.
-Alternatively, you can create all or selected entities manually as _Things_.
+You then need to add the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/), and through auto-discovery all entities are automatically detected as _Things_.
+Alternatively, you can create all or selected entities manually as a _Thing_.
 
 <details markdown="1">
 <summary>mqtt.things</summary>

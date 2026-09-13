@@ -32,3 +32,4 @@ Einrichtung:
 Falls die Organisation die automatische PR-Erstellung verbietet, beendet die Action den Lauf trotzdem erfolgreich und zeigt in der Job-Zusammenfassung einen Link zum manuellen Erstellen des Pull Requests an.
 
 Das Glossar liegt in `translation/glossary.yml`. Ein lokaler Lauf ohne API-Aufruf ist mit `node scripts/translate-content.mjs --dry-run` möglich.
+Änderungen an den Übersetzungsskripten allein erzeugen keine neuen Übersetzungen. Wenn eine Änderung bewusst alle Texte neu übersetzen soll, `promptVersion` in `translation/config.json` erhöhen oder die Action manuell mit `Translate all configured files again` starten.

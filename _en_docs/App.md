@@ -1,7 +1,7 @@
 ---
 title: "Bosch HomeCom Easy & MyBuderus App: Functions, Limitations and Problems"
 headline: "HomeCom Easy & MyBuderus App"
-excerpt: "Overview of the functions, limitations and typical problems of the HomeCom Easy and MyBuderus apps for Bosch CS5800/6800i and Buderus WLW176/186i."
+excerpt: "Overview of functions, limitations and typical problems of the HomeCom Easy and MyBuderus apps for Bosch CS5800/6800i and Buderus WLW176/186i."
 permalink: /en/docs/app/
 toc: true
 sidebar:
@@ -11,7 +11,7 @@ translation_url: /docs/app/
 translation_generated: true
 ---
 
-Those who have purchased the Bosch Connect-Key or the Buderus wireless module for their heat pump can use the **Bosch HomeCom Easy** or **Buderus MyBuderus** app to:
+Anyone who has purchased the Bosch Connect-Key or the Buderus wireless module for their heat pump can use the **Bosch HomeCom Easy** or **Buderus MyBuderus** app to:
 
 - monitor values,
 - make settings, and
@@ -26,17 +26,17 @@ Those who have purchased the Bosch Connect-Key or the Buderus wireless module fo
 
 The following functions can be accessed from the home screen:
 
-- Menu (3 lines in the top left):
+- Menu (3 lines at the top left):
   - Devices
   - Notifications
   - Personalize
   - Settings
-- Energy monitoring (icon in the top right)
-- Actions: Change presence status
+- Energy monitoring (icon at the top right)
+- Actions: change presence status
 - Heating circuit:
   - Operating mode:
-    - Off: Heating is switched off
-    - Manual: Heating operates constantly
+    - Off: Heating is off
+    - Manual: Heating is operated continuously
     - Auto: The target room temperature is selected automatically based on the time of day and the time program settings, e.g. to implement a night setback
   - Manual target room temperature setting
   - Boost
@@ -55,7 +55,7 @@ The following functions can be accessed from the home screen:
 <a href="/assets/images/App-Home.jpg"><img src="/assets/images/App-Home.jpg" alt="HomeCom app: Home page" title="HomeCom app: Home page" width="24%"></a>
 <a href="/assets/images/App-Warmwasser.jpg"><img src="/assets/images/App-Warmwasser.jpg" alt="HomeCom app: Domestic hot water mode selection" title="HomeCom app: Domestic hot water mode selection" width="24%"></a>
 <a href="/assets/images/App-EnergieMonitoring.jpg"><img src="/assets/images/App-EnergieMonitoring.jpg" alt="HomeCom app: Energy monitoring" title="HomeCom app: Energy monitoring" width="24%"></a>
-<a href="/assets/images/App-Überwachung.jpg"><img src="/assets/images/App-Überwachung.jpg" alt="HomeCom app: Monitoring of values" title="HomeCom app: Monitoring of values" width="24%"></a>
+<a href="/assets/images/App-Überwachung.jpg"><img src="/assets/images/App-Überwachung.jpg" alt="HomeCom app: Monitoring values" title="HomeCom app: Monitoring values" width="24%"></a>
 
 ## Energy monitoring
 
@@ -63,23 +63,23 @@ In energy monitoring, you can select between the following 3 areas at the bottom
 
 - Generated and consumed energy:
   - Pie charts (see image above):
-    - Generated energy: Heat pump (=used electrical energy) vs. surroundings (=ambient heat)
-    - Consumed energy: Auxiliary heater (=electric backup heater) vs. heat pump (=electrical energy used for the heat pump)
+    - Generated energy: Heat pump (= electrical energy used) vs. Environment (= ambient heat)
+    - Consumed energy: Additional heater (= electric backup heater) vs. Heat pump (= electrical energy used for heat pump)
   - Periods: Today, This month, Total
   - Detailed view
 - Efficiency:
   - Bar chart: Consumed energy vs. generated energy per calendar year
-  - Auxiliary heater share in %
+  - Share of additional heater in %
 - Statistics:
   - Total consumption:
-    - Auxiliary heater: Total energy consumption of the electric backup heater in kWh
+    - Additional heater: Total energy consumption of the electric backup heater in kWh
     - Heat pump: Total energy consumption of the heat pump (without electric backup heater) in kWh
   - Total generation:
     - Heat pump: Total energy consumption of the heat pump + electric backup heater in kWh
-    - Surroundings: Additional heat energy obtained from the surroundings in kWh
-  - Total efficiency:
+    - Environment: Additional heat energy obtained from the environment in kWh
+  - Overall efficiency:
     - Consumed energy: Total energy consumption of the heat pump + electric backup heater in kWh
-    - Generated energy: Total generated heat energy in kWh
+    - Generated energy: Total heat energy generated in kWh
   - Total starts:
     - Heating: Compressor starts for heating operation
     - Domestic hot water: Compressor starts for domestic hot water operation
