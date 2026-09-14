@@ -17,9 +17,9 @@ The local API requires a K40 RF WLAN gateway and gateway firmware `15.00.01` or 
 
 ## Hostname or IP address
 
-First, you need the IP address of the K40 RF gateway in your home WLAN.
-The easiest way to find the IP address is in your router's device list.
-To use the example code from the API preview below, enter the **hostname or IP address**, for example `gateway.local`, `K40RF-1acabc`, or `192.168.1.42`—without `https://`, port, or trailing period.
+First, you need the IP address of the K40 RF Gateway on your home Wi-Fi network.
+The easiest way to find the IP address is in your router’s device list.
+To use the example code from the API preview on this page, enter the **hostname or IP address** under _gatewayAddress_, for example `gateway.local`, `K40RF-1acabc` or `192.168.1.42`—without `https://`, a port or a trailing period.
 
 ## Authentication
 
@@ -33,11 +33,11 @@ If you can no longer find the sticker, scan the QR code on the WLAN gateway.
 It has the following format: \
 `V:1;L:<euer-login>;P:<euer-pass>;MAC:<eure-mac-addresse>;N:<modell-eures-gateways>`
 
-1. Press the **WLAN and Wireless buttons simultaneously for one second** on the gateway.
+1. Press the **WLAN and wireless buttons on the gateway simultaneously for one second**.
    The LEDs should briefly flash blue.
-2. Replace the variables `<euer-wärmepumpen-hostname>`, `<login-vom-aufkleber>`, `<pass-vom-aufkleber-ohne-bindestriche>` and `<ein-beliebiger-name-eures-clients>`, then run this command within five minutes:
+2. Replace the variables `<euer-wärmepumpen-hostname>`, `<login-vom-aufkleber>`, `<pass-vom-aufkleber-ohne-bindestriche>` and `<ein-beliebiger-name-eures-clients>` in the following cURL command and then execute it within five minutes:
 
-   ```bash
+```bash
    curl \
      --silent --show-error --fail-with-body \
      --insecure \
@@ -64,8 +64,7 @@ The examples update automatically.
 Direct browser requests remain disabled because of the gateway's CORS restriction.
 The token and gateway address are stored locally in your browser.
 
-The cURL examples contain `--insecure` because the gateway's certificate does not have a trusted trust anchor.
-Use this option only for your gateway on the trusted local network.
+The cURL examples contain `--insecure` because the gateway’s certificate does not have a trusted trust anchor.
 
 <iframe
   src="/assets/openapi/k-40-rf-preview.html"
