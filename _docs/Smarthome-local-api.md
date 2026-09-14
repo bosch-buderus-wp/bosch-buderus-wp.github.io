@@ -14,7 +14,7 @@ Für die lokale API wird ein K40 RF WLAN-Gateway und die Gateway-Firmware `15.00
 
 Zuerst braucht ihr die IP-Adresse des K40 RF Gateways in eurem heimischen WLAN.
 Am einfachsten findet ihr die IP-Adresse in der Geräteliste eures Routers.
-Um den Beispielcode aus der API-Vorschau unten zu nutzen, tragt den **Hostnamen oder die IP-Adresse** ein, also beispielsweise `gateway.local`, `K40RF-1acabc` oder `192.168.1.42` - ohne `https://`, Port oder abschließenden Punkt.
+Um den Beispielcode aus der API-Vorschau auf dieser Seite zu nutzen, tragt den **Hostnamen oder die IP-Adresse** unter _gatewayAddress_ ein, also beispielsweise `gateway.local`, `K40RF-1acabc` oder `192.168.1.42` - ohne `https://`, Port oder abschließenden Punkt.
 
 ## Authentifizierung
 
@@ -28,9 +28,9 @@ Falls ihr den Aufkleber nicht mehr findet, scannt den QR-Code auf dem WLAN-Gatew
 Er ist wie folgt aufgebaut: \
 `V:1;L:<euer-login>;P:<euer-pass>;MAC:<eure-mac-addresse>;N:<modell-eures-gateways>`
 
-1. Drücke am Gateway die **WLAN- und Wireless-Taste gleichzeitig für eine Sekunde**.
+1. Drückt am Gateway die **WLAN- und Wireless-Taste gleichzeitig für eine Sekunde**.
    Die LEDs sollten kurz blau blinken.
-2. Ersetze die Variablen `<euer-wärmepumpen-hostname>`, `<login-vom-aufkleber>`, `<pass-vom-aufkleber-ohne-bindestriche>` und `<ein-beliebiger-name-eures-clients>` und führe dann innerhalb von fünf Minuten diesen Befehl aus:
+2. Ersetzt die Variablen `<euer-wärmepumpen-hostname>`, `<login-vom-aufkleber>`, `<pass-vom-aufkleber-ohne-bindestriche>` und `<ein-beliebiger-name-eures-clients>` in folgendem cURL-Befehl und führt ihn dann innerhalb von fünf Minuten aus:
 
    ```bash
    curl \
@@ -60,7 +60,6 @@ Direkte Browser-Anfragen bleiben wegen der CORS-Beschränkung des Gateways deakt
 Token und Gateway-Adresse werden lokal in eurem Browser gespeichert.
 
 Die cURL-Beispiele enthalten `--insecure`, weil das Zertifikat des Gateways keinen vertrauenswürdigen Trust-Anchor hat.
-Verwendet diese Option nur für euer Gateway im vertrauenswürdigen lokalen Netz.
 
 <iframe
   src="/assets/openapi/k-40-rf-preview.html"
