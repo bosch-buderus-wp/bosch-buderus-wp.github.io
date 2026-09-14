@@ -6,6 +6,33 @@ export function hash(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
+export function translationFingerprint({ content, glossary, model, promptVersion }) {
+  return hash(JSON.stringify({ content, glossary, model, promptVersion }));
+}
+
+export function markdownBlocks(markdown) {
+  const trimmed = markdown.trim();
+  return trimmed ? trimmed.split(/\r?\n[\t ]*\r?\n/) : [];
+}
+
+export function reuseTranslatedBlocks(sourceBody, targetBody, cachedSourceHashes) {
+  const sourceBlocks = markdownBlocks(sourceBody);
+  const targetBlocks = markdownBlocks(targetBody);
+  if (!cachedSourceHashes || targetBlocks.length !== cachedSourceHashes.length) return null;
+
+  const translationsBySourceHash = new Map();
+  for (const [index, sourceHash] of cachedSourceHashes.entries()) {
+    const translations = translationsBySourceHash.get(sourceHash) || [];
+    translations.push(targetBlocks[index]);
+    translationsBySourceHash.set(sourceHash, translations);
+  }
+
+  return sourceBlocks.map((sourceBlock) => {
+    const translations = translationsBySourceHash.get(hash(sourceBlock));
+    return { sourceBlock, translation: translations?.shift() ?? null };
+  });
+}
+
 export function readFrontMatter(markdown) {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return { frontMatter: "", body: markdown };

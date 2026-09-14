@@ -2,8 +2,11 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import {
   finalizeTranslation,
+  hash,
   readFrontMatter,
+  reuseTranslatedBlocks,
   rewriteInternalUrls,
+  translationFingerprint,
   translatedUrl,
 } from "../scripts/translation-lib.mjs";
 
@@ -17,6 +20,37 @@ test("reads YAML front matter", () => {
 test("prefixes translated URLs", () => {
   assert.equal(translatedUrl("/"), "/en/");
   assert.equal(translatedUrl("/docs/intro/"), "/en/docs/intro/");
+});
+
+test("translation fingerprints do not depend on the global route map", () => {
+  const input = {
+    content: "Content",
+    glossary: "Glossary",
+    model: "model",
+    promptVersion: 1,
+  };
+  assert.equal(
+    translationFingerprint({ ...input, routeMap: [["/old/", "/en/old/"]] }),
+    translationFingerprint({ ...input, routeMap: [["/new/", "/en/new/"]] }),
+  );
+});
+
+test("reuses unchanged translated blocks after a source insertion", () => {
+  const previousSource = ["Erster Absatz.", "Zweiter Absatz."];
+  const result = reuseTranslatedBlocks(
+    [previousSource[0], "Neuer Absatz.", previousSource[1]].join("\n\n"),
+    "Manually corrected first paragraph.\n\nSecond paragraph.",
+    previousSource.map(hash),
+  );
+  assert.deepEqual(result, [
+    { sourceBlock: previousSource[0], translation: "Manually corrected first paragraph." },
+    { sourceBlock: "Neuer Absatz.", translation: null },
+    { sourceBlock: previousSource[1], translation: "Second paragraph." },
+  ]);
+});
+
+test("rejects incremental reuse when the target structure changed", () => {
+  assert.equal(reuseTranslatedBlocks("Quelle", "One\n\nTwo", [hash("Quelle")]), null);
 });
 
 test("rewrites known internal page URLs but not asset URLs", () => {
