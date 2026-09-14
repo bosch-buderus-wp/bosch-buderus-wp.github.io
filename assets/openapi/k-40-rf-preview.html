@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>K 40 RF Local API - Stoplight Preview</title>
+    <link rel="stylesheet" href="https://unpkg.com/@stoplight/elements@9.0.25/styles.min.css">
+    <style>
+      html, body, elements-api { width: 100%; height: 100%; margin: 0; }
+
+      .sl-overflow-y-auto.sl-flex-1.sl-w-full.sl-px-24.sl-bg-canvas {
+        padding-left: clamp(1rem, 2.5vw, 2rem);
+      }
+
+      .HttpOperation h1 {
+        min-width: 0;
+        max-width: 100%;
+        font-size: clamp(1.4rem, 2.4vw, 1.75rem);
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+      }
+
+      .HttpOperation > div:last-child { flex-direction: column; }
+      .HttpOperation [data-testid="two-column-left"] { width: 100%; flex: none; }
+      .HttpOperation [data-testid="two-column-right"] {
+        width: 100%;
+        max-width: none !important;
+        margin: 2rem 0 0;
+      }
+
+      .TryItPanel .SendButtonHolder { display: none; }
+
+      .local-curl-copy {
+        border: 0;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+        font: inherit;
+      }
+      .local-curl-code {
+        margin: 0;
+        padding: 12px 15px;
+        max-height: 400px;
+        overflow: auto;
+        background: #f2f5ff;
+        font: 12px/1.5 ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      }
+    </style>
+    <script>
+      // Stoplight scrolls its initially selected navigation item into view. Inside
+      // an iframe, that also scrolls the parent page down to the iframe.
+      const nativeScrollIntoView = Element.prototype.scrollIntoView;
+      let ignoreInitialStoplightScroll = window.parent !== window;
+
+      Element.prototype.scrollIntoView = function (...args) {
+        if (ignoreInitialStoplightScroll) {
+          ignoreInitialStoplightScroll = false;
+          Element.prototype.scrollIntoView = nativeScrollIntoView;
+          return;
+        }
+
+        return nativeScrollIntoView.apply(this, args);
+      };
+    </script>
+    <script src="https://unpkg.com/@stoplight/elements@9.0.25/web-components.min.js" defer></script>
+  </head>
+  <body>
+    <elements-api apiDescriptionUrl="./k-40-rf.yaml" router="hash" layout="responsive"></elements-api>
+    <script src="./k-40-rf-preview.js"></script>
+  </body>
+</html>
