@@ -8,10 +8,10 @@ header:
 excerpt: >
   Bosch Compress 5800/6800i and Buderus Logatherm WLW176/186i
 feature_row:
-  - alt: "Documentation"
+  - alt: "docs"
     image_path: /assets/images/home-dokumentation.jpg
     title: "Documentation"
-    excerpt: "Documentation on the heat pumps"
+    excerpt: "Documentation for the heat pumps"
     url: "/en/docs/intro/"
     btn_class: "btn--primary"
     btn_label: "Read"
@@ -22,24 +22,24 @@ feature_row:
     url: "/en/simulator"
     btn_class: "btn--primary"
     btn_label: "Open"
-  - alt: "Metrics"
+  - alt: "Metriken"
     image_path: /assets/images/home-metriken.jpg
     title: "Metrics"
     excerpt: "Data collection and visualization"
     url: "/en/metrics/"
     btn_class: "btn--primary"
     btn_label: "Open"
-  - alt: "Experiences"
+  - alt: "Erfahrungen"
     image_path: /assets/images/home-erfahrungen.jpg
     title: "Experiences"
-    excerpt: "Experience reports"
+    excerpt: "User reports"
     url: "/en/xps/matthias/"
     btn_class: "btn--primary"
     btn_label: "Read"
   - alt: "Links"
     image_path: /assets/images/home-links.jpg
     title: "Links"
-    excerpt: "Books, installation manuals & forums"
+    excerpt: "Books, installation instructions & forums"
     url: "/en/links/"
     btn_class: "btn--primary"
     btn_label: "Read"
