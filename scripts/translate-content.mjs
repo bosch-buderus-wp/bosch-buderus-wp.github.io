@@ -9,6 +9,7 @@ import {
   finalizeTranslation,
   hash,
   sourceUrlFor,
+  translationFingerprint,
   translatedUrl,
 } from "./translation-lib.mjs";
 
@@ -21,6 +22,7 @@ const dryRun = process.argv.includes("--dry-run");
 const repairOnly = process.argv.includes("--repair");
 const model = process.env.OPENAI_TRANSLATION_MODEL || config.defaultModel;
 const apiKey = process.env.OPENAI_API_KEY;
+const fingerprintVersion = 2;
 
 const sources = await collectSources(root, config);
 const routeMap = new Map(
@@ -30,6 +32,7 @@ const routeMap = new Map(
   }),
 );
 const manifest = await readJson(manifestPath, { version: 1, files: {} });
+const migrateFingerprints = manifest.fingerprintVersion !== fingerprintVersion;
 const currentKeys = new Set();
 let translated = 0;
 let repaired = 0;
@@ -40,18 +43,16 @@ for (const source of sources) {
   const targetKey = path.relative(root, source.targetPath);
   const sourceUrl = sourceUrlFor(source, source.group);
   const sourceHash = hash(source.content);
-  const fingerprint = hash(
-    JSON.stringify({
-      content: source.content,
-      glossary,
-      model,
-      promptVersion: config.promptVersion,
-      routeMap: [...routeMap],
-    }),
-  );
+  const fingerprint = translationFingerprint({
+    content: source.content,
+    glossary,
+    model,
+    promptVersion: config.promptVersion,
+  });
   currentKeys.add(sourceKey);
 
   const targetExists = await fileExists(source.targetPath);
+  const cached = manifest.files[sourceKey];
   if (repairOnly) {
     if (!targetExists) {
       console.log(`Skipping missing translation ${targetKey}`);
@@ -75,6 +76,12 @@ for (const source of sources) {
       repaired += 1;
     }
     if (!dryRun) manifest.files[sourceKey] = { fingerprint, sourceHash, target: targetKey };
+    continue;
+  }
+
+  if (!forceAll && targetExists && migrateFingerprints && cached?.sourceHash === sourceHash) {
+    if (!dryRun) cached.fingerprint = fingerprint;
+    skipped += 1;
     continue;
   }
 
@@ -114,7 +121,10 @@ for (const [sourceKey, entry] of Object.entries(manifest.files)) {
   console.log(`Removed translation for deleted source ${sourceKey}`);
 }
 
-if (!dryRun) await atomicWrite(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+if (!dryRun) {
+  manifest.fingerprintVersion = fingerprintVersion;
+  await atomicWrite(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
+}
 console.log(
   dryRun
     ? `Dry run complete: ${sources.length} source files found, ${repaired} translations need repair`

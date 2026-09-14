@@ -4,6 +4,7 @@ import {
   finalizeTranslation,
   readFrontMatter,
   rewriteInternalUrls,
+  translationFingerprint,
   translatedUrl,
 } from "../scripts/translation-lib.mjs";
 
@@ -17,6 +18,19 @@ test("reads YAML front matter", () => {
 test("prefixes translated URLs", () => {
   assert.equal(translatedUrl("/"), "/en/");
   assert.equal(translatedUrl("/docs/intro/"), "/en/docs/intro/");
+});
+
+test("translation fingerprints do not depend on the global route map", () => {
+  const input = {
+    content: "Content",
+    glossary: "Glossary",
+    model: "model",
+    promptVersion: 1,
+  };
+  assert.equal(
+    translationFingerprint({ ...input, routeMap: [["/old/", "/en/old/"]] }),
+    translationFingerprint({ ...input, routeMap: [["/new/", "/en/new/"]] }),
+  );
 });
 
 test("rewrites known internal page URLs but not asset URLs", () => {

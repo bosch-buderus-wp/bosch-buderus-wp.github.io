@@ -6,6 +6,10 @@ export function hash(value) {
   return createHash("sha256").update(value).digest("hex");
 }
 
+export function translationFingerprint({ content, glossary, model, promptVersion }) {
+  return hash(JSON.stringify({ content, glossary, model, promptVersion }));
+}
+
 export function readFrontMatter(markdown) {
   const match = markdown.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?/);
   if (!match) return { frontMatter: "", body: markdown };
