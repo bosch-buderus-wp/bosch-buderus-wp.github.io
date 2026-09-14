@@ -29,6 +29,8 @@ docs:
         url: /docs/smarthome/
       - title: "Entitäten-Übersicht"
         url: /docs/smarthome/entities
+      - title: "Lokale API"
+        url: /docs/smarthome/local-api
       - title: "Benachrichtigungen"
         url: /docs/smarthome/benachrichtigungen
       - title: "Home Assistant"
