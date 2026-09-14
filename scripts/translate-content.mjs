@@ -8,6 +8,9 @@ import {
   collectSources,
   finalizeTranslation,
   hash,
+  markdownBlocks,
+  readFrontMatter,
+  reuseTranslatedBlocks,
   sourceUrlFor,
   translationFingerprint,
   translatedUrl,
@@ -23,6 +26,7 @@ const repairOnly = process.argv.includes("--repair");
 const model = process.env.OPENAI_TRANSLATION_MODEL || config.defaultModel;
 const apiKey = process.env.OPENAI_API_KEY;
 const fingerprintVersion = 2;
+const segmentVersion = 1;
 
 const sources = await collectSources(root, config);
 const routeMap = new Map(
@@ -33,6 +37,7 @@ const routeMap = new Map(
 );
 const manifest = await readJson(manifestPath, { version: 1, files: {} });
 const migrateFingerprints = manifest.fingerprintVersion !== fingerprintVersion;
+const migrateSegments = manifest.segmentVersion !== segmentVersion;
 const currentKeys = new Set();
 let translated = 0;
 let repaired = 0;
@@ -75,17 +80,27 @@ for (const source of sources) {
       if (!dryRun) await atomicWrite(source.targetPath, repairedTranslation);
       repaired += 1;
     }
-    if (!dryRun) manifest.files[sourceKey] = { fingerprint, sourceHash, target: targetKey };
+    if (!dryRun) {
+      const entry = { fingerprint, sourceHash, target: targetKey };
+      addSegmentMetadata(entry, source.content, repairedTranslation);
+      manifest.files[sourceKey] = entry;
+    }
     continue;
   }
 
   if (!forceAll && targetExists && migrateFingerprints && cached?.sourceHash === sourceHash) {
-    if (!dryRun) cached.fingerprint = fingerprint;
+    if (!dryRun) {
+      cached.fingerprint = fingerprint;
+      addSegmentMetadata(cached, source.content, await readFile(source.targetPath, "utf8"));
+    }
     skipped += 1;
     continue;
   }
 
   if (!forceAll && targetExists && manifest.files[sourceKey]?.fingerprint === fingerprint) {
+    if (!dryRun && migrateSegments) {
+      addSegmentMetadata(cached, source.content, await readFile(source.targetPath, "utf8"));
+    }
     skipped += 1;
     continue;
   }
@@ -96,8 +111,20 @@ for (const source of sources) {
   }
   if (!apiKey) throw new Error("OPENAI_API_KEY is required to translate changed files");
 
-  console.log(`Translating ${sourceKey} -> ${targetKey} with ${model}`);
-  const rawTranslation = await translate(source.content, { apiKey, model, glossary, config });
+  let rawTranslation;
+  if (!forceAll && targetExists && cached?.sourceHash !== sourceHash && cached?.bodyBlockSourceHashes) {
+    rawTranslation = await translateIncrementally(source.content, await readFile(source.targetPath, "utf8"), cached, {
+      apiKey,
+      model,
+      glossary,
+      config,
+      sourceKey,
+    });
+  }
+  if (!rawTranslation) {
+    console.log(`Translating ${sourceKey} -> ${targetKey} with ${model}`);
+    rawTranslation = await translate(source.content, { apiKey, model, glossary, config });
+  }
   const result = finalizeTranslation(rawTranslation, {
     sourceUrl,
     targetUrl: routeMap.get(sourceUrl),
@@ -106,7 +133,9 @@ for (const source of sources) {
   });
   await mkdir(path.dirname(source.targetPath), { recursive: true });
   await atomicWrite(source.targetPath, result);
-  manifest.files[sourceKey] = { fingerprint, sourceHash, target: targetKey };
+  const entry = { fingerprint, sourceHash, target: targetKey };
+  addSegmentMetadata(entry, source.content, result);
+  manifest.files[sourceKey] = entry;
   translated += 1;
 }
 
@@ -123,6 +152,7 @@ for (const [sourceKey, entry] of Object.entries(manifest.files)) {
 
 if (!dryRun) {
   manifest.fingerprintVersion = fingerprintVersion;
+  manifest.segmentVersion = segmentVersion;
   await atomicWrite(manifestPath, `${JSON.stringify(manifest, null, 2)}\n`);
 }
 console.log(
@@ -131,10 +161,14 @@ console.log(
     : `Done: ${translated} translated, ${repaired} repaired, ${skipped} unchanged`,
 );
 
-async function translate(markdown, { apiKey, model, glossary, config }) {
+async function translate(markdown, { apiKey, model, glossary, config, fragment = false }) {
+  const scope = fragment
+    ? `Translate the provided Markdown fragment from ${config.sourceLanguage} to ${config.targetLanguage}.
+Return only the translated fragment. Preserve its outer structure and do not add a code fence.`
+    : `Translate the complete Markdown document from ${config.sourceLanguage} to ${config.targetLanguage}.
+Return only the complete translated Markdown document, starting with its YAML front matter. Do not use a code fence.`;
   const instructions = `You are a technical translator for a German website about Bosch and Buderus heat pumps.
-Translate the complete Markdown document from ${config.sourceLanguage} to ${config.targetLanguage}.
-Return only the complete translated Markdown document, starting with its YAML front matter. Do not use a code fence.
+${scope}
 Preserve YAML keys, Markdown structure, Liquid tags, HTML, code blocks, inline code, formulas, URLs, anchors, file names, product names, entity IDs, API names, and Bosch/Buderus parameter names exactly.
 Translate human-readable YAML values, headings, prose, table text, link labels, image alt text, and UI labels.
 Do not add, remove, summarize, correct, or reinterpret content.
@@ -176,6 +210,39 @@ Use this glossary consistently:\n${glossary}`;
     }
   }
   throw lastError;
+}
+
+async function translateIncrementally(sourceMarkdown, targetMarkdown, cached, options) {
+  const source = readFrontMatter(sourceMarkdown);
+  const target = readFrontMatter(targetMarkdown);
+  const reusable = reuseTranslatedBlocks(source.body, target.body, cached.bodyBlockSourceHashes);
+  if (!source.frontMatter || !target.frontMatter || !reusable) return null;
+
+  let translatedFrontMatter = target.frontMatter;
+  if (cached.frontMatterSourceHash !== hash(source.frontMatter)) {
+    console.log(`Translating changed front matter in ${options.sourceKey}`);
+    const translated = await translate(`---\n${source.frontMatter}\n---\n`, { ...options, fragment: true });
+    translatedFrontMatter = readFrontMatter(translated).frontMatter;
+    if (!translatedFrontMatter) throw new Error(`Translated front matter is invalid in ${options.sourceKey}`);
+  }
+
+  for (const [index, block] of reusable.entries()) {
+    if (block.translation !== null) continue;
+    console.log(`Translating changed block ${index + 1}/${reusable.length} in ${options.sourceKey}`);
+    block.translation = await translate(block.sourceBlock, { ...options, fragment: true });
+  }
+
+  return `---\n${translatedFrontMatter}\n---\n\n${reusable.map(({ translation }) => translation.trim()).join("\n\n")}\n`;
+}
+
+function addSegmentMetadata(entry, sourceMarkdown, targetMarkdown) {
+  const source = readFrontMatter(sourceMarkdown);
+  const target = readFrontMatter(targetMarkdown);
+  const sourceBlocks = markdownBlocks(source.body);
+  const targetBlocks = markdownBlocks(target.body);
+  if (!source.frontMatter || !target.frontMatter || sourceBlocks.length !== targetBlocks.length) return;
+  entry.frontMatterSourceHash = hash(source.frontMatter);
+  entry.bodyBlockSourceHashes = sourceBlocks.map(hash);
 }
 
 async function readJson(filename, fallback) {
