@@ -1,6 +1,6 @@
 ---
-title: "Software versions, firmware and releases"
-headline: "Software versions"
+title: "Software Versions, Firmware and Releases"
+headline: "Software Versions"
 excerpt: "Overview of software versions and firmware releases for Bosch CS5800/6800i and Buderus WLW176/186i heat pumps."
 permalink: /en/docs/sw-versionen/
 toc: true
@@ -12,8 +12,8 @@ translation_generated: true
 ---
 
 The Bosch CS5800/6800i and Buderus WLW176/186i heat pumps receive new software versions for the indoor unit, outdoor unit and control panel at irregular intervals.
-Unfortunately, a new software version cannot be installed Over-the-Air.
-An update can only be carried out on site by customer service.
+Unfortunately, a new software version cannot be installed over the air.
+An update can only be performed on site by customer service.
 
 The currently installed software version can be retrieved in the service menu under _Info &rarr; System components_.
 
@@ -51,7 +51,7 @@ No further information known
 Improvements:
 
 - **EEBus**:
-  From this version onward, §14a EnWG is supported via EEBus.
+  Starting with this version, §14a EnWG is supported via EEBus.
   However, Buderus MX400 or Bosch K 40 RF is absolutely required for this.
 
 ## 9.6.0 / 9.6.1
@@ -65,17 +65,17 @@ Improvements:
 
 Improvements:
 
-- **Power consumption estimate**:
-  The heat pump does not measure power consumption; it estimates it based on the current operating state.
+- **Electricity consumption estimate**:
+  The heat pump does not measure electricity consumption, but estimates it based on the current operating state.
   The estimate was very inaccurate in previous software versions.
-  Especially at low modulation, the estimated value was at least 10% above the actual value, and therefore a much too low performance factor was calculated.
-  In this version, the estimate was significantly improved.
-  The deviation is generally less than 5%, and therefore the calculated performance factor is now also quite accurate.
+  Particularly at low modulation, the estimated value was at least 10% above the actual value, and consequently a performance factor that was far too low was calculated.
+  The estimate has been significantly improved in this version.
+  The deviation is generally less than 5%, meaning that the calculated performance factor is now also quite accurate.
 - **Compressor heater**:
   The compressor heater (crankcase heater) brings the cooled compressor to operating temperature in standby mode.
   In previous software versions, the compressor heater was activated automatically when the compressor temperature (TR1) minus the outdoor air inlet temperature (TL2) fell below 20 K.
-  This often led to unnecessarily many warm-up phases and unnecessarily high power consumption.
-  In this version, the limit was lowered to 6 K, which reduces the unnecessary warm-up phases and therefore also the power consumption.
+  This often resulted in unnecessarily many warm-up phases and unnecessarily high electricity consumption.
+  In this version, the threshold has been lowered to 6 K, reducing the unnecessary warm-up phases and thus also electricity consumption.
 
 ## 9.10.0 / 9.7.0
 
@@ -89,8 +89,8 @@ Improvements:
 Improvements:
 
 - **Defrosting**:
-  Compared with previous versions, the heat pump now defrosts somewhat earlier, but for a shorter duration.
-  This prevents the evaporator from icing up as heavily and slightly improves the performance factor.
+  Compared to previous versions, the heat pump now starts the defrost cycle somewhat earlier, but for a shorter duration.
+  This means that the evaporator no longer ices up as much, and the performance factor is slightly improved.
 
 ## 9.12.0 / 9.7.0
 
@@ -101,7 +101,7 @@ Improvements:
 
 Improvements:
 
-- **4-way valve after a power failure**:
+- **4-way valve after power failure**:
   In older versions of the outdoor unit, the 4-way valve VR4 could remain in the center position after a power failure. The resulting unintended pressure equalization can lead to messages [5184, 5161 or 5162](/en/docs/fehler/#5161-5162-und-5184-kein-druckaufbau-nach-stromausfall).
 
 ## 9.15.0 / 12.11.1
@@ -116,12 +116,12 @@ Improvements:
 Improvements:
 
 - Current **thermal output** available as an entity via [ems-esp](/en/docs/smarthome/).
-  From this version onward, you no longer need to calculate the heat output for your smart home by deriving it from the energy; instead, you can directly use [boiler/hppower](/en/docs/smarthome/entities#leistung).
-- **Temperature difference during DHW** can be reduced to 4K (previously 6K, benefit: delay for increased efficiency)
-- **Inputs** received extensive configuration options for SG-Ready, PV, EMS, ...
-- **Fan on the compressor** (PL3 fan) can be displayed on the device and created/read as individual entities via [ems-esp](/en/docs/smarthome/)
+  Starting with this version, the heat output no longer has to be calculated for your smart home by deriving it from the energy, but [boiler/hppower](/en/docs/smarthome/entities#leistung) can be used directly.
+- **Temperature difference for DHW** can be reduced to 4K (previously 6K, benefit: delay to increase efficiency)
+- **Inputs** have received extensive configuration options for SG Ready, PV, EMS, ...
+- **Fan on the compressor** (PL3 fan) can be displayed on the device and created/read as custom entities via [ems-esp](/en/docs/smarthome/)
 - **Bypass query** added
-- Number of stages in the **heating program** increased from 2 to 4
+- Number of stages for the **heating program** increased from 2 to 4
 
 ## 9.17.2 / 12.17.1
 

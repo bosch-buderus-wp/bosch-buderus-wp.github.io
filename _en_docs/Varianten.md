@@ -1,5 +1,5 @@
 ---
-title: "Variants, Output and COP"
+title: "Variants, output and COP"
 headline: "Variants"
 excerpt: "Bosch and Buderus heat pumps compared: identical models CS5800i/WLW176i, CS6800i/WLW186i, CS8800i/WLW186i MBE+ and others."
 permalink: /en/docs/varianten/
@@ -11,9 +11,9 @@ translation_url: /docs/varianten/
 translation_generated: true
 ---
 
-Bosch and Buderus are both part of the Bosch Home Comfort Group.
-Many heat pumps are therefore offered under two brand names: as **Bosch Compress** and as **Buderus Logatherm**.
-The model numbers look different even though they are based on the same technical platform.
+Bosch and Buderus both belong to the Bosch Home Comfort Group.
+Many heat pumps are therefore offered under two brand names: as **Bosch Compress** and **Buderus Logatherm**.
+The model numbers look different, although they are based on the same technical platform.
 
 | Bosch Compress | Buderus model | Generation and key difference |
 | :-------------- | :------------------------- | :------------------------------------- |
@@ -27,13 +27,13 @@ The model numbers look different even though they are based on the same technica
 The suffixes are important: A **WLW186i with outdoor unit WLW MB AR** is not the same heat pump as a **WLW186i MBE+ AR**.
 The first belongs to the CS5800i/6800i family, while the second belongs to the new CS8800i family.
 
-The output classes are partly named differently by Bosch and Buderus.
+The output classes are sometimes named differently by Bosch and Buderus.
 For example, the same older device platform can be found as Bosch CS7001i AW 7 and Buderus WLW196i-6.
 The number in the model name is therefore not a reliable 1:1 comparison of the actual heating output.
 
 ## CS5800i/6800i and WLW176i/186i
 
-The focus of this documentation is the **Bosch Compress CS5800i AW / CS6800i AW** and the identical **Buderus Logatherm WLW176i / WLW186i AR**.
+This documentation focuses on the **Bosch Compress CS5800i AW / CS6800i AW** and the identical **Buderus Logatherm WLW176i / WLW186i AR**.
 CS5800i and CS6800i use the same outdoor units as WLW176i and WLW186i.
 Whether the system is designated as 5800i/176i or 6800i/186i is determined by the selected indoor unit and therefore, in particular, by the maximum possible flow temperature.
 
@@ -87,7 +87,7 @@ The indoor units differ according to the maximum possible flow temperature and t
 ## Other model families
 
 Parts of this documentation can also be applied to the following air-to-water heat pumps.
-However, depending on the generation, the refrigerant circuit, hydraulics, control system, menu labels and the entities available via EMS-ESP differ.
+However, depending on the generation, the refrigerant circuit, hydraulics, control system, menu names and the entities available through EMS-ESP differ.
 
 ### Bosch CS3800i AW = Buderus WLW166i MBB AR
 
@@ -98,7 +98,7 @@ The **Bosch Compress 3800i AW** and the **Buderus Logatherm WLW166i MBB AR** are
 - **Max. flow temperature:** up to 75 °C; up to 70 °C at an outdoor temperature of −10 °C
 - **Efficiency:** A+++; SCOP up to 5.14 at W35 and 3.87 at W55
 
-The series is intended for single-family homes and small multi-family homes in new builds and existing buildings.
+The series is intended for single-family and small multi-family homes in new builds and existing buildings.
 The small outdoor units have one fan, while the two larger devices have two fans.
 
 | Design | Bosch | Buderus | Integrated tank |
@@ -125,13 +125,13 @@ The **Bosch Compress 7001i AW** and the **Buderus Logatherm WLW196i AR** belong 
 | floor-standing with buffer tank | AWMB | TP120 | 120 l buffer tank |
 | Tower | AWM / AWMS | T190 / TS185 | approx. 180–190 l domestic hot water tank |
 
-`AWMS` or `TS185` additionally has a solar heat exchanger.
+`AWMS` or `TS185` also has a solar heat exchanger.
 
 Sources: [Bosch Compress 7001i AW](https://www.bosch-homecomfort.com/de/de/ocs/wohngebaeude/compress-7001i-aw-854515-p/), [Buderus Logatherm WLW196i AR](https://www.buderus.de/de/produkte/logatherm-wlw196i-ar--72232)
 
 ### Bosch CS7400i AW = Buderus WLW196i AR S+
 
-The **Bosch Compress 7400i AW** and the **Buderus Logatherm WLW196i AR S+** are the low-noise variants of the older R410A family.
+The **Bosch Compress 7400i AW** and the **Buderus Logatherm WLW196i AR S+** are the low-noise-optimized variants of the older R410A family.
 Depending on the year of manufacture and market, the designation CS7401i may also appear in technical documents.
 
 - **Refrigerant:** R410A
@@ -145,10 +145,10 @@ Depending on the year of manufacture and market, the designation CS7401i may als
 | floor-standing with buffer tank | AWMB | TP120 S+ | 120 l buffer tank |
 | Tower | AWM / AWMS | T190 S+ / TS185 S+ | approx. 180–190 l domestic hot water tank |
 
-`AWMS` or `TS185 S+` additionally has a solar heat exchanger.
+`AWMS` or `TS185 S+` also has a solar heat exchanger.
 
-Compared with CS7001i/WLW196i, the main optimizations concern sound deflection, the refrigerant circuit, and compressor and fan operation.
-The selection is therefore limited to two smaller output classes.
+Compared with CS7001i/WLW196i, sound redirection, the refrigerant circuit, and compressor and fan operation have primarily been optimized.
+However, the selection is limited to two smaller output classes.
 
 Sources: [Bosch Compress 7400i AW](https://www.bosch-homecomfort.com/de/de/wohngebaeude/unternehmen/presse/pressemeldung-compress-7400i-aw/), [Technical data Bosch CS7400i AW (PDF)](https://www.bosch-homecomfort.com/de/media/country_pool/bilder/broschueren/flyer_compress_7400i_aw_fk.pdf), [Buderus Logatherm WLW196i AR S+](https://www.buderus.de/de/produkte/logatherm-wlw196i-ar-s--73348)
 
@@ -167,7 +167,7 @@ The **Bosch Compress 8800i AW** and the **Buderus Logatherm WLW186i MBE+ AR** fo
 | floor-standing with buffer tank | AWMBi D | TP70 | 70 l buffer tank |
 
 The new MBE+ outdoor unit must not be confused with the previous WLW-MB outdoor units of the CS5800i/6800i or WLW176i/186i family.
-Instead of a rotary piston compressor, this model family uses a scroll compressor, which is somewhat more efficient but cannot modulate down as far, which could lead to more frequent cycling.
+Instead of a rotary piston compressor, this model family uses a scroll compressor, which is somewhat more efficient but cannot modulate down as far, potentially resulting in more frequent cycling.
 The manufacturer data specifies a minimum output of 4.0 kW for MBE+ at A2/W35.
 
 Sources: [Bosch Compress 8800i AW](https://www.bosch-homecomfort.com/de/de/ocs/wohngebaeude/compress-8800i-aw-21901211-p/), [Buderus Logatherm WLW186i MBE+ AR](https://www.buderus.de/de/logathermwlw186imbe%2Bar)

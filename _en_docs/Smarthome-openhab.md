@@ -1,5 +1,5 @@
 ---
-title: "Integrating a heat pump into OpenHAB with EMS-ESP"
+title: "Integrating a Heat Pump into OpenHAB with EMS-ESP"
 headline: "OpenHAB"
 excerpt: "Guide to integrating Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP."
 permalink: /en/docs/smarthome/openhab
@@ -14,8 +14,8 @@ translation_generated: true
 This guide assumes that you have already installed [ems-esp](/en/docs/smarthome/).
 
 If OpenHAB was installed via [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html), Mosquitto can be installed via `sudo openhabian-config` -> `20 | Optional Components`.
-You then need to add the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/), and through auto-discovery all entities are automatically detected as _Things_.
-Alternatively, you can create all or selected entities manually as a _Thing_.
+Then you still need to add the [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/), and through auto-discovery all entities are automatically detected as _Things_.
+Alternatively, you can create all or selected entities manually as _Things_.
 
 <details markdown="1">
 <summary>mqtt.things</summary>
@@ -30,12 +30,12 @@ Thing mqtt:topic:emsesp "Heatpump" (mqtt:broker:myMQTTBroker) [ availabilityTopi
 Channels:
 Type number : TxFails "TX Fails" [stateTopic="ems-esp/heartbeat", transformationPattern="JSONPATH:$.txfails"]
 Type number : NrgTotal "Energy Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.nrgtotal"]
-Type number : NrgWwTotal "Energy Warm Water Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.nrg"]
+Type number : NrgWwTotal "Energy Domestic Hot Water Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.nrg"]
 Type number : NrgHeatingTotal "Energy Heating Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.nrgsuppheating"]
 Type number : MeterTotal "Meter Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.metertotal"]
 Type number : PowerCons "Power Consumption" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.hppower"]
 Type number : NrgConsHeatingTotal "Energy Consumption Heating Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.nrgconscompheating"]
-Type number : NrgConsWarmWaterTotal "Energy Consumption Warm Water Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.meter"]
+Type number : NrgConsWarmWaterTotal "Energy Consumption Domestic Hot Water Total" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.meter"]
 Type number : Modulation "Modulation" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.curburnpow"]
 Type number : OutdoorTemp "Outdoor Temperature" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.outdoortemp"]
 Type number : SelectedFlowTemp "Selected Flow Temperature" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.selflowtemp"]
@@ -48,11 +48,11 @@ Type number : CondenserReturnTemp "Condenser Return Temperature (TR3)" [stateTop
 Type number : EvaporatorTemp "Evaporator Temperature (TR5)" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.hptr5"]
 Type number : EvaporatorReturnTemp "Evaporator Return Temperature (TR4)" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.hptr4"]
 Type number : AirInletTemp "Air Inlet Temperature (TL2)" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.hptl2"]
-Type number : CurrWarmWaterTemp "Current Warm Water Temperature" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.curtemp"]
+Type number : CurrWarmWaterTemp "Current Domestic Hot Water Temperature" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.dhw.curtemp"]
 Type number : RoomSetpointTemp "Room Setpoint Temperature" [stateTopic="ems-esp/thermostat_data", transformationPattern="JSONPATH:$.hc1.seltemp"]
 Type string : HeatingActive "Heating Active" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.heatingactive"]
-Type string : WarmWaterActive "Warm Water Active" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.tapwateractive"]
-Type string : WarmWaterMode "Warm Water Mode" [stateTopic="ems-esp/thermostat_data", transformationPattern="JSONPATH:$.dhw.mode"]
+Type string : WarmWaterActive "Domestic Hot Water Active" [stateTopic="ems-esp/boiler_data", transformationPattern="JSONPATH:$.tapwateractive"]
+Type string : WarmWaterMode "Domestic Hot Water Mode" [stateTopic="ems-esp/thermostat_data", transformationPattern="JSONPATH:$.dhw.mode"]
 }
 
 ```
