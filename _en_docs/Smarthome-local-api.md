@@ -31,22 +31,22 @@ You need **Login** and **Pass** to issue the Access Token.
 They are printed on a sticker either on the indoor unit of your heat pump, on the plugged-in WLAN gateway, on the front of the Quick Start Guide, or in the packaging of your WLAN gateway.
 If you can no longer find the sticker, scan the QR code on the WLAN gateway.
 It has the following format: \
-`V:1;L:<euer-login>;P:<euer-pass>;MAC:<eure-mac-addresse>;N:<modell-eures-gateways>`
+`V:1;L:<your-login>;P:<your-pass>;MAC:<your-mac-address>;N:<model-of-gateway>`
 
 1. Press the **WLAN and wireless buttons on the gateway simultaneously for one second**.
    The LEDs should briefly flash blue.
-2. Replace the variables `<euer-wärmepumpen-hostname>`, `<login-vom-aufkleber>`, `<pass-vom-aufkleber-ohne-bindestriche>` and `<ein-beliebiger-name-eures-clients>` in the following cURL command and then execute it within five minutes:
+2. Replace the variables `<your-heatpump-hostname>`, `<login-on-sticker>`, `<pass-on-sticker-without-dashes>` and `<arbitraray-name-for-your-client>` in the following cURL command and then execute it within five minutes:
 
 ```bash
    curl \
      --silent --show-error --fail-with-body \
      --insecure \
-     --request POST "https://<euer-wärmepumpen-hostname>:9442/auth/token" \
+     --request POST "https://<your-heatpump-hostname>:9442/auth/token" \
      --header "Content-Type: application/x-www-form-urlencoded" \
      --data-urlencode "grant_type=password" \
-     --data-urlencode "username=<login-vom-aufkleber>" \
-     --data-urlencode "password=<pass-vom-aufkleber-ohne-bindestriche>" \
-     --data-urlencode "client_name=<ein-beliebiger-name-eures-clients>"
+     --data-urlencode "username=<login-on-sticker>" \
+     --data-urlencode "password=<pass-on-sticker-without-dashes>" \
+     --data-urlencode "client_name=<arbitraray-name-for-your-client>"
    ```
 
 The response contains the required value `access_token`.
