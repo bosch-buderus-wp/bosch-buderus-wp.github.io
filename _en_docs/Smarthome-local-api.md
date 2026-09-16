@@ -35,7 +35,7 @@ It has the following format: \
 
 1. Press the **WLAN and wireless buttons on the gateway simultaneously for one second**.
    The LEDs should briefly flash blue.
-2. Replace the variables `<your-heatpump-hostname>`, `<login-on-sticker>`, `<pass-on-sticker-without-dashes>` and `<arbitraray-name-for-your-client>` in the following cURL command and then execute it within five minutes:
+2. Replace the variables `<your-heatpump-hostname>`, `<login-on-sticker>`, `<pass-on-sticker-without-dashes>` and `<any-name-for-your-client>` in the following cURL command and then execute it within five minutes:
 
 ```bash
    curl \
@@ -46,7 +46,7 @@ It has the following format: \
      --data-urlencode "grant_type=password" \
      --data-urlencode "username=<login-on-sticker>" \
      --data-urlencode "password=<pass-on-sticker-without-dashes>" \
-     --data-urlencode "client_name=<arbitraray-name-for-your-client>"
+     --data-urlencode "client_name=<any-name-for-your-client>"
    ```
 
 The response contains the required value `access_token`.

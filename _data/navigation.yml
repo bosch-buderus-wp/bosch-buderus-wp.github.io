@@ -111,6 +111,8 @@ en_docs:
         url: /en/docs/smarthome/
       - title: "Entity overview"
         url: /en/docs/smarthome/entities
+      - title: "Local API"
+        url: /en/docs/smarthome/local-api
       - title: "Notifications"
         url: /en/docs/smarthome/benachrichtigungen
       - title: "Home Assistant"
