@@ -2,6 +2,7 @@
 title: Legal Notice
 excerpt: Legal Notice
 permalink: /en/impressum/
+newsletter: false
 toc: false
 layout: single
 read_time: false
