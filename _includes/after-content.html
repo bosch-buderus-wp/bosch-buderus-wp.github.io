@@ -1,0 +1,13 @@
+{% unless page.newsletter == false or page.lang == "en" or page.layout == "splash" %}
+  <section class="newsletter-cta" aria-labelledby="newsletter-cta-title">
+    <span class="newsletter-cta__mark" aria-hidden="true">✦</span>
+    <div class="newsletter-cta__copy">
+      <span class="newsletter-cta__eyebrow">Wärmepumpen-Newsletter</span>
+      <h2 id="newsletter-cta-title">Alles rund um deine Wärmepumpe – von Varianten bis Smarthome.</h2>
+    </div>
+    <a class="newsletter-cta__link" href="{{ '/newsletter/' | relative_url }}">
+      <span>Anmelden</span>
+      <span aria-hidden="true">↗</span>
+    </a>
+  </section>
+{% endunless %}

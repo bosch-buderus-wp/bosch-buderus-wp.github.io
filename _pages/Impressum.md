@@ -2,6 +2,7 @@
 title: Impressum
 excerpt: Impressum
 permalink: /impressum/
+newsletter: false
 toc: false
 layout: single
 read_time: false

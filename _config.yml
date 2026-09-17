@@ -39,9 +39,15 @@ footer:
     - label: "Unterstützung"
       icon: "fa-fw fa-solid fa-money-bill-1"
       url: "https://github.com/sponsors/bosch-buderus-wp"
+    - label: "Newsletter"
+      icon: "fa-fw fa-solid fa-envelope"
+      url: "/newsletter/"
     - label: "Impressum"
       icon: "fa-fw fa-solid fa-stamp"
       url: "/impressum/"
+    - label: "Datenschutz"
+      icon: "fa-fw fa-solid fa-shield-halved"
+      url: "/datenschutz/"
 
 # Outputting
 permalink: /:categories/:title/
