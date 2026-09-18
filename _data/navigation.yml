@@ -90,41 +90,41 @@ links:
 
 en_docs:
   - title: "Variants"
-    url: /en/docs/varianten/
+    url: /en/docs/variants/
   - title: "Technical structure"
-    url: /en/docs/technischer-aufbau/
+    url: /en/docs/technical-design/
   - title: "Settings"
     url: /en/docs/settings/
   - title: "Software versions"
-    url: /en/docs/sw-versionen/
+    url: /en/docs/software-versions/
   - title: "Optimizations"
-    url: /en/docs/optimierungen/
+    url: /en/docs/optimizations/
   - title: "Troubleshooting"
-    url: /en/docs/fehler/
+    url: /en/docs/troubleshooting/
   - title: "App"
     url: /en/docs/app/
   - title: "Glossary"
-    url: /en/docs/glossar/
+    url: /en/docs/glossary/
   - title: "Smart home"
     children:
       - title: "EMS-ESP"
         url: /en/docs/smarthome/
       - title: "Entity overview"
-        url: /en/docs/smarthome/entities
+        url: /en/docs/smarthome/entities/
       - title: "Local API"
-        url: /en/docs/smarthome/local-api
+        url: /en/docs/smarthome/local-api/
       - title: "Notifications"
-        url: /en/docs/smarthome/benachrichtigungen
+        url: /en/docs/smarthome/notifications/
       - title: "Home Assistant"
-        url: /en/docs/smarthome/ha
+        url: /en/docs/smarthome/home-assistant/
       - title: "OpenHAB"
-        url: /en/docs/smarthome/openhab
+        url: /en/docs/smarthome/openhab/
       - title: "Grafana"
-        url: /en/docs/smarthome/grafana
+        url: /en/docs/smarthome/grafana/
       - title: "evcc"
-        url: /en/docs/smarthome/evcc
+        url: /en/docs/smarthome/evcc/
       - title: "AI"
-        url: /en/docs/smarthome/ai
+        url: /en/docs/smarthome/ai/
   - title: "Links"
     url: /en/links/
 
@@ -140,7 +140,7 @@ en_metrics:
       - title: "Daily overview"
         url: /en/metrics/#/daily
   - title: "Participation guide"
-    url: /en/metrics/howto
+    url: /en/metrics/howto/
 
 en_links:
   - title: "General"
