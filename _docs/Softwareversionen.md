@@ -19,7 +19,7 @@ Die aktuell installierte Softwareversion kann im Servicemenü unter _Info &rarr;
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 23.03.03-5.27 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 23.03.03-5.27 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.07
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.07
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> März 2023
 
@@ -30,7 +30,7 @@ Keine weiteren Informationen bekannt
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 23.08.08-5.35 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 23.08.08-5.35 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.07
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.07
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> August 2023
 
@@ -41,7 +41,7 @@ Keine weiteren Informationen bekannt
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 7.10.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 7.10.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.09
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.09
 
 Verbesserungen:
 
@@ -54,7 +54,7 @@ Verbesserungen:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.6.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.6.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.10
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> August 2024
 
@@ -77,7 +77,7 @@ Verbesserungen:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.10.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.10
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Dezember 2024
 
@@ -92,7 +92,7 @@ Verbesserungen:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.12.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 9.7.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.12
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.12
 
 Verbesserungen:
 
@@ -104,7 +104,7 @@ Verbesserungen:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.15.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 12.11.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.11
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.12
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Oktober 2025
 
@@ -118,12 +118,23 @@ Verbesserungen:
 - **Bypass Abfrage** hinzugefügt
 - Anzahl der Stufen beim **Heizprogramm** von 2 auf 4 erhöht
 
+## 9.16.0 / 12.11.1
+
+{: .notice}
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.16.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 12.11.1 \
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.12
+
+<i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Mai 2026
+
+Änderungen noch unbekannt
+
 ## 9.17.2 / 12.17.1
 
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Außeneinheit: 9.17.2 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Inneneinheit: 12.17.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: N47.12
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Bedienfeld: 47.12
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> Juli 2026
 
