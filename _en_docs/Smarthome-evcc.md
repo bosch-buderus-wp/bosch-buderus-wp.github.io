@@ -36,7 +36,7 @@ To make the `System settings` &rarr; `Photovoltaic system` menu visible on the h
 You can then configure the following settings under `System settings` &rarr; `Photovoltaic system`:
 
 - `Increase desired temperature when heating`: when _evcc_ signals PV surplus to the heat pump, the room temperature setpoint is increased by the configured value
-- `Increased domestic hot water comfort`: with PV surplus, the domestic hot water is heated to the stop temperature of the [_Comfort_](/en/docs/einstellungen/#modi) operating mode.
+- `Increased domestic hot water comfort`: with PV surplus, the domestic hot water is heated to the stop temperature of the [_Comfort_](/en/docs/settings/#modi) operating mode.
 - `Reduce desired temperature when cooling`: with PV surplus, the room temperature setpoint is reduced by the configured value
 - `Cooling only with PV energy`: cooling operation is activated only when there is PV surplus
 - `Max. power for compressor`: limits the compressor to the configured power when there is PV surplus

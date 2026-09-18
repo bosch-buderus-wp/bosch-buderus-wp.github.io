@@ -54,6 +54,7 @@ permalink: /:categories/:title/
 
 include:
   - _pages
+  - _en_pages
 
 exclude:
   - assets/js/heatpump-simulator/node_modules

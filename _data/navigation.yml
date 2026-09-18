@@ -94,7 +94,7 @@ en_docs:
   - title: "Technical structure"
     url: /en/docs/technischer-aufbau/
   - title: "Settings"
-    url: /en/docs/einstellungen/
+    url: /en/docs/settings/
   - title: "Software versions"
     url: /en/docs/sw-versionen/
   - title: "Optimizations"

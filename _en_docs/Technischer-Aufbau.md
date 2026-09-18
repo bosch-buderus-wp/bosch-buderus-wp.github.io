@@ -57,7 +57,7 @@ The refrigerant circuit is designed for outdoor temperatures from −22 to 45 °
 Outside this range, the electric backup heater takes over.
 If the outdoor unit is in direct sunlight, the limit of 45 °C can easily be exceeded in summer.
 This can cause the domestic hot water to be heated solely by the electric backup heater.
-Anyone wishing to counteract this should schedule domestic hot water production for the morning or evening hours (see [Domestic hot water production settings](/en/docs/einstellungen/#warmwasserbereitung)).
+Anyone wishing to counteract this should schedule domestic hot water production for the morning or evening hours (see [Domestic hot water production settings](/en/docs/settings/#warmwasserbereitung)).
 Restarting occurs at −17 °C and +42 °C, respectively.
 
 

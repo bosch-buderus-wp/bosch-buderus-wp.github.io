@@ -50,7 +50,17 @@ jobs:
           git fetch origin "$TRANSLATION_BRANCH:$TRANSLATION_BRANCH" || true
           if git show-ref --verify --quiet "refs/heads/$TRANSLATION_BRANCH"; then
             git switch "$TRANSLATION_BRANCH"
-            git merge --no-edit "$GITHUB_SHA"
+            if ! git merge --no-edit "$GITHUB_SHA"; then
+              conflicts="$(git diff --name-only --diff-filter=U)"
+              if [[ "$conflicts" != ".translation-cache.json" ]]; then
+                echo "::error::Merge conflicts require manual resolution:"
+                printf '%s\n' "$conflicts"
+                exit 1
+              fi
+              git checkout --ours .translation-cache.json
+              git add .translation-cache.json
+              git commit --no-edit
+            fi
           else
             git switch --create "$TRANSLATION_BRANCH" "$GITHUB_SHA"
           fi
@@ -65,16 +75,17 @@ jobs:
           else
             node scripts/translate-content.mjs
           fi
+          node scripts/translate-content.mjs --repair
 
       - name: Commit generated translations to review branch
         id: commit
         run: |
-          if [[ -z "$(git status --porcelain -- .translation-cache.json _en_docs _en_xps en)" ]]; then
+          if [[ -z "$(git status --porcelain -- .translation-cache.json _en_docs _en_xps _en_pages)" ]]; then
             echo "No translation changes"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git add .translation-cache.json _en_docs _en_xps en
+          git add .translation-cache.json _en_docs _en_xps _en_pages
           git commit -m "Update English translations"
           git push --set-upstream origin "$TRANSLATION_BRANCH"
           echo "changed=true" >> "$GITHUB_OUTPUT"

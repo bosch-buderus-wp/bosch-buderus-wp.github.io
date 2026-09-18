@@ -60,6 +60,11 @@ export function translatedUrl(sourceUrl) {
   return normalizeUrl(`/en${sourceUrl}`);
 }
 
+export function targetUrlFor(source, sourceUrl = sourceUrlFor(source, source.group)) {
+  const configuredUrl = source.group.targetPermalinkByFile?.[source.relativePath];
+  return configuredUrl ? normalizeUrl(configuredUrl) : translatedUrl(sourceUrl);
+}
+
 export function normalizeUrl(url) {
   const normalized = `/${url}`.replace(/\/{2,}/g, "/");
   return normalized;
@@ -97,6 +102,11 @@ export function rewriteInternalUrls(markdown, routeMap) {
     .filter(([sourceUrl]) => sourceUrl !== "/")
     .sort(([a], [b]) => b.length - a.length);
 
+  for (const [sourceUrl, targetUrl] of pageRoutes) {
+    const previousTargetUrl = translatedUrl(sourceUrl);
+    if (previousTargetUrl !== targetUrl) result = replaceRoute(result, previousTargetUrl, targetUrl);
+  }
+
   if (pageRoutes.length > 0) {
     const alternatives = pageRoutes
       .map(([sourceUrl]) => sourceUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
@@ -115,6 +125,11 @@ export function rewriteInternalUrls(markdown, routeMap) {
   return result;
 }
 
+function replaceRoute(markdown, sourceUrl, targetUrl) {
+  const escapedSourceUrl = sourceUrl.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return markdown.replace(new RegExp(`${escapedSourceUrl}(?=[#?'\\"\\s)]|$)`, "g"), targetUrl);
+}
+
 export async function collectSources(root, config) {
   const sources = [];
   for (const group of config.groups) {
@@ -123,7 +138,6 @@ export async function collectSources(root, config) {
     for (const absolutePath of files) {
       const relativePath = path.relative(sourceRoot, absolutePath);
       if (group.include && !group.include.includes(relativePath)) continue;
-      if (config.excludeFilenameSuffixes.some((suffix) => relativePath.endsWith(suffix))) continue;
       sources.push({
         absolutePath,
         relativePath,

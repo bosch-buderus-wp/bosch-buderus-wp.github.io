@@ -131,7 +131,7 @@ The legend also lists the average energy used for heating operation (7.69 kWh) a
 
 This chart shows the temperature profile over time for the water in the domestic hot water tank.
 This allows you to check how often and at what time of day your domestic hot water is heated (see also [Optimizations](/en/docs/optimierungen/#tageszeit)).
-Under _Thresholds_ in the visualization settings, you can enter your [start temperature](/en/docs/einstellungen/#warmwasserbereitung).
+Under _Thresholds_ in the visualization settings, you can enter your [start temperature](/en/docs/settings/#warmwasserbereitung).
 Thresholds are displayed as a horizontal line.
 {% endcapture %}
 {{ dashboard-emsesp-influxdb-details2 | markdownify }}

@@ -203,7 +203,7 @@ You then simply press the button or say “Alexa, shower” to start the circula
 
 ## Cycling Behavior
 
-Using the configured [heating curve](/en/docs/einstellungen/#heizkurve), the heat pump determines the required target flow temperature for the current/damped outdoor temperature.
+Using the configured [heating curve](/en/docs/settings/#heizkurve), the heat pump determines the required target flow temperature for the current/damped outdoor temperature.
 Ideally, the actual flow temperature in the heating circuit (T0) would always follow the target flow temperature exactly.
 However, especially during the transitional period with comparatively high outdoor temperatures, this is not always possible because [modulation](/en/docs/technischer-aufbau/#modulation) cannot reduce the output arbitrarily far.
 Depending on the model, the limit is between 12% and 25% of maximum output.
@@ -230,7 +230,7 @@ If your value is very low, e.g. less than 1, you can try the following optimizat
    If the minimum flow temperature were set to 28 °C, the yellow line in the image above would not continue falling at 10:30 a.m.
    This would prevent the switch-off threshold from being reached and the heat pump would continue running.
    However, this naturally causes the room temperature to rise and you consume unnecessary electricity.
-2. Alternatively or additionally, you can try to accept the cycling but reduce the number of cycles by using the [room temperature night setback](/en/docs/einstellungen/#raumtemperatur).
+2. Alternatively or additionally, you can try to accept the cycling but reduce the number of cycles by using the [room temperature night setback](/en/docs/settings/#raumtemperatur).
    This allows you to significantly reduce the room temperature for several hours, which will probably force the heat pump to switch off.
    The flow temperature will then probably have fallen significantly, and the heat pump will need several operating hours without cycling to reach the target flow temperature again.
    Fluctuating room temperatures may reduce comfort.
@@ -269,11 +269,11 @@ The following 6-step guide to hydronic balancing comes from [Haustechnikdialog.d
    Hydronic balancing is not a one-time task, but rather a gradual fine adjustment over several cold days or even an entire heating season.
 
 The procedure should be carried out on a cold day with subzero temperatures and little solar radiation.
-To adjust the heating curve in steps 2 and 5, reduce the [flow temperature at the design outdoor temperature (DOT)](/en/docs/einstellungen/#vorlauftemperatur-nat).
+To adjust the heating curve in steps 2 and 5, reduce the [flow temperature at the design outdoor temperature (DOT)](/en/docs/settings/#vorlauftemperatur-nat).
 It should also be noted that it makes no sense for the target temperatures in adjacent rooms to differ greatly.
 A difference of a few degrees is fine, but if the differences are too large, the cold rooms are simply heated by the warm rooms, and a higher flow temperature is required in the warmer room again.
 
-Before adjusting the heating curve at the DOT, you should set the [heating limit temperature](/en/docs/einstellungen/#heizgrenze).
+Before adjusting the heating curve at the DOT, you should set the [heating limit temperature](/en/docs/settings/#heizgrenze).
 To do this, simply check in autumn at outdoor temperatures of around 15°C at which temperature you stop feeling comfortable in the house.
 This naturally varies from person to person.
 To prevent unnecessary cycling, a lower heating limit temperature is preferable.

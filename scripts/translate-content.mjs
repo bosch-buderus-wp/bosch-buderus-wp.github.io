@@ -12,8 +12,8 @@ import {
   readFrontMatter,
   reuseTranslatedBlocks,
   sourceUrlFor,
+  targetUrlFor,
   translationFingerprint,
-  translatedUrl,
 } from "./translation-lib.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -32,7 +32,7 @@ const sources = await collectSources(root, config);
 const routeMap = new Map(
   sources.map((source) => {
     const sourceUrl = sourceUrlFor(source, source.group);
-    return [sourceUrl, translatedUrl(sourceUrl)];
+    return [sourceUrl, targetUrlFor(source, sourceUrl)];
   }),
 );
 const manifest = await readJson(manifestPath, { version: 1, files: {} });
