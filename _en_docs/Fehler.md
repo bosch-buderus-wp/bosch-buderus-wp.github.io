@@ -2,7 +2,7 @@
 title: "Common Operating Errors"
 headline: "Troubleshooting"
 excerpt: "Errors of the Bosch CS5800/6800i and Buderus WLW176/186i with explanations and solutions"
-permalink: /en/docs/fehler/
+permalink: /en/docs/troubleshooting/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -25,7 +25,7 @@ Possible messages include:
 - **5161** (Customer alarm): No pressure build-up during compressor operation.
 - **5162** (Installer info): Pressure difference between the high- and low-pressure sides too low for the switching operation of the 4-way valve. Bosch also specifies a VR4 stuck in the center position as a possible cause for this.
 
-Bosch/Buderus integrated a bug fix for this behavior after a power failure in [9.12.0 / 9.7.0](/en/docs/sw-versionen/#9120--970). If 5161, 5162, or 5184 occur immediately after a power failure, the software version of the outdoor unit should therefore be checked first. If an older version is installed, the specialist company should be asked about an update before a hardware defect is assumed.
+Bosch/Buderus integrated a bug fix for this behavior after a power failure in [9.12.0 / 9.7.0](/en/docs/software-versions/#9120--970). If 5161, 5162, or 5184 occur immediately after a power failure, the software version of the outdoor unit should therefore be checked first. If an older version is installed, the specialist company should be asked about an update before a hardware defect is assumed.
 Sometimes the jammed 4-way valve becomes unstuck if the system is disconnected from the power supply several times for a few minutes.
 
 Source: [Bosch service manual](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)

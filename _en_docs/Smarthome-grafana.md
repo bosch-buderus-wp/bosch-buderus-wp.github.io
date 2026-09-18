@@ -2,7 +2,7 @@
 title: "Visualizing a Heat Pump in Grafana with InfluxDB"
 headline: "Grafana"
 excerpt: "Guide to visualizing measurement values from Bosch CS5800/6800i and Buderus WLW176/186i in Grafana via InfluxDB and EMS-ESP."
-permalink: /en/docs/smarthome/grafana
+permalink: /en/docs/smarthome/grafana/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -103,7 +103,7 @@ The following data is displayed in the chart below:
 
 - _Electrical power_: slightly smoothed entity _hpcurrpower_
 - _Thermal power_: slightly smoothed derivative of the entity _nrgtotal_.
-  The dips in thermal power with a negative performance factor are [defrost cycles](https://bosch-buderus-wp.github.io/en/docs/technischer-aufbau/#abtauvorgang).
+  The dips in thermal power with a negative performance factor are [defrost cycles](https://bosch-buderus-wp.github.io/en/docs/technical-design/#abtauvorgang).
 - _Performance factor_: Quotient of _nrgtotal_ and _hpcurrpower_
 - _Modulation_: Entity _curbunpow_
 - _Outdoor temperature_: Entity _outdoortemp_
@@ -130,7 +130,7 @@ The legend also lists the average energy used for heating operation (7.69 kWh) a
 **Domestic hot water temperature profile**
 
 This chart shows the temperature profile over time for the water in the domestic hot water tank.
-This allows you to check how often and at what time of day your domestic hot water is heated (see also [Optimizations](/en/docs/optimierungen/#tageszeit)).
+This allows you to check how often and at what time of day your domestic hot water is heated (see also [Optimizations](/en/docs/optimizations/#tageszeit)).
 Under _Thresholds_ in the visualization settings, you can enter your [start temperature](/en/docs/settings/#warmwasserbereitung).
 Thresholds are displayed as a horizontal line.
 {% endcapture %}

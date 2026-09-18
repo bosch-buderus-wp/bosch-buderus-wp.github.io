@@ -2,7 +2,7 @@
 title: "Notifications via EMS-ESP"
 headline: "Heat pump notifications"
 excerpt: "Instructions for notifications and alarms for Bosch CS5800/6800i and Buderus WLW176/186i with EMS-ESP."
-permalink: /en/docs/smarthome/benachrichtigungen
+permalink: /en/docs/smarthome/notifications/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -26,7 +26,7 @@ Then simply use the planner/scheduler of your [ems-esp](/en/docs/smarthome/) wit
 
 _ntfy.sh_ is a free platform without registration requirements that makes it very easy to send notifications, which are then received as push notifications on Android or iOS devices and even as desktop notifications on your computer.
 
-With the help of the `Planner` of your ems-esp, you can trigger a notification for every change to the [entities](/en/docs/smarthome/entities) whose status interests you.
+With the help of the `Planner` of your ems-esp, you can trigger a notification for every change to the [entities](/en/docs/smarthome/entities/) whose status interests you.
 
 ## Setup
 

@@ -2,7 +2,7 @@
 title: "Glossary: Terms, Abbreviations and Parameters"
 headline: "Glossary"
 excerpt: "Glossary for Bosch CS5800/6800i and Buderus WLW176/186i with terms, abbreviations and parameters such as COP, SPF, HK1, pressure setpoint and more."
-permalink: /en/docs/glossar/
+permalink: /en/docs/glossary/
 toc: false
 sidebar:
   nav: "en_docs"
