@@ -11,8 +11,8 @@ translation_url: /docs/smarthome/
 translation_generated: true
 ---
 
-Below you will find instructions on how to integrate the Bosch CS5800/6800i or Buderus WLW176/186i into open smart home systems such as [OpenHAB](/en/docs/smarthome/openhab) or [Home Assistant](/en/docs/smarthome/ha), or energy management systems such as [evcc](/en/docs/smarthome/evcc).
-It also describes how to visualize the measured values in [Grafana](/en/docs/smarthome/grafana), integrate the heat pump into [Gen-AI](/en/docs/smarthome/ai) applications such as Anthropic Claude, or simply receive [notifications](/en/docs/smarthome/benachrichtigungen) from the heat pump on your smartphone.
+Below you will find instructions on how to integrate the Bosch CS5800/6800i or Buderus WLW176/186i into open smart home systems such as [OpenHAB](/en/docs/smarthome/openhab/) or [Home Assistant](/en/docs/smarthome/home-assistant/), or energy management systems such as [evcc](/en/docs/smarthome/evcc/).
+It also describes how to visualize the measured values in [Grafana](/en/docs/smarthome/grafana/), integrate the heat pump into [Gen-AI](/en/docs/smarthome/ai/) applications such as Anthropic Claude, or simply receive [notifications](/en/docs/smarthome/notifications/) from the heat pump on your smartphone.
 
 ## EMS-ESP
 
@@ -73,14 +73,14 @@ In the web interface, your heat pump appears with 3 devices:
 - **K30RF/WiFi module** (Gateway Module): optional Wi-Fi module for connecting to the Bosch/Buderus app
 
 The entities that can be read from the devices are either measured values (e.g. flow temperature), status information (e.g. domestic hot water production active), settings (e.g. desired room temperature), or commands (e.g. start disinfection).
-In my [entity overview](/en/docs/smarthome/entities), you will find a list with explanations of the most important entities.
+In my [entity overview](/en/docs/smarthome/entities/), you will find a list with explanations of the most important entities.
 
 You can now get started and view and configure the entities via the web interface.
 And via the REST API, you can connect the following extensions:
 
-- [Notifications](/en/docs/smarthome/benachrichtigungen) to receive push notifications on your smartphone when statuses change
-- Connect energy management systems such as [evcc](/en/docs/smarthome/evcc)
-- Use [Gen-AI](/en/docs/smarthome/ai) applications such as Anthropic Claude to evaluate your entities.
+- [Notifications](/en/docs/smarthome/notifications/) to receive push notifications on your smartphone when statuses change
+- Connect energy management systems such as [evcc](/en/docs/smarthome/evcc/)
+- Use [Gen-AI](/en/docs/smarthome/ai/) applications such as Anthropic Claude to evaluate your entities.
 
 The next section explains how to connect smart home systems via MQTT.
 
@@ -108,6 +108,6 @@ You should also enable _Enable MQTT Discovery_, because otherwise you will have 
 If you do not yet have an MQTT broker, communication will of course only work once you have installed the MQTT add-on in your smart home system.
 More information can be found in the following sections:
 
-- [Home Assistant](/en/docs/smarthome/ha)
-- [OpenHAB](/en/docs/smarthome/openhab)
-- [Grafana](/en/docs/smarthome/grafana)
+- [Home Assistant](/en/docs/smarthome/home-assistant/)
+- [OpenHAB](/en/docs/smarthome/openhab/)
+- [Grafana](/en/docs/smarthome/grafana/)

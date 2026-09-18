@@ -2,7 +2,7 @@
 title: "EMS-ESP Entities at a Glance"
 headline: "EMS-ESP Entities"
 excerpt: "Overview of the entities that can be read via EMS-ESP for Bosch CS5800/6800i and Buderus WLW176/186i."
-permalink: /en/docs/smarthome/entities
+permalink: /en/docs/smarthome/entities/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -77,7 +77,7 @@ _"auxelecheatnrgcons..."_: consumed electrical energy of the electric auxiliary 
 
 | ID                                                   | Name                    | Module | Type | Unit | RW  | Description                                                                                                                  |
 | ---------------------------------------------------- | ----------------------- | ------ | ---- | ---- | --- | ----------------------------------------------------------------------------------------------------------------------------- |
-| [hppower](http://ems-esp/api/boiler/hppower)         | Compressor power        | boiler | 🔢  | kW   |     | From version [12.11.1/9.15.0](/en/docs/sw-versionen/#12111--9150): Current thermal power output of the heat pump, e.g. 3.1 kW |
+| [hppower](http://ems-esp/api/boiler/hppower)         | Compressor power        | boiler | 🔢  | kW   |     | From version [12.11.1/9.15.0](/en/docs/software-versions/#12111--9150): Current thermal power output of the heat pump, e.g. 3.1 kW |
 | [hpcurrpower](http://ems-esp/api/boiler/hpcurrpower) | current compressor power | boiler | 🔢  | W    |     | Current power consumption of the heat pump, e.g. 298 W                                                                         |
 
 ## Temperatures

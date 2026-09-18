@@ -2,7 +2,7 @@
 title: "Bosch/Buderus Heat Pump Simulator: Understanding Heating Curve, Temperatures, and Behavior"
 headline: "Heat Pump Simulator"
 excerpt: "Interactive simulator for Bosch CS5800/6800i and Buderus WLW176/186i to better understand the heating curve, temperatures, and system behavior."
-permalink: /en/simulator
+permalink: /en/simulator/
 toc: false
 read_time: false
 author_profile: false

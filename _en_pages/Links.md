@@ -94,12 +94,12 @@ The service manual is intended for qualified professionals. In particular, work 
 
 ## Further content {#weiterfuehrende-inhalte}
 
-- [Variants, output, and COP](/en/docs/varianten/): Output sizes, technical parameters, and differences between the unit variants
+- [Variants, output, and COP](/en/docs/variants/): Output sizes, technical parameters, and differences between the unit variants
 - [Heating curve, domestic hot water, and other settings](/en/docs/settings/): Important settings for comfortable and efficient operation
-- [Optimizing efficiency and consumption](/en/docs/optimierungen/): Practical advice from ongoing operation
-- [Common errors and troubleshooting](/en/docs/fehler/): Known error patterns, causes, and solutions
-- [Software versions and firmware statuses](/en/docs/sw-versionen/): Overview of known software statuses
-- [Technical design of the heat pump](/en/docs/technischer-aufbau/): Refrigerant circuit, primary circuit, and heating circuit explained clearly
+- [Optimizing efficiency and consumption](/en/docs/optimizations/): Practical advice from ongoing operation
+- [Common errors and troubleshooting](/en/docs/troubleshooting/): Known error patterns, causes, and solutions
+- [Software versions and firmware statuses](/en/docs/software-versions/): Overview of known software statuses
+- [Technical design of the heat pump](/en/docs/technical-design/): Refrigerant circuit, primary circuit, and heating circuit explained clearly
 
 ## Forums
 

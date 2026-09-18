@@ -2,7 +2,7 @@
 title: "Technical design of the refrigerant circuit, primary circuit, and heating circuit"
 headline: "Technical design"
 excerpt: "Explanation of the technical design of Bosch CS5800/6800i and Buderus WLW176/186i with refrigerant circuit, primary circuit, and heating circuit."
-permalink: /en/docs/technischer-aufbau/
+permalink: /en/docs/technical-design/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -117,7 +117,7 @@ The entire defrost cycle takes approximately 4–7 minutes.
 
 Bosch/Buderus heat pumps start intensive defrost cycles at regular intervals, also known as power or super defrost cycles.
 These hot-gas defrost cycles last considerably longer, approximately 9–16 minutes.
-With newer software versions (from [9.10.0](/en/docs/sw-versionen/#9100--970)), every fifth defrost cycle is an intensive defrost cycle; with older versions, every tenth defrost cycle is intensive.
+With newer software versions (from [9.10.0](/en/docs/software-versions/#9100--970)), every fifth defrost cycle is an intensive defrost cycle; with older versions, every tenth defrost cycle is intensive.
 As the name suggests, this defrost cycle is more intensive in order to melt stubborn ice residue.
 Large clouds of steam can often be seen rising.
 This requires up to 2 kWh of heat.
@@ -149,7 +149,7 @@ If one of the _PC0_ or _PC1_ pumps (Grundfos UPM4L (K) LIN) is also running, app
 
 The **crankcase heater**, also called a compressor or oil sump heater, keeps the switched-off compressor warm.
 This prevents too much refrigerant from dissolving in the compressor oil and impairing lubrication at the next start.
-How often it is activated depends on the software version and temperatures. With newer software versions from [9.6.0 / 9.6.1](https://bosch-buderus-wp.github.io/en/docs/sw-versionen/#960--961), activation was reduced, particularly in summer.
+How often it is activated depends on the software version and temperatures. With newer software versions from [9.6.0 / 9.6.1](https://bosch-buderus-wp.github.io/en/docs/software-versions/#960--961), activation was reduced, particularly in summer.
 
 It is also important to know that power consumption is attributed to the heating system’s energy monitoring when the system is in standby mode.
 As a result, heating-related power consumption also occurs in summer, which can sometimes cause confusion.

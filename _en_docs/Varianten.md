@@ -2,7 +2,7 @@
 title: "Variants, Output and COP"
 headline: "Variants"
 excerpt: "Bosch and Buderus heat pumps compared: identical models CS5800i/WLW176i, CS6800i/WLW186i, CS8800i/WLW186i MBE+ and others."
-permalink: /en/docs/varianten/
+permalink: /en/docs/variants/
 toc: true
 sidebar:
   nav: "en_docs"

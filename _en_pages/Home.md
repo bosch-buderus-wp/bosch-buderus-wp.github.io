@@ -20,7 +20,7 @@ feature_row:
     image_path: /assets/images/home-simulator.jpg
     title: "Simulator"
     excerpt: "Simulator for the heat pump"
-    url: "/en/simulator"
+    url: "/en/simulator/"
     btn_class: "btn--primary"
     btn_label: "Open"
   - alt: "Metrics"

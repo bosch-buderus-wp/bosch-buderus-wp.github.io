@@ -2,7 +2,7 @@
 title: "Optimizations: Efficiency, Consumption and Heating Curve"
 headline: "Optimizations"
 excerpt: "Tips for optimizing Bosch CS5800/6800i and Buderus WLW176/186i for better efficiency, lower consumption and suitable heating curves."
-permalink: /en/docs/optimierungen/
+permalink: /en/docs/optimizations/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -82,7 +82,7 @@ At this point, I would like to emphasize once again that with such low water tem
 The setting described above can also make sense for owners of photovoltaic systems and in terms of the energy transition, because the highest PV yield in Germany can generally be expected around 1 p.m. (see [energy-charts.info](https://energy-charts.info/charts/power_heatmaps/chart.htm?l=de&c=DE&year=2024&solar=1)).
 Those who own a PV system can go one step further and optimize domestic hot water production using surplus PV power.
 The comfort mode not used in the settings mentioned above is used for this purpose.
-You can find further details on implementation, for example, in the guide for [evcc](https://bosch-buderus-wp.github.io/en/docs/smarthome/evcc).
+You can find further details on implementation, for example, in the guide for [evcc](https://bosch-buderus-wp.github.io/en/docs/smarthome/evcc/).
 
 ### High Temperature Losses
 
@@ -205,7 +205,7 @@ You then simply press the button or say “Alexa, shower” to start the circula
 
 Using the configured [heating curve](/en/docs/settings/#heizkurve), the heat pump determines the required target flow temperature for the current/damped outdoor temperature.
 Ideally, the actual flow temperature in the heating circuit (T0) would always follow the target flow temperature exactly.
-However, especially during the transitional period with comparatively high outdoor temperatures, this is not always possible because [modulation](/en/docs/technischer-aufbau/#modulation) cannot reduce the output arbitrarily far.
+However, especially during the transitional period with comparatively high outdoor temperatures, this is not always possible because [modulation](/en/docs/technical-design/#modulation) cannot reduce the output arbitrarily far.
 Depending on the model, the limit is between 12% and 25% of maximum output.
 If too much heat is still being produced, the heat pump switches off.
 It switches off when the measured flow temperature exceeds the target flow temperature by 4 K.

@@ -2,7 +2,7 @@
 title: "Integrating a heat pump into Home Assistant with EMS-ESP"
 headline: "Home Assistant"
 excerpt: "Step-by-step instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into Home Assistant with EMS-ESP."
-permalink: /en/docs/smarthome/ha
+permalink: /en/docs/smarthome/home-assistant/
 toc: true
 sidebar:
   nav: "en_docs"
@@ -52,7 +52,7 @@ The following measured values are shown in the history below:
 - _Boiler Selected Flow Temperature_: the desired flow temperature resulting from the [configured heating curve](/docs/einstellungen#heizkurve) and the outdoor temperature.
   In the example shown, the outdoor temperature was -2..-4 °C and the target flow temperature was 32..35 °C.
 - _Boiler Current Flow Temperature_: the actual flow temperature, which, as shown in the chart, oscillates around the selected flow temperature.
-  The downward deviations are [defrost cycles](/en/docs/technischer-aufbau/#abtauvorgang), as the humidity was approximately 90%.
+  The downward deviations are [defrost cycles](/en/docs/technical-design/#abtauvorgang), as the humidity was approximately 90%.
 
 [![History of measured values](/assets/images/HA-History_FlowTemp.png)](/assets/images/HA-History_FlowTemp.png)
 

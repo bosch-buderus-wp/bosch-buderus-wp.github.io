@@ -1,7 +1,7 @@
 ---
 title: Legal Notice
 excerpt: Legal Notice
-permalink: /en/impressum/
+permalink: /en/legal-notice/
 newsletter: false
 toc: false
 layout: single

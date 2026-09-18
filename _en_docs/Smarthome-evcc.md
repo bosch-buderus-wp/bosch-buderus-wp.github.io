@@ -2,7 +2,7 @@
 title: "Connect heat pump to evcc for PV surplus"
 headline: "evcc"
 excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc for PV surplus utilisation and SG Ready-like automation."
-permalink: /en/docs/smarthome/evcc
+permalink: /en/docs/smarthome/evcc/
 toc: true
 sidebar:
   nav: "en_docs"

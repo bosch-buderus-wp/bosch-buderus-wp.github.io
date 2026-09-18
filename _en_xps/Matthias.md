@@ -112,7 +112,7 @@ The daily performance factor (including complete peripheral equipment) was 3.7 o
 
 ### Domestic hot water
 
-We have optimized our settings so that [daily domestic hot water production](/en/docs/optimierungen/#warmwasserbereitung) almost always takes place between 13:00 and 15:00.
+We have optimized our settings so that [daily domestic hot water production](/en/docs/optimizations/#warmwasserbereitung) almost always takes place between 13:00 and 15:00.
 For this, approximately 1-2 kWh of electrical energy is used—with a performance factor of 2-4 depending on the outdoor temperature.
 
 The temperature loss of our domestic hot water tank over 24 hours is:
@@ -192,7 +192,7 @@ I have been with Tibber since 2023 and have been very satisfied so far.
 ### Sustainability
 
 Recently, I wondered how much of the energy used for our heat pump actually comes from renewable energy sources.
-To find out, I created a panel in [Grafana](https://bosch-buderus-wp.github.io/en/docs/smarthome/grafana) that breaks down the daily energy consumption of our heat pump proportionally as follows:
+To find out, I created a panel in [Grafana](https://bosch-buderus-wp.github.io/en/docs/smarthome/grafana/) that breaks down the daily energy consumption of our heat pump proportionally as follows:
 
 - HP energy originating from the PV system (100% renewable)
 - HP grid consumption:

@@ -2,7 +2,7 @@
 title: "Local REST API"
 headline: "Local API"
 excerpt: "Local API for Bosch CS5800/6800i and Buderus WLW176/186i with K 40 RF WLAN gateway - API specification with cURL and code examples."
-permalink: /en/docs/smarthome/local-api
+permalink: /en/docs/smarthome/local-api/
 classes: wide
 toc: false
 sidebar:
