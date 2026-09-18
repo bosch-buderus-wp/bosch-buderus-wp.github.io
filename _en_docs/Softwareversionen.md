@@ -24,7 +24,7 @@ The currently installed software version can be retrieved in the service menu un
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 23.03.03-5.27 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 23.03.03-5.27 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.07
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.07
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> March 2023
 
@@ -35,7 +35,7 @@ No further information known
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 23.08.08-5.35 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 23.08.08-5.35 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.07
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.07
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> August 2023
 
@@ -46,7 +46,7 @@ No further information known
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 7.10.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 7.10.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.09
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.09
 
 Improvements:
 
@@ -59,7 +59,7 @@ Improvements:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.6.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 9.6.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.10
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> August 2024
 
@@ -82,7 +82,7 @@ Improvements:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.10.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 9.7.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.10
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.10
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> December 2024
 
@@ -97,7 +97,7 @@ Improvements:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.12.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 9.7.0 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.12
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.12
 
 Improvements:
 
@@ -109,7 +109,7 @@ Improvements:
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.15.0 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 12.11.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.11
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.12
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> October 2025
 
@@ -123,12 +123,23 @@ Improvements:
 - **Bypass query** added
 - Number of stages in the **heating program** increased from 2 to 4
 
+## 9.16.0 / 12.11.1
+
+{: .notice}
+<i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.16.0 \
+<i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 12.11.1 \
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.12
+
+<i class="fa-solid fa-calendar-days" style="color: #646464;"></i> May 2026
+
+Changes not yet known
+
 ## 9.17.2 / 12.17.1
 
 {: .notice}
 <i class="fa-solid fa-fan" style="color: #646464;"></i> Outdoor unit: 9.17.2 \
 <i class="fa-solid fa-mobile-button fa-rotate-180" style="color: #646464;"></i> Indoor unit: 12.17.1 \
-<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: N47.12
+<i class="fa-solid fa-tv" style="color: #646464;"></i> Control panel: 47.12
 
 <i class="fa-solid fa-calendar-days" style="color: #646464;"></i> July 2026
 
