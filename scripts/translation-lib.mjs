@@ -138,7 +138,6 @@ export async function collectSources(root, config) {
     for (const absolutePath of files) {
       const relativePath = path.relative(sourceRoot, absolutePath);
       if (group.include && !group.include.includes(relativePath)) continue;
-      if (config.excludeFilenameSuffixes.some((suffix) => relativePath.endsWith(suffix))) continue;
       sources.push({
         absolutePath,
         relativePath,

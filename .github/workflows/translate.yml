@@ -69,12 +69,12 @@ jobs:
       - name: Commit generated translations to review branch
         id: commit
         run: |
-          if [[ -z "$(git status --porcelain -- .translation-cache.json _en_docs _en_xps en)" ]]; then
+          if [[ -z "$(git status --porcelain -- .translation-cache.json _en_docs _en_xps _en_pages)" ]]; then
             echo "No translation changes"
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
-          git add .translation-cache.json _en_docs _en_xps en
+          git add .translation-cache.json _en_docs _en_xps _en_pages
           git commit -m "Update English translations"
           git push --set-upstream origin "$TRANSLATION_BRANCH"
           echo "changed=true" >> "$GITHUB_OUTPUT"

@@ -7,20 +7,17 @@
 {% if page.lang == "en" and page.translation_url %}
   {% assign translation_source = page.translation_url %}
   {% assign translation_target = page.url %}
-{% elsif page.collection == "docs" or page.collection == "xps" %}
-  {% assign translation_source = page.url %}
-  {% assign translation_target = "/en" | append: page.url %}
 {% else %}
-  {% for translated_page in site.data.translations.pages %}
-    {% if page.url == translated_page %}
-      {% assign translation_source = page.url %}
-      {% if page.url == "/" %}
-        {% assign translation_target = "/en/" %}
-      {% else %}
-        {% assign translation_target = "/en" | append: page.url %}
-      {% endif %}
+  {% assign translation_source = page.url %}
+  {% assign translated_pages = site.en_docs | concat: site.en_xps | concat: site.pages %}
+  {% for translated_page in translated_pages %}
+    {% if translated_page.lang == "en" and translated_page.translation_url == page.url %}
+      {% assign translation_target = translated_page.url %}
     {% endif %}
   {% endfor %}
+  {% unless translation_target %}
+    {% assign translation_source = nil %}
+  {% endunless %}
 {% endif %}
 
 {% if translation_source and translation_target %}

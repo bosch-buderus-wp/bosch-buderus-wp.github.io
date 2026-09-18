@@ -9,16 +9,36 @@
       "targetDirectory": "_en_docs",
       "sidebar": "en_docs",
       "targetPermalinkByFile": {
-        "Einstellungen.md": "/en/docs/settings/"
+        "App.md": "/en/docs/app/",
+        "Einstellungen.md": "/en/docs/settings/",
+        "Fehler.md": "/en/docs/troubleshooting/",
+        "Glossar.md": "/en/docs/glossary/",
+        "Intro.md": "/en/docs/intro/",
+        "Optimierungen.md": "/en/docs/optimizations/",
+        "Smarthome-AI.md": "/en/docs/smarthome/ai/",
+        "Smarthome-Benachrichtigungen.md": "/en/docs/smarthome/notifications/",
+        "Smarthome-Entities.md": "/en/docs/smarthome/entities/",
+        "Smarthome-evcc.md": "/en/docs/smarthome/evcc/",
+        "Smarthome-grafana.md": "/en/docs/smarthome/grafana/",
+        "Smarthome-homeassistant.md": "/en/docs/smarthome/home-assistant/",
+        "Smarthome-local-api.md": "/en/docs/smarthome/local-api/",
+        "Smarthome-openhab.md": "/en/docs/smarthome/openhab/",
+        "Smarthome.md": "/en/docs/smarthome/",
+        "Softwareversionen.md": "/en/docs/software-versions/",
+        "Technischer-Aufbau.md": "/en/docs/technical-design/",
+        "Varianten.md": "/en/docs/variants/"
       }
     },
     {
       "sourceDirectory": "_xps",
-      "targetDirectory": "_en_xps"
+      "targetDirectory": "_en_xps",
+      "targetPermalinkByFile": {
+        "Matthias.md": "/en/xps/matthias/"
+      }
     },
     {
       "sourceDirectory": "_pages",
-      "targetDirectory": "en",
+      "targetDirectory": "_en_pages",
       "include": [
         "Home.md",
         "Impressum.md",
@@ -31,10 +51,15 @@
         "Links.md": "en_links",
         "Metrics-Howto.md": "en_metrics",
         "Metrics.md": "en_metrics"
+      },
+      "targetPermalinkByFile": {
+        "Home.md": "/en/",
+        "Impressum.md": "/en/legal-notice/",
+        "Links.md": "/en/links/",
+        "Metrics-Howto.md": "/en/metrics/howto/",
+        "Metrics.md": "/en/metrics/",
+        "Simulator.md": "/en/simulator/"
       }
     }
-  ],
-  "excludeFilenameSuffixes": [
-    " copy.md"
   ]
 }
