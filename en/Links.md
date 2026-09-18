@@ -95,7 +95,7 @@ The service manual is intended for qualified professionals. In particular, work 
 ## Further content {#weiterfuehrende-inhalte}
 
 - [Variants, output, and COP](/en/docs/varianten/): Output sizes, technical parameters, and differences between the unit variants
-- [Heating curve, domestic hot water, and other settings](/en/docs/einstellungen/): Important settings for comfortable and efficient operation
+- [Heating curve, domestic hot water, and other settings](/en/docs/settings/): Important settings for comfortable and efficient operation
 - [Optimizing efficiency and consumption](/en/docs/optimierungen/): Practical advice from ongoing operation
 - [Common errors and troubleshooting](/en/docs/fehler/): Known error patterns, causes, and solutions
 - [Software versions and firmware statuses](/en/docs/sw-versionen/): Overview of known software statuses

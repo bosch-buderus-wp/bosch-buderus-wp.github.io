@@ -6,6 +6,7 @@ import {
   readFrontMatter,
   reuseTranslatedBlocks,
   rewriteInternalUrls,
+  targetUrlFor,
   translationFingerprint,
   translatedUrl,
 } from "../scripts/translation-lib.mjs";
@@ -20,6 +21,14 @@ test("reads YAML front matter", () => {
 test("prefixes translated URLs", () => {
   assert.equal(translatedUrl("/"), "/en/");
   assert.equal(translatedUrl("/docs/intro/"), "/en/docs/intro/");
+});
+
+test("uses a configured English permalink independently of the target filename", () => {
+  const source = {
+    relativePath: "Einstellungen.md",
+    group: { targetPermalinkByFile: { "Einstellungen.md": "/en/docs/settings/" } },
+  };
+  assert.equal(targetUrlFor(source, "/docs/einstellungen/"), "/en/docs/settings/");
 });
 
 test("translation fingerprints do not depend on the global route map", () => {
@@ -65,6 +74,14 @@ test("rewrites known internal page URLs but not asset URLs", () => {
   );
 });
 
+test("rewrites a previous generated URL when a custom English permalink is configured", () => {
+  const routes = new Map([["/docs/einstellungen/", "/en/docs/settings/"]]);
+  assert.equal(
+    rewriteInternalUrls("[Settings](/en/docs/einstellungen/#heizkurve)", routes),
+    "[Settings](/en/docs/settings/#heizkurve)",
+  );
+});
+
 test("rewrites overlapping routes once and repairs duplicate English prefixes", () => {
   const routes = new Map([
     ["/docs/smarthome/", "/en/docs/smarthome/"],
@@ -95,11 +112,11 @@ Read [the introduction](/docs/intro/).
 `;
   const result = finalizeTranslation(translated, {
     sourceUrl: "/docs/einstellungen/",
-    targetUrl: "/en/docs/einstellungen/",
+    targetUrl: "/en/docs/settings/",
     sidebar: "en_docs",
     routeMap: new Map([["/docs/intro/", "/en/docs/intro/"]]),
   });
-  assert.match(result, /permalink: \/en\/docs\/einstellungen\//);
+  assert.match(result, /permalink: \/en\/docs\/settings\//);
   assert.match(result, /nav: "en_docs"/);
   assert.match(result, /lang: en/);
   assert.match(result, /translation_url: \/docs\/einstellungen\//);
