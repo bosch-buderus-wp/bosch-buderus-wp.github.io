@@ -91,7 +91,7 @@ links:
 en_docs:
   - title: "Variants"
     url: /en/docs/variants/
-  - title: "Technical structure"
+  - title: "Technical design"
     url: /en/docs/technical-design/
   - title: "Settings"
     url: /en/docs/settings/
@@ -139,6 +139,22 @@ en_metrics:
         url: /en/metrics/#/monthly
       - title: "Daily overview"
         url: /en/metrics/#/daily
+  - title: "Analyses"
+    children:
+      - title: "COP-Temperature"
+        url: /en/metrics/#/az-temp-evaluation
+      - title: "COP-Yearly Energy"
+        url: /en/metrics/#/az-energy-evaluation
+      - title: "Heating Curve"
+        url: /en/metrics/#/heating-curve
+      - title: "Building comparison"
+        url: /en/metrics/#/building-comparison
+  - title: "Systems"
+    children:
+      - title: "All systems"
+        url: /en/metrics/#/systems
+      - title: "My system"
+        url: /en/metrics/#/dashboard
   - title: "Participation guide"
     url: /en/metrics/howto/
 
