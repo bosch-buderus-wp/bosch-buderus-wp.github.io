@@ -20,3 +20,7 @@ abmelden.
   deiner Daten findest du in der
   <a href="{{ '/datenschutz/' | relative_url }}">Datenschutzerklärung</a>.
 </p>
+
+## Bisherige Ausgaben
+
+- [Ausgabe 01 · September 2026: Septemberrückblick, neue Modellvarianten und lokale REST API]({{ '/newsletter/2026-09/' | relative_url }})

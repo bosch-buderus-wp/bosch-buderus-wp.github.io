@@ -1,0 +1,178 @@
+{
+  "de": {
+    "title": "Kältekreis",
+    "heating": "Heizen",
+    "defrost": "Abtauen",
+    "controls": "Betriebsart und Animation",
+    "svg_title": "Kältekreis einer Luft/Wasser-Wärmepumpe",
+    "svg_description": "Der Kältekreis befindet sich vollständig in der Außeneinheit. Links ist der Außenwärmetauscher, rechts der Wasserwärmetauscher. Verdichter, 4-Wege-Ventil und Entspannungsventil verbinden die beiden.",
+    "compressor": "Verdichter",
+    "expansion": "Entspannungsventil",
+    "reversing": "4-Wege-Ventil",
+    "evaporator": "Verdampfer",
+    "condenser": "Verflüssiger",
+    "note": "Vereinfachtes Funktionsschema. Farben und Punktabstände sind symbolisch; sie zeigen keine Messwerte, Stoffdichten oder Energiemengen.",
+    "heating_steps": {
+      "air": {
+        "title": "1 · Verdampfen: Wärme aufnehmen",
+        "text": "Das Kältemittel ist kälter als die Außenluft und nimmt deshalb Wärme auf. Damit verdampft der flüssige Anteil. Während des Verdampfens bleibt die Temperatur bei annähernd konstantem Druck fast gleich: Die Energie bewirkt den Phasenwechsel. Wenn alles gasförmig ist, erwärmt sich der Dampf noch etwas (Überhitzung). Erst der Verdichter hebt seine Temperatur deutlich an.",
+        "state": "Niedriger Druck · Gemisch → Dampf"
+      },
+      "compressor": {
+        "title": "2 · Verdichten: Temperatur anheben",
+        "text": "Der elektrisch angetriebene Verdichter saugt Kältemitteldampf an und komprimiert ihn. Druck und Temperatur steigen. Das Kältemittel bleibt gasförmig – seine Temperatur ist jetzt hoch genug, um Wärme an das Heizungswasser abzugeben.",
+        "state": "Niedriger → hoher Druck · Dampf"
+      },
+      "water": {
+        "title": "3 · Verflüssigen: Wärme abgeben",
+        "text": "Der heiße Kältemitteldampf gibt Wärme an das kühlere Heizungswasser ab. Zunächst kühlt der Dampf ab, dann verflüssigt er sich und gibt dabei viel Wärme ab. Der Druck bleibt hoch, auch wenn das Kältemittel abkühlt. Kältemittel und Heizungswasser bleiben getrennt.",
+        "state": "Hoher Druck · Dampf → Flüssigkeit"
+      },
+      "expansion": {
+        "title": "4 · Entspannen: Wieder abkühlen",
+        "text": "Im Entspannungsventil fällt der Druck ab. Dabei verdampft bereits ein Teil des flüssigen Kältemittels, und die Temperatur sinkt. Das kalte Flüssigkeit/Dampf-Gemisch strömt zum Verdampfer, wo der verbleibende flüssige Anteil erneut Umweltwärme aufnimmt.",
+        "state": "Hoher → niedriger Druck · Flüssigkeit → Gemisch"
+      },
+      "reversing": {
+        "title": "Das 4-Wege-Ventil lenkt den Dampf",
+        "text": "Im Heizbetrieb leitet das Ventil den heißen Dampf vom Verdichter zum Wasserwärmetauscher. Den kühlen Dampf vom Außenwärmetauscher führt es zur Saugseite des Verdichters zurück. Zum Abtauen schaltet es diese beiden Verbindungen um.",
+        "state": "Getrennte Hochdruck- und Niederdruckverbindungen"
+      }
+    },
+    "defrost_steps": {
+      "air": {
+        "title": "Außenwärmetauscher: Eis schmelzen",
+        "text": "Der Außenwärmetauscher arbeitet jetzt als Verflüssiger. Heißer Kältemitteldampf gibt Wärme ab und verflüssigt sich. Diese Wärme schmilzt das Eis; das Wasser tropft ab. Der Ventilator steht während der Abtauphase typischerweise still.",
+        "state": "Hoher Druck · Dampf → Flüssigkeit"
+      },
+      "compressor": {
+        "title": "Verdichter: Weiter in derselben Richtung",
+        "text": "Auch beim Abtauen saugt der Verdichter Dampf an und verdichtet ihn. Druck und Temperatur steigen. Er fördert weiterhin von seiner Saugseite zur Druckseite – das 4-Wege-Ventil verändert die Verbindung zu den Wärmetauschern.",
+        "state": "Niedriger → hoher Druck · Dampf"
+      },
+      "water": {
+        "title": "Wasserwärmetauscher: Wärme entnehmen",
+        "text": "Der Wasserwärmetauscher arbeitet jetzt als Verdampfer. Das kalte Kältemittel nimmt Wärme aus dem Heizungswasser auf und verdampft. Die Wärme stammt aus dem Wassersystem, beispielsweise aus dem Pufferspeicher. Kältemittel und Heizungswasser bleiben getrennt. Nach dem Verdampfen wird der Dampf noch etwas überhitzt, bevor er zum Verdichter strömt.",
+        "state": "Niedriger Druck · Gemisch → Dampf"
+      },
+      "expansion": {
+        "title": "Entspannungsventil: Druck absenken",
+        "text": "Das am Außenwärmetauscher verflüssigte Kältemittel wird entspannt. Druck und Temperatur sinken, und ein Teil verdampft bereits. Das kalte Gemisch nimmt anschließend im Wasserwärmetauscher Wärme auf. Die Grafik zeigt die Drosselfunktion vereinfacht.",
+        "state": "Hoher → niedriger Druck · Flüssigkeit → Gemisch"
+      },
+      "reversing": {
+        "title": "Das 4-Wege-Ventil tauscht die Rollen",
+        "text": "Das Ventil leitet den heißen Dampf jetzt zum Außenwärmetauscher und führt den Dampf vom Wasserwärmetauscher zur Saugseite des Verdichters zurück. So tauschen die Wärmetauscher ihre Rollen. Die Grafik zeigt die Abtauphase, nicht die zeitliche Umschaltregelung.",
+        "state": "Außen: Verflüssiger · Wasser: Verdampfer"
+      }
+    },
+    "guide_title": "Erklärung zur Grafik",
+    "guide": "Die Farbe zeigt die relative Temperatur, der Punktabstand symbolisiert den Druck. Ausgefüllte Punkte stehen für Flüssigkeit, offene Kreise für Dampf. Die goldenen Pfeile zeigen die Wärmeübertragung – nicht den Kältemittelfluss.",
+    "close": "Erklärung schließen",
+    "info": "Erklärung",
+    "air_energy_lines": [
+      "Wärme",
+      "aus Luft"
+    ],
+    "water_energy_lines": [
+      "Wärme",
+      "ins Wasser"
+    ],
+    "air_defrost_energy_lines": [
+      "Wärme zum",
+      "Enteisen"
+    ],
+    "water_defrost_energy_lines": [
+      "Wärme",
+      "aus Wasser"
+    ]
+  },
+  "en": {
+    "title": "Refrigerant circuit",
+    "heating": "Heating",
+    "defrost": "Defrosting",
+    "controls": "Operating mode and animation",
+    "svg_title": "Refrigerant circuit of an air-to-water heat pump",
+    "svg_description": "The entire refrigerant circuit is inside the outdoor unit. The outdoor heat exchanger is on the left, the water heat exchanger on the right. The compressor, four-way valve and expansion valve connect them.",
+    "compressor": "Compressor",
+    "expansion": "Expansion valve",
+    "reversing": "Four-way valve",
+    "evaporator": "Evaporator",
+    "condenser": "Condenser",
+    "note": "Simplified functional diagram. Colours and particle spacing are symbolic: they do not show measurements, material densities or energy quantities.",
+    "heating_steps": {
+      "air": {
+        "title": "1 · Evaporate: Absorb heat",
+        "text": "The refrigerant is colder than the outdoor air, so it absorbs heat. This evaporates its liquid portion. During evaporation at roughly constant pressure, its temperature stays almost constant: the energy drives the phase change. Once it is all vapour, it warms slightly (superheating). The compressor then raises its temperature significantly.",
+        "state": "Low pressure · Mixture → vapour"
+      },
+      "compressor": {
+        "title": "2 · Compress: Raise the temperature",
+        "text": "The electrically driven compressor draws in refrigerant vapour and compresses it. Pressure and temperature rise. The refrigerant remains gaseous, and is now hot enough to transfer heat to the heating water.",
+        "state": "Low → high pressure · Vapour"
+      },
+      "water": {
+        "title": "3 · Condense: Release heat",
+        "text": "Hot refrigerant vapour transfers heat to the cooler heating water. The vapour first cools, then condenses, releasing a large amount of heat. Pressure remains high even as the refrigerant cools. Refrigerant and heating water remain separate.",
+        "state": "High pressure · Vapour → liquid"
+      },
+      "expansion": {
+        "title": "4 · Expand: Cool down again",
+        "text": "Pressure drops at the expansion valve. Some of the liquid refrigerant already evaporates, and its temperature falls. The cold liquid/vapour mixture flows to the evaporator, where the remaining liquid absorbs environmental heat again.",
+        "state": "High → low pressure · Liquid → mixture"
+      },
+      "reversing": {
+        "title": "The four-way valve directs the vapour",
+        "text": "In heating mode, the valve routes hot vapour from the compressor to the water heat exchanger. It returns cool vapour from the outdoor heat exchanger to the compressor inlet. For defrosting, it switches these two connections.",
+        "state": "Separate high-pressure and low-pressure connections"
+      }
+    },
+    "defrost_steps": {
+      "air": {
+        "title": "Outdoor heat exchanger: Melt ice",
+        "text": "The outdoor heat exchanger now acts as the condenser. Hot refrigerant vapour releases heat and condenses. This heat melts the ice, and the water drains away. The fan typically stops during the defrost phase.",
+        "state": "High pressure · Vapour → liquid"
+      },
+      "compressor": {
+        "title": "Compressor: Same direction of flow",
+        "text": "During defrosting, the compressor still draws in vapour and compresses it. Pressure and temperature rise. It continues to pump from its inlet to its outlet; the four-way valve changes its connections to the heat exchangers.",
+        "state": "Low → high pressure · Vapour"
+      },
+      "water": {
+        "title": "Water heat exchanger: Extract heat",
+        "text": "The water heat exchanger now acts as the evaporator. The cold refrigerant absorbs heat from the heating water and evaporates. This heat comes from the water system, for example a buffer tank. Refrigerant and heating water remain separate. After evaporation, the vapour is slightly superheated before flowing to the compressor.",
+        "state": "Low pressure · Mixture → vapour"
+      },
+      "expansion": {
+        "title": "Expansion valve: Reduce pressure",
+        "text": "Refrigerant that condensed at the outdoor heat exchanger is expanded. Pressure and temperature fall, and some refrigerant already evaporates. The cold mixture then absorbs heat in the water heat exchanger. The diagram simplifies the throttling function.",
+        "state": "High → low pressure · Liquid → mixture"
+      },
+      "reversing": {
+        "title": "The four-way valve swaps the roles",
+        "text": "The valve now routes hot vapour to the outdoor heat exchanger and returns vapour from the water heat exchanger to the compressor inlet. The heat exchangers swap roles. The diagram shows the defrost phase, not the timing of the switching controls.",
+        "state": "Outdoor: condenser · Water: evaporator"
+      }
+    },
+    "guide_title": "About this diagram",
+    "guide": "Colour shows relative temperature; particle spacing symbolises pressure. Filled dots represent liquid, open circles represent vapour. Golden arrows show heat transfer, not refrigerant flow.",
+    "close": "Close explanation",
+    "info": "Explanation",
+    "air_energy_lines": [
+      "Heat",
+      "from air"
+    ],
+    "water_energy_lines": [
+      "Heat",
+      "to water"
+    ],
+    "air_defrost_energy_lines": [
+      "Heat to",
+      "melt ice"
+    ],
+    "water_defrost_energy_lines": [
+      "Heat",
+      "from water"
+    ]
+  }
+}

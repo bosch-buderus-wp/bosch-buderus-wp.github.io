@@ -24,6 +24,8 @@ In the **condenser**, the heat is transferred to the water in the heating system
 The **expansion valve** reduces the pressure of the refrigerant again, causing it to cool further—as with a deodorant spray that becomes cold when used.
 The refrigerant is then heated again in the evaporator by the ambient air, and the cycle closes.
 
+{% include refrigerant-cycle.html %}
+
 ## Circuits
 
 However, the entire heating system does not contain just one circuit, but three.

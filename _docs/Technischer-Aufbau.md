@@ -19,6 +19,8 @@ Im **Verflüssiger** wird die Wärme an das Wasser im Heizungssystem abgegeben u
 Durch das **Entspannungsventil** wird der Druck des Kältemittels wieder reduziert und es kühlt weiter ab - wie bei einem Deospray, das beim Betätigen kalt wird.
 Dann wird das Kältemittel im Verdampfer erneut durch die Umgebungsluft aufgewärmt und der Kreis schliesst sich.
 
+{% include refrigerant-cycle.html %}
+
 ## Kreise
 
 Im gesamten Heizungssystem gibt es aber nicht nur einen Kreislauf, sondern drei an der Zahl.

@@ -1,0 +1,319 @@
+{% assign cycle_language = page.lang | default: 'de' %}
+{% assign cycle = site.data.refrigerant_cycle[cycle_language] | default: site.data.refrigerant_cycle.de %}
+<link rel="stylesheet" href="{{ '/assets/css/refrigerant-cycle.css' | relative_url }}?v=20261001-2">
+<section class="rcc" data-refrigerant-cycle data-mode="heating" aria-labelledby="rcc-heading">
+ <header class="rcc-header">
+  <h3 id="rcc-heading" class="rcc-heading">{{ cycle.title }}</h3>
+  <div class="rcc-controls" role="group" aria-label="{{ cycle.controls }}" hidden>
+   <div class="rcc-mode-buttons">
+  <button type="button" data-mode-button="heating" aria-pressed="true">{{ cycle.heating }}</button>
+  <button type="button" data-mode-button="defrost" aria-pressed="false">{{ cycle.defrost }}</button>
+  </div>
+  </div>
+  <details class="rcc-guide">
+  <summary aria-label="{{ cycle.guide_title }}" title="{{ cycle.guide_title }}">ⓘ</summary>
+  <div class="rcc-guide-content">
+  <p>{{ cycle.guide }}</p>
+  <p class="rcc-note">{{ cycle.note }}</p>
+  <noscript>
+  <p>{{ cycle.heating_steps.air.text }}</p>
+  </noscript>
+  </div>
+  </details>
+ </header>
+ <div class="rcc-stage">
+<svg class="rcc-diagram rcc-wide" data-layout="wide" viewBox="0 0 840 330" role="group" aria-labelledby="rcc-svg-title-wide rcc-svg-description-wide">
+ <title id="rcc-svg-title-wide">{{ cycle.svg_title }}</title>
+  <desc id="rcc-svg-description-wide">{{ cycle.svg_description }}</desc>
+ <defs>
+  <marker id="rcc-flow-arrow-wide" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 2 L8 5 L2 8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  </marker>
+  </defs>
+ <g class="rcc-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path data-track="suction" d="M403 111 L390 65"/>
+  <path data-track="compression" d="M390.0 65 H450.0"/>
+  <path data-track="discharge" d="M450 65 L437 111"/>
+  <path data-track="valve-hot" d="M437.0 111 V135 H456.0" data-heating-d="M437.0 111 V135 H456.0" data-defrost-d="M437.0 111 V128 H384.0 V135"/>
+  <path data-track="valve-cold" d="M384.0 135 H403.0 V111" data-heating-d="M384.0 135 H403.0 V111" data-defrost-d="M456.0 135 V145 H403.0 V111"/>
+  <path data-track="air-top" d="M384 135 H218 Q210 135 210 143 V165"/>
+  <path data-track="water-top" d="M456 135 H622 Q630 135 630 143 V165"/>
+  <path data-track="air-bottom" d="M210 225 V280 H395.0"/>
+  <path data-track="water-bottom" d="M445.0 280 H630 V225"/>
+  <path data-track="expansion" d="M395.0 280 H445.0"/>
+  <path data-track="air-exchanger" d="M210 165 H230 V178.0 H190 V191.0 H230 V204.0 H190 V217.0 H210 V225"/>
+  <path data-track="water-exchanger" d="M630 165 H650 V178.0 H610 V191.0 H650 V204.0 H610 V217.0 H630 V225"/>
+  </g>
+ <g class="rcc-air-stream" aria-hidden="true">
+  <path d="M20 177 Q57.0 168 94.0 177 T168 177"/>
+  <path d="M20 192 Q57.0 183 94.0 192 T168 192"/>
+  <path d="M20 207 Q57.0 198 94.0 207 T168 207"/>
+  </g>
+  <g class="rcc-heat-air" aria-hidden="true" style="--heat-center:94.0px; --heat-y:192px; --packet-travel:81px">
+  <path class="rcc-heat-packet" style="--packet-delay:0.0s" d="M86.60000000000001 172 l7 5 -7 5"/>
+  <path class="rcc-heat-packet" style="--packet-delay:-0.65s" d="M86.60000000000001 187 l7 5 -7 5"/>
+  <path class="rcc-heat-packet" style="--packet-delay:-1.3s" d="M86.60000000000001 202 l7 5 -7 5"/>
+  </g>
+  <g class="rcc-heat-water" aria-hidden="true" style="--heat-center:747.0px; --heat-y:192px; --packet-travel:81px">
+  <path d="M672 177 H822 M813 170 L822 177 L813 184"/>
+  <path d="M672 192 H822 M813 185 L822 192 L813 199"/>
+  <path d="M672 207 H822 M813 200 L822 207 L813 214"/>
+  </g>
+  <text class="rcc-energy-label" data-air-energy x="94.0" y="248">
+  <tspan x="94.0">{{ cycle.air_energy_lines[0] }}</tspan>
+  <tspan x="94.0" dy="18">{{ cycle.air_energy_lines[1] }}</tspan>
+  </text>
+  <text class="rcc-energy-label" data-water-energy x="747.0" y="248">
+  <tspan x="747.0">{{ cycle.water_energy_lines[0] }}</tspan>
+  <tspan x="747.0" dy="18">{{ cycle.water_energy_lines[1] }}</tspan>
+  </text>
+  <g class="rcc-component" data-component="compressor" role="group" aria-label="{{ cycle.compressor }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="358.0" y="16" width="124" height="104" rx="10"/>
+  <circle class="rcc-machine" cx="420.0" cy="65" r="29"/>
+  <path class="rcc-compressor-symbol" d="M408.0 51 L437.0 65 L408.0 79 Z"/>
+  <text class="rcc-svg-label"  x="420.0" y="24">{{ cycle.compressor }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="513.0" cy="18" r="11"/>
+  <text x="513.0" y="23">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="reversing" role="group" aria-label="{{ cycle.reversing }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="358.0" y="86" width="124" height="104" rx="10"/>
+  <rect class="rcc-valve-body" x="384.0" y="111" width="72" height="44" rx="7"/>
+  <text class="rcc-svg-small"  x="420.0" y="191">{{ cycle.reversing }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="504.0" cy="186" r="11"/>
+  <text x="504.0" y="191">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="air" role="group" aria-label="{{ cycle.evaporator }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="164" y="112" width="92" height="128" rx="10"/>
+  <rect class="rcc-exchanger-body" x="173" y="159" width="74" height="72" rx="8"/>
+  <path class="rcc-fins" d="M180 165 V225 M190 165 V225 M200 165 V225 M210 165 V225 M220 165 V225 M230 165 V225 M240 165 V225"/>
+  <text class="rcc-svg-label" data-air-role x="210" y="121">{{ cycle.evaporator }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="300" cy="115" r="11"/>
+  <text x="300" y="120">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="water" role="group" aria-label="{{ cycle.condenser }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="584" y="112" width="92" height="128" rx="10"/>
+  <rect class="rcc-exchanger-body" x="593" y="159" width="74" height="72" rx="8"/>
+  <path class="rcc-fins" d="M600 165 V225 M610 165 V225 M620 165 V225 M630 165 V225 M640 165 V225 M650 165 V225 M660 165 V225"/>
+  <text class="rcc-svg-label" data-water-role x="630" y="121">{{ cycle.condenser }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="720" cy="115" r="11"/>
+  <text x="720" y="120">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="expansion" role="group" aria-label="{{ cycle.expansion }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="358.0" y="231" width="124" height="104" rx="10"/>
+  <path class="rcc-expansion-symbol" d="M395.0 265 L445.0 295 V265 L395.0 295 Z"/>
+  <path class="rcc-expansion-knob" d="M420.0 276 V254 M411.0 254 H429.0"/>
+  <text class="rcc-svg-label"  x="420.0" y="317">{{ cycle.expansion }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="536.0" cy="311" r="11"/>
+  <text x="536.0" y="316">i</text>
+  </g>
+  </g>
+ <path class="rcc-electric" aria-hidden="true" d="M460.0 33 l-7 13 h11 l-7 13"/>
+ <g class="rcc-direction-arrows" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#rcc-flow-arrow-wide)" aria-hidden="true">
+  <path data-left-direction data-heating-d="M210 158 V145" data-defrost-d="M210 145 V158" d="M210 158 V145"/>
+  <path data-right-direction data-heating-d="M630 145 V158" data-defrost-d="M630 158 V145" d="M630 145 V158"/>
+  </g>
+ <g class="rcc-ice" aria-hidden="true">
+  <path class="rcc-ice-crystals" d="M173 173 l-13 -7 m8 4 v-8 M173 220 l-13 7 m8 -4 v8"/>
+  <path class="rcc-drop" d="M170 231 q-8 12 0 12 q8 0 0 -12Z"/>
+  </g>
+ <g class="rcc-static-particles" aria-hidden="true">
+  <g fill="none" stroke="#458eac" stroke-width="2">
+  <circle cx="267" cy="135" r="3.5"/>
+  <circle cx="354.0" cy="135" r="3.5"/>
+  <circle cx="403.0" cy="135" r="3.5"/>
+  <circle cx="388.0" cy="65" r="3.5"/>
+  </g>
+  <g fill="none" stroke="#d75b51" stroke-width="2">
+  <circle cx="466.0" cy="135" r="3.5"/>
+  <circle cx="481.0" cy="135" r="3.5"/>
+  <circle cx="496.0" cy="135" r="3.5"/>
+  <circle cx="650" cy="165" r="3.5"/>
+  </g>
+  <g fill="#db963e">
+  <circle cx="460" cy="280" r="3.5"/>
+  <circle cx="476" cy="280" r="3.5"/>
+  <circle cx="492" cy="280" r="3.5"/>
+  <circle cx="508" cy="280" r="3.5"/>
+  <circle cx="524" cy="280" r="3.5"/>
+  <circle cx="540" cy="280" r="3.5"/>
+  <circle cx="556" cy="280" r="3.5"/>
+  <circle cx="572" cy="280" r="3.5"/>
+  <circle cx="588" cy="280" r="3.5"/>
+  <circle cx="604" cy="280" r="3.5"/>
+  <circle cx="620" cy="280" r="3.5"/>
+  <circle cx="630" cy="217" r="3.5"/>
+  </g>
+  <g fill="#3285b5">
+  <circle cx="210" cy="216" r="3.5"/>
+  </g>
+  <g fill="none" stroke="#3285b5" stroke-width="2">
+  <circle cx="230" cy="280" r="3.5"/>
+  <circle cx="264" cy="280" r="3.5"/>
+  <circle cx="298" cy="280" r="3.5"/>
+  <circle cx="332" cy="280" r="3.5"/>
+  <circle cx="366" cy="280" r="3.5"/>
+  </g>
+  </g>
+  <g data-particles aria-hidden="true">
+  </g>
+ </svg>
+  <svg class="rcc-diagram rcc-mobile" data-layout="mobile" viewBox="0 0 520 365" role="group" aria-labelledby="rcc-svg-title-mobile rcc-svg-description-mobile">
+ <title id="rcc-svg-title-mobile">{{ cycle.svg_title }}</title>
+  <desc id="rcc-svg-description-mobile">{{ cycle.svg_description }}</desc>
+ <defs>
+  <marker id="rcc-flow-arrow-mobile" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+  <path d="M2 2 L8 5 L2 8" fill="none" stroke="currentColor" stroke-width="1.5"/>
+  </marker>
+  </defs>
+ <g class="rcc-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path data-track="suction" d="M243 111 L230 65"/>
+  <path data-track="compression" d="M230.0 65 H290.0"/>
+  <path data-track="discharge" d="M290 65 L277 111"/>
+  <path data-track="valve-hot" d="M277.0 111 V135 H296.0" data-heating-d="M277.0 111 V135 H296.0" data-defrost-d="M277.0 111 V128 H224.0 V135"/>
+  <path data-track="valve-cold" d="M224.0 135 H243.0 V111" data-heating-d="M224.0 135 H243.0 V111" data-defrost-d="M296.0 135 V145 H243.0 V111"/>
+  <path data-track="air-top" d="M224 135 H133 Q125 135 125 143 V195"/>
+  <path data-track="water-top" d="M296 135 H387 Q395 135 395 143 V195"/>
+  <path data-track="air-bottom" d="M125 255 V305 H235.0"/>
+  <path data-track="water-bottom" d="M285.0 305 H395 V255"/>
+  <path data-track="expansion" d="M235.0 305 H285.0"/>
+  <path data-track="air-exchanger" d="M125 195 H145 V208.0 H105 V221.0 H145 V234.0 H105 V247.0 H125 V255"/>
+  <path data-track="water-exchanger" d="M395 195 H415 V208.0 H375 V221.0 H415 V234.0 H375 V247.0 H395 V255"/>
+  </g>
+ <g class="rcc-air-stream" aria-hidden="true">
+  <path d="M12 207 Q31.5 198 51.0 207 T90 207"/>
+  <path d="M12 222 Q31.5 213 51.0 222 T90 222"/>
+  <path d="M12 237 Q31.5 228 51.0 237 T90 237"/>
+  </g>
+  <g class="rcc-heat-air" aria-hidden="true" style="--heat-center:51.0px; --heat-y:222px; --packet-travel:42px">
+  <path class="rcc-heat-packet" style="--packet-delay:0.0s" d="M47.1 202 l7 5 -7 5"/>
+  <path class="rcc-heat-packet" style="--packet-delay:-0.65s" d="M47.1 217 l7 5 -7 5"/>
+  <path class="rcc-heat-packet" style="--packet-delay:-1.3s" d="M47.1 232 l7 5 -7 5"/>
+  </g>
+  <g class="rcc-heat-water" aria-hidden="true" style="--heat-center:466.0px; --heat-y:222px; --packet-travel:42px">
+  <path d="M430 207 H502 M493 200 L502 207 L493 214"/>
+  <path d="M430 222 H502 M493 215 L502 222 L493 229"/>
+  <path d="M430 237 H502 M493 230 L502 237 L493 244"/>
+  </g>
+  <text class="rcc-energy-label" data-air-energy x="51.0" y="278">
+  <tspan x="51.0">{{ cycle.air_energy_lines[0] }}</tspan>
+  <tspan x="51.0" dy="18">{{ cycle.air_energy_lines[1] }}</tspan>
+  </text>
+  <text class="rcc-energy-label" data-water-energy x="466.0" y="278">
+  <tspan x="466.0">{{ cycle.water_energy_lines[0] }}</tspan>
+  <tspan x="466.0" dy="18">{{ cycle.water_energy_lines[1] }}</tspan>
+  </text>
+  <g class="rcc-component" data-component="compressor" role="group" aria-label="{{ cycle.compressor }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="198.0" y="16" width="124" height="104" rx="10"/>
+  <circle class="rcc-machine" cx="260.0" cy="65" r="29"/>
+  <path class="rcc-compressor-symbol" d="M248.0 51 L277.0 65 L248.0 79 Z"/>
+  <text class="rcc-svg-label"  x="260.0" y="24">{{ cycle.compressor }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="353.0" cy="18" r="11"/>
+  <text x="353.0" y="23">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="reversing" role="group" aria-label="{{ cycle.reversing }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="198.0" y="86" width="124" height="104" rx="10"/>
+  <rect class="rcc-valve-body" x="224.0" y="111" width="72" height="44" rx="7"/>
+  <text class="rcc-svg-small"  x="260.0" y="222">{{ cycle.reversing }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="349.0" cy="217" r="11"/>
+  <text x="349.0" y="222">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="air" role="group" aria-label="{{ cycle.evaporator }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="86" y="142" width="78" height="128" rx="10"/>
+  <rect class="rcc-exchanger-body" x="95" y="189" width="60" height="72" rx="8"/>
+  <path class="rcc-fins" d="M102 195 V255 M112 195 V255 M122 195 V255 M132 195 V255 M142 195 V255 M152 195 V255"/>
+  <text class="rcc-svg-label" data-air-role x="125" y="114">{{ cycle.evaporator }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="27" cy="108" r="11"/>
+  <text x="27" y="113">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="water" role="group" aria-label="{{ cycle.condenser }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="356" y="142" width="78" height="128" rx="10"/>
+  <rect class="rcc-exchanger-body" x="365" y="189" width="60" height="72" rx="8"/>
+  <path class="rcc-fins" d="M372 195 V255 M382 195 V255 M392 195 V255 M402 195 V255 M412 195 V255 M422 195 V255"/>
+  <text class="rcc-svg-label" data-water-role x="395" y="114">{{ cycle.condenser }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="489" cy="108" r="11"/>
+  <text x="489" y="113">i</text>
+  </g>
+  </g>
+  <g class="rcc-component" data-component="expansion" role="group" aria-label="{{ cycle.expansion }}" aria-controls="rcc-explanation">
+  <rect class="rcc-hit" x="198.0" y="256" width="124" height="104" rx="10"/>
+  <path class="rcc-expansion-symbol" d="M235.0 290 L285.0 320 V290 L235.0 320 Z"/>
+  <path class="rcc-expansion-knob" d="M260.0 301 V279 M251.0 279 H269.0"/>
+  <text class="rcc-svg-label"  x="260.0" y="342">{{ cycle.expansion }}</text>
+  <g class="rcc-info-mark" aria-hidden="true">
+  <circle cx="400.0" cy="336" r="11"/>
+  <text x="400.0" y="341">i</text>
+  </g>
+  </g>
+ <path class="rcc-electric" aria-hidden="true" d="M266.0 33 l-7 13 h11 l-7 13"/>
+ <g class="rcc-direction-arrows" fill="none" stroke="currentColor" stroke-width="2" marker-end="url(#rcc-flow-arrow-mobile)" aria-hidden="true">
+  <path data-left-direction data-heating-d="M125 182 V168" data-defrost-d="M125 168 V182" d="M125 182 V168"/>
+  <path data-right-direction data-heating-d="M395 168 V182" data-defrost-d="M395 182 V168" d="M395 168 V182"/>
+  </g>
+ <g class="rcc-ice" aria-hidden="true">
+  <path class="rcc-ice-crystals" d="M95 203 l-13 -7 m8 4 v-8 M95 250 l-13 7 m8 -4 v8"/>
+  <path class="rcc-drop" d="M92 261 q-8 12 0 12 q8 0 0 -12Z"/>
+  </g>
+ <g class="rcc-static-particles" aria-hidden="true">
+  <g fill="none" stroke="#458eac" stroke-width="2">
+  <circle cx="175" cy="135" r="3.5"/>
+  <circle cx="194.0" cy="135" r="3.5"/>
+  <circle cx="243.0" cy="135" r="3.5"/>
+  <circle cx="228.0" cy="65" r="3.5"/>
+  </g>
+  <g fill="none" stroke="#d75b51" stroke-width="2">
+  <circle cx="306.0" cy="135" r="3.5"/>
+  <circle cx="321.0" cy="135" r="3.5"/>
+  <circle cx="336.0" cy="135" r="3.5"/>
+  <circle cx="415" cy="195" r="3.5"/>
+  </g>
+  <g fill="#db963e">
+  <circle cx="300" cy="305" r="3.5"/>
+  <circle cx="316" cy="305" r="3.5"/>
+  <circle cx="332" cy="305" r="3.5"/>
+  <circle cx="348" cy="305" r="3.5"/>
+  <circle cx="364" cy="305" r="3.5"/>
+  <circle cx="380" cy="305" r="3.5"/>
+  <circle cx="395" cy="247" r="3.5"/>
+  </g>
+  <g fill="#3285b5">
+  <circle cx="125" cy="246" r="3.5"/>
+  </g>
+  <g fill="none" stroke="#3285b5" stroke-width="2">
+  <circle cx="145" cy="305" r="3.5"/>
+  <circle cx="179" cy="305" r="3.5"/>
+  <circle cx="213" cy="305" r="3.5"/>
+  </g>
+  </g>
+  <g data-particles aria-hidden="true">
+  </g>
+ </svg>
+ </div>
+ <div class="rcc-explanation" id="rcc-explanation" aria-live="polite" aria-atomic="true" hidden>
+  <button type="button" class="rcc-close" data-close aria-label="{{ cycle.close }}">×</button>
+  <h4 data-explanation-title>
+  </h4>
+  <p data-explanation-text>
+  </p>
+  <p class="rcc-explanation-state" data-explanation-state>
+  </p>
+ </div>
+ <script type="application/json" data-cycle-text>{{ cycle | jsonify }}</script>
+</section>
+<script src="{{ '/assets/js/refrigerant-cycle.js' | relative_url }}?v=20261001-2" defer>
+  </script>

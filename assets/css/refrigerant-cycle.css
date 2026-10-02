@@ -1,0 +1,107 @@
+/* A compact explanation within the article, rather than a separate feature panel. */
+.rcc {
+  --rcc-ink: #25313a;
+  --rcc-coral: #d75b51;
+  --rcc-blue: #3285b5;
+  --rcc-orange: #db963e;
+  box-sizing: border-box;
+  margin: 1.3rem 0 1.6rem;
+  border: 1px solid #dce2e5;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--rcc-ink);
+  font-family: inherit;
+  line-height: 1.5;
+}
+.rcc *, .rcc *::before, .rcc *::after { box-sizing: border-box; }
+.rcc [hidden] { display: none !important; }
+.rcc .rcc-header { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e1e6e9; background: #f3f5f6; border-radius: 8px 8px 0 0; }
+.rcc .rcc-heading { margin: 0 auto 0 0; padding: 0; border: 0; color: var(--rcc-ink); font-size: 0.8rem; font-weight: 700; line-height: 1.2; }
+.rcc-controls { display: flex; gap: 8px; align-items: center; }
+.rcc-mode-buttons { display: flex; gap: 2px; padding: 2px; border: 1px solid #d3dde3; border-radius: 5px; }
+.rcc button { border: 0; border-radius: 3px; background: transparent; color: #4c5962; font: inherit; font-size: 0.65rem; font-weight: 600; padding: 5px 10px; cursor: pointer; }
+.rcc button[aria-pressed="true"][data-mode-button] { background: var(--rcc-coral); color: #fff; }
+.rcc button:hover { background: #e3e9ed; }
+.rcc button:focus-visible, .rcc summary:focus-visible { outline: 2px solid #b54840; outline-offset: 3px; }
+.rcc .rcc-guide { margin: 0; padding: 0; border: 0; border-radius: 0; }
+.rcc-guide summary { display: grid; place-items: center; width: 30px; height: 30px; list-style: none; cursor: pointer; color: #486a80; font-size: 1.05rem; }
+.rcc-guide summary::-webkit-details-marker { display: none; }
+.rcc-guide-content { position: absolute; z-index: 2; top: calc(100% + 4px); right: 0; width: min(420px, 100%); padding: 15px 18px; border: 1px solid #cbd8e0; border-radius: 6px; background: #fff; box-shadow: 0 8px 20px rgb(37 49 58 / 12%); }
+.rcc .rcc-guide-content p { margin: 0 0 10px; font-size: 0.7rem; line-height: 1.65; }
+.rcc .rcc-guide-content p:last-child { margin-bottom: 0; }
+.rcc .rcc-guide-content .rcc-note { color: #65747d; font-size: 0.6rem; }
+.rcc-stage { padding: 10px 10px 6px; }
+.rcc-diagram { display: block; width: 100%; height: auto; }
+.rcc-mobile { display: none; }
+.rcc [data-particles], .rcc-static-particles, .rcc-direction-arrows, .rcc-ice, .rcc-air-stream, .rcc-heat-air, .rcc-heat-water, .rcc-electric { pointer-events: none; }
+.rcc-pipes { stroke: #d8e1e6; stroke-width: 9; }
+.rcc-component { cursor: default; outline: none; }
+.rcc-ready .rcc-component { cursor: pointer; }
+.rcc-hit { fill: transparent; stroke: transparent; stroke-width: 1.5; }
+.rcc-ready .rcc-component:hover .rcc-hit,
+.rcc-ready .rcc-component[aria-expanded="true"] .rcc-hit { fill: rgb(50 133 181 / 4%); stroke: #a8c7da; }
+.rcc-component:focus-visible .rcc-hit { stroke: #b54840; stroke-width: 2; }
+.rcc-ready .rcc-component:hover .rcc-info-mark circle,
+.rcc-ready .rcc-component[aria-expanded="true"] .rcc-info-mark circle { fill: #e1edf4; stroke: #3285b5; stroke-width: 2; }
+.rcc-component:focus-visible .rcc-info-mark circle { stroke: #b54840; stroke-width: 3; }
+.rcc-machine { fill: #fff; stroke: var(--rcc-ink); stroke-width: 2.5; }
+.rcc-compressor-symbol { fill: #f3f5f6; stroke: var(--rcc-ink); stroke-width: 2; stroke-linejoin: round; }
+.rcc-valve-body { fill: none; stroke: #83949f; stroke-width: 1.5; }
+.rcc-exchanger-body { fill: #fff; fill-opacity: 0.65; stroke: #83949f; stroke-width: 1.5; }
+.rcc-fins { fill: none; stroke: #d2dce1; stroke-width: 1.5; }
+.rcc-expansion-symbol { fill: #fff; fill-opacity: 0.7; stroke: var(--rcc-ink); stroke-width: 2; stroke-linejoin: round; }
+.rcc-expansion-knob { fill: none; stroke: var(--rcc-ink); stroke-width: 2; stroke-linecap: round; }
+.rcc-svg-label, .rcc-svg-small, .rcc-energy-label { fill: var(--rcc-ink); text-anchor: middle; font-family: inherit; }
+.rcc-svg-label { font-size: 19px; font-weight: 600; }
+.rcc-svg-small { font-size: 16px; }
+.rcc-info-mark circle { fill: #fff; stroke: #6c8b9e; stroke-width: 1.4; }
+.rcc-info-mark text { fill: #486a80; text-anchor: middle; font-family: Georgia, serif; font-size: 16px; font-style: italic; font-weight: 700; }
+.rcc:not(.rcc-ready) .rcc-info-mark { display: none; }
+.rcc-direction-arrows { color: #65747d; }
+.rcc-electric { fill: none; stroke: var(--rcc-orange); stroke-width: 2.5; stroke-linejoin: round; }
+.rcc-air-stream { fill: none; stroke: #a3c3d3; stroke-width: 2; stroke-dasharray: 8 7; stroke-linecap: round; }
+.rcc-heat-air { fill: none; stroke: #cf963d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transform-origin: var(--heat-center) var(--heat-y); }
+.rcc-heat-water { fill: none; stroke: #cf963d; stroke-width: 4; stroke-linecap: round; stroke-linejoin: round; transform-origin: var(--heat-center) var(--heat-y); }
+.rcc-energy-label { fill: #8a632b; font-size: 15px; font-weight: 500; }
+.rcc[data-mode="defrost"] .rcc-heat-air, .rcc[data-mode="defrost"] .rcc-heat-water { transform: scaleX(-1); }
+.rcc[data-mode="defrost"] .rcc-air-stream { opacity: 0.15; }
+.rcc-ice { display: none; }
+.rcc[data-mode="defrost"] .rcc-ice { display: block; }
+.rcc-ice-crystals { fill: none; stroke: #8cc9dd; stroke-width: 2.5; stroke-linecap: round; }
+.rcc-drop { fill: #3285b5; opacity: 0.7; }
+.rcc[data-running="true"][data-mode="heating"] .rcc-air-stream { animation: rcc-air-flow 2s linear infinite; }
+.rcc[data-running="true"] .rcc-heat-packet { animation: rcc-heat-transfer 2.2s linear infinite; animation-delay: var(--packet-delay); }
+.rcc[data-running="true"] .rcc-heat-water path { animation: rcc-heat-pulse 2.5s ease-in-out infinite; }
+.rcc[data-running="true"] .rcc-heat-water path:nth-child(2) { animation-delay: -0.8s; }
+.rcc[data-running="true"] .rcc-heat-water path:nth-child(3) { animation-delay: -1.6s; }
+.rcc[data-running="true"] .rcc-drop { animation: rcc-drip 2.6s ease-in infinite; }
+.rcc .rcc-explanation { position: relative; padding: 14px 40px 14px 18px; border-top: 1px solid #e1e6e9; background: #f7f9fa; border-radius: 0 0 8px 8px; }
+.rcc .rcc-explanation h4 { margin: 0 0 7px; font-size: 0.8rem; line-height: 1.35; }
+.rcc .rcc-explanation p[data-explanation-text] { margin: 0; font-size: 0.7rem; line-height: 1.65; }
+.rcc .rcc-explanation-state { margin: 8px 0 0; color: #316b8d; font-size: 0.65rem; font-weight: 600; }
+.rcc .rcc-close { position: absolute; top: 7px; right: 6px; width: 30px; height: 30px; padding: 0; font-size: 1.1rem; }
+@keyframes rcc-air-flow { to { stroke-dashoffset: -30; } }
+@keyframes rcc-heat-transfer { 0% { opacity: 0; transform: translateX(-20px); } 15% { opacity: 1; } 90% { opacity: 1; } 100% { opacity: 0; transform: translateX(var(--packet-travel)); } }
+@keyframes rcc-heat-pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; transform: translateX(4px); } }
+@keyframes rcc-drip { 0% { opacity: 0; transform: translateY(-2px); } 20% { opacity: 0.8; } 100% { opacity: 0; transform: translateY(13px); } }
+@media (max-width: 600px) {
+  .rcc .rcc-header { gap: 4px; padding: 8px; flex-wrap: wrap; }
+  .rcc .rcc-heading { font-size: 0.7rem; }
+  .rcc-controls { gap: 0; }
+  .rcc button { padding: 6px 7px; font-size: 0.6rem; }
+  .rcc-guide summary { width: 25px; }
+  .rcc-stage { padding: 5px 3px 2px; }
+  .rcc-wide { display: none; }
+  .rcc-mobile { display: block; }
+  .rcc-mobile .rcc-svg-label { font-size: 23px; }
+  .rcc-mobile .rcc-svg-small { font-size: 20px; }
+  .rcc-mobile .rcc-energy-label { font-size: 18px; }
+  .rcc-mobile .rcc-info-mark circle { r: 13px; }
+  .rcc-mobile .rcc-info-mark text { font-size: 19px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .rcc[data-running="true"] .rcc-air-stream,
+  .rcc[data-running="true"] .rcc-heat-packet,
+  .rcc[data-running="true"] .rcc-heat-water path,
+  .rcc[data-running="true"] .rcc-drop { animation: none; }
+}

@@ -1,0 +1,212 @@
+---
+title: "Newsletter 01 · September 2026"
+excerpt: "Septemberrückblick, neue Modellvarianten, Metriken 1.8 und lokale REST API."
+permalink: /newsletter/2026-09/
+layout: null
+newsletter: false
+---
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Ausgabe 01: Septemberrückblick, neue Bosch- und Buderus-Modellvarianten, Metriken 1.8 und die lokale REST API.">
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+  <title>Septemberrückblick: 44 von 68 Anlagen mit Heiztagen – neue Modelle &amp; lokale API</title>
+  <style>
+    body { margin: 0; padding: 0; background: #edf0f2; color: #25313a; font-family: Arial, Helvetica, sans-serif; -webkit-text-size-adjust: 100%; }
+    table { border-collapse: collapse; }
+    *, *::before, *::after { box-sizing: border-box; }
+    .archive-nav { max-width: 660px; margin: 0 auto; padding: 20px 24px 0; display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; font-size: 14px; line-height: 1.5; }
+    a:focus-visible { outline: 3px solid #b54840; outline-offset: 4px; }
+    .newsletter td { vertical-align: top; }
+    img { display: block; max-width: 100%; height: auto; border: 0; }
+    a { color: #b54840; }
+    .shell { width: 100%; background: #edf0f2; }
+    .newsletter { width: 100%; max-width: 660px; background: #ffffff; }
+    .pad { padding-left: 46px; padding-right: 46px; }
+    .cta { display: inline-block; padding: 13px 20px; background: #d75b51; color: #ffffff !important; text-decoration: none; font-weight: 700; border-radius: 3px; }
+    .text-link { color: #b54840; font-weight: 700; text-decoration: none; }
+    @media only screen and (max-width: 700px) {
+      .pad { padding-left: 24px !important; padding-right: 24px !important; }
+      .hero-title { font-size: 35px !important; line-height: 1.08 !important; }
+      .metric { font-size: 48px !important; }
+      .mobile-block { display: block !important; width: 100% !important; }
+      .mobile-gap { display: block !important; width: 100% !important; height: 12px !important; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="archive-nav" aria-label="Newsletter-Archiv">
+    <a href="{{ '/newsletter/' | relative_url }}">← Alle Newsletter-Ausgaben</a>
+    <a href="{{ '/newsletter/' | relative_url }}">Newsletter abonnieren →</a>
+  </nav>
+  <main>
+  <table role="presentation" class="shell" width="100%">
+    <tr>
+      <td align="center" style="padding:24px 12px">
+        <table role="presentation" class="newsletter" width="660">
+          <tr>
+            <td class="pad" style="background:#25313a;padding-top:34px;padding-bottom:34px">
+              <table role="presentation" width="100%">
+                <tr>
+                  <td class="mobile-block" style="font-size:11px;line-height:1.4;letter-spacing:2.1px;font-weight:700;color:#dce1e4">BOSCH/BUDERUS WÄRMEPUMPEN</td>
+                  <td class="mobile-block" align="right" style="font-size:11px;line-height:1.4;letter-spacing:1.2px;color:#aeb7bd">AUSGABE 01 · SEPTEMBER 2026</td>
+                </tr>
+              </table>
+              <div style="width:76px;height:4px;background:#d75b51;margin:24px 0 22px"></div>
+              <h1 class="hero-title" style="margin:0;color:#ffffff;font-size:43px;line-height:1.07;letter-spacing:-1.3px">Die Heizsaison beginnt.<br>Die Modellwelt wächst.</h1>
+              <p style="margin:18px 0 0;color:#dce1e4;font-size:16px;line-height:1.6">Neue Varianten, breitere Metriken und erstmals eine lokale Schnittstelle für das K 40 RF Gateway.</p>
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+              <img src="{{ '/assets/images/Banner.png' | relative_url }}" width="660" alt="Bosch und Buderus Wärmepumpen" style="width:100%;max-height:260px;object-fit:cover">
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding-top:36px;padding-bottom:34px">
+              <p style="margin:0 0 9px;font-size:11px;line-height:1.4;letter-spacing:1.5px;font-weight:700;color:#68747c">KURZ GEFASST</p>
+              <p style="margin:0 0 22px;font-size:18px;line-height:1.65;color:#25313a">Die Dokumentation deckt jetzt deutlich mehr Bosch- und Buderus-Baureihen ab. Passend dazu lassen sich auch die Metriken nach Modellfamilie betrachten. Außerdem gibt's alle Infos zur neuen lokalen REST API. Und die Daten zeigen: Die Heizsaison läuft spürbar an.</p>
+              <table role="presentation" width="100%" style="background:#f3f5f6;border-left:4px solid #d75b51">
+                <tr><td style="padding:18px 20px;font-size:14px;line-height:1.9">
+                  <a class="text-link" href="{{ '/docs/varianten/' | relative_url }}">Alle Modellvarianten im Überblick</a><br>
+                  <a class="text-link" href="{{ '/metrics/' | relative_url }}">Metriken für fünf Modellfamilien</a><br>
+                  <a class="text-link" href="{{ '/docs/smarthome/local-api' | relative_url }}">Lokale REST API für das K 40 RF</a>
+                </td></tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding-bottom:36px">
+              <table role="presentation" width="100%" style="background:#1f2b33;color:#ffffff">
+                <tr>
+                  <td style="padding:28px 28px 12px">
+                    <p style="margin:0;font-size:10px;line-height:1.4;letter-spacing:1.8px;font-weight:700;color:#ef8a80">SEPTEMBERRÜCKBLICK · STAND 30. SEPTEMBER 2026</p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 28px 10px">
+                    <span class="metric" style="font-size:58px;line-height:1;font-weight:800;letter-spacing:-2px">44 von 68</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:0 28px 24px;font-size:17px;line-height:1.55;color:#e1e6e9">meldenden Anlagen haben im September bereits mindestens einen Heiztag erfasst. Das sind <strong style="color:#ffffff">65&nbsp;%</strong>.</td>
+                </tr>
+                <tr>
+                  <td style="padding:0 28px 30px">
+                    <table role="presentation" width="100%">
+                      <tr>
+                        <td class="mobile-block" width="48%" style="background:#2d3a43;padding:16px">
+                          <div style="font-size:12px;color:#bfc8cd">15. September</div>
+                          <div style="margin-top:5px;font-size:22px;font-weight:700">9 von 65 · 14&nbsp;%</div>
+                          <div style="margin-top:4px;font-size:12px;color:#bfc8cd">Ø 19,9 °C außen</div>
+                        </td>
+                        <td class="mobile-gap" width="4%"></td>
+                        <td class="mobile-block" width="48%" style="background:#d75b51;padding:16px">
+                          <div style="font-size:12px;color:#ffe7e4">26. September · Spitzentag</div>
+                          <div style="margin-top:5px;font-size:22px;font-weight:700">30 von 64 · 47&nbsp;%</div>
+                          <div style="margin-top:4px;font-size:12px;color:#ffe7e4">Ø 14,6 °C außen</div>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </table>
+              <h2 style="margin:24px 0 12px;font-size:24px;line-height:1.25;color:#25313a">Ein kühler Schub - und wieder mildere Tage</h2>
+              <p style="margin:0 0 18px;font-size:16px;line-height:1.7;color:#4c5962">Ab dem 21. September nahm der Heizbetrieb deutlich zu. Am 26. September lief bei 30 von 64 meldenden Anlagen die Raumheizung. Mit den milderen Tagen sank der Anteil bis zum 29. September wieder auf 13 von 66.</p>
+              <table role="presentation" width="100%" style="font-size:13px;line-height:1.6;background:#f3f5f6">
+                <tr><td colspan="2" style="padding:16px 18px 8px;font-weight:700">Anteil der Anlagen mit Heizenergie am jeweiligen Tag</td></tr>
+                <tr><td style="padding:8px 18px;width:100px">15. September</td><td style="padding:8px 18px"><table role="presentation" width="100%"><tr><td width="14%" style="background:#b5c0c7;height:10px"></td><td width="86%"></td></tr></table><span>14 % · 9 von 65</span></td></tr>
+                <tr><td style="padding:8px 18px">26. September</td><td style="padding:8px 18px"><table role="presentation" width="100%"><tr><td width="47%" style="background:#d75b51;height:10px"></td><td width="53%"></td></tr></table><span>47 % · 30 von 64</span></td></tr>
+                <tr><td style="padding:8px 18px 16px">29. September</td><td style="padding:8px 18px 16px"><table role="presentation" width="100%"><tr><td width="20%" style="background:#b5c0c7;height:10px"></td><td width="80%"></td></tr></table><span>20 % · 13 von 66</span></td></tr>
+              </table>
+              <p style="margin:16px 0 0"><a class="text-link" href="{{ '/metrics/#/monthly' | relative_url }}">September-Verlauf in den Metriken ansehen →</a></p>
+              <p style="margin:12px 2px 0;font-size:11px;line-height:1.55;color:#748088">Grundlage: freiwillig bereitgestellte Tageswerte vom 1. bis 30. September. „Heiztag“ bedeutet eine positive erfasste thermische Heizenergie, ohne Warmwasser. Die Stichprobe ist nicht repräsentativ.</p>
+            </td>
+          </tr>
+
+          <tr><td class="pad"><div style="height:1px;background:#dde2e5"></div></td></tr>
+
+          <tr>
+            <td class="pad" style="padding-top:36px;padding-bottom:38px">
+              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;letter-spacing:1.6px;font-weight:700;color:#d75b51">NEU IN DER DOKUMENTATION</p>
+              <h2 style="margin:0 0 14px;font-size:28px;line-height:1.2;color:#25313a">Welche Bosch- und Buderus-Modelle gehören zusammen?</h2>
+              <p style="margin:0 0 17px;font-size:16px;line-height:1.7;color:#4c5962">Die neue Variantenübersicht ordnet baugleiche Plattformen, Leistungsklassen, Kältemittel und maximale Vorlauftemperaturen ein. Sie macht unter anderem sichtbar, warum eine WLW186i MB nicht mit einer WLW186i MBE+ gleichzusetzen ist.</p>
+              <table role="presentation" width="100%" style="font-size:13px;line-height:1.55;background:#f7f8f8">
+                <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8"><strong>CS3800i</strong> / WLW166i MBB</td><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8">Neuer preiswerter Allrounder mit 4 bis 13 kW Leistung</td></tr>
+                <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8"><strong>CS5800i/6800i</strong> / WLW176i/186i MB</td><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8">Schalloptimierte Klassiker für Neubau bzw. Modernisierung</td></tr>
+                <tr><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8"><strong>CS8800i</strong> / WLW186i MBE+</td><td style="padding:14px 16px;border-bottom:1px solid #e2e6e8">Hochtemperaturwärmepumpe mit 11, 13 und 15 kW</td></tr>
+                <tr><td style="padding:14px 16px"><strong>CS7001i/7400i</strong> / WLW196i</td><td style="padding:14px 16px">Ältere Wärmepumpenfamilie mit R410A-Kältemittel</td></tr>
+              </table>
+              <p style="margin:24px 0 0"><a class="cta" href="{{ '/docs/varianten/' | relative_url }}">Varianten vergleichen →</a></p>
+            </td>
+          </tr>
+
+          <tr><td class="pad"><div style="height:1px;background:#dde2e5"></div></td></tr>
+
+          <tr>
+            <td class="pad" style="padding-top:36px;padding-bottom:38px">
+              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;letter-spacing:1.6px;font-weight:700;color:#d75b51">METRIKEN 1.8</p>
+              <h2 style="margin:0 0 14px;font-size:28px;line-height:1.2;color:#25313a">Vergleiche bleiben jetzt in der richtigen Modellfamilie</h2>
+              <p style="margin:0 0 22px;font-size:16px;line-height:1.7;color:#4c5962">Die Metrik-Plattform unterstützt nun neben der CS5800i/6800i- und WLW176i/186i-Familie auch CS3800i/WLW166i, CS8800i/WLW186i MBE+, CS7001i/WLW196i sowie CS7400i/WLW196i S+. In der Darstellung könnt ihr dazu die Modellfamilie im Drop-down auswählen, für die ihr die Diagramme und Vergleiche eingrenzen wollt.</p>
+              <a class="cta" href="{{ '/metrics/' | relative_url }}">Metriken öffnen →</a>
+            </td>
+          </tr>
+
+          <tr><td class="pad"><div style="height:1px;background:#dde2e5"></div></td></tr>
+
+          <tr>
+            <td class="pad" style="padding-top:36px;padding-bottom:38px">
+              <p style="margin:0 0 10px;font-size:11px;line-height:1.4;letter-spacing:1.6px;font-weight:700;color:#d75b51">SMART HOME</p>
+              <h2 style="margin:0 0 14px;font-size:28px;line-height:1.2;color:#25313a">Lokale REST API: Daten direkt vom K 40</h2>
+              <p style="margin:0 0 16px;font-size:16px;line-height:1.7;color:#4c5962">Seit September stellt Bosch/Buderus eine lokale REST API bereit. Mit einem K 40 RF Gateway und Firmware 15.00.01 oder neuer lassen sich Werte im eigenen Netzwerk abfragen.</p>
+              <table role="presentation" width="100%" style="margin-bottom:22px">
+                <tr><td style="width:22px;color:#d75b51;font-weight:700;vertical-align:top">✓</td><td style="font-size:14px;line-height:1.65;color:#4c5962">Datenabruf auch ohne zusätzliche Hardware</td></tr>
+                <tr><td style="width:22px;color:#d75b51;font-weight:700;vertical-align:top">✓</td><td style="font-size:14px;line-height:1.65;color:#4c5962">Lokal im Heimnetz statt über die Cloud</td></tr>
+                <tr><td style="width:22px;color:#d75b51;font-weight:700;vertical-align:top">✓</td><td style="font-size:14px;line-height:1.65;color:#4c5962">Nur Lesezugriff – (noch) kein Schreibzugriff</td></tr>
+              </table>
+              <a class="cta" href="{{ '/docs/smarthome/local-api' | relative_url }}">Lokale API entdecken →</a>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="padding-bottom:38px">
+              <table role="presentation" width="100%" style="border:1px solid #dfe4e7;background:#fafbfb">
+                <tr>
+                  <td style="padding:25px 26px">
+                    <p style="margin:0 0 14px;font-size:10px;line-height:1.4;letter-spacing:1.7px;font-weight:700;color:#68747c">EMPFEHLUNG</p>
+                    <img src="{{ '/assets/images/nathan-labs-logo.png' | relative_url }}" width="210" alt="Nathan Labs" style="width:210px;margin-bottom:16px">
+                    <h2 style="margin:0 0 10px;font-size:22px;line-height:1.25;color:#25313a">Mehr aus den eigenen Wärmepumpendaten herausholen</h2>
+                    <p style="margin:0 0 18px;font-size:15px;line-height:1.65;color:#4c5962">Nathan Labs analysiert deine Anlage und zeigt konkrete Einsparpotenziale. Der Einstieg ist kostenlos und richtet sich an alle, die ihre Wärmepumpe datenbasiert besser verstehen und optimieren möchten.</p>
+                    <a class="text-link" href="https://nathan-labs.com/">Nathan Labs kostenlos testen →</a>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+
+          <tr>
+            <td class="pad" style="background:#25313a;padding-top:28px;padding-bottom:28px">
+              <p style="margin:0 0 8px;font-size:15px;font-weight:700;color:#ffffff">Bosch/Buderus Wärmepumpen</p>
+              <p style="margin:0 0 18px;font-size:13px;line-height:1.6;color:#cbd2d6">Unabhängige Dokumentation, Praxiserfahrungen und Messdaten rund um Bosch Compress und Buderus Logatherm Wärmepumpen.</p>
+              <p style="margin:0;font-size:12px;line-height:1.9;color:#cbd2d6">
+                <a href="{{ '/' | relative_url }}" style="color:#ffffff">Website</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+                <a href="{{ '/newsletter/' | relative_url }}" style="color:#ffffff">Newsletter-Archiv</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+                <a href="{{ '/newsletter/' | relative_url }}" style="color:#ffffff">Newsletter abonnieren</a><br>
+                <a href="{{ '/impressum/' | relative_url }}" style="color:#cbd2d6">Impressum</a>&nbsp;&nbsp;·&nbsp;&nbsp;
+                <a href="{{ '/datenschutz/' | relative_url }}" style="color:#cbd2d6">Datenschutz</a>
+              </p>
+            </td>
+          </tr>
+        </table>
+        <p style="margin:14px 0 0;font-size:11px;line-height:1.5;color:#7a848b">Webarchiv der am 30. September 2026 versendeten Newsletter-Ausgabe.</p>
+      </td>
+    </tr>
+  </table>
+  </main>
+</body>
+</html>
