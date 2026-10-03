@@ -46,3 +46,7 @@ build/
 
 # Misc tool caches
 .ruby-lsp/
+
+# Local browser validation artifacts
+.playwright-cli/
+output/playwright/

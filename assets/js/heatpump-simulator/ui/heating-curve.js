@@ -613,6 +613,11 @@
         const minX = svgBox.left + window.scrollX + margin.left + pad;
         const minY = svgBox.top + window.scrollY + margin.top + pad;
         tx = Math.max(minX, Math.min(maxX, tx));
+        // The chart can be wider than a phone; keep its tooltip in the viewport.
+        tx = Math.max(
+          window.scrollX + pad,
+          Math.min(tx, window.scrollX + vw - bbox.width - pad)
+        );
         ty = Math.max(minY, Math.min(maxY, ty));
         tip.style("left", `${tx}px`).style("top", `${ty}px`);
       }
@@ -675,6 +680,10 @@
             const minX = svgBox.left + window.scrollX + margin.left + pad;
             const minY = svgBox.top + window.scrollY + margin.top + pad;
             tx = Math.max(minX, Math.min(maxX, tx));
+            tx = Math.max(
+              window.scrollX + pad,
+              Math.min(tx, window.scrollX + document.documentElement.clientWidth - bbox.width - pad)
+            );
             ty = Math.max(minY, Math.min(maxY, ty));
             tip
               .style("left", `${tx}px`)

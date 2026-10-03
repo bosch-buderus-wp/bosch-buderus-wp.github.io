@@ -58,6 +58,7 @@ include:
 
 exclude:
   - assets/js/heatpump-simulator/node_modules
+  - output/playwright
 
 collections:
   docs:
