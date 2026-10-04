@@ -601,14 +601,15 @@
       ]
     },
     "_docs/Technischer-Aufbau.md": {
-      "fingerprint": "039c831d74d24576ffbce87066bfeff975ef24997884eb93ce3559753016e5e5",
-      "sourceHash": "a2f270779ce9940ef63a6f9404dca8bcad3a04664c2be60cc16c4453c8b6e233",
+      "fingerprint": "d5c9aa18919f73edcc4d726704f9ec5421b54ba5efda543c77158edbe8869423",
+      "sourceHash": "49d06276627ba61eb00b5d2b956007a2b530f2f40722538bd579703c8c15528d",
       "target": "_en_docs/Technischer-Aufbau.md",
       "frontMatterSourceHash": "bf25b983c63d01cea84a3d5f1f2166b77a0ecd2154bcdc7272fd9ea82b29720d",
       "bodyBlockSourceHashes": [
         "b32515a82809c292bb986e57bceb60ab743c32781c591117f029e95ed55125c2",
         "79cb32df2337fd8fe5266858c57c5eb1c03585316ada1a32e2ef478c33c0532e",
         "a8fac22b800aaf87bebdb1efc5e079f3f8567e91662ac1a17805738c79dd1d3b",
+        "8c230b69b44b94ac2f316e21f20f21388269a8238b845d5b232aac1af7e590e9",
         "0ad67bed97de8507f120af1959cbb319827da2057cac50fa81ecfc0ba1829840",
         "4c1128f93a1fc3725f38dc5bfb0993a830e5e646ba1fcb3114f66281e029462d",
         "2c7b66991764cfce4cb2947becbe32e185c361ab0d9670f68508f933e2bef531",
