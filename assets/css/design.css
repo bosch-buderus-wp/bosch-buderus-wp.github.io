@@ -110,7 +110,7 @@ body.layout--splash .page__hero--overlay .page__lead {
 .page__content > p > img:not(.emoji) { border-radius: 10px; }
 .page__content > :is(ul, ol) li + li { margin-top: .4em; }
 .page__content blockquote { border-left: 3px solid var(--accent); background: var(--surface); padding: 18px 22px; font-style: normal; }
-.page__content > table { font-size: .84em; border: 1px solid var(--line); border-radius: 8px; }
+.page__content > table { width: fit-content; max-width: 100%; font-size: .84em; border: 1px solid var(--line); border-radius: 8px; }
 .page__content > table th { background: var(--ink); color: #fff; border-bottom: 0; padding: 12px 14px; }
 .page__content > table td { padding: 11px 14px; border-color: var(--line); }
 .page__content > table tbody tr:nth-child(even) { background: var(--surface); }
