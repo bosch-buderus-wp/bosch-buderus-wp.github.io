@@ -239,34 +239,53 @@ Naturally, the best approach is to make sure when purchasing the heat pump that 
 
 ## Heating Curve and Hydronic Balancing
 
-We now move from domestic hot water to optimizing the heating system.
-As with domestic hot water, it is essential that the flow temperature is just low enough for the rooms to become only as warm as necessary.
-The individual room controls (IRC) or radiator thermostats should not regulate the room temperature by cycling, i.e. by constantly opening and closing the water supply—similar to a car that constantly accelerates to maximum speed and then brakes to a standstill again instead of driving at a constant speed.
-The aim is therefore for the rooms to be supplied continuously with the minimum necessary water temperature.
-The heat pump then only needs to heat to the minimum flow temperature that is currently necessary to heat all rooms to a comfortable temperature.
+Now we move from domestic hot water to optimizing the heating system.
 
-This minimum flow temperature and the fine adjustment of the flow rate are achieved through so-called hydronic balancing.
-The following 6-step guide to hydronic balancing comes from [Haustechnikdialog.de](https://www.haustechnikdialog.de/SHKwissen/2711/Thermischer-Abgleich):
+As with domestic hot water, it is essential that the flow temperature is just low enough for the rooms to reach the required temperature.
+
+To achieve this, the heating curve and the flow rates of the individual heating surfaces are coordinated with one another. This step-by-step process is called hydronic balancing.
+
+The individual room controls (ERR) or radiator thermostats should not regulate the room temperature by cycling—that is, by constantly opening and closing the water supply—similar to a car that is constantly accelerated to maximum speed and then braked to a standstill again, instead of driving at a constant speed.
+
+The aim is therefore to supply the rooms continuously with the minimum required water temperature.
+
+This means that the heat pump only needs to heat the water to the minimum flow temperature necessary to bring all rooms to a comfortable temperature.
+
+The **critical rooms** are particularly important: This is where the heating surfaces are most undersized in relation to the heat demand and the desired room temperature.
+This is not necessarily the room with the greatest heat demand—a small bathroom with a high desired temperature can also determine the required flow temperature.
+The heating surfaces in these rooms should not be throttled if possible.
+
+At the same transferred heat output, a higher flow rate reduces the temperature difference between the flow and return temperatures.
+The water cools down less as it passes through the heating surface.
+As a result, the same heat output can be transferred with a lower flow temperature.
+However, the additional benefit becomes increasingly smaller as the flow rate rises.
+At the same time, pump electricity consumption and flow noise may increase.
+
+{% include heating-flow.html %}
+
+The following 6-step guide for hydronic balancing is taken from [Haustechnikdialog.de](https://www.haustechnikdialog.de/SHKwissen/2711/Thermischer-Abgleich):
 
 1. **Prepare the system** \
-   With underfloor heating, the IRCs should be deactivated during balancing or the actuators should be removed. All restrictions on the heating circuit manifolds should be fully opened. For radiators, the thermostat heads should be fully opened or temporarily removed. 
-   The aim is for the IRCs/thermostats not to intervene during the measurement phase. Room temperatures should be determined solely by the heating curve and flow rate.
+   With underfloor heating, the TRVs should be deactivated during the balancing process or the actuators should be removed. At the heating circuit manifolds, all restrictions are fully opened. With radiators, the thermostat heads are fully opened or temporarily removed. 
+   The aim is for the TRVs/thermostats not to intervene during the measurement phase. The room temperatures should be determined solely by the heating curve and flow rate.
 2. **Lower the heating curve roughly** \
-   Wait at least 1–2 days after preparation. If all regularly heated rooms are warmer than desired afterward, the heating curve is probably too high.
-   Now lower the heating curve step by step. After each change, wait long enough again; with slow underfloor heating, ideally around 48 hours. Continue reducing the heating curve until the first room just fails to reach its desired temperature.
-   This room is your reference room. It will not be restricted further during the balancing process.
-3. **Readjust the reference room** \
-   Raise the heating curve slightly so that the reference room reliably reaches its desired temperature. The heating curve is now initially set as low as possible.
-   All rooms that are still too warm are receiving too much flow and will subsequently be restricted individually.
+   After preparation, wait at least 1–2 days. If all regularly heated rooms are then warmer than desired, the heating curve is probably too high.
+   Now lower the heating curve step by step. After each change, wait long enough again; with slow-responding underfloor heating, ideally around 48 hours. Continue reducing the heating curve until the first room just fails to reach its desired temperature.
+   This room is your reference room:
+   Under these conditions, its heating surface is the most undersized in relation to the demand.
+   It will not be restricted further during the subsequent balancing process.
+3. **Set the reference room appropriately again** \
+   Raise the heating curve slightly again so that the reference room reliably reaches its desired temperature. The heating curve is now initially set as low as possible.
+   Rooms that are still too warm without additional heat sources are then slightly restricted individually.
 4. **Gradually restrict rooms that are too warm** \
-   Start with the room that is warmest relative to the desired temperature. Restrict the flow there only slightly and then wait at least another 1–2 days.
-   If the room is still too warm afterward, restrict the flow slightly again. If it becomes too cold, open the flow somewhat again.
+   Start with the room that is warmest in relation to the desired temperature. Restrict the flow rate there only slightly, then wait at least 1–2 days again.
+   If the room is still too warm afterwards, restrict it slightly again. If it becomes too cold, open the flow rate somewhat again.
 5. **Check the heating curve after each restriction round** \
-   Restricting one room changes the distribution of heating water in the rest of the system. The reference room may therefore become somewhat warmer afterward.
-   For this reason, check the reference room after each restriction round. If it is too warm, the heating curve can be lowered slightly further. Then check the rooms that have already been adjusted again and correct them slightly if necessary.
+   Restricting one room changes the distribution of heating water in the rest of the system. As a result, the reference room may become slightly warmer again.
+   Therefore, check the reference room after each restriction round. If it is too warm, the heating curve can be lowered slightly further. The rooms that have already been adjusted are then checked again and corrected slightly if necessary.
 6. **Repeat room by room** \
    Repeat this procedure until all regularly heated rooms reach their desired temperature and the heating curve is set as low as possible.
-   Hydronic balancing is not a one-time task, but rather a gradual fine adjustment over several cold days or even an entire heating season.
+   Thermal balancing is not a one-off task, but rather a gradual fine adjustment over several cold days or even an entire heating season.
 
 The procedure should be carried out on a cold day with subzero temperatures and little solar radiation.
 To adjust the heating curve in steps 2 and 5, reduce the [flow temperature at the design outdoor temperature (DOT)](/en/docs/settings/#vorlauftemperatur-nat).
@@ -287,11 +306,12 @@ If the temperature difference is too low, PC0 reduces the flow rate so that the 
 If the temperature difference is too high, PC0 increases the flow rate.
 
 In the heating circuit, on the other hand, the differential pressure is set.
-The temperature difference results from the heat output of the radiators or underfloor heating and therefore cannot be set.
+The temperature difference results from the transferred heat output and the flow rate.
+It is not specified directly here as a target value, but can be influenced via the pump setting and the throttling of the heating surfaces.
 The set differential pressure ensures a constant flow rate in the heating circuit.
-This naturally only applies if the valve position at the radiators or underfloor heating remains unchanged.
-If the thermostat changes the valve position, the resistance changes and, to ensure a constant differential pressure, PC1 must adjust the flow rate.
-For better efficiency and stability, the thermostats should therefore always be as open as possible, and the flow rate should be set permanently at the valve base or flow regulator, as described under [Heating Curve and Hydronic Balancing](#heizkurve-und-thermischer-abgleich).
+Of course, this only applies if the valve position at the radiators or underfloor heating remains unchanged.
+If the thermostat changes the valve position, the resistance changes and, in order to ensure a constant differential pressure, PC1 must adjust the flow rate.
+For better efficiency and stability, the thermostats should therefore always be as open as possible, and the flow rate should be set permanently at the valve lower section or flow regulator, as described under [Heating curve and hydraulic balancing](#heizkurve-und-thermischer-abgleich).
 
 By default, the Bosch CS 5800/6800i and Buderus WLW 176/186i have a primary circuit temperature difference of 4.5 K for underfloor heating and 7.5 K for radiators, as well as a differential pressure of 250 mbar stored.
 
