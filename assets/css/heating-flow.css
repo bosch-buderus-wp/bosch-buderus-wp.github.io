@@ -1,0 +1,78 @@
+/* Matches refrigerant-cycle visually; independent selectors keep both diagrams isolated. */
+.hfl {
+  --hfl-ink: #25313a;
+  --hfl-coral: #d75b51;
+  --hfl-blue: #3285b5;
+  --hfl-orange: #db963e;
+  --hfl-duration: 2.5s;
+  box-sizing: border-box;
+  margin: 1.3rem 0 1.6rem;
+  border: 1px solid #dce2e5;
+  border-radius: 8px;
+  background: #fff;
+  color: var(--hfl-ink);
+  font-family: inherit;
+  line-height: 1.5;
+}
+.hfl *, .hfl *::before, .hfl *::after { box-sizing: border-box; }
+.hfl [hidden] { display: none !important; }
+.hfl .hfl-header { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e1e6e9; background: #f3f5f6; border-radius: 8px 8px 0 0; }
+.hfl .hfl-header h3 { margin: 0 auto 0 0; padding: 0; border: 0; color: var(--hfl-ink); font-size: 0.8rem; font-weight: 700; line-height: 1.2; }
+.hfl .hfl-guide { margin: 0; padding: 0; border: 0; border-radius: 0; }
+.hfl-guide summary { display: grid; place-items: center; width: 30px; height: 30px; list-style: none; cursor: pointer; color: #486a80; font-size: 1.05rem; }
+.hfl-guide summary::-webkit-details-marker { display: none; }
+.hfl summary:focus-visible, .hfl input:focus-visible { outline: 2px solid #b54840; outline-offset: 3px; }
+.hfl-guide-content { position: absolute; z-index: 2; top: calc(100% + 4px); right: 0; width: min(420px, 100%); padding: 15px 18px; border: 1px solid #cbd8e0; border-radius: 6px; background: #fff; box-shadow: 0 8px 20px rgb(37 49 58 / 12%); }
+.hfl .hfl-guide-content p { margin: 0 0 10px; font-size: 0.7rem; line-height: 1.65; }
+.hfl .hfl-guide-content p:last-child { margin-bottom: 0; }
+.hfl .hfl-guide-content .hfl-note { color: #65747d; font-size: 0.6rem; }
+.hfl-stage { padding: 10px 14px 6px; }
+.hfl-diagram { display: block; width: 100%; max-width: 540px; height: auto; margin: auto; }
+.hfl-pipes { stroke-width: 9; }
+.hfl-hot { stroke: var(--hfl-coral); }
+.hfl-cold { stroke: var(--hfl-blue); }
+.hfl-radiator rect { fill: #fff; stroke: #83949f; stroke-width: 1.5; }
+.hfl-radiator path { fill: none; stroke: #d2dce1; stroke-width: 5; stroke-linecap: round; }
+.hfl-direction { stroke: #fff; stroke-width: 1.5; }
+.hfl-hot-dot { fill: #fff; }
+.hfl-cold-dot { fill: #fff; }
+.hfl-water { visibility: hidden; }
+.hfl-ready .hfl-water { visibility: visible; }
+.hfl-ready .hfl-water circle { animation: hfl-water-flow var(--hfl-duration) linear infinite; }
+.hfl-heat { stroke: var(--hfl-orange); stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.hfl-label, .hfl-value { fill: var(--hfl-ink); text-anchor: middle; font-family: inherit; font-size: 19px; }
+.hfl-value { font-weight: 600; }
+.hfl-reading-bg { fill: #fff; fill-opacity: 0.95; }
+.hfl-heat-text { fill: #8a632b; }
+.hfl-hot-text { fill: #b54840; }
+.hfl-cold-text { fill: #246c96; }
+.hfl-control { padding: 12px 18px 0; border-top: 1px solid #e1e6e9; }
+.hfl-control label { display: flex; justify-content: space-between; gap: 12px; font-size: 0.7rem; font-weight: 600; }
+.hfl-control output { color: #316b8d; white-space: nowrap; }
+.hfl input[type="range"] { display: block; width: 100%; margin: 10px 0 0; padding: 0; height: 28px; accent-color: var(--hfl-coral); cursor: pointer; }
+.hfl-range-labels { display: flex; justify-content: space-between; color: #65747d; font-size: 0.6rem; }
+.hfl .hfl-control p { margin: 8px 0 0; font-size: 0.65rem; }
+.hfl-chart { padding: 10px 14px 14px; }
+.hfl-chart svg { display: block; width: 100%; max-width: 540px; height: auto; margin: auto; }
+.hfl-axis-label { fill: #65747d; font-family: inherit; font-size: 14px; }
+.hfl-y-label { font-size: 14px; }
+.hfl-grid { fill: none; stroke: #e1e6e9; stroke-width: 1; }
+.hfl-curve { stroke: var(--hfl-coral); stroke-width: 2.5; }
+.hfl-marker-line { stroke: #83949f; stroke-width: 1; stroke-dasharray: 4 4; }
+.hfl-marker { fill: var(--hfl-coral); stroke: #fff; stroke-width: 2; }
+.hfl .hfl-explanation { margin: 0; padding: 14px 18px; border-top: 1px solid #e1e6e9; background: #f7f9fa; border-radius: 0 0 8px 8px; font-size: 0.7rem; line-height: 1.65; }
+.hfl .hfl-noscript { margin: 0; padding: 12px 18px; font-size: 0.65rem; }
+@keyframes hfl-water-flow { from { transform: translateX(0); } to { transform: translateX(135px); } }
+@media (max-width: 600px) {
+  .hfl .hfl-header { gap: 4px; padding: 8px; }
+  .hfl .hfl-header h3 { font-size: 0.7rem; }
+  .hfl-guide summary { width: 25px; }
+  .hfl-stage { padding: 5px 3px 8px; }
+  .hfl-control { padding: 10px 12px 0; }
+  .hfl-chart { padding: 10px 3px; }
+  .hfl .hfl-explanation { padding: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hfl-ready .hfl-water circle { animation: none; }
+  .hfl-water { display: none; }
+}

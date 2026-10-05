@@ -1,0 +1,83 @@
+{% assign heating_flow_language = page.lang | default: 'de' %}
+{% assign heating_flow = site.data.heating_flow[heating_flow_language] | default: site.data.heating_flow.de %}
+<link rel="stylesheet" href="{{ '/assets/css/heating-flow.css' | relative_url }}">
+<section class="hfl" data-heating-flow aria-labelledby="hfl-heading">
+  <header class="hfl-header">
+    <h3 id="hfl-heading">{{ heating_flow.title | escape }}</h3>
+    <details class="hfl-guide">
+      <summary aria-label="{{ heating_flow.guide_title | escape }}" title="{{ heating_flow.guide_title | escape }}">ⓘ</summary>
+      <div class="hfl-guide-content">
+        <p>{{ heating_flow.guide | escape }}</p>
+        <p>{{ heating_flow.model | escape }}</p>
+        <p class="hfl-note">{{ heating_flow.note | escape }}</p>
+      </div>
+    </details>
+  </header>
+  <div class="hfl-stage">
+    <svg class="hfl-diagram" viewBox="0 0 460 193" role="img" aria-labelledby="hfl-diagram-title hfl-diagram-desc">
+      <title id="hfl-diagram-title">{{ heating_flow.svg_title | escape }}</title>
+      <desc id="hfl-diagram-desc">{{ heating_flow.svg_description | escape }}</desc>
+      <g class="hfl-pipes" fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path class="hfl-hot" d="M28 96 H163"/>
+        <path class="hfl-cold" d="M297 164 H432"/>
+      </g>
+      <g class="hfl-radiator" aria-hidden="true">
+        <rect x="163" y="77" width="134" height="106" rx="8"/>
+        <path d="M181 83 V177 M197 83 V177 M213 83 V177 M229 83 V177 M245 83 V177 M261 83 V177 M277 83 V177"/>
+      </g>
+      <g class="hfl-direction" fill="none" aria-hidden="true">
+        <path d="M104 89 L113 96 L104 103 M370 157 L379 164 L370 171"/>
+      </g>
+      <g class="hfl-water" aria-hidden="true">
+        <circle class="hfl-hot-dot" cx="28" cy="96" r="4"/>
+        <circle class="hfl-hot-dot" cx="28" cy="96" r="4" style="animation-delay:calc(var(--hfl-duration) * -0.5)"/>
+        <circle class="hfl-cold-dot" cx="297" cy="164" r="4"/>
+        <circle class="hfl-cold-dot" cx="297" cy="164" r="4" style="animation-delay:calc(var(--hfl-duration) * -0.5)"/>
+      </g>
+      <g class="hfl-heat" fill="none" aria-hidden="true">
+        <path d="M200 65 V25 M193 34 L200 25 L207 34 M230 65 V25 M223 34 L230 25 L237 34 M260 65 V25 M253 34 L260 25 L267 34"/>
+      </g>
+      <text class="hfl-value hfl-heat-text" x="230" y="17">{{ heating_flow.heat_output | escape }}</text>
+      <text class="hfl-label" x="370" y="17">{{ heating_flow.room | escape }}</text>
+      <text class="hfl-value" x="370" y="42">20 °C</text>
+      <text class="hfl-label" x="90" y="47">{{ heating_flow.flow | escape }}</text>
+      <text class="hfl-value hfl-hot-text" data-flow-temp x="90" y="72">{{ heating_flow.initial_flow_temp | escape }}</text>
+      <text class="hfl-label" x="370" y="115">{{ heating_flow.return | escape }}</text>
+      <text class="hfl-value hfl-cold-text" data-return-temp x="370" y="140">{{ heating_flow.initial_return_temp | escape }}</text>
+      <rect class="hfl-reading-bg" x="170" y="106" width="120" height="52" rx="4" aria-hidden="true"/>
+      <text class="hfl-label" x="230" y="125">{{ heating_flow.spread | escape }}</text>
+      <text class="hfl-value" data-spread x="230" y="150">{{ heating_flow.initial_spread | escape }}</text>
+    </svg>
+  </div>
+  <div class="hfl-control" data-flow-control hidden>
+    <label for="hfl-flow">{{ heating_flow.flow_rate | escape }} <output id="hfl-flow-value" for="hfl-flow">86 l/h</output></label>
+    <input id="hfl-flow" type="range" min="50" max="300" step="1" value="86" aria-describedby="hfl-flow-hint">
+    <div class="hfl-range-labels" aria-hidden="true"><span>50 l/h</span><span>300 l/h</span></div>
+    <p id="hfl-flow-hint">{{ heating_flow.hint | escape }}</p>
+  </div>
+  <div class="hfl-chart" data-flow-chart hidden>
+    <svg viewBox="0 0 460 165" role="img" aria-labelledby="hfl-chart-title hfl-chart-desc">
+      <title id="hfl-chart-title">{{ heating_flow.chart_title | escape }}</title>
+      <desc id="hfl-chart-desc">{{ heating_flow.chart_description | escape }}</desc>
+      <text class="hfl-axis-label hfl-y-label" transform="translate(16 80) rotate(-90)" text-anchor="middle">{{ heating_flow.y_axis | escape }}</text>
+      <g class="hfl-grid" aria-hidden="true"><path d="M55 18 H435 M55 68 H435 M55 118 H435"/></g>
+      <g class="hfl-axis-label" aria-hidden="true">
+        <text x="43" y="23" text-anchor="end">50</text>
+        <text x="43" y="73" text-anchor="end">45</text>
+        <text x="43" y="123" text-anchor="end">40</text>
+        <text x="55" y="145" text-anchor="middle">50</text>
+        <text x="131" y="145" text-anchor="middle">100</text>
+        <text x="283" y="145" text-anchor="middle">200</text>
+        <text x="435" y="145" text-anchor="middle">300</text>
+      </g>
+      <path class="hfl-curve" data-curve fill="none"/>
+      <path class="hfl-marker-line" data-marker-line fill="none" aria-hidden="true"/>
+      <circle class="hfl-marker" data-marker r="5" aria-hidden="true"/>
+      <text class="hfl-axis-label" x="435" y="163" text-anchor="end">{{ heating_flow.x_axis | escape }}</text>
+    </svg>
+  </div>
+  <p class="hfl-explanation" data-flow-explanation>{{ heating_flow.initial_explanation | escape }}</p>
+  <noscript><p class="hfl-noscript">{{ heating_flow.noscript | escape }}</p></noscript>
+  <script type="application/json" data-heating-flow-text>{{ heating_flow | jsonify }}</script>
+</section>
+<script src="{{ '/assets/js/heating-flow.js' | relative_url }}" defer></script>
