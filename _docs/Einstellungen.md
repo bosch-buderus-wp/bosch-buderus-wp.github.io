@@ -1,12 +1,12 @@
 ---
 title: "Einstellungen: Heizkurve, Warmwasser, Zuheizer, ..."
 headline: "Einstellungen: Heizkurve, Warmwasser, Zuheizer, ..."
-excerpt: "Einstellungsübersicht für Bosch CS5800/6800i und Buderus WLW176/186i mit Heizkurve, Raumtemperatur, Warmwasser, Kühlung und wichtigen Menüpunkten."
+excerpt: "Einstellungsübersicht für Bosch CS5800/6800i und Buderus WLW176/186i mit Heizkurve, Raumtemperatur, Warmwasser, Zirkulationspumpe und wichtigen Menüpunkten."
 permalink: /docs/einstellungen/
 toc: true
 ---
 
-Die Bosch CS 5800/6800i und Buderus WLW176/186i bietet eine Vielzahl an Einstellungen. Diese Seite zeigt die wichtigsten Menüpunkte rund um Heizkurve, Raumtemperatur, Warmwasser und weitere Parameter, die für Effizienz und Komfort relevant sind.
+Die Bosch CS 5800/6800i und Buderus WLW176/186i bieten eine Vielzahl an Einstellungen. Diese Seite zeigt die wichtigsten Menüpunkte rund um Heizkurve, Raumtemperatur, Warmwasser und weitere Parameter, die für Effizienz und Komfort relevant sind.
 
 Viele Einstellungen lassen sich im Servicemenü konfigurieren.
 Um ins Servicemenü zu gelangen, muss man mindestens 5 Sekunden die Service-Taste (3 Striche oben links im Display) drücken.
@@ -33,7 +33,11 @@ Warmwasserbereitung ist weiterhin möglich.
 
 Wird es draußen kälter, muss die Heizung mehr Leistung erbringen, um die Räume auf Wunschtemperatur halten zu können.
 Dazu erhöht sie die Vorlauftemperatur des Heizungswassers.
-Die Stärke dieser Erhöhung wird über die Heizkurve bestimmt.
+Wie stark die Vorlauftemperatur bei kälteren Außentemperaturen erhöht wird, wird durch die eingestellte Heizkurve definiert.
+
+Im nachfolgenden Bild ist eine beispielhaft eingestellte Heizkurve mit der roten Linie dargestellt.
+Links sieht man, dass bei 20°C Außentemperatur eine niedrigere Vorlauftemperatur benötigt wird als rechts bei -14°C.
+Wie du die Heizkurve mit allen Parameter konfigurierst, erfährst du Schritt-für-Schritt in den nachfolgenden Kapiteln.
 
 [![Endpunkteinstellung der Heizkurve](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)](/assets/images/Einstellung-Heizkurvenendpunkt.jpg)
 
@@ -51,7 +55,9 @@ Die Regelungsart definiert, auf welcher Basis die Sollvorlauftemperatur bestimmt
 Für alle Einstellungen, die sich auf die Außentemperatur beziehen, ist zu beachten, dass diese sich nicht zeitgleich auf das Gebäudeinnere auswirkt.
 Wird es draußen kälter, dauert es eine Weile bis sich die Kälte auf die Räume auswirkt.
 Diese Trägheit wird über die Gebäudedämpfung unter `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Anlageneinstellungen` &rarr; `Dämpfung Gebäudeart` eingestellt und ergibt die so genannte _gedämpfte Außentemperatur_.
-Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen wie man in nachfolgenden Diagrammen für `mittlere` und `leichte` Gebäudeart sieht:
+Je "schwerer" das Gebäude, desto träger wirken Außentemperaturveränderungen wie man in nachfolgenden Diagrammen für `mittlere` und `leichte` Gebäudeart sieht.
+Die gelbe Linie zeigt die gemessene Außentemperatur und die blaue Linie etwas versetzt die gedämpfte Außentemperatur. 
+Bei der mittleren Gebäudeart ist der Versatz stärker als bei der leichten Gebäudeart.
 
 [![Außentemperatur & gedämpfte Außentemperatur für Gebäudeart=Mittel](/assets/images/Einstellung-GebäudeartMittel.png)](/assets/images/Einstellung-GebäudeartMittel.png)
 [![Außentemperatur & gedämpfte Außentemperatur für Gebäudeart=Leicht](/assets/images/Einstellung-GebäudeartLeicht.png)](/assets/images/Einstellung-GebäudeartLeicht.png)
@@ -81,8 +87,10 @@ Hier stellt man die Normaußentemperatur (NAT) ein, also die tiefste Temperatur,
 `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `Heizen` &rarr; `Heizkurve`
 
 Mit Druck auf den Endpunkt wird dieser ausgewählt. Daraufhin kann man mit den Pfeiltasten die notwendige Vorlauftemperatur an der NAT einstellen.
-
 Zusätzlich zu diesen Werten kann man auch den Fuß- und Komfortpunkt definieren, falls die einfache Heizkurve nicht ausreichen sollte.
+
+Die in der Heizkurve einstellbaren Vorlauftemperaturen sind eure wichtigsten Parameter für einen effizienten Betrieb - je niedriger desto effizienter.
+Weitere Details zur Optimierung der Heizkurve findet ihr unter [Optimierungen: Heizkurve und Thermischer Abgleich](/docs/optimierungen/#heizkurve-und-thermischer-abgleich)
 
 ### Heizkurven-Simulator
 
@@ -125,7 +133,7 @@ Für jeden Modus können folgende Werte individuell unter `Anlageneinstellungen`
 
 - `Starttemperatur`: bei Unterschreitung dieser Temperaturgrenze startet die Warmwasserbereitung
 - `Stopptemperatur`: bei Erreichen dieser Temperaturgrenze wird die Warmwasserbereitung beendet
-- `Ladedelta`: der Vorlauf wird um diesen Wert zur Warmwasserbereitung angehoben - je höher das Ladedelta desto schneller erfolgt die Aufheizung
+- `Ladedelta`: der Vorlauf wird um diesen Wert zur Warmwasserbereitung angehoben - je höher das Ladedelta desto schneller erfolgt die Aufheizung - zulasten der Effizienz
 
 Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Starttemperatur=40°C, Stopptemperatur=48°C und Ladedelta=7K:
 
@@ -135,10 +143,12 @@ Nachfolgendes Diagramm zeigt Vorlauftemperatur und Warmwassertemperatur für Sta
 
 | Modus    | Min. Starttemperatur | Max. Stopptemperatur | Ladedelta |
 | :------- | :------------------- | :------------------- | :-------- |
-| Komfort  | 40 °C                | 65 °C                | 6..18 K   |
-| Eco      | 35 °C                | 60 °C                | 6..18 K   |
-| Eco+     | 30 °C                | 55 °C                | 6..15 K   |
+| Komfort  | 40 °C                | 65 °C                | 4..18 K   |
+| Eco      | 35 °C                | 60 °C                | 4..18 K   |
+| Eco+     | 30 °C                | 55 °C                | 4..15 K   |
 | Extra-WW |                      | 50..70 °C            |           |
+
+Bei Softwareständen vor [9.15.0 / 12.11.1](/docs/sw-versionen/#9150--12111) war das kleineste Ladedelta 6K.
 
 ### Modusauswahl
 
@@ -153,6 +163,42 @@ Die Auswahl des Modus für die Warmwasserbereitung kann entweder in der [App](/d
 
 Die Zeitprogramme für den _Auto_ Modus kann man entweder in der [App](/docs/app/) unter `Warmwasser` &rarr; `Kalender unten rechts` oder auf dem Startbildschirm des Bedienfelds (nicht im Servicemenü) unter `Warmwasser` &rarr; `Mehr...>` &rarr; `Zeitprogramm` &rarr; `Bearbeiten` einstellen.
 In obiger Darstellung ist die Warmwasserbereitung von 21-5 Uhr aus, von 5-13 und 17-21 Uhr wird das Warmwasser mit dem Eco+ Modus aufgeheizt und von 13-17 Uhr wird das Warmwasser mit dem Eco Modus aufbereitet.
+
+## Zirkulationspumpe
+
+Falls eine Warmwasser-Zirkulationsleitung mit Pumpe installiert ist und die Pumpe von der Wärmepumpe gesteuert wird, sollte die Steuerung im Servicemenü unter `Anlageneinstellungen` &rarr; `Warmwasser` &rarr; `WW-Zirkulation` aktiviert sein.
+Da man im Servicemenü keine Zeitprogramme einstellen kann, ist es besser, man verlässt das Servicemenü und navigiert anschließend zu `Startbildschirm` &rarr; `Warmwasser` &rarr; `Mehr...` &rarr; `WW-Zirkulationspumpe`.
+
+### Betriebsart
+
+Die `Betriebsart` bestimmt, wann die Zirkulationspumpe laufen darf:
+- `Aus`: Die Zirkulationspumpe bleibt ausgeschaltet.
+Wenn ihr eine Zirkulationspumpe habt, solltest ihr die Einstellung auf keinen Fall wählen, da sich ansonsten Legionellen in der Zirkulationsleitung bilden können.
+- `Ein`: Die Zirkulationspumpe schaltet automatisch für 3 Minuten jede Stunde ein.
+Wie oft sie das pro Stunde macht, definiert man nachfolgend mit der `Einschalthäufigkeit`.
+- `Auto`: Mit `Auto` gilt das eigene Zeitprogramm der Zirkulationspumpe, das man nachfolgend unter `Zeitprogram` konfigurieren kann.
+- `Nach Warmw.-Zeitprogramm`: Damit richtet sich die Zirkulationspumpe nach dem Zeitprogramm der Warmwasserbereitung.
+
+### Einschalthäufigkeit
+
+Die `Einschalthäufigkeit` legt fest, wie oft die Zirkulationspumpe während der freigegebenen Zeiten startet.
+Einstellbar sind 1 bis 6 Starts pro Stunde mit jeweils 3 Minuten Laufzeit oder Dauerbetrieb.
+
+### Zeitprogramm
+
+Für ein eigenes Zeitprogramm `Betriebsart` auf `Auto` stellen und unter `Startbildschirm` &rarr; `Warmwasser` &rarr; `Mehr...` &rarr; `WW-Zirkulationspumpe` &rarr; `Zeitprogramm` &rarr; `Bearbeiten` die Zeiten festlegen.
+Ein mögliches Beispiel für Zeiten mit regelmäßigem Warmwasserbedarf ist:
+
+| Zeitraum | Zirkulation |
+| :------- | :---------- |
+| 06:00–07:00 Uhr | Ein |
+| 12:00–12:30 Uhr | Ein |
+| 18:00–19:00 Uhr | Ein |
+| Übrige Zeit | Aus |
+
+Die Zeitfenster können zunächst für Montag eingestellt und dann auf die übrigen Tage kopiert werden.
+Innerhalb der `Ein`-Zeiten bestimmt die `Einschalthäufigkeit`, wie oft die Pumpe startet.
+`1` bedeutet einen Start von 3 Minuten pro Stunde.
 
 ## Elektrischer Zuheizer
 
@@ -189,11 +235,11 @@ Diese Einstellung definiert die maximale Leistung des elektrischen Zuheizers, di
 
 #### Bival.pkt. Parallelbetr.
 
-Die oben erwähnte Temperaturgrenze, ab der der Zuheizer die Wärmepumpe unterstützen soll, den so genannten Bivalenzpunkt, gibt man in diesem Menüpunkt vor, z.B. -7°C.
+Die oben erwähnte Temperaturgrenze, ab der der Zuheizer die Wärmepumpe unterstützen darf, den so genannten Bivalenzpunkt, gibt man in diesem Menüpunkt vor, z.B. -7°C.
 
 ### Verzögerung Heizung
 
-Das Zuschalten des Zuheizers erfolgt jedoch nicht auf Basis des eben eingestellten Bivalenzpunktes, sondern wird anhand des 'Nicht-Erreichens' der Sollvorlauftemperatur und zwar als Temperaturdifferenz-Zeitdauer-Produkt, z.B. 600 K\*min, eingestellt.
+Ist die Temperatur des Bivalenzpunktes unterschritten, wird der Zuheizers bei Nicht-Erreichen der Sollvorlauftemperatur, definiert als Temperaturdifferenz-Zeitdauer-Produkt, z.B. 600 K\*min, aktiviert.
 600 K\*min bedeutet in diesem Fall, dass der Zuheizer in folgenden Beispielsituation zugeschaltet wird:
 
 - Die Sollvorlauftemperatur wird für 60 Minuten um 10 K (°C) unterschritten
