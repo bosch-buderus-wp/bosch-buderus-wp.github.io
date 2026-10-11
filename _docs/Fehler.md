@@ -21,7 +21,7 @@ Mögliche Meldungen sind:
 - **5162** (Installer-Info): Druckdifferenz zwischen Hoch- und Niederdruckseite zu gering für den Schaltvorgang des 4-Wege-Ventils. Auch hierfür nennt Bosch ein in Mittelstellung klemmendes VR4 als mögliche Ursache.
 
 Bosch/Buderus hat für dieses Verhalten nach einem Stromausfall einen Bugfix in [9.12.0 / 9.7.0](/docs/sw-versionen/#9120--970) integriert. Treten 5161, 5162 oder 5184 unmittelbar nach einem Stromausfall auf, sollte deshalb zuerst der Softwarestand der Außeneinheit geprüft und bei einer älteren Version der Fachbetrieb auf ein Update angesprochen werden, bevor ein Hardwaredefekt angenommen wird.
-Manchmal löst sich das verklemmte 4-Wege-Ventil, wenn man die Anlage merhmals für einige Miunten vom Strom trennt. 
+Manchmal löst sich das verklemmte 4-Wege-Ventil, wenn man die Anlage mehrmals für einige Minuten vom Strom trennt.
 
 Quelle: [Bosch-Servicehandbuch](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
 
@@ -72,3 +72,16 @@ Das Ersatzteil ist der **Temperaturbegrenzer Sensata 1NT11L**.
 Nach dem Austausch soll die Abdeckung des Schaltkastens mit „FE3 ✓“ gekennzeichnet werden.
 
 Quelle: [Bosch-Servicehandbuch](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
+
+## 3-Wege-Ventil nicht angesteckt: Heizung bleibt kalt
+
+Ist der Stecker am 3-Wege-Umschaltventils in der Inneneinheit nicht angesteckt, kann das Ventil nicht zwischen Warmwasserbereitung und Heizbetrieb umschalten.
+Bleibt es in der Warmwasserstellung, kann sich beim Wechsel in den Heizbetrieb folgendes Fehlerbild zeigen:
+
+- Das Haus wird nicht warm, aber die Warmwasserbereitung funktioniert.
+- Der Warmwasserspeicher verliert im Heizbetrieb rasch an Temperatur.
+- Beim Ansteuern des 3-Wege-Ventils im Servicemenü unter `Diagnose` &rarr; `Funktionstest` &rarr; `Funktionstests aktivieren` und dann wechselweisem Umschalten von `Wärmepumpe` &rarr; `VW1 3-Wege-Ventil WW` ist kein Stellgeräusch hörbar.
+
+Ein solcher Montagefehler kann bei reinem Warmwasserbetrieb im Sommer zunächst unbemerkt bleiben und erst beim Start der Heizperiode auffallen.
+Dann solltet ihr euren Fachbetrieb den Steckanschluss am Stellmotor kontrollieren und korrekt einstecken lassen.
+Anschließend die Umschaltung im Funktionstest und den Heizbetrieb prüfen.
