@@ -25,8 +25,8 @@ Possible messages include:
 - **5161** (Customer alarm): No pressure build-up during compressor operation.
 - **5162** (Installer info): Pressure difference between the high- and low-pressure sides too low for the switching operation of the 4-way valve. Bosch also specifies a VR4 stuck in the center position as a possible cause for this.
 
-Bosch/Buderus integrated a bug fix for this behavior after a power failure in [9.12.0 / 9.7.0](/en/docs/software-versions/#9120--970). If 5161, 5162, or 5184 occur immediately after a power failure, the software version of the outdoor unit should therefore be checked first. If an older version is installed, the specialist company should be asked about an update before a hardware defect is assumed.
-Sometimes the jammed 4-way valve becomes unstuck if the system is disconnected from the power supply several times for a few minutes.
+Bosch/Buderus has integrated a bug fix for this behavior after a power outage in [9.12.0 / 9.7.0](/en/docs/software-versions/#9120--970). If 5161, 5162, or 5184 occur immediately after a power outage, the software version of the outdoor unit should therefore be checked first and, if an older version is installed, the qualified contractor should be asked about an update before assuming a hardware defect.
+Sometimes the jammed 4-way valve becomes unstuck if the system is disconnected from the power supply for several minutes multiple times.
 
 Source: [Bosch service manual](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
 
@@ -46,7 +46,7 @@ Source: [Bosch service manual](https://bosch-ch-de.boschhc-documents.com/downloa
   <a href="https://i.ibb.co/7xrC8kRS/ODU-Innen-Links.jpg">
   <img src="https://i.ibb.co/7xrC8kRS/ODU-Innen-Links.jpg"></a>
 
-  <a href="https://i.ibb.co/Y46JwZ47/ODU-Innen-Rechts.jpg">
+<a href="https://i.ibb.co/Y46JwZ47/ODU-Innen-Rechts.jpg">
   <img src="https://i.ibb.co/Y46JwZ47/ODU-Innen-Rechts.jpg"></a>
 </figure>
 
@@ -77,3 +77,16 @@ The spare part is the **Sensata 1NT11L temperature limiter**.
 After replacement, the cover of the switch box should be marked with “FE3 ✓”.
 
 Source: [Bosch service manual](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
+
+## 3-way valve not connected: heating remains cold
+
+If the plug on the 3-way diverter valve in the indoor unit is not connected, the valve cannot switch between domestic hot water production and heating mode.
+If it remains in the domestic hot water position, the following error pattern may occur when switching to heating mode:
+
+- The house does not warm up, but domestic hot water production works.
+- The domestic hot water tank quickly loses temperature during heating operation.
+- When activating the 3-way valve in the service menu under `Diagnostics` &rarr; `Function test` &rarr; `Activate function tests` and then switching alternately between `Heat pump` &rarr; `VW1 3-way valve DHW`, no actuator noise can be heard.
+
+Such an installation error can initially remain unnoticed during domestic hot water operation only in summer and only become apparent when the heating season starts.
+You should then have your specialist contractor check the plug connection on the actuator and plug it in correctly.
+Afterwards, check the changeover during the function test and heating operation.
