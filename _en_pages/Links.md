@@ -42,19 +42,23 @@ _Energy-saving commissioner Carsten Herbert_ \
 
 In addition to assembly and connection information, the manuals for the outdoor units also contain detailed technical tables, including heating output, COP, and sound power according to EN 14511 and EN 12102.
 
-- [Outdoor units AW 4–7](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721840669): Output sizes 4, 5, and 7 kW
-- [Outdoor units AW 10/12 OR-T](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721842854): Output sizes 10 and 12 kW
+- [AW 4–7 outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721840669): Output ratings 4, 5 and 7 kW
+- [AW 10/12 OR-T outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721842854): Output ratings 10 and 12 kW
 - [Compress 6800i AW AWM](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721877107): floor-standing indoor unit with domestic hot water tank
 - [Compress 6800i AW AWE](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721109832): wall-mounted indoor unit
 - [Compress 5800i/6800i AW 12 MB](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721872381): indoor unit with buffer tank
-- [UI 800.2 AW](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721833375): control unit
-- [UI 800.2 AW NF47.12](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721108129): control unit, newer function status
 
 ### Operating manuals
 
 - [Compress 5800i AW AWM](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721839294)
 - [Compress 5800i/6800i AW 12 MB](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721844072)
 - [Compress 5800i AW AWE](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721109820)
+- [Control unit UI 800.2 AW](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721833375)
+- [Control unit UI 800.2 AW NF47.12](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721108129): newer functional status
+
+### Spare parts lists
+
+- [Compress AW 4–7 OR-S](https://bosch-de-de.boschhc-documents.com/download/file/file/6721855020.pdf): Spare parts list
 
 ## Buderus Logatherm WLW176i/186i
 
@@ -64,20 +68,24 @@ The Logatherm WLW176i/186i are the technical sister models of the Bosch Compress
 
 The Buderus outdoor unit manuals also contain the technical classifications and measurement values for COP, heating output, and sound.
 
-- [Logatherm WLW MB 4–7 AR](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721843846): Output sizes 4, 5, and 7 kW
+- [Logatherm WLW MB 4–7 AR](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721843846): Output sizes 4, 5 and 7 kW
 - [Logatherm WLW MB 10–12 AR](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721843891): Output sizes 10 and 12 kW
-- [Logatherm WLW176i-12 T180](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721849903): indoor unit with domestic hot water tank
-- [Logatherm WLW176i-12 E](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721892054): wall-mounted indoor unit
-- [Logatherm WLW176i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872433): indoor unit with buffer tank
-- [Logatherm WLW186i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872436): indoor unit with buffer tank
-- [BC400.2 AW](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850793): control unit
-- [BC400.2 AW NF47.12](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721108148): control unit, newer function status
+- [Logatherm WLW176i-12 T180](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721849903): Indoor unit with domestic hot water tank
+- [Logatherm WLW176i-12 E](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721892054): Wall-mounted indoor unit
+- [Logatherm WLW176i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872433): Indoor unit with buffer tank
+- [Logatherm WLW186i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872436): Indoor unit with buffer tank
 
 ### Operating manuals
 
 - [Logatherm WLW176i/186i AR T180](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850681)
 - [Logatherm WLW176i/186i AR TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721844079)
 - [Logatherm WLW176i/186i AR E](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850687)
+- [Control unit BC400.2 AW](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850791)
+- [Control unit BC400.2 AW NF47.12](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721108150): new functional status
+
+### Spare parts lists
+
+- [Logatherm WLW MB 4–7 AR](https://buderus-de-de.boschtt-documents.com/download/file/file/6721855021.pdf): Spare parts list
 
 ## Service and troubleshooting
 
@@ -106,6 +114,9 @@ The service manual is intended for qualified professionals. In particular, work 
 Community contributions are particularly helpful for practical questions, optimization, and typical error patterns. However, always compare technical statements with the current manufacturer's documentation.
 
 - [Haustechnikdialog: Optimizing Buderus WLW186i heat pump settings](https://www.haustechnikdialog.de/Forum/t/270919/Optimierung-WP-Einstellungen-Buderus-WLW186i)
+- [Heizungsforum.de](https://www.heizungsforum.de/): German-language forum with a section for heat pumps and building cooling
+- [Bosch Smart Home Community](https://community.bosch-smarthome.com/): exchange about Bosch Smart Home, including integrations and topics related to heating systems
+- [Reddit: r/Waermepumpe](https://www.reddit.com/r/Waermepumpe/): cross-brand German-language exchange of experiences
 - [Facebook group Bosch/Buderus heat pumps – Questions, tips & solutions](https://www.facebook.com/groups/1268145341752618)
 - [Facebook group Bosch heat pump](https://www.facebook.com/groups/392520056537438)
 
@@ -115,7 +126,7 @@ The documents were selected based on their relevance for operators and professio
 Where possible, official manufacturer documents are linked.
 Nevertheless, always check the model designation and revision status before use, as menus, connections, and technical data may change.
 
-**Last checked:** August 2026
+**Last checked:** October 2026
 
 **Affiliate notice:** The link to the book is an affiliate link.
 If you make a purchase, I may receive a commission.
