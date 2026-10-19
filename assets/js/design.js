@@ -50,11 +50,21 @@ document.addEventListener("DOMContentLoaded", function () {
     menu.id = menu.id || "article-contents";
     button.setAttribute("aria-controls", menu.id);
     var desktop = window.matchMedia("(min-width: 64em)");
+    var sidebar = toc.closest(".sidebar__right");
+    var content = sidebar && sidebar.parentElement;
+    var article = content && content.parentElement;
+    var alignWithTitle = sidebar && document.body.matches(".layout--single:not(.wide)") &&
+      article.classList.contains("page__inner-wrap");
     var setExpanded = function (expanded) {
       button.setAttribute("aria-expanded", String(expanded));
       toc.classList.toggle("is-expanded", expanded);
     };
     var syncViewport = function () {
+      if (alignWithTitle) {
+        // Share the title's container on desktop; keep the mobile reading order.
+        var parent = desktop.matches ? article : content;
+        if (sidebar.parentElement !== parent) parent.insertBefore(sidebar, parent.firstChild);
+      }
       button.disabled = desktop.matches;
       setExpanded(desktop.matches);
     };

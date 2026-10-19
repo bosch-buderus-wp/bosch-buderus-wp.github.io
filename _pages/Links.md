@@ -44,14 +44,18 @@ Die Anleitungen der Außeneinheiten enthalten neben Montage- und Anschlussinform
 - [Compress 6800i AW AWM](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721877107): bodenstehende Inneneinheit mit Warmwasserspeicher
 - [Compress 6800i AW AWE](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721109832): wandhängende Inneneinheit
 - [Compress 5800i/6800i AW 12 MB](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721872381): Inneneinheit mit Pufferspeicher
-- [UI 800.2 AW](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721833375): Bedieneinheit
-- [UI 800.2 AW NF47.12](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721108129): Bedieneinheit, neuer Funktionsstand
 
 ### Bedienungsanleitungen
 
 - [Compress 5800i AW AWM](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721839294)
 - [Compress 5800i/6800i AW 12 MB](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721844072)
 - [Compress 5800i AW AWE](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721109820)
+- [Bedieneinheit UI 800.2 AW](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721833375)
+- [Bedieneinheit UI 800.2 AW NF47.12](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721108129): neuer Funktionsstand
+
+### Ersatzteillisten
+
+- [Compress AW 4–7 OR-S](https://bosch-de-de.boschhc-documents.com/download/file/file/6721855020.pdf): Ersatzteilliste
 
 ## Buderus Logatherm WLW176i/186i
 
@@ -67,14 +71,18 @@ Auch die Anleitungen der Buderus-Außeneinheiten enthalten die technischen Einst
 - [Logatherm WLW176i-12 E](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721892054): wandhängende Inneneinheit
 - [Logatherm WLW176i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872433): Inneneinheit mit Pufferspeicher
 - [Logatherm WLW186i-12 TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721872436): Inneneinheit mit Pufferspeicher
-- [BC400.2 AW](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850793): Bedieneinheit
-- [BC400.2 AW NF47.12](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721108148): Bedieneinheit, neuer Funktionsstand
 
 ### Bedienungsanleitungen
 
 - [Logatherm WLW176i/186i AR T180](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850681)
 - [Logatherm WLW176i/186i AR TP70](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721844079)
 - [Logatherm WLW176i/186i AR E](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850687)
+- [Bedieneinheit BC400.2 AW](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721850791)
+- [Bedieneinheit BC400.2 AW NF47.12](https://buderus-de-de.boschhc-documents.com/download/pdf/file/6721108150): neuer Funktionsstand
+
+### Ersatzteillisten
+
+- [Logatherm WLW MB 4–7 AR](https://buderus-de-de.boschtt-documents.com/download/file/file/6721855021.pdf): Ersatzteilliste
 
 ## Service und Fehlersuche
 
@@ -103,6 +111,9 @@ Das Servicehandbuch richtet sich an qualifizierte Fachkräfte. Insbesondere Arbe
 Community-Beiträge sind besonders bei Praxisfragen, Optimierung und typischen Fehlerbildern hilfreich. Gleiche technische Aussagen jedoch immer mit der aktuellen Herstellerdokumentation ab.
 
 - [Haustechnikdialog: Optimierung WP-Einstellungen Buderus WLW186i](https://www.haustechnikdialog.de/Forum/t/270919/Optimierung-WP-Einstellungen-Buderus-WLW186i)
+- [Heizungsforum.de](https://www.heizungsforum.de/): deutschsprachiges Forum mit einem Bereich für Wärmepumpen und Gebäudekühlung
+- [Bosch Smart Home Community](https://community.bosch-smarthome.com/): Austausch zu Bosch Smart Home, auch zu Einbindungen und Themen rund um Heizsysteme
+- [Reddit: r/Waermepumpe](https://www.reddit.com/r/Waermepumpe/): markenübergreifender deutschsprachiger Erfahrungsaustausch
 - [Facebook-Gruppe Bosch/Buderus Wärmepumpen – Fragen, Tipps & Lösungen](https://www.facebook.com/groups/1268145341752618)
 - [Facebook-Gruppe Bosch Wärmepumpe](https://www.facebook.com/groups/392520056537438)
 
@@ -112,7 +123,7 @@ Die Dokumente wurden nach ihrer Relevanz für Betreiber und Fachkräfte ausgewä
 Verlinkt werden möglichst die offiziellen Herstellerdokumente.
 Prüfe vor der Verwendung trotzdem immer Modellbezeichnung und Revisionsstand, da sich Menüs, Anschlüsse und technische Daten ändern können.
 
-**Zuletzt geprüft:** August 2026
+**Zuletzt geprüft:** Oktober 2026
 
 **Affiliate-Hinweis:** Der Link zum Buch ist ein Affiliate-Link.
 Bei einem Kauf erhalte ich möglicherweise eine Provision.
