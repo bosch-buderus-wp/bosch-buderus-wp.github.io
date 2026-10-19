@@ -42,8 +42,8 @@ _Energy-saving commissioner Carsten Herbert_ \
 
 In addition to assembly and connection information, the manuals for the outdoor units also contain detailed technical tables, including heating output, COP, and sound power according to EN 14511 and EN 12102.
 
-- [AW 4–7 outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721840669): Output ratings 4, 5 and 7 kW
-- [AW 10/12 OR-T outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721842854): Output ratings 10 and 12 kW
+- [AW 4–7 outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721840669): Output sizes 4, 5 and 7 kW
+- [AW 10/12 OR-T outdoor units](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721842854): Output sizes 10 and 12 kW
 - [Compress 6800i AW AWM](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721877107): floor-standing indoor unit with domestic hot water tank
 - [Compress 6800i AW AWE](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721109832): wall-mounted indoor unit
 - [Compress 5800i/6800i AW 12 MB](https://bosch-de-de.boschhc-documents.com/download/pdf/file/6721872381): indoor unit with buffer tank
