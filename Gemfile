@@ -15,7 +15,6 @@ gem "minimal-mistakes-jekyll", "~> 4.28.0"
 group :jekyll_plugins do
   gem "jekyll-remote-theme"
   gem "jekyll-feed"
-  gem "jekyll-seo-tag"
   gem "jekyll-sitemap"
   gem "jemoji"
   gem "jekyll-include-cache"
