@@ -1,7 +1,7 @@
 ---
-title: "Connect heat pump to evcc for PV surplus"
+title: "Connect a heat pump to evcc for excess PV power"
 headline: "evcc"
-excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc for PV surplus utilisation and SG Ready-like automation."
+excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc to use excess PV power or a dynamic electricity tariff."
 permalink: /en/docs/smarthome/evcc/
 toc: true
 sidebar:
@@ -11,19 +11,22 @@ translation_url: /docs/smarthome/evcc
 translation_generated: true
 ---
 
-Owners of a PV system, a battery and/or a dynamic electricity tariff who are interested in energy-efficient control of their Bosch CS5800/6800i or Buderus WLW176/186i should take a look at [_evcc_](https://evcc.io).
-_evcc_ was originally designed for charging electric vehicles using PV surplus.
-Recently, however, _evcc_ has also been testing [heat pumps](https://docs.evcc.io/docs/devices/heating#bosch-bosch-sg-ready) and now also supports Bosch/Buderus heat pumps via _ems-esp_.
+This guide uses the REST API of [EMS-ESP](/docs/smarthome/ems-esp/).  
+That means you need EMS-ESP, but not MQTT.
 
-[![evcc increases domestic hot water temperature to 50°C with PV surplus](https://i.ibb.co/bMx5RJLj/EVCC.png)](https://i.ibb.co/bMx5RJLj/EVCC.png)
+Owners of a PV system, a battery and/or a dynamic electricity tariff who are interested in energy-efficient control of their Bosch CS5800/6800i or Buderus WLW176/186i should take a look at [_evcc_](https://evcc.io).
+_evcc_ was originally designed for charging electric vehicles with surplus PV power.
+For some time now, however, _evcc_ has also supported [heat pumps](https://docs.evcc.io/docs/devices/heating#bosch-bosch-sg-ready) via _EMS-ESP_.
+
+[![evcc increases domestic hot water temperature to 55°C with surplus PV power](https://i.ibb.co/215bQRLN/evcc.png)](https://i.ibb.co/215bQRLN/evcc.png)
 
 The integration works via the SG Ready interface of the heat pump.
 The standardised SG Ready interface provides 4 functions:
 
-1. Utility lockout period (Ext1=1 / Ext4=0): not yet supported by _evcc_
-2. Normal operation (Ext1=0 / Ext4=0): normal operation
-3. Increased operation (Ext1=0 / Ext4=1): increases the room temperature setpoint and/or the domestic hot water setpoint, depending on what was configured under `System settings` &rarr; `Photovoltaic system`.
-4. Forced increased operation (Ext1=1 / Ext4=1): not yet supported by _evcc_
+1. Utility lockout period (Ext1=1 / Ext4=0)
+2. **Normal operation** (Ext1=0 / Ext4=0): normal operation
+3. **Boost operation** (Ext1=0 / Ext4=1): increase of the room temperature setpoint and/or the domestic hot water setpoint, depending on what was configured under `System settings` &rarr; `Photovoltaic system`.
+4. Forced boost operation (Ext1=1 / Ext4=1)
 
 The SG Ready functions are actually implemented using corresponding control lines.
 To control the heat pump via _evcc_, you do not need control lines, but instead use a trick that is described in more detail [here](https://bbqkees-electronics.nl/2024/10/03/using-the-smart-grid-sg-and-photovoltaic-pv-function-of-your-heat-pump-with-the-ems-gateways/).
@@ -42,7 +45,6 @@ You can then configure the following settings under `System settings` &rarr; `Ph
 - `Max. power for compressor`: limits the compressor to the configured power when there is PV surplus
 
 After installing _evcc_, you must add the following entries to `evcc.yaml`.
-
 _ems-esp_ is added similarly to a wallbox as a `charger`, i.e. a controllable consumer:
 
 ```yaml
@@ -68,10 +70,34 @@ loadpoints:
 
 ## Usage
 
-In the _evcc_ interface, you should now see a display similar to the following:
+A tile for your heat pump should now appear in the _evcc_ interface.
+Before you begin, open the settings by clicking the settings icon in the top right.
+There you can configure the following settings:
 
-The charging setting has the following meaning:
+[![EVCC heat pump configuration dialog](https://i.ibb.co/mFvmf6XS/evcc-config.png){:width="400px"}](https://i.ibb.co/mFvmf6XS/evcc-config.png)
+{: .align-right}
 
-- `Off`: Normal operation – no use of PV surplus
-- `PV` and `Min+PV`: When there is PV surplus, the heat pump is signalled _Increased operation_
-- `Fast`: The heat pump is immediately signalled _Increased operation_
+- `Günstiges Netzladen`: If you have a dynamic electricity tariff, you can set the electricity price below which you want to allow _Verstärkter Betrieb_ by clicking on the bar or selecting an option from the dropdown menu.
+  In the screenshot, _Verstärkter Betrieb_ is automatically activated when the electricity price falls below 21.7 ct/kWh.
+- `PV-Überschuss`: With this controller, you can start _Verstärkter Betrieb_ even when the minimum charging current (0.7 kW in the example) is only partially available.
+  For example, with an 800 W plug-in solar system, you may only sporadically achieve a surplus of 700 W.
+  If you set the PV share to 80%, _Verstärkter Betrieb_ is activated at 560 W.
+- `Batterie Boost`: If Batterie Boost is activated, the battery is also used during _Verstärkter Betrieb_ up to the configured SoC limit.
+- `Min. Temperatur`: If a minimum temperature is configured, _Verstärkter Betrieb_ also starts without a PV surplus when the current domestic hot water temperature falls below this value.
+- `Phasen`: Defines the maximum charging current (probably irrelevant for a heat pump)
+- `Min. Ladestrom`: The minimum charging current defines the minimum output of the heat pump.
+  If the PV surplus rises above this value, _Verstärkter Betrieb_ is activated.
+  I set this to 1 A (0.7 kW) because my heat pump usually draws only around 300–400 W during the transitional period.
+
+When you close the configuration dialog again, you can choose one of these 3 modes:
+
+- `Normal`: Normal operation – no use of the PV surplus
+- `Smart`: In the event of a PV surplus, _Enhanced operation_ is signaled to the heat pump – as defined in the configuration dialog
+- `Boost`: _Enhanced operation_ is signaled to the heat pump immediately
+
+Please note that _Boosted operation_ does not mean that the heat pump immediately starts heating or producing domestic hot water.
+Only the target flow temperature ([thermostat/targetflowtemp](/en/docs/smarthome/entities/#messwerte) in EMS-ESP) is increased by the configured value, and the start and stop temperatures of the comfort mode for domestic hot water production are set for the duration of _Boosted operation_.
+The heat pump then uses the known logic to decide whether it should heat or produce domestic hot water.
+
+<!-- prettier-ignore -->
+*[SoC]: State of Charge / state of charge
