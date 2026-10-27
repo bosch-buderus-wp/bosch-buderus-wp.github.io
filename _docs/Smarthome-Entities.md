@@ -6,6 +6,9 @@ permalink: /docs/smarthome/entities
 toc: true
 ---
 
+Diese Referenz gilt für [EMS-ESP](/docs/smarthome/ems-esp/).
+Die [lokale API des K 40 RF](/docs/smarthome/local-api#api-referenz) verwendet eigene Endpunkte und Bezeichnungen.
+
 Die Version 3.7.1 von [ems-esp](https://emsesp.org/) liefert 166 Entitäten für den Boiler und 71 für das Bedienelement.
 Auf dieser Seite findet ihr eine Erklärung aller Entitäten, soweit sie bekannt sind.
 Falls jemand noch weitere Informationen/Korrekturen hat, gerne hinzufügen.

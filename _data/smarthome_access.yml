@@ -1,0 +1,46 @@
+ui:
+  de:
+    label: "Zugang"
+    alternatives: "oder"
+    description: "Zugangswege"
+  en:
+    label: "Access"
+    alternatives: "or"
+    description: "Access methods"
+methods:
+  ems-esp:
+    label: "EMS-ESP"
+    icon: "gateway"
+    url: /docs/smarthome/ems-esp/
+    title: "Zusätzliches EMS-ESP-Gateway erforderlich"
+    title_en: "Additional EMS-ESP gateway required"
+    url_en: /en/docs/smarthome/ems-esp/
+  ems-esp-mqtt:
+    label: "EMS-ESP · MQTT"
+    icon: "gateway"
+    url: /docs/smarthome/ems-esp/#mqtt
+    title: "EMS-ESP-Gateway und MQTT-Broker erforderlich"
+    title_en: "EMS-ESP gateway and MQTT broker required"
+    url_en: /en/docs/smarthome/ems-esp/#mqtt
+  ems-esp-api:
+    label: "EMS-ESP · REST"
+    icon: "gateway"
+    url: /docs/smarthome/ems-esp/
+    title: "Zugriff über die REST API eines EMS-ESP-Gateways"
+    title_en: "Access via the REST API of an EMS-ESP gateway"
+    url_en: /en/docs/smarthome/ems-esp/
+  local-api:
+    label: "Lokale API"
+    icon: "network"
+    url: /docs/smarthome/local-api
+    title: "K 40 RF oder MX400 mit Firmware 15.00.01 oder neuer; nur lesender Zugriff"
+    label_en: "Local API"
+    title_en: "K 40 RF or MX400 with firmware 15.00.01 or newer; read-only access"
+    url_en: /en/docs/smarthome/local-api/
+  cloud:
+    label: "Cloud"
+    icon: "cloud"
+    url: /docs/smarthome/ha#custom-integrations
+    title: "Inoffizielle Cloud-API; Internetverbindung und Bosch/Buderus-Konto erforderlich"
+    title_en: "Unofficial cloud API; internet connection and Bosch/Buderus account required"
+    url_en: /en/docs/smarthome/home-assistant/#custom-integrations

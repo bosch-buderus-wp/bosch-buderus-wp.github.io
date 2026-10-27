@@ -110,11 +110,11 @@ Verbesserungen:
 
 Verbesserungen:
 
-- Aktuelle **Thermische Leistung** als Entität über [ems-esp](/docs/smarthome/) abrufbar.
+- Aktuelle **Thermische Leistung** als Entität über [ems-esp](/docs/smarthome/ems-esp/) abrufbar.
   Ab dieser Version muss man für sein Smarthome die Wärmeleistung nicht mehr über die Ableitung der Energie berechnen, sondern kann direkt [boiler/hppower](/docs/smarthome/entities#leistung) verwenden.
 - **Ladedelta beim WW** kann auf 4K reduziert werden (vorher 6K, Nutzen: Verzögerung zur Effizienzsteigerung)
 - **Eingänge** haben umfangreiche Konfigurationsmöglichkeiten für SG-Ready, PV, EMS, ... bekommen
-- **Lüfter am Kompressor** (PL3 Gebläse) lässt sich am Gerät anzeigen und per [ems-esp](/docs/smarthome/) als individuelle Entitäten anlegen/auslesen
+- **Lüfter am Kompressor** (PL3 Gebläse) lässt sich am Gerät anzeigen und per [ems-esp](/docs/smarthome/ems-esp/) als individuelle Entitäten anlegen/auslesen
 - **Bypass Abfrage** hinzugefügt
 - Anzahl der Stufen beim **Heizprogramm** von 2 auf 4 erhöht
 

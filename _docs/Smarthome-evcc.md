@@ -4,10 +4,10 @@ headline: "evcc"
 excerpt: "Anleitung zur Einbindung von Bosch CS5800/6800i und Buderus WLW176/186i in evcc für die Nutzung von PV-Überschuss oder eines dynamischen Stromtarifs."
 permalink: /docs/smarthome/evcc
 toc: true
+smarthome_access: [ems-esp-api]
 ---
 
-Diese Anleitung nutzt die REST API von [EMS-ESP](/docs/smarthome/ems-esp/).
-D.h. ihr braucht EMS-ESP, aber kein MQTT.
+{% include smarthome-access.html %}
 
 Besitzer einer PV-Anlage, einer Batterie und/oder eines dynamischen Stromtarifs, die Interesse an einer energieeffizienten Steuerung ihre Bosch CS5800/6800i oder Buderus WLW176/186i haben, sollten sich [_evcc_](https://evcc.io) anschauen.
 _evcc_ wurde ursprünglich für PV-Überschussladen von Elektrofahrzeugen konzipiert.

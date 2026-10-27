@@ -1,23 +1,83 @@
 ---
-title: "Wärmepumpe in Grafana visualisieren mit InfluxDB"
+title: "Wärmepumpe in Grafana visualisieren: lokale API und EMS-ESP"
 headline: "Grafana"
-excerpt: "Anleitung zur Visualisierung von Messwerten aus Bosch CS5800/6800i und Buderus WLW176/186i in Grafana über InfluxDB und EMS-ESP."
+excerpt: "Live-Werte und historische Daten von Bosch CS5800/6800i und Buderus WLW176/186i in Grafana darstellen: über die lokale API oder EMS-ESP mit optionaler InfluxDB."
 permalink: /docs/smarthome/grafana
 toc: true
+smarthome_access: [local-api, ems-esp]
 ---
 
-![Grafana Logo](https://i.ibb.co/mCShBCws/grafana-logo.png)
+{% include smarthome-access.html %}
 
 [Grafana](https://grafana.com) ist eine Webanwendung, mit der Daten grafisch dargestellt werden können.
 Dazu stehen verschiedenste Diagrammtypen wie z.B. Linien-, Kreis- oder Balkendiagramme zur Auswahl.
 Die Daten können über eine Vielzahl an Datenquellen, so genannten Data Sources, eingebunden werden.
-Zwei davon, nämlich direkte HTTP-Anfragen über [Infinity](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/) und Zeitreihen über [InfluxDB](https://www.influxdata.com/), werden in den nachfolgenden Dashboards genutzt.
+Die folgenden Dashboards verwenden [Infinity](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/) für direkte API-Abfragen oder optional [InfluxDB](https://www.influxdata.com/) für selbst gespeicherte Zeitreihen.
 
-## Live Dashboard direkt von ems-esp
+![Grafana Logo](https://i.ibb.co/mCShBCws/grafana-logo.png)
 
 Wenn ihr nur mal einen Blick auf die aktuellen Messwerte und Energieverbräuche werfen wollt und kein Smarthome-System mit Datenbank habt, nutzt einfach den [Grafana-Installer](https://grafana.com/docs/grafana/latest/setup-grafana/installation/), den es sowohl für Windows, Linux und MacOS gibt, und installiert euch Grafana auf eurem Computer.
 
-Dann braucht ihr noch die Infinity Datasource.
+Über die lokale API könnt ihr sowohl Live-Werte als auch die vom Gateway bereitgestellten historischen Aufzeichnungen ohne zusätzliche Datenbank auswerten.
+Für EMS-ESP gibt es ein Live-Dashboard und optional weitere Auswertungen über eine separate InfluxDB.
+
+## Live-Werte und Historie über die lokale API
+
+{: #lokale-api}
+
+Dieses Dashboard fragt die lokale API eures K 40 RF oder MX400 direkt ab.
+Ihr braucht dafür Grafana mit der Infinity-Datenquelle, ein Gateway mit Firmware `15.00.01` oder neuer und einen Access Token.
+Die Einrichtung des Tokens findet ihr unter [Authentifizierung](/docs/smarthome/local-api#authentifizierung).
+EMS-ESP und InfluxDB werden für dieses Dashboard nicht benötigt.
+
+[![Grafana-Dashboard mit Live-Werten und historischen Daten über die lokale API](https://raw.githubusercontent.com/bosch-buderus-wp/grafana-dashboards/main/images/grafana-localapi_light.png)](https://raw.githubusercontent.com/bosch-buderus-wp/grafana-dashboards/main/images/grafana-localapi_light.gif)
+
+Das Dashboard zeigt:
+
+- aktuelle Temperaturen, Durchfluss, elektrische Leistung und Betriebszustände im Anlagenschema,
+- Energieeinsatz, Wärmeabgabe, Arbeitszahlen sowie Laufzeit und Starts über die gesamte Laufzeit,
+- Energieeinsatz, Wärmeabgabe und Arbeitszahl für den in Grafana gewählten Zeitraum,
+- Stunden- oder Tagesmittel der Leistung, tägliche Energiewerte für Heizen und Warmwasser sowie den Verlauf der Warmwassertemperatur.
+
+Die historischen Daten stammen aus den Aufzeichnungen des Gateways.
+Die Auswertungen nutzen je nach verfügbarer Historie Stunden- oder Tageswerte; Auflösung und verfügbarer Zeitraum sind begrenzt.
+Für eine eigene Langzeitaufzeichnung mit höherer zeitlicher Auflösung ist weiterhin eine separate Datenerfassung, z.B. mit InfluxDB, erforderlich.
+
+### Infinity-Datenquelle einrichten
+
+Installiert Grafana und das [Infinity-Plugin](https://grafana.com/grafana/plugins/yesoreyeram-infinity-datasource/), falls noch nicht vorhanden.
+Öffnet in Grafana _Connections → Data sources → Add new data source_ und wählt _Infinity_.
+Konfiguriert die Datenquelle wie folgt; ersetzt `K40RF-0acbbd` in allen Feldern durch den Hostnamen oder die IP-Adresse eures Gateways:
+
+| Einstellung                               | Wert                                                                             |
+| ----------------------------------------- | -------------------------------------------------------------------------------- |
+| Name                                      | `Infinity-BoschBuderus-LocalAPI`                                                 |
+| Authentication → Auth type                | `Bearer Token`                                                                   |
+| Authentication → Bearer token             | Euer `access_token`, ohne das vorangestellte Wort `Bearer`                       |
+| URL, Headers, Params → Base URL           | `https://K40RF-0acbbd:9443`                                                      |
+| Security → Allowed hosts                  | `https://K40RF-0acbbd:9443`                                                      |
+| Network → Skip TLS Verify                 | Aktivieren, da das Gateway-Zertifikat keinen vertrauenswürdigen Trust-Anchor hat |
+| Health Check → Enable custom health check | Aktivieren                                                                       |
+| Health Check → Health check URL           | `https://K40RF-0acbbd:9443/gateway/brand`                                        |
+
+Speichert die Konfiguration mit _Save & test_.
+Die Datenabfragen erfolgen vom Grafana-Server aus; dieser muss das Gateway im lokalen Netzwerk unter der eingetragenen Adresse erreichen können.
+
+### Dashboard importieren
+
+Wählt die passende Konfiguration:
+
+- Light Theme: [grafana-dashboard-localapi_light.json](https://github.com/bosch-buderus-wp/grafana-dashboards/blob/main/dashboards/grafana-dashboard-localapi_light.json)
+- Dark Theme: [grafana-dashboard-localapi_dark.json](https://github.com/bosch-buderus-wp/grafana-dashboards/blob/main/dashboards/grafana-dashboard-localapi_dark.json)
+
+Öffnet in Grafana _Dashboards → New → Import_ und fügt den Inhalt der JSON-Datei ein oder ladet die heruntergeladene Datei hoch.
+Wählt beim Import die zuvor angelegte Infinity-Datenquelle aus.
+Für die historischen Auswertungen stellt ihr oben rechts im Dashboard den gewünschten Zeitraum ein.
+
+## Live Dashboard direkt von ems-esp
+
+Habt ihr ems-esp, so könnt ihr ebenfalls die die Infinity Datasource verwenden, um Live-Daten abzurufen.
+Für Live-Daten braucht ihr nur Grafana und keine separate Datenerfassung, z.b. über InfluxDB.
 Dazu wählt ihr im Grafana-Menü unter _Connections_ den Menüpunkt _Data sources_ aus.
 Mit Klick auf _+Add new data source_ lässt sich die Infinity Datasource zu eurem Grafana hinzufügen.
 
@@ -62,6 +122,9 @@ Falls der Anteil höher ist, könnte eine fehlerhafte Installation oder Konfigur
 </details>
 
 ## Historische Daten mit InfluxDB
+
+Die folgenden Dashboards verwenden Daten, die ihr selbst über EMS-ESP in einer InfluxDB aufgezeichnet habt.
+Sie sind unabhängig von der begrenzten Historie des Gateways, benötigen aber eine laufende Datenerfassung.
 
 ### Eingesetzte elektrische Leistung vs. abgegebene Wärmeleistung
 

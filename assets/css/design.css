@@ -102,6 +102,32 @@ body.layout--splash .page__hero--overlay .page__lead {
 .layout--single #main { max-width: none; padding: 32px; }
 .page__title { color: var(--ink); font-size: clamp(30px, 3.1vw, 46px); line-height: 1.14; letter-spacing: -.045em; }
 .page__inner-wrap > header { margin-bottom: 32px; padding-bottom: 24px; border-bottom: 1px solid var(--line); }
+/* Compact access requirements, shared by the smart-home application guides. */
+.smarthome-access {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px;
+  margin: 18px 0 0; font-family: var(--display-font); line-height: 1.4;
+}
+.smarthome-access__label {
+  color: var(--muted); font-size: 11px; font-weight: 600;
+  letter-spacing: .08em; text-transform: uppercase;
+}
+.smarthome-access .smarthome-access__options {
+  display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none;
+}
+.smarthome-access__options > li {
+  display: inline-flex; align-items: center; gap: 8px; margin: 0; padding: 0;
+}
+.smarthome-access__or { color: var(--muted); font-size: 12px; }
+.smarthome-access .smarthome-access__link {
+  display: inline-flex; align-items: center; gap: 6px; padding: 5px 9px;
+  color: var(--ink); background: var(--surface); border: 1px solid var(--line);
+  border-radius: 5px; font-size: 12px; font-weight: 600;
+  text-decoration: none; white-space: nowrap;
+}
+.smarthome-access .smarthome-access__link:hover {
+  color: var(--accent); background: var(--accent-soft); border-color: var(--accent);
+}
+.smarthome-access__link svg { width: 16px; height: 16px; flex: none; }
 .page__content { line-height: 1.75; }
 .page__content > p { margin-bottom: 1.4em; }
 .page__content > :is(h2, h3, h4) { color: var(--ink); scroll-margin-top: 110px; }

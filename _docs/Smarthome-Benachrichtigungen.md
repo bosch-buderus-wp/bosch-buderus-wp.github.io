@@ -4,7 +4,10 @@ headline: "Benachrichtigungen der Wärmepumpe"
 excerpt: "Anleitung für Benachrichtigungen und Alarme zu Bosch CS5800/6800i und Buderus WLW176/186i mit EMS-ESP."
 permalink: /docs/smarthome/benachrichtigungen
 toc: true
+smarthome_access: [ems-esp]
 ---
+
+{% include smarthome-access.html %}
 
 [![Screenshot: Benachrichtigungen bei Aktivitätsänderungen](https://i.ibb.co/Mk7fw7Px/ntfy-screenshot.png){:width="300px"}](https://i.ibb.co/Mk7fw7Px/ntfy-screenshot.png)
 {: .align-right}
@@ -17,7 +20,7 @@ Wollt ihr benachrichtigt werden, wenn ...
 - ein Fehler auftritt?
 
 Aber ich habt kein Smarthome-System, das euch Benachrichtigungen schicken kann.
-Dann nutzt doch einfach den Planer/Scheduler eures [ems-esp](/docs/smarthome/) mit [ntfy.sh](https://ntfy.sh/).
+Dann nutzt doch einfach den Planer/Scheduler eures [ems-esp](/docs/smarthome/ems-esp/) mit [ntfy.sh](https://ntfy.sh/).
 
 _ntfy.sh_ ist eine kostenlose Plattform ohne Registrierungsplicht, mit der man sehr einfach Benachrichtigungen versenden kann, die dann als Push-Notification auf Android oder iOS Geräten und sogar als Desktop-Benachrichtigung auf eurem Computer empfangen werden.
 

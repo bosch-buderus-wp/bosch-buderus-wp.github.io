@@ -11,10 +11,10 @@ docs:
     url: /docs/varianten/
   - title: "Technischer Aufbau"
     url: /docs/technischer-aufbau/
-  - title: "Einstellungen"
-    url: /docs/einstellungen/
   - title: "Softwareversionen"
     url: /docs/sw-versionen/
+  - title: "Einstellungen"
+    url: /docs/einstellungen/
   - title: "Optimierungen"
     url: /docs/optimierungen/
   - title: "Fehlerbehebung"
@@ -25,14 +25,16 @@ docs:
     url: /docs/glossar
   - title: "Smarthome"
     children:
-      - title: "EMS-ESP"
+      - title: "Übersicht"
         url: /docs/smarthome/
-      - title: "Entitäten-Übersicht"
-        url: /docs/smarthome/entities
       - title: "Lokale API"
         url: /docs/smarthome/local-api
-      - title: "Benachrichtigungen"
-        url: /docs/smarthome/benachrichtigungen
+      - title: "EMS-ESP"
+        url: /docs/smarthome/ems-esp/
+      - title: "EMS-ESP Entitäten"
+        url: /docs/smarthome/entities
+  - title: "Anwendungen"
+    children:
       - title: "Home Assistant"
         url: /docs/smarthome/ha
       - title: "OpenHAB"
@@ -41,6 +43,8 @@ docs:
         url: /docs/smarthome/grafana
       - title: "evcc"
         url: /docs/smarthome/evcc
+      - title: "Benachrichtigungen"
+        url: /docs/smarthome/benachrichtigungen
       - title: "AI"
         url: /docs/smarthome/ai
   - title: "Links"
@@ -107,14 +111,16 @@ en_docs:
     url: /en/docs/glossary/
   - title: "Smart home"
     children:
-      - title: "EMS-ESP"
+      - title: "Overview"
         url: /en/docs/smarthome/
-      - title: "Entity overview"
-        url: /en/docs/smarthome/entities/
       - title: "Local API"
         url: /en/docs/smarthome/local-api/
-      - title: "Notifications"
-        url: /en/docs/smarthome/notifications/
+      - title: "EMS-ESP"
+        url: /en/docs/smarthome/ems-esp/
+      - title: "EMS-ESP entities"
+        url: /en/docs/smarthome/entities/
+  - title: "Applications"
+    children:
       - title: "Home Assistant"
         url: /en/docs/smarthome/home-assistant/
       - title: "OpenHAB"
@@ -123,6 +129,8 @@ en_docs:
         url: /en/docs/smarthome/grafana/
       - title: "evcc"
         url: /en/docs/smarthome/evcc/
+      - title: "Notifications"
+        url: /en/docs/smarthome/notifications/
       - title: "AI"
         url: /en/docs/smarthome/ai/
   - title: "Links"

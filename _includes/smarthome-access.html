@@ -1,0 +1,33 @@
+{% if page.smarthome_access %}
+{% assign access_language = page.lang | default: "de" %}
+{% assign access_ui = site.data.smarthome_access.ui[access_language] | default: site.data.smarthome_access.ui.de %}
+<nav class="smarthome-access" aria-label="{{ access_ui.description }}">
+  <span class="smarthome-access__label">{{ access_ui.label }}</span>
+  <ul class="smarthome-access__options">
+    {% for method in page.smarthome_access %}
+      {% assign access = site.data.smarthome_access.methods[method] %}
+      {% assign access_url = access.url %}
+      {% assign access_label = access.label %}
+      {% assign access_title = access.title %}
+      {% if access_language == "en" %}
+        {% assign access_url = access.url_en %}
+        {% assign access_label = access.label_en | default: access.label %}
+        {% assign access_title = access.title_en %}
+      {% endif %}
+      <li>
+        {% unless forloop.first %}<span class="smarthome-access__or">{{ access_ui.alternatives }}</span>{% endunless %}
+        <a class="smarthome-access__link" href="{{ access_url | relative_url }}" title="{{ access_title | escape }}">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            {% case access.icon %}
+              {% when "gateway" %}<path d="M9 3v4m6-4v4M7 7h10v4a5 5 0 0 1-10 0V7Zm5 9v5" />
+              {% when "network" %}<rect x="7" y="3" width="10" height="6" rx="1.5" /><path d="M12 9v5M5 18v-4h14v4M12 14v4" /><path d="M3 18h4v3H3zM10 18h4v3h-4zM17 18h4v3h-4z" />
+              {% when "cloud" %}<path d="M7 18a5 5 0 0 1-.6-10A6 6 0 0 1 18 7a5.5 5.5 0 0 1 0 11H7Z" />
+            {% endcase %}
+          </svg>
+          <span>{{ access_label }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+</nav>
+{% endif %}

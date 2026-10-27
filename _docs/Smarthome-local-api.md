@@ -1,18 +1,18 @@
 ---
 title: "Lokale REST API"
 headline: "Lokale API"
-excerpt: "Lokale API für Bosch CS5800/6800i und Buderus WLW176/186i mit K 40 RF WLAN-Gateway - API-Spezifikation mit cURL- und Codebeispielen."
+excerpt: "Lokale API für Bosch CS5800/6800i und Buderus WLW176/186i mit K 40 RF oder MX400 WLAN-Gateway - API-Spezifikation mit cURL- und Codebeispielen."
 permalink: /docs/smarthome/local-api
 classes: wide
 toc: false
 ---
 
 Seit September 2026 bietet Bosch/Buderus auch eine lokale REST API für die Bosch CS5800/6800i und Buderus WLW176/186i Wärmepumpen an.
-Für die lokale API wird ein K40 RF WLAN-Gateway und die Gateway-Firmware `15.00.01` oder höher benötigt.
+Für die lokale API wird ein Bosch K40 RF oder Buderus MX400 WLAN-Gateway mit der Gateway-Firmware `15.00.01` oder höher benötigt.
 
 ## Hostname oder IP-Adresse
 
-Zuerst braucht ihr die IP-Adresse des K40 RF Gateways in eurem heimischen WLAN.
+Zuerst braucht ihr die IP-Adresse eures K 40 RF oder MX400 Gateways in eurem heimischen WLAN.
 Am einfachsten findet ihr die IP-Adresse in der Geräteliste eures Routers.
 Um den Beispielcode aus der API-Vorschau auf dieser Seite zu nutzen, tragt den **Hostnamen oder die IP-Adresse** unter _gatewayAddress_ ein, also beispielsweise `gateway.local`, `K40RF-1acabc` oder `192.168.1.42` - ohne `https://`, Port oder abschließenden Punkt.
 
@@ -22,7 +22,7 @@ Um den Beispielcode aus der API-Vorschau auf dieser Seite zu nutzen, tragt den *
 {: .align-right}
 
 Um die lokale API nutzen zu können, muss jeder Request mit einem **Access Token** authentifiziert werden.
-Zur Austellung des Access Tokens braucht man **Login** und **Pass**.
+Zur Ausstellung des Access Tokens braucht man **Login** und **Pass**.
 Diese stehen auf einem Aufkleber entweder auf der Inneneinheit eurer Wärmepumpe, auf dem eingesteckten WLAN-Gateway, vorne auf dem Quick Start Guide oder in der Packung eures WLAN-Gateways.
 Falls ihr den Aufkleber nicht mehr findet, scannt den QR-Code auf dem WLAN-Gateway.
 Er ist wie folgt aufgebaut: \

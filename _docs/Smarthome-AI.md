@@ -4,7 +4,10 @@ headline: "Wärmepumpe in Gen-AI Anwendungen nutzen"
 excerpt: "Anleitung, um Daten von Bosch CS5800/6800i und Buderus WLW176/186i in Gen-AI- und LLM-Anwendungen wie Claude zu verwenden."
 permalink: /docs/smarthome/ai
 toc: true
+smarthome_access: [ems-esp-api]
 ---
+
+{% include smarthome-access.html %}
 
 {% include video id="QTeLufsVr88" provider="youtube" %}
 
@@ -31,7 +34,7 @@ In Claude Desktop findet ihr hinterlegte Prompts durch Drücken auf das `+`.
 Die einfachste Installation bietet Claude Desktop - auch in der kostenlosen Version.
 Dazu ladet ihr euch diese [DXT Desktop Extension](https://github.com/bosch-buderus-wp/emsesp-mcp-server/releases/latest/download/emsesp-mcp-server.dxt) herunter.
 Dann öffnet ihr in Claude Desktop die Einstellungen, klickt auf `Extensions` und zieht die heruntergeladene DXT-Datei in das Fenster.
-Dann auf `Install` klicken und in der Konfiguration die URL, unter der euer [EMS-ESP](/docs/smarthome/) Gateway im lokalen Netzwerk erreichbar ist, eintragen.
+Dann auf `Install` klicken und in der Konfiguration die URL, unter der euer [EMS-ESP](/docs/smarthome/ems-esp/) Gateway im lokalen Netzwerk erreichbar ist, eintragen.
 Und schon kann's losgehen!
 
 In vielen anderen Gen-AI Anwendungen, wie z.B. Github Copilot, müsst ihr folgende Konfiguration in den Einstellungen hinzufügen:

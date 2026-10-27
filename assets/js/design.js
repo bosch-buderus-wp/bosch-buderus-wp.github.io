@@ -14,6 +14,11 @@ document.addEventListener("DOMContentLoaded", function () {
   updateNavigation();
   window.addEventListener("hashchange", updateNavigation);
 
+  // Keep access requirements next to the title, ahead of the mobile contents.
+  var access = document.querySelector(".smarthome-access");
+  var pageTitle = document.getElementById("page-title");
+  if (access && pageTitle) pageTitle.insertAdjacentElement("afterend", access);
+
   // Make the theme's existing mobile navigation toggle keyboard accessible.
   var checkbox = document.getElementById("ac-toc");
   var label = document.querySelector('label[for="ac-toc"]');
