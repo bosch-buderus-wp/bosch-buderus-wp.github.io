@@ -4,12 +4,15 @@ headline: "Heat pump notifications"
 excerpt: "Instructions for notifications and alarms for Bosch CS5800/6800i and Buderus WLW176/186i with EMS-ESP."
 permalink: /en/docs/smarthome/notifications/
 toc: true
+smarthome_access: [ems-esp]
 sidebar:
   nav: "en_docs"
 lang: en
 translation_url: /docs/smarthome/benachrichtigungen
 translation_generated: true
 ---
+
+{% include smarthome-access.html %}
 
 [![Screenshot: Notifications when activity changes](https://i.ibb.co/Mk7fw7Px/ntfy-screenshot.png){:width="300px"}](https://i.ibb.co/Mk7fw7Px/ntfy-screenshot.png)
 {: .align-right}
@@ -21,8 +24,8 @@ Would you like to be notified when ...
 - the electric backup heater is used, or
 - an error occurs?
 
-But you do not have a smart home system that can send you notifications.
-Then simply use the planner/scheduler of your [ems-esp](/en/docs/smarthome/) with [ntfy.sh](https://ntfy.sh/).
+But you don’t have a smart home system that can send you notifications.
+Then simply use the planner/scheduler of your [ems-esp](/en/docs/smarthome/ems-esp/) with [ntfy.sh](https://ntfy.sh/).
 
 _ntfy.sh_ is a free platform without registration requirements that makes it very easy to send notifications, which are then received as push notifications on Android or iOS devices and even as desktop notifications on your computer.
 

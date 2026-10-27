@@ -1,15 +1,18 @@
 ---
-title: "Use heat pump in Gen-AI applications"
-headline: "Use heat pump in Gen-AI applications"
+title: "Using a heat pump in Gen-AI applications"
+headline: "Using a heat pump in Gen-AI applications"
 excerpt: "Instructions for using data from Bosch CS5800/6800i and Buderus WLW176/186i in Gen-AI and LLM applications such as Claude."
 permalink: /en/docs/smarthome/ai/
 toc: true
+smarthome_access: [ems-esp-api]
 sidebar:
   nav: "en_docs"
 lang: en
 translation_url: /docs/smarthome/ai
 translation_generated: true
 ---
+
+{% include smarthome-access.html %}
 
 {% include video id="QTeLufsVr88" provider="youtube" %}
 
@@ -33,11 +36,11 @@ In Claude Desktop, you can find stored prompts by pressing `+`.
 
 ## Installation
 
-Claude Desktop offers the simplest installation—in the free version as well.
+The easiest installation is offered by Claude Desktop—even in the free version.
 To do this, download this [DXT Desktop Extension](https://github.com/bosch-buderus-wp/emsesp-mcp-server/releases/latest/download/emsesp-mcp-server.dxt).
 Then open the settings in Claude Desktop, click on `Extensions`, and drag the downloaded DXT file into the window.
-Then click `Install` and enter the URL under which your [EMS-ESP](/en/docs/smarthome/) gateway can be reached in the local network in the configuration.
-And then you can get started!
+Then click `Install` and enter the URL at which your [EMS-ESP](/en/docs/smarthome/ems-esp/) gateway can be reached on the local network in the configuration.
+And you're ready to go!
 
 In many other Gen-AI applications, such as Github Copilot, you have to add the following configuration in the settings:
 
@@ -82,14 +85,14 @@ architecture-beta
     group cloud(cloud)[Cloud]
     service llm(cloud)[LLM] in cloud
 
-    group home(server)[Home]
+group home(server)[Home]
     service hp(disk)[Heat pump] in home
     service emsesp(server)[EMS ESP] in home
     group notebook(server)[Your computer] in home
     service app(server)[GenAI application] in notebook
     service mcp(server)[MCP server] in notebook
 
-    llm:T -- B:app
+llm:T -- B:app
     app:R -- L:mcp
     mcp:R -- L:emsesp
     emsesp:R -- L:hp

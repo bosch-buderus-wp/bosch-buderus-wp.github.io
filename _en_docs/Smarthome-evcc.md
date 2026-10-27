@@ -1,9 +1,10 @@
 ---
-title: "Connect a heat pump to evcc for excess PV power"
+title: "Connect a heat pump to evcc for surplus PV power"
 headline: "evcc"
-excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc to use excess PV power or a dynamic electricity tariff."
+excerpt: "Instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into evcc to use surplus PV power or a dynamic electricity tariff."
 permalink: /en/docs/smarthome/evcc/
 toc: true
+smarthome_access: [ems-esp-api]
 sidebar:
   nav: "en_docs"
 lang: en
@@ -11,8 +12,7 @@ translation_url: /docs/smarthome/evcc
 translation_generated: true
 ---
 
-This guide uses the REST API of [EMS-ESP](/docs/smarthome/ems-esp/).  
-That means you need EMS-ESP, but not MQTT.
+{% include smarthome-access.html %}
 
 Owners of a PV system, a battery and/or a dynamic electricity tariff who are interested in energy-efficient control of their Bosch CS5800/6800i or Buderus WLW176/186i should take a look at [_evcc_](https://evcc.io).
 _evcc_ was originally designed for charging electric vehicles with surplus PV power.

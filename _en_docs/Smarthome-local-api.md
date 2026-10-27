@@ -1,7 +1,7 @@
 ---
 title: "Local REST API"
 headline: "Local API"
-excerpt: "Local API for Bosch CS5800/6800i and Buderus WLW176/186i with K 40 RF WLAN gateway - API specification with cURL and code examples."
+excerpt: "Local API for Bosch CS5800/6800i and Buderus WLW176/186i with K 40 RF or MX400 WLAN gateway – API specification with cURL and code examples."
 permalink: /en/docs/smarthome/local-api/
 classes: wide
 toc: false
@@ -12,14 +12,14 @@ translation_url: /docs/smarthome/local-api
 translation_generated: true
 ---
 
-Since September 2026, Bosch/Buderus has also offered a local REST API for the Bosch CS5800/6800i and Buderus WLW176/186i heat pumps.
-The local API requires a K40 RF WLAN gateway and gateway firmware `15.00.01` or higher.
+Since September 2026, Bosch/Buderus has also offered a local REST API for Bosch CS5800/6800i and Buderus WLW176/186i heat pumps.
+The local API requires a Bosch K40 RF or Buderus MX400 Wi-Fi gateway with gateway firmware `15.00.01` or higher.
 
 ## Hostname or IP address
 
-First, you need the IP address of the K40 RF Gateway on your home Wi-Fi network.
+First, you need the IP address of your K 40 RF or MX400 gateway in your home Wi-Fi network.
 The easiest way to find the IP address is in your router’s device list.
-To use the example code from the API preview on this page, enter the **hostname or IP address** under _gatewayAddress_, for example `gateway.local`, `K40RF-1acabc` or `192.168.1.42`—without `https://`, a port or a trailing period.
+To use the example code from the API preview on this page, enter the **hostname or IP address** under _gatewayAddress_, for example `gateway.local`, `K40RF-1acabc` or `192.168.1.42`—without `https://`, a port, or a trailing period.
 
 ## Authentication
 
@@ -27,11 +27,11 @@ To use the example code from the API preview on this page, enter the **hostname 
 {: .align-right}
 
 To use the local API, every request must be authenticated with an **Access Token**.
-You need **Login** and **Pass** to issue the Access Token.
-They are printed on a sticker either on the indoor unit of your heat pump, on the plugged-in WLAN gateway, on the front of the Quick Start Guide, or in the packaging of your WLAN gateway.
-If you can no longer find the sticker, scan the QR code on the WLAN gateway.
-It has the following format: \
-`V:1;L:<your-login>;P:<your-pass>;MAC:<your-mac-address>;N:<model-of-gateway>`
+To issue the Access Token, you need **Login** and **Pass**.
+These can be found on a sticker either on the indoor unit of your heat pump, on the plugged-in Wi-Fi gateway, on the front of the Quick Start Guide, or in the packaging of your Wi-Fi gateway.
+If you can no longer find the sticker, scan the QR code on the Wi-Fi gateway.
+It is structured as follows: \
+`V:1;L:<your-login>;P:<your-pass>;MAC:<your-mac-address>;N:<your-gateway-model>`
 
 1. Press the **WLAN and wireless buttons on the gateway simultaneously for one second**.
    The LEDs should briefly flash blue.
