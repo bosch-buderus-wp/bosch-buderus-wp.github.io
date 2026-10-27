@@ -364,10 +364,8 @@ details {
       min-width: 0;
       flex: 1 1 auto;
       margin: 0;
-      overflow: hidden;
       font-size: 0.72rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+      line-height: 1.2;
     }
 
     p {
