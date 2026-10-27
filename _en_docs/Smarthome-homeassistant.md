@@ -1,9 +1,10 @@
 ---
-title: "Integrating a heat pump into Home Assistant with EMS-ESP"
+title: "Integrating a heat pump into Home Assistant"
 headline: "Home Assistant"
-excerpt: "Step-by-step instructions for integrating Bosch CS5800/6800i and Buderus WLW176/186i into Home Assistant with EMS-ESP."
+excerpt: "Integrating Bosch CS5800/6800i and Buderus WLW176/186i into Home Assistant: EMS-ESP with MQTT as well as custom integrations for the local API or the cloud via HACS."
 permalink: /en/docs/smarthome/home-assistant/
 toc: true
+smarthome_access: [ems-esp-mqtt, local-api, cloud]
 sidebar:
   nav: "en_docs"
 lang: en
@@ -11,9 +12,52 @@ translation_url: /docs/smarthome/ha
 translation_generated: true
 ---
 
-This guide assumes that you have already installed [ems-esp](/en/docs/smarthome/).
+{% include smarthome-access.html %}
 
-### Integrating ems-esp
+The following projects serve as references; below you will find the detailed guide for EMS-ESP.
+
+## Custom Integrations via HACS
+
+{: #custom-integrations}
+
+These community projects can be installed via HACS or the Marketplace and do not require an EMS-ESP gateway:
+
+| Integration                                                                                                 | Access                          | Notes                                                                                                                          |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
+| [Bosch/Buderus Home Comfort (SoftwareSchmied)](https://github.com/SoftwareSchmied/ha-bosch-buderus-heating) | Unofficial cloud API (PointT)   | Uses the same SingleKey ID as the Bosch/Buderus app and requires an internet connection; available in the HACS standard catalog. |
+| [Bosch K 40 RF / MX400 (luc-ass)](https://github.com/luc-ass/ha-bosch-k40rf)                                | Local API (read-only)           | Reads the gateway on the home network; beta project, installable as a custom repository.                                      |
+| [Bosch K 40 RF / MX400 (smoki3)](https://github.com/smoki3/ha_bosch_k40rf)                                  | Local API (read-only)           | Reads the gateway on the home network; installable as a custom repository.                                                    |
+
+The local API provides **read-only access**; settings cannot be changed through it.
+Both the local API and the cloud connection offer **fewer entities than EMS-ESP**.
+If you want to use the full range of functions supported by EMS-ESP, with additional readings, settings, and commands, you should use [EMS-ESP](/en/docs/smarthome/ems-esp/).
+This requires additional hardware: an EMS-ESP gateway connected to the heat pump’s EMS bus.
+
+The local integrations require a Bosch K 40 RF or Buderus MX400 with firmware `15.00.01` or newer.  
+Information about local access and token creation can be found under [Local API](/en/docs/smarthome/local-api/).  
+The two local projects are alternatives and use the same integration identifier; therefore, install only one of them.  
+You can find the current range of functions and supported systems in the respective project description.
+
+### HACS and Marketplace
+
+Starting with Home Assistant **2026.11**, HACS is integrated as a **Marketplace** under _Settings → Marketplace_, according to the [HACS documentation](https://www.hacs.xyz/docs/marketplace/).
+A separate HACS installation is therefore no longer required.
+With Home Assistant **2026.10 or older**, you must first set up HACS according to the [installation instructions](https://www.hacs.xyz/docs/use/download/download/).
+
+Then search for the desired integration.  
+If it is not included in the catalog, add its GitHub address linked above:
+
+- In the Marketplace, use _Add from link_ and connect your GitHub account if needed, as described in the [Marketplace guide](https://next.home-assistant.io/integrations/marketplace/#custom-repositories).
+- In HACS, open the three-dot menu, select _Custom repositories_ and add the address with the _Integration_ category.
+
+Install the project and restart Home Assistant when prompted.
+Then open _Settings → Devices & services → Add integration_ and follow the setup for the respective project.
+
+## Integration with EMS-ESP
+
+The following sections assume that you have already installed [EMS-ESP](/en/docs/smarthome/ems-esp/).
+
+### Set up EMS-ESP
 
 After successfully [installing](https://www.home-assistant.io/installation) Home Assistant, you will see the following onboarding screen.
 

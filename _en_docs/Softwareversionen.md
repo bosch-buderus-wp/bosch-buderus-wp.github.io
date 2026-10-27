@@ -115,11 +115,11 @@ Improvements:
 
 Improvements:
 
-- Current **Thermal output** is available as an entity via [ems-esp](/en/docs/smarthome/).
-  Starting with this version, your smart home no longer needs to calculate the heat output by deriving it from the energy; you can use [boiler/hppower](/en/docs/smarthome/entities/#leistung) directly instead.
-- **DHW charging delta** can be reduced to 4K (previously 6K; benefit: delay to increase efficiency)
+- Current **thermal output** is available as an entity via [ems-esp](/en/docs/smarthome/ems-esp/).
+  Starting with this version, your smart home no longer needs to calculate the heat output from the derivative of the energy; instead, it can directly use [boiler/hppower](/en/docs/smarthome/entities/#leistung).
+- **Loading delta for DHW** can be reduced to 4K (previously 6K; benefit: delay to increase efficiency)
 - **Inputs** now have extensive configuration options for SG Ready, PV, EMS, ...
-- The **compressor fan** (PL3 blower) can be displayed on the device and created/read as individual entities via [ems-esp](/en/docs/smarthome/)
+- **Compressor fan** (PL3 blower) can be displayed on the device and created/read as individual entities via [ems-esp](/en/docs/smarthome/ems-esp/)
 - **Bypass query** added
 - Number of stages in the **heating program** increased from 2 to 4
 
