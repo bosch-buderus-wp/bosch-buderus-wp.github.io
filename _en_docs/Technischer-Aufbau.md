@@ -62,8 +62,7 @@ This can cause the domestic hot water to be heated solely by the electric backup
 Anyone wishing to counteract this should schedule domestic hot water production for the morning or evening hours (see [Settings for domestic hot water production](/en/docs/settings/#warmwasserbereitung)).
 Restarting occurs at −17 °C or +42 °C.
 
-
-### Primary Circuit
+### Primary circuit
 
 The primary circuit runs between the outdoor and indoor units.
 The transport medium is water, which absorbs the heat from the refrigerant in the condenser and transports it to the indoor unit.
@@ -97,10 +96,17 @@ If the heat pump always operated at full power when demand was low, the target v
 If the flow temperature cooled down again shortly afterward, it would have to start up again briefly, only to switch off again shortly afterward.
 This constant switching on and off is called **cycling** and reduces efficiency while increasing wear.
 
-To counteract cycling, the Bosch/Buderus heat pump has what is known as inverter control, which can adjust the compressor speed to a certain extent according to demand.
-If less heat is required, the inverter control reduces the speed, producing less heat and thus preventing cycling.
-However, the inverter control cannot modulate downward indefinitely, and at some point the lower limit is reached and the heat pump must cycle.
-In addition, heat pumps often operate less efficiently in the lower and upper limit ranges.
+To counteract cycling, the Bosch/Buderus heat pump has what is known as inverter control, which can adjust the compressor speed to a certain extent to match the demand.
+If less heat is required, the inverter control therefore reduces the speed, generating less heat and thus preventing cycling.
+However, the inverter control cannot modulate downwards indefinitely, and at some point the lower limit is reached and the heat pump must cycle.
+
+In addition to the actual heat demand, there is a second modulation control.
+This is based on two temperature limits for the intake air of the outdoor unit (TL2):
+
+1. Threshold at +4 °C: If the intake air temperature falls below +4 °C, the control system raises the lower modulation limit from the lowest modulation level to a higher level, e.g. from 26% to 35% for the 4 kW system, from 18% to 24% for the 5 kW system, and from 13% to 20% for the 10 kW system.
+2. Threshold at -4 °C: If the temperature falls further below -4 °C, the lower modulation limit increases a second time, e.g. from 20% to 37% for the 10 kW system.
+
+This can lead to renewed cycling at low temperatures if the system is oversized.
 
 ## Defrost Cycle
 
@@ -141,10 +147,10 @@ In standby mode, the energy monitoring constantly displays **25 W**.
 This is an averaged calculated value and not the actual power.
 Practical measurements of the actual power for the indoor and outdoor units combined produce approximately the following values:
 
-| Operating state | Small outdoor unit (4/5/7) | Large outdoor unit (10/12) |
-|---|---:|---:|
-| Normal standby | 12–16 W | 14–18 W |
-| Additional consumption with active crankcase heater | 70–85 W | 110–125 W |
+| Operating state                             | Small outdoor unit (4/5/7) | Large outdoor unit (10/12) |
+| ------------------------------------------- | --------------------------: | -------------------------: |
+| Normal standby                              |                     12–16 W |                    14–18 W |
+| With active crankcase heater additionally   |                     70–85 W |                  110–125 W |
 
 In normal standby, approximately half of the total consumption is attributable to the indoor unit and the other half to the outdoor unit.
 If one of the _PC0_ or _PC1_ pumps (Grundfos UPM4L (K) LIN) is also running, approximately 10–75 W are added, depending on the speed.
@@ -166,4 +172,4 @@ Even in small systems with little total power consumption during operation, the 
 
 Anyone wishing to learn more about the operation, design, and efficient operation of heat pumps beyond this technical overview will find an understandable introduction for laypeople and aspiring professionals in the book [Everything You Need to Know About Heat Pumps](https://link.amazon/B09tnIJmm){: rel="sponsored"} by energy-saving commissioner Carsten Herbert.
 
-*Affiliate link: I may receive a commission if you make a purchase. You will not incur any additional costs.*
+_Affiliate link: I may receive a commission from a purchase. No additional costs arise for you._
