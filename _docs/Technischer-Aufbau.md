@@ -57,7 +57,6 @@ Das kann dazu führen, dass das Warmwasser allein durch den Zuheizer erwärmt wi
 Wer dem entgegenwirken möchte, sollte die Warmwasserbereitung in die Morgen- oder Abendstunden legen (siehe [Einstellungen zur Warmwasserbereitung](/docs/einstellungen/#warmwasserbereitung)).
 Ein Wiederanlauf erfolgt bei −17 °C bzw. +42 °C.
 
-
 ### Primärkreis
 
 Der Primärkreis verläuft zwischen Außen- und Inneneinheit.
@@ -95,7 +94,14 @@ Dieses ständige An- und Abschalten nennt man **Takten** und verringert Effizien
 Um dem Takten entgegenzuwirken, hat die Bosch/Buderus Wärmepumpe eine so genannte Invertersteuerung, die die Drehzahl des Kompressors bis zu einem gewissen Grad dem Bedarf anpassen kann.
 Wird also weniger Wärme benötigt, so regelt die Invertersteuerung die Drehzahl nach unten, wodurch weniger Wärme erzeugt und somit das Takten verhindert wird.
 Doch die Invertersteuerung kann nicht beliebig weit nach unten modulieren und irgendwann ist das untere Limit erreicht und die Wärmepumpe muss takten.
-Außerdem laufen die Wärmepumpen im unteren und oberen Grenzbereich oft ineffizienter.
+
+Neben dem tatsächlichen Wärmebedarf gibt es noch eine zweite Regelung der Modulation.
+Diese basiert auf zwei Temperaturgrenzen bei der Ansaugluft der Außeneinheit (TL2):
+
+1. Schwelle bei +4 °C: Fällt die Ansauglufttemperatur unter +4 °C, hebt die Steuerung die untere Modulationsgrenze von der niedrigsten Modulation auf eine höhere Stufe, z.B. von 26% auf 35% bei der 4 kW Anlage, von 18% auf 24% bei der 5kW Anlage, von 13% auf 20% bei der 10kW Anlage.
+2. Schwelle bei -4 °C: Fällt die Temperatur weiter unter -4 °C, erfolgt ein zweiter Sprung der unteren Modulationsgrenze, z.B. von 20% auf 37% bei der 10 kW Anlage.
+
+Das kann bei einer Überdimensionierung der Anlage bei niedrigen Temperaturen zu erneutem Takten führen.
 
 ## Abtauvorgang
 
@@ -136,10 +142,10 @@ Im Standby zeigt das Energiemonitoring konstant **25 W** an.
 Das ist ein gemittelter Rechenwert und nicht die reale Leistung.
 Praxismessungen der realen Leistung ergeben ungefähr folgende Werte für Innen- und Außeneinheit zusammen:
 
-| Betriebszustand | Kleine Außeneinheit (4/5/7) | Große Außeneinheit (10/12) |
-|---|---:|---:|
-| Normaler Standby | 12–16 W | 14–18 W |
-| Bei aktiver Kurbelgehäuseheizung zusätzlich | 70–85 W | 110–125 W |
+| Betriebszustand                             | Kleine Außeneinheit (4/5/7) | Große Außeneinheit (10/12) |
+| ------------------------------------------- | --------------------------: | -------------------------: |
+| Normaler Standby                            |                     12–16 W |                    14–18 W |
+| Bei aktiver Kurbelgehäuseheizung zusätzlich |                     70–85 W |                  110–125 W |
 
 Im normalen Standby entfällt ungefähr die Hälfte des Gesamtverbrauchs auf die Innen- und die andere Hälfte auf die Außeneinheit.
 Läuft zusätzlich eine der Pumpen _PC0_ oder _PC1_ (Grundfos UPM4L (K) LIN), kommen je nach Drehzahl jeweils etwa 10–75 W hinzu.
@@ -161,4 +167,4 @@ Auch bei kleinen Anlagen mit insgesamt wenig Stromverbrauch im Betrieb führt de
 
 Wer Funktionsweise, Auslegung und effizienten Betrieb von Wärmepumpen über diese technische Übersicht hinaus vertiefen möchte, findet im Buch [Alles, was Sie über Wärmepumpen wissen müssen](https://link.amazon/B09tnIJmm){: rel="sponsored"} von Energiesparkommissar Carsten Herbert einen verständlichen Einstieg für Laien und angehende Fachleute.
 
-*Affiliate-Link: Bei einem Kauf erhalte ich möglicherweise eine Provision. Für dich entstehen keine zusätzlichen Kosten.*
+_Affiliate-Link: Bei einem Kauf erhalte ich möglicherweise eine Provision. Für dich entstehen keine zusätzlichen Kosten._
