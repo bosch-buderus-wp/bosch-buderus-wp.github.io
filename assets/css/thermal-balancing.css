@@ -1,0 +1,48 @@
+.tba { --tba-ink: #25313a; --tba-coral: #d75b51; --tba-blue: #3285b5; --tba-control: #527957; box-sizing: border-box; margin: 1.3rem 0 1.6rem; border: 1px solid #dce2e5; border-radius: 8px; background: #fff; color: var(--tba-ink); line-height: 1.5; }
+.tba *, .tba *::before, .tba *::after { box-sizing: border-box; }
+.tba [hidden] { display: none !important; }
+.tba .tba-header { position: relative; display: flex; align-items: center; gap: 12px; padding: 10px 14px; border-bottom: 1px solid #e1e6e9; border-radius: 8px 8px 0 0; background: #f3f5f6; }
+.tba .tba-header h3 { margin: 0 auto 0 0; padding: 0; border: 0; color: var(--tba-ink); font-size: .8rem; line-height: 1.2; }
+.tba .tba-guide { margin: 0; padding: 0; border: 0; }
+.tba-guide summary { display: grid; place-items: center; width: 30px; height: 30px; color: #486a80; cursor: pointer; list-style: none; }
+.tba-guide summary::-webkit-details-marker { display: none; }
+.tba-guide div { position: absolute; z-index: 2; top: calc(100% + 4px); right: 0; width: min(420px, 100%); padding: 15px 18px; border: 1px solid #cbd8e0; border-radius: 6px; background: #fff; box-shadow: 0 8px 20px rgb(37 49 58 / 12%); }
+.tba .tba-guide p { margin: 0 0 10px; font-size: .7rem; line-height: 1.65; }
+.tba .tba-guide p:last-child { margin: 0; }
+.tba-diagram-wrap { position: relative; max-width: 608px; margin: auto; padding: 12px 14px 6px; }
+.tba-diagram { display: block; width: 100%; max-width: 580px; height: auto; margin: auto; font-family: inherit; }
+.tba-room { fill: #f7f9fa; stroke: #dce2e5; }
+.tba-room-title, .tba-temp, .tba-status, .tba-pipe-label, .tba-pump-label { text-anchor: middle; fill: #25313a; }
+.tba-room-title { font-size: 15px; font-weight: 600; }
+.tba-temp { font-size: 25px; font-weight: 700; }
+.tba-status { fill: #65747d; font-size: 13px; }
+.tba-pipes { fill: none; stroke-width: 8; stroke-linecap: round; stroke-linejoin: round; }
+.tba-hot { stroke: var(--tba-coral); } .tba-cold { stroke: var(--tba-blue); }
+.tba-radiator rect { fill: #fff; stroke: #83949f; stroke-width: 1.5; }
+.tba-radiator path { fill: none; stroke: #d2dce1; stroke-width: 5; stroke-linecap: round; }
+.tba-heat { fill: none; stroke: #db963e; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
+.tba-heat path { transition: opacity .35s ease; }
+.tba-pump rect { fill: #fff; stroke: #83949f; stroke-width: 2; } .tba-pump path { fill: none; stroke: #83949f; stroke-width: 2; }
+.tba-pump-label { font-size: 10px; } .tba-pipe-label { font-size: 13px; font-weight: 600; } .tba-hot-label { fill: #b54840; } .tba-cold-label { fill: #246c96; }
+.tba-step { display: flex; gap: 12px; padding: 13px 18px; border-top: 1px solid #e1e6e9; background: #f7f9fa; }
+.tba-step-number { flex: none; color: #316b8d; font-size: .65rem; font-weight: 700; }
+.tba .tba-step p { margin: 0; font-size: .7rem; line-height: 1.6; }
+.tba-overlay { position: absolute; inset: 12px 14px 6px; pointer-events: none; }
+.tba-control { position: absolute; padding: 2px 4px; border: 1px solid transparent; border-radius: 4px; pointer-events: auto; }
+.tba-valve-1 { left: 20.5%; top: 41.9%; width: 31%; }
+.tba-valve-2 { left: 61.5%; top: 41.9%; width: 31%; }
+.tba-supply { left: 2%; top: 81.5%; width: 38%; }
+.tba-control.tba-highlight { border-color: var(--tba-control); background: #f5faf5; }
+.tba-control label { display: flex; justify-content: space-between; gap: 4px; font-size: clamp(9px, 1.8vw, 13px); font-weight: 600; line-height: 1.2; }
+.tba-control output { color: #316b8d; white-space: nowrap; }
+.tba input[type="range"] { display: block; width: 100%; height: 22px; margin: 1px 0 0; padding: 0; accent-color: var(--tba-control); cursor: pointer; }
+.tba .tba-step .tba-result { margin-top: 5px; color: #526c56; font-weight: 600; }
+.tba-actions { display: flex; flex-wrap: wrap; gap: 8px; padding: 12px 18px; }
+.tba button { padding: 6px 12px; border: 1px solid #aebdc5; border-radius: 4px; background: #fff; color: #25313a; font: inherit; font-size: .68rem; cursor: pointer; }
+.tba button[data-next] { border-color: #316b8d; background: #316b8d; color: #fff; }
+.tba button:disabled { opacity: .45; cursor: default; }
+.tba button[data-reset] { margin-left: auto; }
+.tba :focus-visible { outline: 2px solid #b54840; outline-offset: 3px; }
+.tba .tba-noscript { padding: 12px 18px; font-size: .7rem; }
+@media (max-width: 600px) { .tba-diagram-wrap { padding: 8px 3px; } .tba-overlay { inset: 8px 3px 6px; } .tba-step { padding: 12px; } .tba-actions { padding: 10px 12px; } }
+@media (prefers-reduced-motion: reduce) { .tba-heat path { transition: none; } }

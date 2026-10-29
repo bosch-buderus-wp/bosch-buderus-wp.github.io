@@ -1,0 +1,50 @@
+<link rel="stylesheet" href="{{ '/assets/css/thermal-balancing.css' | relative_url }}?v=4">
+<section class="tba" data-thermal-balancing aria-labelledby="tba-title">
+  <header class="tba-header">
+    <h3 id="tba-title">Thermischen Abgleich ausprobieren</h3>
+    <details class="tba-guide">
+      <summary aria-label="Hinweise zur Übung">ⓘ</summary>
+      <div>
+        <p>Das Beispiel zeigt zwei parallel angeschlossene Heizkörper bei 0 °C Außentemperatur. Raum 1 ist der Referenzraum.</p>
+        <p>Die Temperaturen zeigen jeweils den Zustand nach ausreichender Wartezeit. In einem echten Haus kann das ein bis zwei Tage oder länger dauern.</p>
+        <p>Die Wärmepfeile zeigen schematisch, ob ein Thermostat die Wärmeabgabe begrenzt; ihre Helligkeit ist kein Messwert.</p>
+        <p>Das stark vereinfachte Modell nimmt an, dass sich beim Drosseln eines Heizkörpers der Durchfluss im anderen leicht erhöht. Die tatsächliche Wirkung hängt von Pumpe und Anlage ab.</p>
+      </div>
+    </details>
+  </header>
+  <div class="tba-diagram-wrap">
+    <svg class="tba-diagram" viewBox="0 0 600 430" role="img" aria-labelledby="tba-svg-title tba-svg-desc">
+      <title id="tba-svg-title">Zweirohrsystem mit zwei Räumen</title>
+      <desc id="tba-svg-desc">Eine Wärmepumpe versorgt zwei parallel angeschlossene Heizkörper über einen roten Vorlauf und einen blauen Rücklauf.</desc>
+      <rect class="tba-room" x="110" y="12" width="215" height="258" rx="6"/>
+      <rect class="tba-room" x="355" y="12" width="215" height="258" rx="6"/>
+      <text class="tba-room-title" x="217" y="37">Raum 1 · Referenzraum</text>
+      <text class="tba-room-title" x="462" y="37">Raum 2</text>
+      <text class="tba-temp" data-room-temp="0" x="217" y="68">20,0 °C</text>
+      <text class="tba-temp" data-room-temp="1" x="462" y="68">20,0 °C</text>
+      <text class="tba-status" data-room-status="0" x="217" y="89">Thermostat begrenzt</text>
+      <text class="tba-status" data-room-status="1" x="462" y="89">Thermostat begrenzt</text>
+      <g class="tba-heat" aria-hidden="true"><path data-heat="0" d="M186 119 v-17 m-5 5 5-5 5 5 M217 119 v-17 m-5 5 5-5 5 5 M248 119 v-17 m-5 5 5-5 5 5"/><path data-heat="1" d="M431 119 v-17 m-5 5 5-5 5 5 M462 119 v-17 m-5 5 5-5 5 5 M493 119 v-17 m-5 5 5-5 5 5"/></g>
+      <g class="tba-pipes" aria-hidden="true"><path class="tba-hot" d="M65 288 H110 V146 H166 M110 288 H355 V146 H411"/><path class="tba-cold" d="M268 161 H325 V317 H65 M513 161 H570 V317 H325"/></g>
+      <g class="tba-radiator" aria-hidden="true"><rect x="166" y="128" width="102" height="52" rx="5"/><path d="M180 134 v40 M194 134 v40 M208 134 v40 M222 134 v40 M236 134 v40 M250 134 v40"/><rect x="411" y="128" width="102" height="52" rx="5"/><path d="M425 134 v40 M439 134 v40 M453 134 v40 M467 134 v40 M481 134 v40 M495 134 v40"/></g>
+      <g class="tba-pump" aria-hidden="true"><rect x="12" y="271" width="54" height="62" rx="6"/><path d="M22 297 h34 M39 281 v32"/></g>
+      <text class="tba-pump-label" x="39" y="346">Wärmepumpe</text>
+      <text class="tba-pipe-label tba-hot-label" x="270" y="283">Vorlauf</text>
+      <text class="tba-pipe-label tba-cold-label" x="365" y="334">Rücklauf</text>
+    </svg>
+    <div class="tba-overlay" data-tba-controls hidden>
+      <div class="tba-control tba-valve-1" data-control="valve1"><label for="tba-valve-1">Ventil <output for="tba-valve-1" data-value="valve1">offen</output></label><input id="tba-valve-1" type="range" min="25" max="100" step="5" value="100" aria-label="Ventilvoreinstellung Raum 1"></div>
+      <div class="tba-control tba-valve-2" data-control="valve2"><label for="tba-valve-2">Ventil <output for="tba-valve-2" data-value="valve2">offen</output></label><input id="tba-valve-2" type="range" min="25" max="100" step="5" value="100" aria-label="Ventilvoreinstellung Raum 2"></div>
+      <div class="tba-control tba-supply" data-control="flow"><label for="tba-flow">Sollvorlauf <output for="tba-flow" data-value="flow">48 °C</output></label><input id="tba-flow" type="range" min="32" max="50" step="0.5" value="48"></div>
+    </div>
+  </div>
+  <div class="tba-interactive" data-tba-interactive hidden>
+    <div class="tba-step" aria-live="polite">
+      <span class="tba-step-number" data-step-number></span>
+      <div><p data-step-text></p><p class="tba-result" data-result-title hidden></p></div>
+    </div>
+    <div class="tba-actions"><button type="button" data-previous>Zurück</button><button type="button" data-next>Weiter</button><button type="button" data-reset>Neu starten</button></div>
+  </div>
+  <noscript><p class="tba-noscript">Für diese Übung wird JavaScript benötigt.</p></noscript>
+  <script src="{{ '/assets/js/thermal-balancing.js' | relative_url }}?v=5" defer></script>
+</section>

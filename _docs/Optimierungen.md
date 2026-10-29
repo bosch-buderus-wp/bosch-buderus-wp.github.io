@@ -234,29 +234,21 @@ Am besten ist es natürlich, wenn ihr bereits beim Kauf der Wärmepumpe darauf a
 
 ## Heizkurve und Thermischer Abgleich
 
-Nun gehen wir vom Warmwasser zur Optimierung der Heizung.
-Wie beim Warmwasser ist es essentiell, dass die Vorlauftemperatur gerade so niedrig ist, dass die Räume gerade noch so warm werden wie nötig.
+Wie beim Warmwasser ist es auch beim Heizbetrieb essentiell, dass die **Vorlauftemperatur gerade so niedrig ist, dass die Räume gerade noch so warm werden wie nötig**.
 Dazu werden die Heizkurve und die Durchflüsse der einzelnen Heizflächen aufeinander abgestimmt. Dieses schrittweise Vorgehen nennt man thermischen Abgleich.
-Dabei sollen nicht die Einzelraumregelungen (ERR) bzw. Heizkörperthermostate durch Takten, d.h. durch ständiges Öffnen und Schließen des Wasserzulaufs, die Raumtemperatur regeln - ähnlich wie bei einem Auto, das ständig auf Maximalgeschwindigkeit beschleunigt und dann wieder zum Stillstand abgebremst wird, anstatt mit einer konstanten Geschwindigkeit zu fahren.
-Ziel ist es daher, dass die Räume ununterbrochen mit der minimal notwendigen Wassertemperatur versorgt werden.
+Dabei sollen die Einzelraumregelungen (ERR) bzw. Heizkörperthermostate die Wärmeabgabe im Normalbetrieb möglichst wenig begrenzen.
+Viele ERRs begrenzen die Wärmeleistung durch ständiges Öffnen und Schließen des Wasserzulaufs - ähnlich wie bei einem Auto, das ständig auf Maximalgeschwindigkeit beschleunigt und dann wieder zum Stillstand abgebremst wird, anstatt mit einer konstanten Geschwindigkeit zu fahren.
+Ziel ist es, dass die Räume ununterbrochen mit der minimal notwendigen Wassertemperatur versorgt werden.
 Und so braucht die Wärmepumpe nur auf die minimale Vorlauftemperatur aufheizen, die gerade notwendig ist, um alle Räume auf Wohlfühltemperatur zu erwärmen.
 
 Besonders wichtig sind die **kritischen Räume**: Dort sind die Heizflächen im Verhältnis zum Wärmebedarf und zur gewünschten Raumtemperatur am knappsten bemessen.
 Das ist nicht unbedingt der Raum mit dem größten Wärmebedarf – auch ein kleines Bad mit hoher Wunschtemperatur kann die notwendige Vorlauftemperatur bestimmen.
 Die Heizflächen dieser Räume sollten möglichst nicht gedrosselt werden.
 
-Bei gleicher übertragener Wärmeleistung verringert ein höherer Volumenstrom die Spreizung zwischen Vorlauf und Rücklauf.
-Das Wasser kühlt auf seinem Weg durch die Heizfläche weniger ab.
-Dadurch kann dieselbe Wärmeleistung mit einer niedrigeren Vorlauftemperatur übertragen werden.
-Der zusätzliche Nutzen wird bei zunehmendem Durchfluss allerdings immer kleiner. 
-Gleichzeitig können Pumpenstrom und Strömungsgeräusche steigen.
-
-{% include heating-flow.html %}
-
 Die folgende 6-Schritt-Anleitung für den thermischen Abgleich stammt von [Haustechnikdialog.de](https://www.haustechnikdialog.de/SHKwissen/2711/Thermischer-Abgleich):
 
 1. **Anlage vorbereiten** \
-   Bei einer Fußbodenheizung sollten die ERRs während des Abgleichs deaktiviert oder die Stellantriebe abgenommen werden. An den Heizkreisverteilern werden alle Drosselungen vollständig geöffnet. Bei Heizkörpern werden die Thermostatköpfe vollständig geöffnet oder vorübergehend demontiert. 
+   Bei einer Fußbodenheizung sollten die ERRs während des Abgleichs deaktiviert oder die Stellantriebe abgenommen werden. An den Heizkreisverteilern werden alle Drosselungen vollständig geöffnet. Bei Heizkörpern werden die Thermostatköpfe vollständig geöffnet oder vorübergehend demontiert.
    Ziel ist, dass die ERRs/Thermostate während der Messphase nicht eingreifen. Die Raumtemperaturen sollen nur durch Heizkurve und Durchfluss bestimmt werden.
 2. **Heizkurve grob absenken** \
    Warte nach der Vorbereitung mindestens 1-2 Tage. Sind danach alle regelmäßig beheizten Räume wärmer als gewünscht, ist die Heizkurve wahrscheinlich zu hoch.
@@ -277,6 +269,10 @@ Die folgende 6-Schritt-Anleitung für den thermischen Abgleich stammt von [Haust
    Wiederhole dieses Vorgehen, bis alle regelmäßig beheizten Räume ihre Wunschtemperatur erreichen und die Heizkurve so niedrig wie möglich eingestellt ist.
    Der thermische Abgleich ist kein einmaliger Arbeitsschritt, sondern eher eine schrittweise Feinjustierung über mehrere kalte Tage oder sogar über eine ganze Heizperiode.
 
+Mit der folgenden Übung kannst du das Zusammenspiel von Heizkurve und Ventilvoreinstellungen an zwei Räumen ausprobieren.
+
+{% include thermal-balancing.html %}
+
 Das Vorgehen sollte an einem kalten Tag mit Minustemperaturen und geringer Sonneneinstrahlung vorgenommen werden.
 Für die Anpassung der Heizkurve in Schritt 2+5 reduziert man dann die [Vorlauftemperatur an der Normaußentemperatur (NAT)](/docs/einstellungen/#vorlauftemperatur-nat).
 Hierbei ist noch zu bemerken, dass es keinen Sinn macht, wenn sich die Solltemperaturen in benachbarten Räumen stark unterscheiden.
@@ -287,7 +283,19 @@ Dazu einfach im Herbst bei Außentemperaturen um die 15°C prüfen, ab welcher T
 Das ist natürlich individuell unterschiedlich.
 Um unnötiges Takten zu verhindern, ist eine niedrigere Heizgrenztemperatur vorzuziehen.
 
-## Abgleich der Volumenströme
+## Volumenströme
+
+Bei gleicher übertragener Wärmeleistung verringert ein höherer Volumenstrom die Spreizung zwischen Vorlauf und Rücklauf.
+Das Wasser kühlt auf seinem Weg durch die Heizfläche weniger ab.
+Dadurch kann dieselbe Wärmeleistung mit einer niedrigeren Vorlauftemperatur übertragen werden, was die Effizienz steigert - wie bereits bekannt: etwa 2,5% pro Grad Celsius.
+Der zusätzliche Nutzen wird bei zunehmendem Durchfluss allerdings immer kleiner.
+Ein großer Volumenstrom, den man im Servicemenü unter `Anlageneinstellungen` &rarr; `Heizung/Kühlung` &rarr; `Heizkreis 1` &rarr; `Pumpensolldruckwert` einstellt, ist daher prinzipiell vorteilhaft für die Effizienz.
+Gleichzeitig steigt aber der Stromverbrauch für Heizkreispumpe und es können Strömungsgeräusche hörbar werden.
+Daher sollte man den `Pumpensolldruckwert` nicht zu stark erhöhen.
+
+{% include heating-flow.html %}
+
+### Abgleich der Volumenströme
 
 Um den Abgleich der Volumenströme zwischen [Primär-](/docs/technischer-aufbau#primärkreis) und [Heizkreis](/docs/technischer-aufbau#heizkreis) zu verstehen, muss man Regelung der Kreise etwas genauer betrachten.
 Im Primärkreis wird als Zielgröße die Temperaturdifferenz _dT_ zwischen Vorlauf (TC3) und Rücklauf (TC0), die so genannte Spreizung, eingestellt.
@@ -296,7 +304,7 @@ Ist die Spreizung zu niedrig, reduziert PC0 den Volumenstrom, damit das Wasser i
 Ist die Spreizung zu hoch, erhöht PC0 den Volumenstrom.
 
 Im Heizkreis hingegen wird der Differenzdruck eingestellt.
-Die Spreizung ergibt sich aus der übertragenen Wärmeleistung und dem Volumenstrom. 
+Die Spreizung ergibt sich aus der übertragenen Wärmeleistung und dem Volumenstrom.
 Sie wird hier nicht direkt als Sollwert vorgegeben, lässt sich aber über die Pumpeneinstellung und die Drosselung der Heizflächen beeinflussen.
 Der eingestellte Differenzdruck sorgt für einen konstanten Volumenstrom im Heizkreis.
 Das gilt natürlich nur, wenn die Ventilstellung an den Heizkörpern bzw. der Fußbodenheizung unverändert bleibt.
