@@ -912,15 +912,15 @@
       ]
     },
     "_pages/Metrics.md": {
-      "fingerprint": "c86bb85096eebd47e87ec279ab4ce084defc184b25638f8c914128026e75f826",
-      "sourceHash": "1a6e8a9c4b166eb7ebef6c7b53a16bfbdd7e364ac80c8632dbdb4f6c1718cd0f",
+      "fingerprint": "b269ae37180cd1c7d85be576032f71c344a33b6504fd66cfd4c5a041aa69f108",
+      "sourceHash": "24cec60b1241152a0cc315cb86af4c2bcca22735ed9ec2ddf6e88adda1e8121c",
       "target": "_en_pages/Metrics.md",
       "frontMatterSourceHash": "bd9b7455f1e8c1ef7f1d9222ecd7ba2faaa3e8fd8c326aca8330ed262fad711e",
       "bodyBlockSourceHashes": [
-        "01b1a5ebe9b9178ab35683add20445b42ad8c8938192039a9b5dec30d66d298c",
+        "9c3ce5d4042338f92186223da184bca906ea4217f588067312c701ba7d39609e",
         "78e76c0bbd6f649f09a9874bcdfff5698d9e0a07500569de1c43cd4d8edc1fed",
         "c82193f71c5da4f2eefb4e52606e1a6b9ba0125d9f8a1b0608480a5c5a4e9468",
-        "615aada6aa80da15ffdf9e4a99f5dd0174ab8e174f8487358326f550705e8c19"
+        "5a13e2446d1eea5698bc4b382ca918d665029dc1462d54f75301a9248ee35b05"
       ]
     },
     "_pages/Simulator.md": {
