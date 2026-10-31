@@ -67,6 +67,8 @@ metrics:
         url: /metrics/#/az-temp-evaluation
       - title: "AZ-Jahresheizbedarf"
         url: /metrics/#/az-energy-evaluation
+      - title: "Heizlast"
+        url: /metrics/#/heating-load
       - title: "Heizkurve"
         url: /metrics/#/heating-curve
       - title: "Gebäudevergleich"
@@ -153,6 +155,8 @@ en_metrics:
         url: /en/metrics/#/az-temp-evaluation
       - title: "COP-Yearly Energy"
         url: /en/metrics/#/az-energy-evaluation
+      - title: "Heating Load"
+        url: /metrics/#/heating-load
       - title: "Heating Curve"
         url: /en/metrics/#/heating-curve
       - title: "Building comparison"
