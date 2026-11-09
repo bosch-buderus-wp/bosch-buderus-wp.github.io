@@ -34,13 +34,13 @@ EMS-ESP entities and local API endpoints use different names and cannot be excha
 The table shows which access method the respective guide on this website describes.  
 Other connections are possible for the local API, but require a suitable integration.
 
-| Application                                             | What for?                                         | Documented access       |
-| ------------------------------------------------------- | ------------------------------------------------- | ----------------------- |
-| [Home Assistant](/en/docs/smarthome/home-assistant/)                    | Measurement values and automations                | EMS-ESP; local API or cloud via Custom Integrations |
-| [OpenHAB](/en/docs/smarthome/openhab/)                      | Measurement values and automations                | EMS-ESP                 |
-| [Grafana](/en/docs/smarthome/grafana/)                      | Live dashboard and analyses of historical data    | Local API or EMS-ESP |
-| [evcc](/en/docs/smarthome/evcc/)                            | Use surplus PV power for the heat pump            | EMS-ESP                 |
-| [Notifications](/en/docs/smarthome/notifications/)    | Receive status changes via push notification      | EMS-ESP                 |
-| [AI](/en/docs/smarthome/ai/)                                | Query heat pump data via an MCP server            | EMS-ESP                 |
+| Application                                              | What for?                                         | Documented access       |
+| -------------------------------------------------------- | ------------------------------------------------- | ----------------------- |
+| [Home Assistant](/en/docs/smarthome/home-assistant/)                     | Measured values and automations                   | EMS-ESP; local API or cloud via Custom Integrations |
+| [OpenHAB](/en/docs/smarthome/openhab/)                       | Measured values and automations                   | EMS-ESP or local API via MQTT bridge |
+| [Grafana](/en/docs/smarthome/grafana/)                       | Live dashboard and analysis of historical data    | Local API or EMS-ESP |
+| [evcc](/en/docs/smarthome/evcc/)                             | Use surplus PV energy for the heat pump           | EMS-ESP                 |
+| [Notifications](/en/docs/smarthome/notifications/)      | Receive status changes via push notification      | EMS-ESP                 |
+| [AI](/en/docs/smarthome/ai/)                                 | Query heat pump data via an MCP server            | EMS-ESP                 |
 
 <script src="{{ '/assets/js/smarthome-legacy-links.js' | relative_url }}" defer></script>

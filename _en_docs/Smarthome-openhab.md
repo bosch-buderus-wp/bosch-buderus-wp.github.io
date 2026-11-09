@@ -1,10 +1,10 @@
 ---
-title: "Integrating a heat pump into OpenHAB with EMS-ESP"
+title: "Integrating a heat pump into OpenHAB"
 headline: "OpenHAB"
-excerpt: "Integrating Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP and MQTT: Things, Items with units, and a sitemap for measured values and performance factors."
+excerpt: "Integrate Bosch CS5800/6800i and Buderus WLW176/186i into OpenHAB via EMS-ESP and MQTT: Things, Items with units, and a sitemap for measured values and performance factors."
 permalink: /en/docs/smarthome/openhab/
 toc: true
-smarthome_access: [ems-esp-mqtt]
+smarthome_access: [ems-esp-mqtt, local-api-mqtt]
 sidebar:
   nav: "en_docs"
 lang: en
@@ -18,16 +18,29 @@ OpenHAB is an open-source smart home solution that brings together a wide range 
 The Java-based solution enables central control and the creation of flexible automation rules for devices from various brands.  
 With [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html), OpenHAB can be installed quickly and easily on a Raspberry Pi.
 
-## Requirements
+## Local API with MQTT
+
+Requirements:
+
+- Bosch K40 RF or Buderus MX400 WLAN gateway with gateway firmware 15.00.01 or newer.
+- An MQTT broker, for example Mosquitto. With an [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html) installation, you can install Mosquitto via `sudo openhabian-config` under _Optional Components_.
+- The [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) and the [JSONPath Transformation](https://www.openhab.org/addons/transformations/jsonpath/) in OpenHAB.
+
+The [k40rf-bridge](/en/docs/smarthome/local-api/#mqtt-mit-k40rf-bridge) provides values from the K 40 RF via an MQTT broker.
+With the MQTT binding installed and a broker configured, OpenHAB can detect the bridge via MQTT Discovery.
+The [project README](https://github.com/wakkomon/k40rf-bridge#openhab) also contains examples of manually configured Things and Items.
+Access is read-only, and the MQTT topics differ from the following EMS-ESP examples.
+
+## EMS-ESP with MQTT
+
+Requirements:
 
 - A configured EMS-ESP gateway with an enabled [MQTT connection](/en/docs/smarthome/ems-esp/#mqtt).
-- An MQTT broker, such as Mosquitto, that both EMS-ESP and OpenHAB can reach.
-- The [MQTT binding](https://www.openhab.org/addons/bindings/mqtt/) and the [JSONPath transformation](https://www.openhab.org/addons/transformations/jsonpath/) in OpenHAB.
+- An MQTT broker, for example Mosquitto, that both EMS-ESP and OpenHAB can reach. With an installation using [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html), you can install Mosquitto via `sudo openhabian-config` under _Optional Components_.
+- The [MQTT Binding](https://www.openhab.org/addons/bindings/mqtt/) and the [JSONPath transformation](https://www.openhab.org/addons/transformations/jsonpath/) in OpenHAB.
+  The following configuration uses a manually defined MQTT Thing; MQTT Discovery is not required for this.
 
-With an installation using [OpenHABian](https://www.openhab.org/docs/installation/openhabian.html), you can install Mosquitto via `sudo openhabian-config` under _Optional Components_.
-The following configuration uses a manually defined MQTT Thing; MQTT Discovery is not required for this.
-
-The examples assume the entity ID format `Single instance, MQTT names (3.5)` in the MQTT settings of EMS-ESP.  
+The examples require the entity ID format `Single instance, MQTT names (3.5)` in the EMS-ESP MQTT settings.
 If you use a different entity ID format or more heating circuits, adjust the topics and JSON paths accordingly.
 
 ## MQTT Thing and Channels
