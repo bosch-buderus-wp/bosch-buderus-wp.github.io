@@ -37,6 +37,14 @@ methods:
     label_en: "Local API"
     title_en: "K 40 RF or MX400 with firmware 15.00.01 or newer; read-only access"
     url_en: /en/docs/smarthome/local-api/
+  local-api-mqtt:
+    label: "Lokale API · MQTT"
+    label_en: "Local API · MQTT"
+    icon: "network"
+    url: /docs/smarthome/local-api#mqtt-mit-k40rf-bridge
+    url_en: /en/docs/smarthome/local-api/#mqtt-with-k40rf-bridge
+    title: "K 40 RF, MQTT-Broker und k40rf-bridge erforderlich; nur lesender Zugriff"
+    title_en: "K 40 RF, MQTT broker and k40rf-bridge required; read-only access"
   cloud:
     label: "Cloud"
     icon: "cloud"

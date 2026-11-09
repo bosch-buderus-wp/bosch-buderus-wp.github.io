@@ -32,7 +32,7 @@ Für die lokale API sind weitere Anbindungen möglich, benötigen aber eine pass
 | Anwendung                                                | Wofür?                                          | Dokumentierter Zugang   |
 | -------------------------------------------------------- | ----------------------------------------------- | ----------------------- |
 | [Home Assistant](/docs/smarthome/ha)                     | Messwerte und Automatisierungen                 | EMS-ESP; lokale API oder Cloud über Custom Integrations |
-| [OpenHAB](/docs/smarthome/openhab)                       | Messwerte und Automatisierungen                 | EMS-ESP                 |
+| [OpenHAB](/docs/smarthome/openhab)                       | Messwerte und Automatisierungen                 | EMS-ESP oder lokale API über MQTT-Bridge |
 | [Grafana](/docs/smarthome/grafana)                       | Live-Dashboard und Auswertungen historischer Daten | Lokale API oder EMS-ESP |
 | [evcc](/docs/smarthome/evcc)                             | PV-Überschuss für die Wärmepumpe nutzen         | EMS-ESP                 |
 | [Benachrichtigungen](/docs/smarthome/benachrichtigungen) | Zustandsänderungen per Push-Nachricht erhalten  | EMS-ESP                 |

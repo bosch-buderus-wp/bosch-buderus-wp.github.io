@@ -23,4 +23,5 @@ abmelden.
 
 ## Bisherige Ausgaben
 
+- [Ausgabe 02 · Oktober 2026: Arbeitszahlen, Heizlast und Smart Home]({{ '/newsletter/2026-10/' | relative_url }})
 - [Ausgabe 01 · September 2026: Septemberrückblick, neue Modellvarianten und lokale REST API]({{ '/newsletter/2026-09/' | relative_url }})
