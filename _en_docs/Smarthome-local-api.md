@@ -73,3 +73,9 @@ The cURL examples contain `--insecure` because the gateway’s certificate does 
 ></iframe>
 
 The [OpenAPI file](/assets/openapi/k-40-rf.yaml) is also available separately.
+
+## MQTT with k40rf-bridge
+
+The [k40rf-bridge](https://github.com/wakkomon/k40rf-bridge) reads the local API and provides available values via MQTT, for example for [OpenHAB](/en/docs/smarthome/openhab/#lokale-api-mit-mqtt).
+You need a Docker host and an accessible MQTT broker for this.
+Setup, pairing, and configuration are described in the [project README](https://github.com/wakkomon/k40rf-bridge#readme).

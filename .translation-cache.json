@@ -561,17 +561,21 @@
       ]
     },
     "_docs/Smarthome-openhab.md": {
-      "fingerprint": "d105a22235b7d2c25131282e17f97ccc2ad440e8d62467e986afe78e9aa37aa6",
-      "sourceHash": "a65a303431cac2b85810f6363b9ebe8c14b244673864f2c0403241a52eff13d2",
+      "fingerprint": "7bc0d8df92ad575f3b0ddcba5793f2bedf397c6f8d485dd31d1c3acc90f067f9",
+      "sourceHash": "a17db1f8d22ddc4888f28903e2b6de476ca0bf016d49540747f361ca0f5e45ce",
       "target": "_en_docs/Smarthome-openhab.md",
-      "frontMatterSourceHash": "a19e6e6a83d51b8426b05ee69efcc3be7a02444199d3ee5cf7c2c4703a583ecf",
+      "frontMatterSourceHash": "d574b01d1dba751e34930824d6da1bf0f25d1690800de5f599bbe6deff4b9b58",
       "bodyBlockSourceHashes": [
         "3571a0b7a8796576c8fcaf7d7d470603a64a19243b06256b1fc5a7d7407aae58",
         "04b924785751456d30ff24ba5552cd80ec2951e784cea872aac3dc02f797664f",
-        "f55a014918d8facb9315e1d614efb1eea12457fd9a1219aa906cf1f722cda663",
-        "d6427eeb269b424345e83eeb3ed485b086bdcd063829684e76076fdf9c1ce403",
-        "59b62b392a3cd15086b467c4fb625135cf4123b25a37e0d125ac904b4dfa19b3",
-        "4b0860fab4c7a5ec5fa0ddaf16ab43a99da825056f6885e4136720b6b3af316e",
+        "e3cf53c0ba56b3e97274c11b629769bc57324262a92fde7773fe85fff6ced9e7",
+        "e42053d6fc3ff78b62480093ac554ceef357a181c02eaaa5518b98e1b6da8e49",
+        "f3d867f8ebd6e2ba17647695a20d03f0a16a1c02f979f3369bcf4649feb84daa",
+        "fa42de052a2a729cb333f351840f617b1af69f7cdac6c6a92ed8458bc81014ad",
+        "6299fa4c430cf2ab72e30c69dd5d14540dcd11725c41836cc4d0d772557446e1",
+        "e42053d6fc3ff78b62480093ac554ceef357a181c02eaaa5518b98e1b6da8e49",
+        "aad1af46fcd7a6e88890edddd161f650bd066b8d9eec09646a4dbf7d80cc2587",
+        "ef24a1dbb17e0536df649d8a1adbfafe4bcc5a9e3b193e44c34902e44fb80481",
         "8ceac45d68bf1ed903a47bdd2aed82e82a99ebc3443121a85dada34b7d1dea22",
         "29d35fc35391b92d76a20fcecadea864b0a871c021526d193d98822672928f56",
         "8e2dd80189a4a0ac5342ed7f359dac21297a16e5ecd75252f63baf3f3b86267c",
@@ -606,8 +610,8 @@
       ]
     },
     "_docs/Smarthome.md": {
-      "fingerprint": "06142791bd662807677fd17e113570352f8482158271b3cdbfb1118d576e01c2",
-      "sourceHash": "b1a2f94ff38ad15bc8c023eaa5f5b87fade6b540f2b7b7999225fa6aebaf87d9",
+      "fingerprint": "a46fddc63263a4ab36343e90ee4c2216d81f791b173cabe9e99e2634c22e2b4e",
+      "sourceHash": "49a8cddf3e24f9bce9b99191bae9c2f2fd4d4f215a1f7646d94948e82ee348c7",
       "target": "_en_docs/Smarthome.md",
       "frontMatterSourceHash": "773a7cc0d5c19ec5b606d755231083982337ca039023049b3c96d9f743ae771d",
       "bodyBlockSourceHashes": [
@@ -617,7 +621,7 @@
         "add1863fc9083765088a2f2c7ef94993a3fb5bd08f3f12eae9be6299bcc17063",
         "bd96235f260e85b68dc2d5400381e0ba41626425f2bd8f6c1a76645630a3439f",
         "896c93d11695ab5d7097944b389b0f5c394ffbc6b30716ec3348feba1e6fd869",
-        "1cd05380e0839f61eefbbe172704ad93ba567e26293e77899590f60648b64124",
+        "a9690dd00ab7a251013b62529e1f1c3e6c37b082b09279228d4e9995ac9db4ad",
         "9f2c418e950dbd47f5759b441c2459b1940f9f80678dbd02753befcb88c1cecc"
       ]
     },
@@ -999,8 +1003,8 @@
       ]
     },
     "_docs/Smarthome-local-api.md": {
-      "fingerprint": "ead8c98f78ce382665aed8c2a453ee2165a31dcdb9a186f7358b2df30bc2885e",
-      "sourceHash": "1d6671a675c712be23a7bad54f2903e55945883a63e3054e813d37bfbdb54ec3",
+      "fingerprint": "0fc46b3de7a855b9f70f46ff3e26fdcf58de67aa539c700a88e30d2c346ba4e0",
+      "sourceHash": "0d91959dae1f946ffc7d3a87063a020024ded3b01560cbceeac7abbb25945ca5",
       "target": "_en_docs/Smarthome-local-api.md",
       "frontMatterSourceHash": "e4343a6e5cdb9871d4c2f160a91962a1dae6737876558c7971759e0876fdb0ad",
       "bodyBlockSourceHashes": [
@@ -1018,7 +1022,9 @@
         "8a682001584ff91c9c9be6cedf636848e7c71ae692a12c988a12d86f031494dc",
         "5ff96442a16f84f33ba19ab51b62ad2a5c868a2dffc6abc946923e8a6fde406f",
         "8c22615e96f8e97a4fad9b2f92b3fd0d2e6d3c108a9b8e4083ea8156a964f608",
-        "351e04236ef47e5fddcfc22f442f6ecc1b320e27360a5960741e93b1726dbfe1"
+        "351e04236ef47e5fddcfc22f442f6ecc1b320e27360a5960741e93b1726dbfe1",
+        "baea1a7b7582eabbc72f043c61ba95974f3274edeb82e2a8df94e37262fd9dc0",
+        "0ed0048e483f30e5aa9f5752f5cef129dcd5db54170f37e9a819fbc06964b221"
       ]
     },
     "_docs/Smarthome-ems-esp.md": {
