@@ -15,6 +15,8 @@ Die meisten Einstellungen des Startbildschirm findet man auch in der [App](/docs
 
 Nachfolgend sind die wichtigsten, aber weitaus nicht alle, Einstellungen kurz erklärt.
 
+In den [Wärmepumpen-Metriken](/metrics/) könnt ihr Energieverbrauch und Arbeitszahl eurer Anlage mit anderen Anlagen vergleichen.
+
 ## Raumtemperatur
 
 Mit `Startbildschirm` &rarr; `Wunschtemperatur` stellt man die gewünschte Temperatur ein, die man in den beheizten Räumen erzielen möchte.
@@ -91,6 +93,7 @@ Zusätzlich zu diesen Werten kann man auch den Fuß- und Komfortpunkt definieren
 
 Die in der Heizkurve einstellbaren Vorlauftemperaturen sind eure wichtigsten Parameter für einen effizienten Betrieb - je niedriger desto effizienter.
 Weitere Details zur Optimierung der Heizkurve findet ihr unter [Optimierungen: Heizkurve und Thermischer Abgleich](/docs/optimierungen/#heizkurve-und-thermischer-abgleich)
+Den Einfluss der Heizkurve auf Temperaturen und Leistungsbedarf könnt ihr auch im [Wärmepumpen-Simulator](/simulator) erkunden.
 
 ### Heizkurven-Simulator
 

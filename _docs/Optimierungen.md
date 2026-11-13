@@ -17,6 +17,8 @@ Für einen effizienten Betrieb gilt grundsätzlich:
 
 Grobe Faustregel: jedes zusätzliche Grad erhöht den Energieverbrauch um ca. 2,5% [[Quelle](https://www.heizungsdiscount24.de/pdf/Junkers-Bosch-Compress-CS7000iAW-3-13-kW-Planungsunterlage.pdf)]
 
+In den [Wärmepumpen-Metriken](/metrics/) könnt ihr Verbrauch und Arbeitszahl eurer Anlage mit anderen Anlagen vergleichen.
+
 <span id="warmwasseraufbereitung"></span><!-- Legacy Anchor -->
 
 ## Warmwasserbereitung

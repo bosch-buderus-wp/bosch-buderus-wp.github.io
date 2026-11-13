@@ -76,6 +76,7 @@ Hat man die MQTT-Integration erfolgreich aufgeschlossen, so erhält man eine Üb
 - ems-esp Thermostat = Thermostat
 
 Nach Bestätigung gelangt man zurück zur Übersicht, in der nun alle verfügbaren Entitäten dargestellt werden.
+Eine Erklärung wichtiger Messwerte und Einstellungen findet ihr in der [Übersicht der EMS-ESP-Entitäten](/docs/smarthome/entities).
 
 [![Home Assistant: Übersicht](/assets/images/HA-Overview.png)](/assets/images/HA-Overview.png)
 

@@ -33,7 +33,7 @@ Der daraus entstehende falsche Temperaturwert löst häufig den Fehler **5160** 
 Bei einem ungültigen Sensorsignal ist auch **5107** möglich.
 
 Seit FD 578 wird TA4 mit einer verbesserten Metallhalterung auf der linken Seite der Kondensatwanne montiert.
-Die neue TA4-Baugruppe setzt mindestens Softwareversion 9.12 voraus.
+Die neue TA4-Baugruppe setzt mindestens [Softwareversion 9.12](/docs/sw-versionen/#9120--970) der Außeneinheit voraus.
 
 Quelle: [Bosch-Servicehandbuch](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
 
