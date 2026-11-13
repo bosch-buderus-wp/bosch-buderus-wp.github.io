@@ -75,23 +75,7 @@ Nur wenn ihr die Erlaubnisanfrage bestätigt, werden Daten an das LLM des Anbiet
 Bei den Daten handelt es sich um ausgewählte Entitäten eurer Wärmepumpe.
 Es werden keine weiteren Daten, also auch keinen personenbezogenen Daten, übertragen.
 
-```mermaid
-architecture-beta
-    group cloud(cloud)[Cloud]
-    service llm(cloud)[LLM] in cloud
-
-    group home(server)[Zuhause]
-    service hp(disk)[Waermepumpe] in home
-    service emsesp(server)[EMS ESP] in home
-    group notebook(server)[Euer Computer] in home
-    service app(server)[GenAI Anwendung] in notebook
-    service mcp(server)[MCP Server] in notebook
-
-    llm:T -- B:app
-    app:R -- L:mcp
-    mcp:R -- L:emsesp
-    emsesp:R -- L:hp
-```
+{% include diagram-ai.html %}
 
 {: .notice--info}
 _Welche anderen Gen-AI Applikation kann ich nutzen?_

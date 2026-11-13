@@ -87,13 +87,7 @@ In Home Assistant and OpenHAB, Mosquitto can easily be installed via the corresp
 Communication with _evcc_ works via the REST API of _ems-esp_.
 Therefore, you do not need MQTT for _evcc_.
 
-```mermaid
-flowchart LR
-    EMSESP[ems-esp] -->|Publish| MQTT@{ shape: bow-rect, label: "MQTT Broker" }
-    HA[ Home Assistant /<br/>OpenHAB /<br/>Telegraf] --> |Subscribe| MQTT
-    HA -->|Persist| INFLUX[("InfluxDB")]
-    GRAFANA[Grafana] -->|Read| INFLUX
-```
+{% include diagram-mqtt.html %}
 
 To make _ems-esp_ send the measured values to the MQTT broker, you must enable this under _Settings &rarr; MQTT&nbsp;Settings_ and enter the _Broker Address_, as well as the _Username_ and _Password_.
 You should also enable _Enable MQTT Discovery_, because otherwise you have to create all entities manually.

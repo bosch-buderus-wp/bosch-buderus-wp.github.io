@@ -131,6 +131,9 @@ body.layout--splash .page__hero--overlay .page__lead {
 }
 .smarthome-access__link svg { width: 16px; height: 16px; flex: none; }
 .page__content { line-height: 1.75; }
+.page__content .article-diagram { display: block; width: 100%; max-width: 520px; height: auto; margin: 1.5em auto; }
+.page__content .article-diagram-scroll { max-width: 700px; margin: 1.5em auto; overflow-x: auto; }
+.page__content .article-diagram--circuits { width: 100%; min-width: 620px; max-width: 700px; margin: 0 auto; }
 .page__content > p { margin-bottom: 1.4em; }
 .page__content > :is(h2, h3, h4) { color: var(--ink); scroll-margin-top: 110px; }
 .page__content > h2 { margin-top: 2.4em; padding-bottom: 12px; border-bottom: 1px solid var(--line); font-size: 1.55em; letter-spacing: -.035em; }

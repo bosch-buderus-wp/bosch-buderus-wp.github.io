@@ -1,0 +1,10 @@
+{% if page.lang == 'en' %}{% assign labels = 'Evaporator|Condenser|Buffer tank|Radiators|Underfloor heating|Refrigerant circuit|Primary circuit|Heating circuit' | split: '|' %}{% else %}{% assign labels = 'Verdampfer|Verflüssiger|Pufferspeicher|Heizkörper|Fußbodenheizung|Kältekreis|Primärkreis|Heizkreis' | split: '|' %}{% endif %}
+<div class="article-diagram-scroll" role="region" aria-label="{{ labels[5] }}, {{ labels[6] }}, {{ labels[7] }}" tabindex="0">
+<svg class="article-diagram article-diagram--circuits" viewBox="0 0 800 175" role="img" aria-label="{{ labels[5] }}: {{ labels[0] }} ↔ {{ labels[1] }}; {{ labels[6] }}: {{ labels[1] }} ↔ {{ labels[2] }}; {{ labels[7] }}: {{ labels[2] }} ↔ {{ labels[3] }} / {{ labels[4] }}" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="circuit-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0 L10 5 L0 10z" fill="#527384"/></marker></defs>
+  <g fill="#f4f7f8" stroke="#78909c" stroke-width="2"><rect x="5" y="55" width="155" height="65" rx="10"/><rect x="218" y="55" width="155" height="65" rx="10"/><rect x="430" y="55" width="155" height="65" rx="10"/><rect x="642" y="55" width="153" height="65" rx="10"/></g>
+  <g fill="none" stroke="#527384" stroke-width="2" marker-end="url(#circuit-arrow)"><path d="M160 76 H218"/><path d="M218 100 H160"/><path d="M373 76 H430"/><path d="M430 100 H373"/><path d="M585 76 H642"/><path d="M642 100 H585"/></g>
+  <g fill="#25313a" text-anchor="middle" font-family="sans-serif" font-size="16"><text x="82" y="93">{{ labels[0] }}</text><text x="295" y="93">{{ labels[1] }}</text><text x="507" y="93">{{ labels[2] }}</text><text x="718" y="82">{{ labels[3] }}</text><text x="718" y="102">{{ labels[4] }}</text></g>
+  <g fill="#536d7c" text-anchor="middle" font-family="sans-serif" font-size="15"><text x="189" y="30">{{ labels[5] }}</text><text x="401" y="30">{{ labels[6] }}</text><text x="613" y="30">{{ labels[7] }}</text></g>
+</svg>
+</div>

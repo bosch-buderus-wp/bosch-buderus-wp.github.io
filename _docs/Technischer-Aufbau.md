@@ -25,18 +25,7 @@ Dann wird das Kältemittel im Verdampfer erneut durch die Umgebungsluft aufgewä
 
 Im gesamten Heizungssystem gibt es aber nicht nur einen Kreislauf, sondern drei an der Zahl.
 
-```mermaid
-flowchart TD
-subgraph Z[" "]
-direction LR
-    A(Verdampfer) -->|Kältekreis| B(Verflüssiger)
-    B --> A
-    B --> |Primärkreis| C(Pufferspeicher)
-    C --> B
-    C --> |Heizkreis| D(Heizkörper/<br/>Fußbodenheizung)
-    D --> C
-end
-```
+{% include diagram-circuits.html %}
 
 ### Kältekreis
 

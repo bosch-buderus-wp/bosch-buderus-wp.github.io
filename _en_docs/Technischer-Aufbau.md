@@ -30,18 +30,7 @@ The refrigerant is then heated again in the evaporator by the ambient air, and t
 
 However, the entire heating system does not contain just one circuit, but three.
 
-```mermaid
-flowchart TD
-subgraph Z[" "]
-direction LR
-    A(Evaporator) -->|Refrigerant circuit| B(Condenser)
-    B --> A
-    B --> |Primary circuit| C(Buffer tank)
-    C --> B
-    C --> |Heating circuit| D(Radiators/<br/>Underfloor heating)
-    D --> C
-end
-```
+{% include diagram-circuits.html %}
 
 ### Refrigerant Circuit
 

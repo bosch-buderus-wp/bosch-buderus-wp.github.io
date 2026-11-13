@@ -80,23 +80,7 @@ Data is transmitted to the provider's LLM only if you confirm the permission req
 The data consists of selected entities from your heat pump.
 No other data, including personal data, is transmitted.
 
-```mermaid
-architecture-beta
-    group cloud(cloud)[Cloud]
-    service llm(cloud)[LLM] in cloud
-
-group home(server)[Home]
-    service hp(disk)[Heat pump] in home
-    service emsesp(server)[EMS ESP] in home
-    group notebook(server)[Your computer] in home
-    service app(server)[GenAI application] in notebook
-    service mcp(server)[MCP server] in notebook
-
-llm:T -- B:app
-    app:R -- L:mcp
-    mcp:R -- L:emsesp
-    emsesp:R -- L:hp
-```
+{% include diagram-ai.html %}
 
 {: .notice--info}
 _Which other Gen-AI applications can I use?_
