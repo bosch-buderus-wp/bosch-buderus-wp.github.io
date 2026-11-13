@@ -1,5 +1,8 @@
 <link rel="stylesheet" href="{{ '/assets/css/design.css' | relative_url }}?v={{ site.time | date: '%s' }}">
 <script src="{{ '/assets/js/design.js' | relative_url }}?v={{ site.time | date: '%s' }}" defer></script>
+{% if content contains '\[' or content contains '\(' %}
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js" defer></script>
+{% endif %}
 
 {% if page.headline %}
 <meta name="page-headline" content="{{ page.headline | escape_once }}">
