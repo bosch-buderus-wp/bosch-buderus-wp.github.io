@@ -17,3 +17,8 @@ Die Informationen stammen größtenteils aus Foren wie:
 
 Ich hoffe, die Informationen sind für den ein oder anderen hilfreich - dann gerne einen ⭐ hinterlassen.
 Bei Anregungen oder Korrekturen, würde ich mich über einen [Pull Request](https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/pulls) oder ein [Issue](https://github.com/bosch-buderus-wp/bosch-buderus-wp.github.io/issues) zur weiteren Diskussion freuen.
+
+## Lizenz
+
+Der eigene Quellcode dieses Repositories, einschließlich des Simulators, steht unter der [MIT-Lizenz](LICENSE).
+Für Messdaten und Inhalte Dritter gelten die jeweiligen Rechte und Nutzungsbedingungen.
