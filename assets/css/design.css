@@ -72,9 +72,10 @@ body.layout--splash .page__hero--overlay .page__lead {
 }
 .layout--splash .feature__wrapper::after { display: none; }
 .layout--splash .feature__item {
-  grid-column: span 2; width: auto; margin: 0; float: none;
+  position: relative; grid-column: span 2; width: auto; margin: 0; float: none;
   font-size: 1rem; border-bottom: 1px solid var(--line); padding-bottom: 20px;
 }
+.layout--splash .feature__item .archive__item { position: static; }
 .layout--splash .archive__item-teaser { border-radius: 12px; margin-bottom: 20px; overflow: hidden; }
 .layout--splash .archive__item-teaser img {
   width: 100%; aspect-ratio: 16 / 9; object-fit: cover; transition: transform .35s ease;
@@ -86,11 +87,12 @@ body.layout--splash .page__hero--overlay .page__lead {
 .layout--splash .archive__item-excerpt p { margin-bottom: 14px; }
 .layout--splash .archive__item-body > p:last-child { margin: 0; }
 .layout--splash .feature__item .btn {
-  padding: 0; background: transparent; color: var(--accent); border: 0;
-  border-radius: 0; font-size: 14px; box-shadow: none;
+  position: static; padding: 0; background: transparent; color: var(--muted); border: 0;
+  border-radius: 0; font-size: 0; box-shadow: none;
 }
-.layout--splash .feature__item .btn::after { content: "\2192"; margin-left: 12px; display: inline-block; transition: transform .2s ease; }
-.layout--splash .feature__item:hover .btn::after { transform: translateX(4px); }
+.layout--splash .feature__item .btn::before { content: ""; position: absolute; inset: 0; }
+.layout--splash .feature__item .btn::after { content: "\2192"; display: inline-block; font-size: 20px; line-height: 1; transition: transform .2s ease, color .2s ease; }
+.layout--splash .feature__item:hover .btn::after { color: var(--accent); transform: translateX(4px); }
 .layout--splash .feature__item:focus-within { outline: 3px solid var(--accent); outline-offset: 8px; border-radius: 12px; }
 .layout--splash .feature__item:nth-child(n+4) { grid-column: span 3; }
 .layout--splash .feature__item:nth-child(n+4) .archive__item {

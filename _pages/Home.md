@@ -15,35 +15,35 @@ feature_row:
     excerpt: "Dokumentationen zu den Wärmepumpen"
     url: "/docs/intro/"
     btn_class: "btn--primary"
-    btn_label: "Lesen"
+    btn_label: "Wärmepumpen-Dokumentation lesen"
   - alt: "Simulator"
     image_path: /assets/images/home-simulator.jpg
     title: "Simulator"
     excerpt: "Simulator für die Wärmepumpe"
     url: "/simulator"
     btn_class: "btn--primary"
-    btn_label: "Öffnen"
+    btn_label: "Wärmepumpen-Simulator öffnen"
   - alt: "Metriken"
     image_path: /assets/images/home-metriken.jpg
     title: "Metriken"
     excerpt: "Datensammlung- und Visualisierung"
     url: "/metrics/"
     btn_class: "btn--primary"
-    btn_label: "Öffnen"
+    btn_label: "Wärmepumpen-Metriken ansehen"
   - alt: "Erfahrungen"
     image_path: /assets/images/home-erfahrungen.jpg
     title: "Erfahrungen"
     excerpt: "Erfahrungsberichte"
     url: "/xps/matthias/"
     btn_class: "btn--primary"
-    btn_label: "Lesen"
+    btn_label: "Erfahrungsbericht lesen"
   - alt: "Links"
     image_path: /assets/images/home-links.jpg
     title: "Links"
     excerpt: "Bücher, Installationsanleitungen & Foren"
     url: "/links/"
     btn_class: "btn--primary"
-    btn_label: "Lesen"
+    btn_label: "Links und Ressourcen ansehen"
 ---
 
 {% include feature_row %}
