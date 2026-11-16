@@ -22,11 +22,11 @@ The following projects serve as references; below you will find the detailed gui
 
 These community projects can be installed via HACS or the Marketplace and do not require an EMS-ESP gateway:
 
-| Integration                                                                                                 | Access                          | Notes                                                                                                                          |
-| ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ |
-| [Bosch/Buderus Home Comfort (SoftwareSchmied)](https://github.com/SoftwareSchmied/ha-bosch-buderus-heating) | Unofficial cloud API (PointT)   | Uses the same SingleKey ID as the Bosch/Buderus app and requires an internet connection; available in the HACS standard catalog. |
-| [Bosch K 40 RF / MX400 (luc-ass)](https://github.com/luc-ass/ha-bosch-k40rf)                                | Local API (read-only)           | Reads the gateway on the home network; beta project, installable as a custom repository.                                      |
-| [Bosch K 40 RF / MX400 (smoki3)](https://github.com/smoki3/ha_bosch_k40rf)                                  | Local API (read-only)           | Reads the gateway on the home network; installable as a custom repository.                                                    |
+| Integration                                                                                                 | Access                          | Notes                                                                                                                         |
+| ----------------------------------------------------------------------------------------------------------- | ------------------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| [Bosch/Buderus Home Comfort (SoftwareSchmied)](https://github.com/SoftwareSchmied/ha-bosch-buderus-heating) | Unofficial cloud API (PointT) and local API (MX400 or K40 RF from firmware 15.00.01), individually or combined | Cloud with the same SingleKey ID as the Bosch/Buderus app, also enabling control. Local access is read-only, with more frequently updated values; if the cloud fails, the local access continues to show values and faults. Available in the marketplace. |
+| [Bosch K 40 RF / MX400 (luc-ass)](https://github.com/luc-ass/ha-bosch-k40rf)                                | Local API (read-only)           | Reads the gateway on the home network; beta project, installable as a custom repository.                                    |
+| [Bosch K 40 RF / MX400 (smoki3)](https://github.com/smoki3/ha_bosch_k40rf)                                  | Local API (read-only)           | Reads the gateway on the home network; installable as a custom repository.                                                  |
 
 The local API provides **read-only access**; settings cannot be changed through it.
 Both the local API and the cloud connection offer **fewer entities than EMS-ESP**.
