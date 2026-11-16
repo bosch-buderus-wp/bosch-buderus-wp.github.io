@@ -78,7 +78,7 @@ metrics:
       - title: "Alle Anlagen"
         url: /metrics/#/systems
       - title: "Meine Anlage"
-        url: /metrics/#/dashboard
+        url: /metrics/#/my-account
   - title: "Mitmach-Guide"
     url: /metrics/howto
 
@@ -166,7 +166,7 @@ en_metrics:
       - title: "All systems"
         url: /en/metrics/#/systems
       - title: "My system"
-        url: /en/metrics/#/dashboard
+        url: /en/metrics/#/my-account
   - title: "Participation guide"
     url: /en/metrics/howto/
 
