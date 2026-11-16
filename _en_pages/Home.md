@@ -12,38 +12,38 @@ feature_row:
   - alt: "docs"
     image_path: /assets/images/home-dokumentation.jpg
     title: "Documentation"
-    excerpt: "Documentation on the heat pumps"
+    excerpt: "Documentation for the heat pumps"
     url: "/en/docs/intro/"
     btn_class: "btn--primary"
-    btn_label: "Read"
+    btn_label: "Read heat pump documentation"
   - alt: "Simulator"
     image_path: /assets/images/home-simulator.jpg
     title: "Simulator"
     excerpt: "Simulator for the heat pump"
     url: "/en/simulator/"
     btn_class: "btn--primary"
-    btn_label: "Open"
-  - alt: "Metrics"
+    btn_label: "Open heat pump simulator"
+  - alt: "Metriken"
     image_path: /assets/images/home-metriken.jpg
     title: "Metrics"
     excerpt: "Data collection and visualization"
     url: "/en/metrics/"
     btn_class: "btn--primary"
-    btn_label: "Open"
-  - alt: "Experiences"
+    btn_label: "View heat pump metrics"
+  - alt: "Erfahrungen"
     image_path: /assets/images/home-erfahrungen.jpg
     title: "Experiences"
     excerpt: "User reports"
     url: "/en/xps/matthias/"
     btn_class: "btn--primary"
-    btn_label: "Read"
+    btn_label: "Read user report"
   - alt: "Links"
     image_path: /assets/images/home-links.jpg
     title: "Links"
     excerpt: "Books, installation instructions & forums"
     url: "/en/links/"
     btn_class: "btn--primary"
-    btn_label: "Read"
+    btn_label: "View links and resources"
 lang: en
 translation_url: /
 translation_generated: true

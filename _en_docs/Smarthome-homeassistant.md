@@ -80,7 +80,8 @@ Once you have successfully connected the MQTT integration, you will see an overv
 - ems-esp = Gateway Module
 - ems-esp Thermostat = thermostat
 
-After confirmation, you return to the overview, where all available entities are now displayed.
+After confirmation, you return to the overview, where all available entities are now displayed.  
+An explanation of important measured values and settings can be found in the [Overview of EMS-ESP entities](/en/docs/smarthome/entities/).
 
 [![Home Assistant: overview](/assets/images/HA-Overview.png)](/assets/images/HA-Overview.png)
 

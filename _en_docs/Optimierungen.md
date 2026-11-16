@@ -22,6 +22,8 @@ The following generally applies to efficient operation:
 
 Rule of thumb: each additional degree increases energy consumption by approx. 2.5% [[Source](https://www.heizungsdiscount24.de/pdf/Junkers-Bosch-Compress-CS7000iAW-3-13-kW-Planungsunterlage.pdf)]
 
+In the [heat pump metrics](/en/metrics/), you can compare your system’s consumption and performance factor with those of other systems.
+
 <span id="warmwasseraufbereitung"></span><!-- Legacy Anchor -->
 
 ## Domestic hot water production

@@ -20,6 +20,8 @@ Most settings on the start screen can also be found in the [app](/en/docs/app/).
 
 The most important settings, but by no means all of them, are briefly explained below.
 
+In the [heat pump metrics](/en/metrics/), you can compare your system’s energy consumption and performance factor with those of other systems.
+
 ## Room temperature
 
 Use `Start screen` &rarr; `Desired temperature` to set the desired temperature that you want to achieve in the heated rooms.
@@ -95,7 +97,8 @@ Pressing the endpoint selects it. You can then use the arrow keys to set the req
 In addition to these values, you can also define the base point and comfort point if the simple heating curve is not sufficient.
 
 The flow temperatures that can be set in the heating curve are your most important parameters for efficient operation—the lower, the more efficient.
-You can find further details on optimizing the heating curve under [Optimizations: Heating Curve and Hydraulic Balancing](/en/docs/optimizations/#heizkurve-und-thermischer-abgleich)
+You can find further details on optimizing the heating curve under [Optimizations: Heating Curve and Hydronic Balancing](/en/docs/optimizations/#heizkurve-und-thermischer-abgleich)
+You can also explore the influence of the heating curve on temperatures and power requirements in the [heat pump simulator](/en/simulator/).
 
 ### Heating curve simulator
 

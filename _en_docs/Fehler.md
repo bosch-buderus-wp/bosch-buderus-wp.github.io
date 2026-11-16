@@ -37,8 +37,8 @@ It can come loose when the rear panel is removed or, under certain weather condi
 The resulting incorrect temperature value frequently triggers error **5160**.
 If the sensor signal is invalid, **5107** is also possible.
 
-Since FD 578, TA4 has been mounted with an improved metal bracket on the left side of the condensate pan.
-The new TA4 assembly requires at least software version 9.12.
+Since FD 578, TA4 has been mounted with an improved metal bracket on the left side of the condensate pan.  
+The new TA4 assembly requires at least [software version 9.12](/en/docs/software-versions/#9120--970) of the outdoor unit.
 
 Source: [Bosch service manual](https://bosch-ch-de.boschhc-documents.com/download/file/file/6721872875.pdf)
 
