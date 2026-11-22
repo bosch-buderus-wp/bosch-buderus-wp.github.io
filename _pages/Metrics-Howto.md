@@ -94,7 +94,7 @@ Bitte lade die Daten nicht mehr als einmal pro Stunde hoch, um nicht unnötig vi
 Um stündlich Messwerte aus Home Assistant zu übertragen, füge folgende Konfiguration in `configuration.yaml` ein.
 Da ems-esp unterschiedliche Entitäts-ID Formate im MQTT-Discovery unterstützt, findet ihr nachfolgend für die verschiedene Versionen angepasste Konfigurationen.
 
-Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`. Wählt den passenden Tab für eure Version:
+Eure Version seht ihr auf der ems-esp Oberfläche unter `Einstellungen` &rarr; `MQTT` &rarr; `MQTT-Discovery` &rarr; `Entitäts-ID Format`. Nutzt ihr statt ems-esp die Integration [Bosch/Buderus Home Comfort](https://github.com/SoftwareSchmied/ha-bosch-buderus-heating), nehmt den Tab „Integration Bosch/Buderus Home Comfort“. Wählt den passenden Tab für eure Version:
 
 {% include tabs id="home-assistant-tabs" %}
 
@@ -150,6 +150,41 @@ rest_command:
 ```
 
 {% endraw %}
+
+{% include endtab %}
+{% include tab id="home-comfort" title="Integration Bosch/Buderus Home Comfort" %}
+
+Voraussetzung: Die Integration zeigt die Energiezähler eurer Wärmepumpe an.
+
+Ersetzt `DEIN_GERAET` durch den Gerätenamen eurer Anlage, wie er in den Entitäts-IDs steht (zum Beispiel `buderus_k40`).
+Ihr findet ihn unter `Einstellungen` &rarr; `Geräte & Dienste` &rarr; `Entitäten`, wenn ihr nach `heat_pump_total_heat_produced` sucht: Der Teil zwischen `sensor.` und `_heat_pump_total_heat_produced` ist euer Gerätename.
+
+{% raw %}
+
+```yaml
+rest_command:
+  send_heatpump_metrics:
+    url: "https://heatpump-metrics-proxy.vercel.app/api/proxy"
+    method: POST
+    headers:
+      Content-Type: "application/json"
+    payload: >
+      {
+        "api_key": ".......",
+        "heating_id": ".......",
+        "thermal_energy_kwh": "{{ states('sensor.DEIN_GERAET_heat_pump_total_heat_produced') }}",
+        "electrical_energy_kwh": "{{ states('sensor.DEIN_GERAET_heat_pump_total_total_electricity_consumption') }}",
+        "thermal_energy_heating_kwh": "{{ states('sensor.DEIN_GERAET_heat_pump_heating_heat_produced') }}",
+        "electrical_energy_heating_kwh": "{{ states('sensor.DEIN_GERAET_heat_pump_heating_total_electricity_consumption') }}",
+        "outdoor_temperature_c": "{{ states('sensor.DEIN_GERAET_system_outdoor_temperature') }}",
+        "flow_temperature_c": "{{ states('sensor.DEIN_GERAET_heat_pump_supply_temperature') }}"
+      }
+```
+
+{% endraw %}
+
+Der Stromverbrauch enthält Verdichter und Heizstab. Die Vorlauftemperatur ist die des Heizkreises (T0).
+Die Werte kommen aus dem lokalen Zugang oder aus der Cloud, je nachdem, was eingerichtet ist; die Entitäten bleiben dieselben.
 
 {% include endtab %}
 {% include endtabs %}
